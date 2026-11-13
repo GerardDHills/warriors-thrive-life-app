@@ -113,7 +113,17 @@
    "!Lasts more than 2 hours: go to the ER now",
    "Keeps coming back? Tell your care team"
   ],
-  "a": "Hello warriors, Dr. Amos here. Today's topic is one some people feel shy about, but it matters. Priapism is when the penis stays hard for a long time, and it can hurt. It happens when sickled cells get stuck there. It's not your fault, and it's nothing to be embarrassed about.",
-  "b": "If it happens, pee, drink water, and take your pain medicine. If it lasts more than two hours, go to the ER right away, because waiting too long can cause damage. And if it keeps coming back, even short ones, tell your care team. There are ways to help prevent it."
+  "a": "Hello warriors, Dr. Amos here. Today's topic is one some people feel shy about, but it matters. It's not your fault, and it's nothing to be embarrassed about.",
+  "b": "If it happens, pee, drink water, and take your pain medicine. If it lasts more than two hours, go to the ER right away, because waiting too long can cause damage. And if it keeps coming back, even short ones, tell your care team. There are ways to help prevent it.",
+  "split": {
+   "after": 16,
+   "audio": "../amos_def.wav",
+   "header": "What is priapism?",
+   "text": "Priapism is when the penis stays hard for a long time, and it can hurt. It happens when sickled cells get stuck there.",
+   "points": [
+    "When the penis stays hard for a long time, and it can hurt",
+    "It happens when sickled cells get stuck there"
+   ]
+  }
  }
 }

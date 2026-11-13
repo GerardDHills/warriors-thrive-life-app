@@ -88,17 +88,18 @@ def title_card(v, out):
     d.text(((W - d.textlength(t, font=f)) / 2, y + 24), t, font=f, fill=SOFT)
     im.convert("RGB").save(out)
 
-def points_card(v, out):
+def points_card(v, out, header="Key points", points=None):
     acc = tuple(v["accent"])
+    points = points or v["points"]
     im = bg(acc).convert("RGBA"); d = ImageDraw.Draw(im)
     brand(d)
     f = font(56); y = 190
-    for ln in wrap(d, "Key points", f, W - 100):
+    for ln in wrap(d, header, f, W - 100):
         d.text((60, y), ln, font=f, fill=INK); y += 70
     d.rectangle([60, y + 6, 160, y + 14], fill=acc)
     y += 60
     fb = font(37, False)
-    for i, p in enumerate(v["points"]):
+    for i, p in enumerate(points):
         red = p.startswith("!")
         p = p.lstrip("!")
         lines = wrap(d, p, fb, W - 220)
@@ -225,6 +226,7 @@ Style: Cap,Montserrat ExtraBold,50,&H00FFFFFF,&H00FFFFFF,&H00240B1B,&H96000000,0
 Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
 """
     open(ass, "w").write(hdr + "\n".join(lines) + "\n")
+    captions.T = T
     return f"matched {matched:.0%} | " + " | ".join(f"{T[c[0]][0]:.1f}:" + " ".join(sw[k] for k in c) for c in merged)
 
 def clip_seg(src, ass, out):
@@ -243,7 +245,22 @@ if __name__ == "__main__":
     for k, seg in (("a", "s2.mp4"), ("b", "s4.mp4")):
         sh(f"ffmpeg -y -loglevel error -i {k}.mp4 -vn -ac 1 -ar 16000 {k}.wav")
         print(k.upper(), "captions:", captions(f"{k}.wav", f"{k}.ass", v[k]))
+        if k == "a": Ta = captions.T
         clip_seg(f"{k}.mp4", f"{k}.ass", seg)
-    open("list.txt", "w").write("".join(f"file 's{i}.mp4'\n" for i in range(1, 6)))
+    parts = ["s1", "s2", "s3", "s4", "s5"]
+    if "split" in v:
+        # Voice-over definition card inside clip A, after word index split.after
+        sp = v["split"]; i = sp["after"]
+        cut = (Ta[i][1] + Ta[i + 1][0]) / 2
+        sh(f"ffmpeg -y -loglevel error -i s2.mp4 -t {cut:.3f} {ENC} s2a.mp4")
+        sh(f"ffmpeg -y -loglevel error -ss {cut:.3f} -i s2.mp4 {ENC} s2b.mp4")
+        points_card(v, "def.png", header=sp["header"], points=sp["points"])
+        sh(f"ffmpeg -y -loglevel error -i {sp['audio']} -af adelay=300|300,apad=pad_dur=0.6 -ac 1 -ar 16000 def16.wav")
+        print("DEF captions:", captions("def16.wav", "def.ass", sp["text"]))
+        dur = float(sh("ffprobe -v error -show_entries format=duration -of csv=p=0 def16.wav"))
+        sh(f"ffmpeg -y -loglevel error -framerate {FPS} -i def.png -i def16.wav -vf \"scale={W}:{H},format=yuv420p,loop=-1:1,trim=duration={dur:.3f},setpts=PTS-STARTPTS,"
+           f"ass=def.ass:fontsdir={FDIR},fade=t=in:st=0:d=0.3,fade=t=out:st={dur-0.3:.3f}:d=0.3\" -af aresample=44100 -t {dur:.3f} {ENC} s2c.mp4")
+        parts = ["s1", "s2a", "s2c", "s2b", "s3", "s4", "s5"]
+    open("list.txt", "w").write("".join(f"file '{p}.mp4'\n" for p in parts))
     sh(f"ffmpeg -y -loglevel error -f concat -safe 0 -i list.txt -c copy -movflags +faststart final.mp4")
     print(sh("ffprobe -v error -show_entries format=duration -of csv=p=0 final.mp4"))
