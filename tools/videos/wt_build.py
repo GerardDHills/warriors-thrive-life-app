@@ -255,7 +255,7 @@ if __name__ == "__main__":
         sh(f"ffmpeg -y -loglevel error -i s2.mp4 -t {cut:.3f} {ENC} s2a.mp4")
         sh(f"ffmpeg -y -loglevel error -ss {cut:.3f} -i s2.mp4 {ENC} s2b.mp4")
         points_card(v, "def.png", header=sp["header"], points=sp["points"])
-        sh(f"ffmpeg -y -loglevel error -i {sp['audio']} -af adelay=300|300,apad=pad_dur=0.6 -ac 1 -ar 16000 def16.wav")
+        sh(f"ffmpeg -y -loglevel error -i {sp['audio']} -af 'adelay=300|300,apad=pad_dur=0.6' -ac 1 -ar 16000 def16.wav")
         print("DEF captions:", captions("def16.wav", "def.ass", sp["text"]))
         dur = float(sh("ffprobe -v error -show_entries format=duration -of csv=p=0 def16.wav"))
         sh(f"ffmpeg -y -loglevel error -framerate {FPS} -i def.png -i def16.wav -vf \"scale={W}:{H},format=yuv420p,loop=-1:1,trim=duration={dur:.3f},setpts=PTS-STARTPTS,"
