@@ -1,0 +1,14 @@
+{
+  "acs": {"title": "Acute Chest Syndrome", "who": "Malcolm", "portrait": "../malcolm.png", "accent": [47, 198, 181], "tag": "LEARN THE SIGNS",
+    "points": ["Signs: chest pain, cough, fever, trouble breathing", "!Any sign: tell an adult and go to the ER", "In the hospital: 10 spirometer breaths every hour you're awake", "Hydroxyurea every day lowers your ACS risk"]},
+  "stroke": {"title": "Stroke Warning Signs", "who": "Tasha", "portrait": "../tasha.png", "accent": [214, 36, 110], "tag": "EVERY MINUTE COUNTS",
+    "points": ["Face drooping, or an arm or leg weak or numb", "Trouble talking or seeing, or a sudden bad headache", "Trouble walking, or a seizure", "!Any sign: call 911 right away", "TCD ultrasound every year, ages 2 to 16"]},
+  "fever": {"title": "Fever Is an Emergency", "who": "Dr. Kim", "portrait": "../kim.png", "accent": [255, 106, 61], "tag": "KNOW YOUR NUMBER",
+    "points": ["!101°F (38.3°C) or higher: call your care team now", "Call before you give fever medicine", "At the ER: a blood test and antibiotics, fast", "Stay protected: penicillin, vaccines, yearly flu shot"]},
+  "spleen": {"title": "Your Spleen: Splenic Sequestration", "who": "Theo", "portrait": "../theo.png", "accent": [255, 194, 61], "tag": "LEARN THE SIGNS",
+    "points": ["A belly that gets big or hurts on the left side", "Looking pale, or very tired and weak", "A racing heartbeat", "!Any sign: go to the ER right away", "Parents: ask your team to teach you to feel the spleen"]},
+  "pain": {"title": "Your Pain Crisis Plan", "who": "Krystal", "portrait": "../krystal.png", "accent": [155, 120, 255], "tag": "START EARLY",
+    "points": ["Start your plan as soon as pain begins", "Plan medicine, lots of water, heat, and calm", "Track your pain in the app", "Avoid triggers: cold, not drinking enough, overdoing it", "!ER if pain isn't easing, or fever, chest pain, trouble breathing"]},
+  "priapism": {"title": "Priapism", "who": "Dr. Amos", "portrait": "../amos.png", "accent": [87, 214, 141], "tag": "NOTHING TO BE SHY ABOUT",
+    "points": ["A painful erection that won't go away", "First: pee, drink water, take your pain medicine", "!Lasts more than 2 hours: go to the ER now", "Keeps coming back? Tell your care team"]}
+}
