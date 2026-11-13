@@ -1,14 +1,119 @@
 {
-  "acs": {"title": "Acute Chest Syndrome", "who": "Malcolm", "portrait": "../malcolm.png", "accent": [47, 198, 181], "tag": "LEARN THE SIGNS",
-    "points": ["Signs: chest pain, cough, fever, trouble breathing", "!Any sign: tell an adult and go to the ER", "In the hospital: 10 spirometer breaths every hour you're awake", "Hydroxyurea every day lowers your ACS risk"]},
-  "stroke": {"title": "Stroke Warning Signs", "who": "Tasha", "portrait": "../tasha.png", "accent": [214, 36, 110], "tag": "EVERY MINUTE COUNTS",
-    "points": ["Face drooping, or an arm or leg weak or numb", "Trouble talking or seeing, or a sudden bad headache", "Trouble walking, or a seizure", "!Any sign: call 911 right away", "TCD ultrasound every year, ages 2 to 16"]},
-  "fever": {"title": "Fever Is an Emergency", "who": "Dr. Kim", "portrait": "../kim.png", "accent": [255, 106, 61], "tag": "KNOW YOUR NUMBER",
-    "points": ["!101°F (38.3°C) or higher: call your care team now", "Call before you give fever medicine", "At the ER: a blood test and antibiotics, fast", "Stay protected: penicillin, vaccines, yearly flu shot"]},
-  "spleen": {"title": "Your Spleen: Splenic Sequestration", "who": "Theo", "portrait": "../theo.png", "accent": [255, 194, 61], "tag": "LEARN THE SIGNS",
-    "points": ["A belly that gets big or hurts on the left side", "Looking pale, or very tired and weak", "A racing heartbeat", "!Any sign: go to the ER right away", "Parents: ask your team to teach you to feel the spleen"]},
-  "pain": {"title": "Your Pain Crisis Plan", "who": "Krystal", "portrait": "../krystal.png", "accent": [155, 120, 255], "tag": "START EARLY",
-    "points": ["Start your plan as soon as pain begins", "Plan medicine, lots of water, heat, and calm", "Track your pain in the app", "Avoid triggers: cold, not drinking enough, overdoing it", "!ER if pain isn't easing, or fever, chest pain, trouble breathing"]},
-  "priapism": {"title": "Priapism", "who": "Dr. Amos", "portrait": "../amos.png", "accent": [87, 214, 141], "tag": "NOTHING TO BE SHY ABOUT",
-    "points": ["A painful erection that won't go away", "First: pee, drink water, take your pain medicine", "!Lasts more than 2 hours: go to the ER now", "Keeps coming back? Tell your care team"]}
+ "acs": {
+  "title": "Acute Chest Syndrome",
+  "who": "Malcolm",
+  "portrait": "../malcolm.png",
+  "accent": [
+   47,
+   198,
+   181
+  ],
+  "tag": "LEARN THE SIGNS",
+  "points": [
+   "Signs: chest pain, cough, fever, trouble breathing",
+   "!Any sign: tell an adult and go to the ER",
+   "In the hospital: 10 spirometer breaths every hour you're awake",
+   "Hydroxyurea every day lowers your ACS risk"
+  ],
+  "a": "Hey warriors, it's Malcolm. Today we're talking about acute chest syndrome, or ACS. It happens when sickled cells block blood flow in the lungs, and it can get serious fast. Watch for chest pain, a cough, fever, or trouble breathing. If you have any of those, tell an adult and get to the ER. Don't wait it out.",
+  "b": "ACS often starts during a pain crisis or a hospital stay. So when you're admitted, use your incentive spirometer, ten big breaths every hour you're awake. Get up and move when you can. And take your hydroxyurea every day, because it lowers your chances of ACS. Breathe deep, warriors."
+ },
+ "stroke": {
+  "title": "Stroke Warning Signs",
+  "who": "Tasha",
+  "portrait": "../tasha.png",
+  "accent": [
+   214,
+   36,
+   110
+  ],
+  "tag": "EVERY MINUTE COUNTS",
+  "points": [
+   "Face drooping, or an arm or leg weak or numb",
+   "Trouble talking or seeing, or a sudden bad headache",
+   "Trouble walking, or a seizure",
+   "!Any sign: call 911 right away",
+   "TCD ultrasound every year, ages 2 to 16"
+  ],
+  "a": "Hi, I'm Tasha. Let's talk about stroke. In sickle cell, sickled cells can block blood vessels in the brain, even in kids. So learn the warning signs, because every minute counts. Face drooping. An arm or leg that's weak or numb. Trouble talking or seeing. A sudden, really bad headache. Trouble walking, or a seizure.",
+  "b": "If you see any of these, call 911 right away. Don't wait to see if it goes away. And here's how we prevent strokes: from age two to sixteen, get your TCD ultrasound every year. It's quick, and there are no needles. If it shows risk, your team has treatments that really work."
+ },
+ "fever": {
+  "title": "Fever Is an Emergency",
+  "who": "Dr. Kim",
+  "portrait": "../kim.png",
+  "accent": [
+   255,
+   106,
+   61
+  ],
+  "tag": "KNOW YOUR NUMBER",
+  "points": [
+   "!101°F (38.3°C) or higher: call your care team now",
+   "Call before you give fever medicine",
+   "At the ER: a blood test and antibiotics, fast",
+   "Stay protected: penicillin, vaccines, yearly flu shot"
+  ],
+  "a": "Hi, I'm Dr. Kim. If you have sickle cell, a fever is an emergency. A temperature of 101 degrees or higher means call your care team and get seen right away, day or night. That's because sickle cell makes it harder for your body to fight some germs.",
+  "b": "Before you give fever medicine, call your team first, so they know how high it was. At the ER you'll get a blood test and antibiotics fast. And stay protected every day: take penicillin if you're on it, keep up with all your vaccines, and get your flu shot every fall."
+ },
+ "spleen": {
+  "title": "Your Spleen: Splenic Sequestration",
+  "who": "Theo",
+  "portrait": "../theo.png",
+  "accent": [
+   255,
+   194,
+   61
+  ],
+  "tag": "LEARN THE SIGNS",
+  "points": [
+   "A belly that gets big or hurts on the left side",
+   "Looking pale, or very tired and weak",
+   "A racing heartbeat",
+   "!Any sign: go to the ER right away",
+   "Parents: ask your team to teach you to feel the spleen"
+  ],
+  "a": "What's up, warriors, it's Theo. Your spleen sits on the left side of your belly, and it filters your blood. In sickle cell, it can suddenly trap lots of blood. That's called splenic sequestration, and it can make you very sick, very fast. It happens most in younger kids.",
+  "b": "Watch for a belly that gets big or hurts on the left side, looking pale, feeling really tired or weak, or a racing heartbeat. If you notice these, go to the ER right away. Parents, your care team can teach you how to feel for your child's spleen, so you know what's normal."
+ },
+ "pain": {
+  "title": "Your Pain Crisis Plan",
+  "who": "Krystal",
+  "portrait": "../krystal.png",
+  "accent": [
+   155,
+   120,
+   255
+  ],
+  "tag": "START EARLY",
+  "points": [
+   "Start your plan as soon as pain begins",
+   "Plan medicine, lots of water, heat, and calm",
+   "Track your pain in the app",
+   "Avoid triggers: cold, not drinking enough, overdoing it",
+   "!ER if pain isn't easing, or fever, chest pain, trouble breathing"
+  ],
+  "a": "Hey warriors, it's Krystal. Pain crises happen when sickled cells block blood flow, and they can hurt a lot. You know your body best, so start your pain plan early, as soon as the pain begins. Take the medicine in your plan, drink lots of water, and use heat and things that calm you.",
+  "b": "Track your pain in the app so your team can see how you're doing. Know your triggers, like being cold, not drinking enough, or pushing too hard. And go to the ER if your pain isn't getting better with your plan, or if you have fever, chest pain, or trouble breathing. You've got this."
+ },
+ "priapism": {
+  "title": "Priapism",
+  "who": "Dr. Amos",
+  "portrait": "../amos.png",
+  "accent": [
+   87,
+   214,
+   141
+  ],
+  "tag": "NOTHING TO BE SHY ABOUT",
+  "points": [
+   "A painful erection that won't go away",
+   "First: pee, drink water, take your pain medicine",
+   "!Lasts more than 2 hours: go to the ER now",
+   "Keeps coming back? Tell your care team"
+  ],
+  "a": "Hello warriors, Dr. Amos here. Today's topic is one some people feel shy about, but it matters. Priapism is when the penis stays hard for a long time, and it can hurt. It happens when sickled cells get stuck there. It's not your fault, and it's nothing to be embarrassed about.",
+  "b": "If it happens, pee, drink water, and take your pain medicine. If it lasts more than two hours, go to the ER right away, because waiting too long can cause damage. And if it keeps coming back, even short ones, tell your care team. There are ways to help prevent it."
+ }
 }

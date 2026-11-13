@@ -17,7 +17,7 @@ def font(sz, bold=True):
 NIGHT, PLUM, INK, SOFT = (27, 11, 36), (42, 18, 54), (255, 247, 239), (217, 198, 221)
 GOLD, TEAL, DANGER, VIOLET = (255, 194, 61), (47, 198, 181), (255, 90, 79), (155, 120, 255)
 
-V = json.load(open("videos.json"))
+V = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "videos.json")))
 
 def sh(cmd):
     r = subprocess.run(cmd, shell=True, capture_output=True, text=True)
@@ -155,28 +155,61 @@ def ts(t):
     h = int(t // 3600); m = int(t % 3600 // 60); s = t % 60
     return f"{h}:{m:02d}:{s:05.2f}"
 
-def captions(wav, ass):
+def norm(w):
+    w = w.lower().replace("\u2019", "'")
+    w = re.sub(r"[^a-z0-9']", "", w)
+    return {"nine": "9", "one": "1"}.get(w, w)
+
+def captions(wav, ass, script):
+    import difflib
     from faster_whisper import WhisperModel
     global _M
     try: _M
     except NameError: _M = WhisperModel("small.en", device="cpu", compute_type="int8")
-    segs, _ = _M.transcribe(wav, word_timestamps=True, beam_size=5)
-    words = [w for s in segs for w in s.words]
+    segs, _ = _M.transcribe(wav, word_timestamps=True, beam_size=5, initial_prompt=script)
+    hw = [w for s in segs for w in s.words]
+    sw = script.split()
+    a = [norm(x) for x in sw]; b = [norm(x.word) for x in hw]
+    T = [None] * len(sw)
+    for blk in difflib.SequenceMatcher(None, a, b, autojunk=False).get_matching_blocks():
+        for k in range(blk.size):
+            T[blk.a + k] = (hw[blk.b + k].start, hw[blk.b + k].end)
+    # interpolate gaps
+    known = [i for i, t in enumerate(T) if t]
+    if not known: raise SystemExit("no alignment")
+    for i in range(len(T)):
+        if T[i]: continue
+        prv = max([k for k in known if k < i], default=None)
+        nxt = min([k for k in known if k > i], default=None)
+        t0 = T[prv][1] if prv is not None else 0.05
+        t1 = T[nxt][0] if nxt is not None else t0 + 0.4 * (len(T) - i)
+        span_lo = prv if prv is not None else -1
+        span_hi = nxt if nxt is not None else len(T)
+        n = span_hi - span_lo - 1; j = i - span_lo - 1
+        step = (t1 - t0) / max(n, 1)
+        T[i] = (t0 + j * step, t0 + (j + 1) * step)
+    matched = len(known) / len(sw)
+    # chunk: break after sentence/clause punctuation, or at 4 words / 24 chars
     chunks, cur = [], []
-    for w in words:
-        cur.append(w)
-        txt = "".join(x.word for x in cur).strip()
-        end_punct = re.search(r"[.,!?:]$", w.word.strip())
-        if len(cur) >= 4 or len(txt) > 22 or end_punct:
+    for i, w in enumerate(sw):
+        cur.append(i)
+        txt = " ".join(sw[k] for k in cur)
+        nxt_txt = txt + " " + sw[i + 1] if i + 1 < len(sw) else txt
+        if re.search(r"[.!?:]$", w) or (re.search(r",$", w) and len(cur) >= 2) or len(cur) >= 4 or len(nxt_txt) > 24:
             chunks.append(cur); cur = []
     if cur: chunks.append(cur)
+    # merge single-word chunks into the previous chunk when short enough
+    merged = []
+    for c in chunks:
+        if merged and len(c) == 1 and len(" ".join(sw[k] for k in merged[-1] + c)) <= 28 and not re.search(r"[.!?:]$", sw[merged[-1][-1]]):
+            merged[-1] += c
+        else: merged.append(c)
     lines = []
-    for i, c in enumerate(chunks):
-        st, en = c[0].start, c[-1].end
-        if i + 1 < len(chunks): en = max(en, min(chunks[i + 1][0].start, en + 0.4))
-        t = "".join(x.word for x in c).strip()
-        for a, b in FIX: t = re.sub(a, b, t, flags=re.I)
-        t = t.rstrip(",")
+    for i, c in enumerate(merged):
+        st, en = T[c[0]][0], T[c[-1]][1]
+        if i + 1 < len(merged): en = max(en, min(T[merged[i + 1][0]][0], en + 0.5))
+        else: en += 0.6
+        t = " ".join(sw[k] for k in c).rstrip(",")
         lines.append(f"Dialogue: 0,{ts(st)},{ts(en)},Cap,,0,0,0,,{t}")
     hdr = f"""[Script Info]
 ScriptType: v4.00+
@@ -186,13 +219,13 @@ WrapStyle: 0
 
 [V4+ Styles]
 Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
-Style: Cap,Montserrat ExtraBold,52,&H00FFFFFF,&H00FFFFFF,&H00240B1B,&H96000000,0,0,0,0,100,100,0,0,1,5,2,2,50,50,250,1
+Style: Cap,Montserrat ExtraBold,50,&H00FFFFFF,&H00FFFFFF,&H00240B1B,&H96000000,0,0,0,0,100,100,0,0,1,5,2,2,50,50,230,1
 
 [Events]
 Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
 """
     open(ass, "w").write(hdr + "\n".join(lines) + "\n")
-    return " | ".join(l.split(",,", 1)[1].split(",,")[-1] for l in lines)
+    return f"matched {matched:.0%} | " + " | ".join(f"{T[c[0]][0]:.1f}:" + " ".join(sw[k] for k in c) for c in merged)
 
 def clip_seg(src, ass, out):
     sh(f"ffmpeg -y -loglevel error -i {src} -vf \"scale={W}:{H}:force_original_aspect_ratio=increase,crop={W}:{H},"
@@ -209,7 +242,7 @@ if __name__ == "__main__":
     still_seg("end.png", 4.0, "s5.mp4")
     for k, seg in (("a", "s2.mp4"), ("b", "s4.mp4")):
         sh(f"ffmpeg -y -loglevel error -i {k}.mp4 -vn -ac 1 -ar 16000 {k}.wav")
-        print(k.upper(), "captions:", captions(f"{k}.wav", f"{k}.ass"))
+        print(k.upper(), "captions:", captions(f"{k}.wav", f"{k}.ass", v[k]))
         clip_seg(f"{k}.mp4", f"{k}.ass", seg)
     open("list.txt", "w").write("".join(f"file 's{i}.mp4'\n" for i in range(1, 6)))
     sh(f"ffmpeg -y -loglevel error -f concat -safe 0 -i list.txt -c copy -movflags +faststart final.mp4")
