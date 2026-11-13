@@ -196,13 +196,13 @@ def captions(wav, ass, script):
         cur.append(i)
         txt = " ".join(sw[k] for k in cur)
         nxt_txt = txt + " " + sw[i + 1] if i + 1 < len(sw) else txt
-        if re.search(r"[.!?:]$", w) or (re.search(r",$", w) and len(cur) >= 2) or len(cur) >= 4 or len(nxt_txt) > 24:
+        if (re.search(r"[.!?:]$", w) and w not in ("Dr.", "Mr.", "Ms.", "Mrs.")) or (re.search(r",$", w) and len(cur) >= 2) or len(cur) >= 4 or len(nxt_txt) > 24:
             chunks.append(cur); cur = []
     if cur: chunks.append(cur)
     # merge single-word chunks into the previous chunk when short enough
     merged = []
     for c in chunks:
-        if merged and len(c) == 1 and len(" ".join(sw[k] for k in merged[-1] + c)) <= 28 and not re.search(r"[.!?:]$", sw[merged[-1][-1]]):
+        if merged and len(c) == 1 and len(" ".join(sw[k] for k in merged[-1] + c)) <= 30 and not re.search(r"[.!?:]$", sw[merged[-1][-1]]):
             merged[-1] += c
         else: merged.append(c)
     lines = []
