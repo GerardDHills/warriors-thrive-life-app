@@ -1,0 +1,361 @@
+{
+ "updated": "2026-11-19",
+ "note": "Plain-language summaries of new sickle cell research. Written with AI help from the published abstracts; reviewed by the Warriors Thrive care team before posting. Every item links to the original paper.",
+ "items": [
+  {
+   "id": "casgevy-age-2",
+   "date": "2026-09-10",
+   "tag": "New treatment",
+   "topic": "Gene therapy",
+   "title": "Gene therapy is now allowed for kids as young as 2",
+   "kid": {
+    "headline": "A new kind of treatment can now be used for younger kids.",
+    "body": [
+     "Gene therapy fixes your own blood-making cells so they make a healthier kind of hemoglobin (the part of blood that carries oxygen).",
+     "Doctors tried it in kids 5 to 11 years old. All 8 kids who were watched for more than a year stopped having bad pain crises.",
+     "It is a big treatment. Kids stay in the hospital for weeks and get very strong medicine first. Every kid had at least one serious side effect.",
+     "It is not right for everyone. Your doctor can tell you if it might be right for you."
+    ]
+   },
+   "family": {
+    "headline": "The FDA expanded Casgevy (exa-cel) to children 2 years and older with frequent pain crises.",
+    "body": [
+     "On July 1, 2026, the FDA approved Casgevy for children with sickle cell disease starting at age 2, if they have repeated pain crises. Before, it was only for people 12 and older.",
+     "In the children's study, 11 kids aged 5 to 11 got the treatment. All 8 who had been followed for at least 16 months had no severe pain crises.",
+     "Before the treatment, children get strong chemotherapy (busulfan) to make room for the edited cells. Every child had at least one serious side effect. One child in the thalassemia part of the study died from a liver problem caused by the chemotherapy.",
+     "Gene therapy means a long hospital stay, can affect the ability to have children later, and is done only at certain centers. Ask your hematologist whether it is worth talking about for your child."
+    ]
+   },
+   "picture": {
+    "type": "icons",
+    "of": 8,
+    "caption": "Kids followed at least 16 months",
+    "rows": [
+     {
+      "label": "No severe pain crises",
+      "n": 8,
+      "tone": "good"
+     }
+    ]
+   },
+   "ask": "Could gene therapy (Casgevy) be an option for me someday?",
+   "source": {
+    "journal": "N Engl J Med",
+    "pub": "2026 Sep 10",
+    "doi": "10.1056/NEJMoa2603387",
+    "pmid": "42274009",
+    "extra": "FDA approval July 1, 2026",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42274009/"
+   }
+  },
+  {
+   "id": "mitapivat-rise-up",
+   "date": "2026-10-24",
+   "tag": "New medicine",
+   "topic": "Medicines",
+   "title": "A new pill raised blood counts in teens and adults",
+   "kid": {
+    "headline": "Scientists tested a new pill called mitapivat.",
+    "body": [
+     "It helps red blood cells have more energy so they don't break apart as fast.",
+     "About 4 out of 10 people who took it had their blood count go up a lot. Almost no one on the fake pill did.",
+     "It did not clearly lower the number of pain crises.",
+     "It was tested in people older than 16. It is not available for sickle cell yet."
+    ]
+   },
+   "family": {
+    "headline": "Mitapivat improved hemoglobin in a large trial (RISE UP) of people over 16.",
+    "body": [
+     "207 people from 15 countries took mitapivat or a placebo (a pill with no medicine) twice a day for about a year.",
+     "About 4 in 10 people on mitapivat (56 of 138) had their hemoglobin go up by at least 1 point, compared with about 3 in 100 on placebo (2 of 69).",
+     "Pain crises went from about 3 a year on placebo to about 2.6 a year on mitapivat. That difference was small enough that it could have been chance.",
+     "Serious side effects happened in 20 of every 100 people on mitapivat and 29 of every 100 on placebo. The FDA plans to decide on mitapivat for sickle cell by February 1, 2027."
+    ]
+   },
+   "picture": {
+    "type": "icons",
+    "of": 10,
+    "caption": "Blood count went up a lot (out of 10 people)",
+    "rows": [
+     {
+      "label": "Mitapivat",
+      "n": 4,
+      "tone": "good"
+     },
+     {
+      "label": "Placebo (fake pill)",
+      "n": 0.3,
+      "tone": "plain"
+     }
+    ]
+   },
+   "ask": "Would a new medicine like mitapivat help me if it gets approved?",
+   "source": {
+    "journal": "Lancet",
+    "pub": "2026 Oct 24",
+    "doi": "10.1016/S0140-6736(26)01480-7",
+    "pmid": "42913682",
+    "extra": "FDA decision date February 1, 2027",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42913682/"
+   }
+  },
+  {
+   "id": "arginine-start",
+   "date": "2026-10-13",
+   "tag": "Answer: no",
+   "topic": "Pain",
+   "title": "An IV treatment for pain crises did not work better",
+   "kid": {
+    "headline": "Doctors tested if arginine through an IV helps pain crises end faster.",
+    "body": [
+     "Kids and young adults in the ER for a pain crisis got arginine or salt water through their IV.",
+     "Both groups needed strong pain medicine for about the same time, around 2½ days.",
+     "So arginine did not help. Learning what doesn't work is important too. It helps doctors pick better things to test next."
+    ]
+   },
+   "family": {
+    "headline": "The STArT trial found IV arginine did not shorten pain crises in children and young adults.",
+    "body": [
+     "271 patients aged 3 to 21 at 10 US children's hospitals (including CHOP) were given IV arginine or placebo during a pain crisis.",
+     "Time until the last IV pain medicine dose was about the same: about 61 hours with arginine and 66 hours with placebo. The difference could have been chance, so the trial was stopped early.",
+     "There was also no difference in total pain medicine, pain scores, or side effects.",
+     "Keep following your pain plan. Your care team will tell you about new options as they are proven."
+    ]
+   },
+   "picture": {
+    "type": "bars",
+    "caption": "Hours until pain crisis ended (middle patient)",
+    "unit": "hours",
+    "rows": [
+     {
+      "label": "Arginine",
+      "value": 61
+     },
+     {
+      "label": "Placebo",
+      "value": 66
+     }
+    ]
+   },
+   "ask": "Is there anything new we should add to my pain plan?",
+   "source": {
+    "journal": "JAMA",
+    "pub": "2026 Oct 13",
+    "doi": "10.1001/jama.2026.13310",
+    "pmid": "42616542",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42616542/"
+   }
+  },
+  {
+   "id": "hydroxyurea-infections-reach",
+   "date": "2026-11-01",
+   "tag": "Good news",
+   "topic": "Hydroxyurea",
+   "title": "Hydroxyurea does not raise the chance of infections",
+   "kid": {
+    "headline": "Some people worried hydroxyurea might make kids get sick more. It doesn't.",
+    "body": [
+     "Doctors watched 606 kids aged 1 to 10 in Africa for several years while they took hydroxyurea.",
+     "Kids did not get more infections on hydroxyurea. They actually got fewer colds, chest infections, and skin infections.",
+     "On the full dose, kids had about half as many of these infections as before they started.",
+     "That's one more reason to keep taking your hydroxyurea every day!"
+    ]
+   },
+   "family": {
+    "headline": "In the REACH study, infections went down, not up, during hydroxyurea treatment.",
+    "body": [
+     "606 children aged 1 to 10 in Angola, DR Congo, Kenya, and Uganda were followed through every phase of hydroxyurea treatment.",
+     "Infections other than malaria went down as children moved to the full dose. At the full dose, there were about 5 infections for every 10 before treatment.",
+     "Serious infections also went down.",
+     "This is reassuring for families worried that hydroxyurea weakens the immune system. Keep giving it every day, and still call right away for any fever."
+    ]
+   },
+   "picture": {
+    "type": "count",
+    "caption": "Infections (not malaria), for every 10 before hydroxyurea",
+    "icon": "germ",
+    "rows": [
+     {
+      "label": "Before hydroxyurea",
+      "n": 10
+     },
+     {
+      "label": "On full dose",
+      "n": 5
+     }
+    ]
+   },
+   "ask": "Am I on the best dose of hydroxyurea for me?",
+   "source": {
+    "journal": "Lancet Haematol",
+    "pub": "2026 Nov",
+    "doi": "10.1016/S2352-3026(26)00246-2",
+    "pmid": "42843398",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42843398/"
+   }
+  },
+  {
+   "id": "zinc-zips2",
+   "date": "2026-10-13",
+   "tag": "Early result",
+   "topic": "Infections",
+   "title": "Zinc helped young children in Uganda get fewer infections",
+   "kid": {
+    "headline": "Zinc is a vitamin-like mineral. Scientists gave it to little kids every day.",
+    "body": [
+     "Kids aged 1 to 4 took zinc or a fake medicine for 6 months.",
+     "The kids who took zinc got sick with infections less often: about 3 times in a year instead of about 5.",
+     "This was one small study in one hospital. More studies are needed before doctors know if it helps everyone.",
+     "Don't start zinc on your own. Ask your doctor first."
+    ]
+   },
+   "family": {
+    "headline": "The ZIPS-2 trial: daily zinc lowered infections in children under 5 with sickle cell anemia.",
+    "body": [
+     "100 children aged 1 to 4 at one hospital in Uganda took 20 mg of zinc or a placebo every day for 6 months. All were also on hydroxyurea.",
+     "There were 80 infections in the zinc group and 124 in the placebo group. That is about 3 infections per child per year with zinc, compared with about 5 with placebo.",
+     "No child had to stop because of side effects.",
+     "This was a small study at one site in Africa. The researchers say bigger studies are needed. Talk with your care team before giving any supplement."
+    ]
+   },
+   "picture": {
+    "type": "count",
+    "caption": "Infections per child in a year (about)",
+    "icon": "germ",
+    "rows": [
+     {
+      "label": "Zinc",
+      "n": 3
+     },
+     {
+      "label": "Placebo",
+      "n": 5
+     }
+    ]
+   },
+   "ask": "Should my child take zinc or any other supplement?",
+   "source": {
+    "journal": "JAMA",
+    "pub": "2026 Oct 13",
+    "doi": "10.1001/jama.2026.14190",
+    "pmid": "42616536",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42616536/"
+   }
+  },
+  {
+   "id": "steps-pain",
+   "date": "2026-07-01",
+   "tag": "Try it",
+   "topic": "Healthy living",
+   "title": "Walking a little more each day helped with pain",
+   "kid": {
+    "headline": "A bit more walking each day helped people feel better.",
+    "body": [
+     "People with sickle cell wore step counters for a few weeks.",
+     "Some were asked to walk a little more each day, about 1 extra step for every 4 they already took.",
+     "After 8 weeks, they had less pain and could walk farther.",
+     "Start small, drink lots of water, rest when you need to, and ask your care team what's right for you."
+    ]
+   },
+   "family": {
+    "headline": "A small study found that slowly increasing daily steps lowered pain.",
+    "body": [
+     "38 people with sickle cell anemia wore a fitness tracker. Some were asked to raise their daily steps by 25% (and later 50%) for 8 weeks.",
+     "The walking groups had less pain, walked farther in a 6-minute test, and had less stiff blood vessels.",
+     "This was a small study. It shows that gentle, steady activity can be safe and helpful.",
+     "Build up slowly, stay hydrated, avoid getting too hot or too cold, and stop if pain starts. Check with your care team before starting."
+    ]
+   },
+   "picture": {
+    "type": "steps",
+    "caption": "Add about 1 step for every 4 you already take"
+   },
+   "ask": "How much activity is safe for me, and how should I build up?",
+   "source": {
+    "journal": "Haematologica",
+    "pub": "2026 Jul 1",
+    "doi": "10.3324/haematol.2025.300290",
+    "pmid": "41641647",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/41641647/"
+   }
+  },
+  {
+   "id": "trait-longevity",
+   "date": "2026-08-20",
+   "tag": "For parents",
+   "topic": "Sickle cell trait",
+   "title": "People with sickle cell trait live just as long",
+   "kid": {
+    "headline": "Sickle cell trait is different from sickle cell disease.",
+    "body": [
+     "Many parents of warriors have sickle cell trait. That means they carry one sickle gene but don't have the disease.",
+     "A huge study of almost half a million adults found people with the trait live just as long as people without it.",
+     "They were a little more likely to get diabetes, kidney problems, or high blood pressure, so regular checkups matter."
+    ]
+   },
+   "family": {
+    "headline": "A study of 467,779 adults found sickle cell trait does not shorten life.",
+    "body": [
+     "Researchers used genetic testing in the UK Biobank and followed people for about 15 years. 1,253 had sickle cell trait.",
+     "People with the trait had the same chance of dying during the study as people without it. They did not have more heart attacks, strokes, or heart failure.",
+     "They were somewhat more likely to have diabetes, kidney disease, and high blood pressure.",
+     "If you have sickle cell trait, keep up with regular checkups that include blood pressure, blood sugar, and kidney tests."
+    ]
+   },
+   "picture": {
+    "type": "same",
+    "caption": "Chance of dying during the study",
+    "rows": [
+     {
+      "label": "With trait"
+     },
+     {
+      "label": "Without trait"
+     }
+    ]
+   },
+   "ask": "Should my parents or brothers and sisters be tested for sickle cell trait?",
+   "source": {
+    "journal": "Blood",
+    "pub": "2026 Aug 20",
+    "doi": "10.1182/blood.2025031872",
+    "pmid": "42166355",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42166355/"
+   }
+  },
+  {
+   "id": "inhaled-steroids",
+   "date": "2026-11-02",
+   "tag": "Safety",
+   "topic": "Lungs",
+   "adultOnly": true,
+   "title": "Don't use a steroid inhaler long-term without an asthma diagnosis",
+   "kid": {
+    "headline": "A study in adults looked at steroid inhalers for coughing and wheezing.",
+    "body": [
+     "Some adults with sickle cell cough and wheeze but don't have asthma.",
+     "Using a steroid inhaler every day for almost a year did not help them, and a blood test for sickle cell stress got worse.",
+     "If you cough or wheeze a lot, tell your care team so they can find out why."
+    ]
+   },
+   "family": {
+    "headline": "Long-term inhaled mometasone did not help adults with cough and wheeze but no asthma.",
+    "body": [
+     "77 adults with sickle cell disease who had cough and wheeze, but not asthma, used a steroid inhaler (mometasone) or a placebo inhaler every day for 48 weeks.",
+     "A blood marker of how severe sickle cell disease is went up (got worse) by about 42% in the steroid group compared with placebo. Other results also tended to favor placebo.",
+     "The researchers advise against long-term steroid inhalers for people with sickle cell disease unless they have a confirmed asthma diagnosis.",
+     "If you use an inhaler, don't stop on your own. Ask your care team whether you have asthma and whether you still need it."
+    ]
+   },
+   "picture": null,
+   "ask": "Do I really have asthma, and do I still need my inhaler?",
+   "source": {
+    "journal": "JAMA Netw Open",
+    "pub": "2026 Nov 2",
+    "doi": "10.1001/jamanetworkopen.2026.42232",
+    "pmid": "43007675",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43007675/"
+   }
+  }
+ ]
+}

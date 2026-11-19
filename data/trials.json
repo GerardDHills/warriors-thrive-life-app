@@ -1,0 +1,5447 @@
+{
+ "updated": "2026-11-19",
+ "source": "ClinicalTrials.gov",
+ "count": 192,
+ "trials": [
+  {
+   "nct": "NCT07015684",
+   "title": "131I-apamistamab-based Conditioning for Hematopoietic Stem Cell Transplant (HSCT) in Advanced Sickle Cell Disease (SCD)",
+   "status": "RECRUITING",
+   "kind": "transplant",
+   "kindLabel": "Transplant",
+   "phase": "Phase 1",
+   "minAge": 12.0,
+   "maxAge": 50.0,
+   "minAgeText": "12 Years",
+   "maxAgeText": "50 Years",
+   "healthy": false,
+   "testing": [
+    "131I-apamistmab",
+    "Sirolimus",
+    "Campath",
+    "Total Body Irradiation"
+   ],
+   "sponsor": "Columbia University",
+   "countries": [
+    "United States"
+   ],
+   "usStates": [
+    "New York"
+   ],
+   "sites": 1,
+   "url": "https://clinicaltrials.gov/study/NCT07015684",
+   "lastUpdate": "2026-06-10",
+   "plain": null
+  },
+  {
+   "nct": "NCT07373639",
+   "title": "A Long-term Follow-up Study in Patients Who Received BEAM-101",
+   "status": "RECRUITING",
+   "kind": "watch",
+   "kindLabel": "Watching and learning (no new treatment)",
+   "phase": null,
+   "minAge": 14.0,
+   "maxAge": 37.0,
+   "minAgeText": "14 Years",
+   "maxAgeText": "37 Years",
+   "healthy": false,
+   "testing": [
+    "Long-Term Follow-up Study of patients who received BEAM-101"
+   ],
+   "sponsor": "Beam Therapeutics Inc.",
+   "countries": [
+    "United States"
+   ],
+   "usStates": [
+    "Alabama",
+    "Arizona",
+    "Florida",
+    "Georgia",
+    "Massachusetts",
+    "Michigan",
+    "Minnesota",
+    "Missouri",
+    "New Jersey",
+    "New York",
+    "Ohio",
+    "Pennsylvania",
+    "South Carolina",
+    "Tennessee",
+    "Wisconsin"
+   ],
+   "sites": 17,
+   "url": "https://clinicaltrials.gov/study/NCT07373639",
+   "lastUpdate": "2026-01-28",
+   "plain": "Long-term follow-up for people who already got BEAM-101 gene editing."
+  },
+  {
+   "nct": "NCT07187973",
+   "title": "A Phase 1b, Open-Label Study of DISC-3405 in Participants With Sickle Cell Disease (SCD)",
+   "status": "RECRUITING",
+   "kind": "medicine",
+   "kindLabel": "Testing a medicine",
+   "phase": "Phase 1",
+   "minAge": 18.0,
+   "maxAge": null,
+   "minAgeText": "18 Years",
+   "maxAgeText": null,
+   "healthy": false,
+   "testing": [
+    "DISC-3405"
+   ],
+   "sponsor": "Disc Medicine, Inc",
+   "countries": [
+    "United States"
+   ],
+   "usStates": [
+    "Alabama",
+    "California",
+    "Georgia",
+    "Illinois",
+    "Indiana",
+    "New York",
+    "North Carolina",
+    "Ohio",
+    "Pennsylvania"
+   ],
+   "sites": 11,
+   "url": "https://clinicaltrials.gov/study/NCT07187973",
+   "lastUpdate": "2026-11-13",
+   "plain": null
+  },
+  {
+   "nct": "NCT05431088",
+   "title": "A Phase 2/3 Study of Osivelotor in Adult and Adolescent Participants With SCD",
+   "status": "RECRUITING",
+   "kind": "medicine",
+   "kindLabel": "Testing a medicine",
+   "phase": "Phase 2, Phase 3",
+   "minAge": 12.0,
+   "maxAge": null,
+   "minAgeText": "12 Years",
+   "maxAgeText": null,
+   "healthy": false,
+   "testing": [
+    "Osivelotor"
+   ],
+   "sponsor": "Pfizer",
+   "countries": [
+    "Brazil",
+    "India",
+    "Kenya",
+    "Nigeria",
+    "Saudi Arabia",
+    "United Kingdom",
+    "United States"
+   ],
+   "usStates": [
+    "Alabama",
+    "Connecticut",
+    "Florida",
+    "Georgia",
+    "Illinois",
+    "Louisiana",
+    "Michigan",
+    "Mississippi",
+    "Missouri",
+    "New Jersey",
+    "New York",
+    "North Carolina",
+    "South Carolina",
+    "Texas",
+    "Virginia"
+   ],
+   "sites": 80,
+   "url": "https://clinicaltrials.gov/study/NCT05431088",
+   "lastUpdate": "2026-08-18",
+   "plain": "Tests osivelotor, a pill that helps hemoglobin hold oxygen so red cells sickle less, in teens and adults."
+  },
+  {
+   "nct": "NCT06546670",
+   "title": "A Phase I/II Study of ITU512 in Healthy Participants and Patients With Sickle Cell Disease",
+   "status": "RECRUITING",
+   "kind": "medicine",
+   "kindLabel": "Testing a medicine",
+   "phase": "Phase 1, Phase 2",
+   "minAge": 12.0,
+   "maxAge": 55.0,
+   "minAgeText": "12 Years",
+   "maxAgeText": "55 Years",
+   "healthy": true,
+   "testing": [
+    "ITU512",
+    "Placebo"
+   ],
+   "sponsor": "Novartis Pharmaceuticals",
+   "countries": [
+    "Brazil",
+    "Turkey (Türkiye)",
+    "United States"
+   ],
+   "usStates": [
+    "Alabama",
+    "Florida",
+    "Massachusetts",
+    "New York",
+    "North Carolina",
+    "Pennsylvania",
+    "Rhode Island",
+    "Texas"
+   ],
+   "sites": 14,
+   "url": "https://clinicaltrials.gov/study/NCT06546670",
+   "lastUpdate": "2026-10-27",
+   "plain": "An early study of ITU512, a pill that may raise fetal hemoglobin (the protective kind babies have)."
+  },
+  {
+   "nct": "NCT04166526",
+   "title": "A Pilot Study on Neuroimaging in SCD: Part of The Boston Consortium to Cure Sickle Cell Disease",
+   "status": "RECRUITING",
+   "kind": "watch",
+   "kindLabel": "Watching and learning (no new treatment)",
+   "phase": null,
+   "minAge": 8.0,
+   "maxAge": 18.0,
+   "minAgeText": "8 Years",
+   "maxAgeText": "18 Years",
+   "healthy": false,
+   "testing": [
+    "FDNIRS-DCS",
+    "MRI"
+   ],
+   "sponsor": "Boston Children's Hospital",
+   "countries": [
+    "United States"
+   ],
+   "usStates": [
+    "Massachusetts"
+   ],
+   "sites": 1,
+   "url": "https://clinicaltrials.gov/study/NCT04166526",
+   "lastUpdate": "2025-12-12",
+   "plain": "Uses brain scans to find early signs of stress in the brain in kids 8 to 18."
+  },
+  {
+   "nct": "NCT06609226",
+   "title": "A Research Study Looking at Long-term Treatment With Etavopivat in People With Sickle Cell Disease or Thalassaemia",
+   "status": "RECRUITING",
+   "kind": "medicine",
+   "kindLabel": "Testing a medicine",
+   "phase": "Phase 3",
+   "minAge": 2.0,
+   "maxAge": null,
+   "minAgeText": "2 Years",
+   "maxAgeText": null,
+   "healthy": false,
+   "testing": [
+    "Etavopivat A",
+    "Etavopivat B",
+    "Etavopivat C"
+   ],
+   "sponsor": "Novo Nordisk A/S",
+   "countries": [
+    "Canada",
+    "Egypt",
+    "France",
+    "Germany",
+    "Ghana",
+    "Greece",
+    "India",
+    "Italy",
+    "Kenya",
+    "Lebanon",
+    "Nigeria",
+    "Oman",
+    "Saudi Arabia",
+    "Spain",
+    "Turkey (Türkiye)",
+    "United Kingdom",
+    "United States"
+   ],
+   "usStates": [
+    "Alabama",
+    "Arizona",
+    "California",
+    "Connecticut",
+    "District of Columbia",
+    "Florida",
+    "Georgia",
+    "Illinois",
+    "Louisiana",
+    "Massachusetts",
+    "Missouri",
+    "New York",
+    "North Carolina",
+    "Ohio",
+    "South Carolina",
+    "Tennessee",
+    "Texas",
+    "Virginia",
+    "Washington",
+    "Wisconsin"
+   ],
+   "sites": 107,
+   "url": "https://clinicaltrials.gov/study/NCT06609226",
+   "lastUpdate": "2026-09-18",
+   "plain": "Lets people keep taking etavopivat for a long time to learn how safe it is and how well it keeps working."
+  },
+  {
+   "nct": "NCT06290401",
+   "title": "A Socio-ecological Approach for Improving Self-management in Adolescents With SCD",
+   "status": "RECRUITING",
+   "kind": "program",
+   "kindLabel": "App, class or program",
+   "phase": null,
+   "minAge": 13.0,
+   "maxAge": 21.0,
+   "minAgeText": "13 Years",
+   "maxAgeText": "21 Years",
+   "healthy": false,
+   "testing": [
+    "SCThrive",
+    "SCHealthED"
+   ],
+   "sponsor": "Children's Hospital Medical Center, Cincinnati",
+   "countries": [
+    "United States"
+   ],
+   "usStates": [
+    "Delaware",
+    "Georgia",
+    "Ohio",
+    "Pennsylvania"
+   ],
+   "sites": 4,
+   "url": "https://clinicaltrials.gov/study/NCT06290401",
+   "lastUpdate": "2026-05-11",
+   "plain": "Tests SCThrive, a program that helps teens and young adults take charge of their own care."
+  },
+  {
+   "nct": "NCT05736419",
+   "title": "A Study of Immune Suppression Treatment for People With Sickle Cell Disease or β-Thalassemia Who Are Going to Receive an Allogeneic Hematopoietic Cell Transplantation (HCT)",
+   "status": "RECRUITING",
+   "kind": "transplant",
+   "kindLabel": "Transplant",
+   "phase": "Phase 2",
+   "minAge": 2.0,
+   "maxAge": 50.0,
+   "minAgeText": "2 Years",
+   "maxAgeText": "50 Years",
+   "healthy": false,
+   "testing": [
+    "Fludarabine",
+    "Cyclophosphamide",
+    "Tacrolimus",
+    "Mycophenolate Mofetil"
+   ],
+   "sponsor": "Memorial Sloan Kettering Cancer Center",
+   "countries": [
+    "United States"
+   ],
+   "usStates": [
+    "New Jersey",
+    "New York"
+   ],
+   "sites": 6,
+   "url": "https://clinicaltrials.gov/study/NCT05736419",
+   "lastUpdate": "2026-06-03",
+   "plain": "Tests medicines that calm the immune system before a transplant to help it work, ages 2 to 50."
+  },
+  {
+   "nct": "NCT04055818",
+   "title": "A Study of Nicotinamide With Oral Tetrahydrouridine and Decitabine to Treat High Risk Sickle Cell Disease",
+   "status": "RECRUITING",
+   "kind": "medicine",
+   "kindLabel": "Testing a medicine",
+   "phase": "Phase 1",
+   "minAge": 18.0,
+   "maxAge": null,
+   "minAgeText": "18 Years",
+   "maxAgeText": null,
+   "healthy": false,
+   "testing": [
+    "Nicotinamide"
+   ],
+   "sponsor": "EpiDestiny, Inc.",
+   "countries": [
+    "United States"
+   ],
+   "usStates": [
+    "Illinois"
+   ],
+   "sites": 1,
+   "url": "https://clinicaltrials.gov/study/NCT04055818",
+   "lastUpdate": "2026-09-30",
+   "plain": null
+  },
+  {
+   "nct": "NCT06481306",
+   "title": "A Study to Evaluate BMS-986470 in Healthy Volunteers and Participants With Sickle Cell Disease",
+   "status": "RECRUITING",
+   "kind": "medicine",
+   "kindLabel": "Testing a medicine",
+   "phase": "Phase 1, Phase 2",
+   "minAge": 18.0,
+   "maxAge": null,
+   "minAgeText": "18 Years",
+   "maxAgeText": null,
+   "healthy": true,
+   "testing": [
+    "BMS-986470",
+    "Placebo",
+    "Famotidine",
+    "Pantoprazole"
+   ],
+   "sponsor": "Bristol-Myers Squibb",
+   "countries": [
+    "Canada",
+    "France",
+    "Italy",
+    "United Kingdom",
+    "United States"
+   ],
+   "usStates": [
+    "Alabama",
+    "California",
+    "Connecticut",
+    "Georgia",
+    "Illinois",
+    "Kansas",
+    "Maryland",
+    "Massachusetts",
+    "Missouri",
+    "North Carolina",
+    "Ohio",
+    "Pennsylvania",
+    "South Carolina",
+    "Virginia"
+   ],
+   "sites": 32,
+   "url": "https://clinicaltrials.gov/study/NCT06481306",
+   "lastUpdate": "2026-08-18",
+   "plain": null
+  },
+  {
+   "nct": "NCT06612268",
+   "title": "A Study to Evaluate How Well Etavopivat Works in People With Sickle Cell Disease",
+   "status": "RECRUITING",
+   "kind": "medicine",
+   "kindLabel": "Testing a medicine",
+   "phase": "Phase 3",
+   "minAge": 12.0,
+   "maxAge": null,
+   "minAgeText": "12 Years",
+   "maxAgeText": null,
+   "healthy": false,
+   "testing": [
+    "Etavopivat",
+    "Placebo"
+   ],
+   "sponsor": "Novo Nordisk A/S",
+   "countries": [
+    "Australia",
+    "Belgium",
+    "Brazil",
+    "Canada",
+    "Colombia",
+    "France",
+    "Ghana",
+    "Greece",
+    "India",
+    "Italy",
+    "Kenya",
+    "Lebanon",
+    "Netherlands",
+    "Nigeria",
+    "Oman",
+    "Saudi Arabia",
+    "Spain",
+    "Turkey (Türkiye)",
+    "Uganda",
+    "United Kingdom",
+    "United States"
+   ],
+   "usStates": [
+    "Alabama",
+    "Arizona",
+    "Arkansas",
+    "California",
+    "Colorado",
+    "Delaware",
+    "District of Columbia",
+    "Florida",
+    "Georgia",
+    "Illinois",
+    "Louisiana",
+    "Massachusetts",
+    "Michigan",
+    "Minnesota",
+    "Missouri",
+    "Nebraska",
+    "Nevada",
+    "New Jersey",
+    "New York",
+    "North Carolina",
+    "Ohio",
+    "Oklahoma",
+    "Pennsylvania",
+    "Tennessee",
+    "Texas",
+    "Virginia",
+    "Washington"
+   ],
+   "sites": 175,
+   "url": "https://clinicaltrials.gov/study/NCT06612268",
+   "lastUpdate": "2026-09-17",
+   "plain": "Tests whether etavopivat, a once-a-day pill, means fewer pain crises for teens and adults."
+  },
+  {
+   "nct": "NCT07656415",
+   "title": "A Study to Investigate the Effect of Mitapivat on Transfusion Burden in Subjects With Sickle Cell Disease (SCD)",
+   "status": "RECRUITING",
+   "kind": "medicine",
+   "kindLabel": "Testing a medicine",
+   "phase": "Phase 3",
+   "minAge": 12.0,
+   "maxAge": null,
+   "minAgeText": "12 Years",
+   "maxAgeText": null,
+   "healthy": false,
+   "testing": [
+    "Mitapivat Matched Placebo",
+    "Mitapivat"
+   ],
+   "sponsor": "Agios Pharmaceuticals, Inc.",
+   "countries": [
+    "United States"
+   ],
+   "usStates": [
+    "Indiana",
+    "Michigan",
+    "Mississippi",
+    "New York",
+    "Texas"
+   ],
+   "sites": 5,
+   "url": "https://clinicaltrials.gov/study/NCT07656415",
+   "lastUpdate": "2026-10-28",
+   "plain": "Tests whether mitapivat, a pill that gives red blood cells more energy, lowers how often people need blood transfusions."
+  },
+  {
+   "nct": "NCT06439082",
+   "title": "A Study to Investigate the Efficacy and Safety of Crizanlizumab (5 mg/kg) Compared With Placebo in Adolescent and Adult Sickle Cell Disease Patients Who Experience Frequent Vaso-Occlusive Crises (SPARKLE)",
+   "status": "RECRUITING",
+   "kind": "medicine",
+   "kindLabel": "Testing a medicine",
+   "phase": "Phase 3",
+   "minAge": 12.0,
+   "maxAge": 100.0,
+   "minAgeText": "12 Years",
+   "maxAgeText": "100 Years",
+   "healthy": false,
+   "testing": [
+    "Crizanlizumab",
+    "Placebo"
+   ],
+   "sponsor": "Novartis Pharmaceuticals",
+   "countries": [
+    "Brazil",
+    "Colombia",
+    "Kenya",
+    "Uganda",
+    "United States"
+   ],
+   "usStates": [
+    "Alabama",
+    "California",
+    "District of Columbia",
+    "Florida",
+    "Georgia",
+    "Illinois",
+    "Kentucky",
+    "Maryland",
+    "Mississippi",
+    "New York",
+    "North Carolina",
+    "Pennsylvania",
+    "Texas"
+   ],
+   "sites": 36,
+   "url": "https://clinicaltrials.gov/study/NCT06439082",
+   "lastUpdate": "2026-11-10",
+   "plain": "Tests whether crizanlizumab, a monthly IV medicine, lowers pain crises in teens and adults."
+  },
+  {
+   "nct": "NCT05685368",
+   "title": "Acceptance and Commitment Therapy for Adolescents and Young Adults With Sickle Cell Disease",
+   "status": "RECRUITING",
+   "kind": "program",
+   "kindLabel": "App, class or program",
+   "phase": "Phase 1, Phase 2",
+   "minAge": 14.0,
+   "maxAge": 21.0,
+   "minAgeText": "14 Years",
+   "maxAgeText": "21 Years",
+   "healthy": false,
+   "testing": [
+    "ACT for SCD"
+   ],
+   "sponsor": "Children's Hospital Los Angeles",
+   "countries": [
+    "United States"
+   ],
+   "usStates": [
+    "California"
+   ],
+   "sites": 1,
+   "url": "https://clinicaltrials.gov/study/NCT05685368",
+   "lastUpdate": "2026-05-06",
+   "plain": "Tests a kind of counseling (ACT) that helps teens and young adults cope with stress and unfair treatment."
+  },
+  {
+   "nct": "NCT06071377",
+   "title": "Achieving Understanding of the Natural History of Sickle Cell Trait (AUNT)",
+   "status": "RECRUITING",
+   "kind": "watch",
+   "kindLabel": "Watching and learning (no new treatment)",
+   "phase": null,
+   "minAge": 18.0,
+   "maxAge": null,
+   "minAgeText": "18 Years",
+   "maxAgeText": null,
+   "healthy": true,
+   "testing": [
+    "Biologic Specimen Collection"
+   ],
+   "sponsor": "National Alliance for Sickle Cell Centers",
+   "countries": [
+    "United States"
+   ],
+   "usStates": [
+    "Alabama",
+    "Delaware",
+    "Indiana",
+    "Michigan",
+    "North Carolina",
+    "Texas"
+   ],
+   "sites": 8,
+   "url": "https://clinicaltrials.gov/study/NCT06071377",
+   "lastUpdate": "2026-10-07",
+   "plain": "Follows adults with sickle cell trait to learn more about their health over time."
+  },
+  {
+   "nct": "NCT06770010",
+   "title": "Advancing Feasibility and Acceptability of Digital Cognitive Rehabilitation in Sickle Cell Disease",
+   "status": "RECRUITING",
+   "kind": "program",
+   "kindLabel": "App, class or program",
+   "phase": null,
+   "minAge": 7.0,
+   "maxAge": 16.0,
+   "minAgeText": "7 Years",
+   "maxAgeText": "16 Years",
+   "healthy": false,
+   "testing": [
+    "Cogmed+"
+   ],
+   "sponsor": "Children's National Research Institute",
+   "countries": [
+    "United States"
+   ],
+   "usStates": [
+    "District of Columbia"
+   ],
+   "sites": 1,
+   "url": "https://clinicaltrials.gov/study/NCT06770010",
+   "lastUpdate": "2025-02-13",
+   "plain": "Tests a computer memory-training program plus support to help kids 7 to 16 remember things like taking medicine."
+  },
+  {
+   "nct": "NCT06016634",
+   "title": "Alendronate for Osteonecrosis in Adults With Sickle Cell Disease",
+   "status": "RECRUITING",
+   "kind": "medicine",
+   "kindLabel": "Testing a medicine",
+   "phase": "Phase 2",
+   "minAge": 18.0,
+   "maxAge": 80.0,
+   "minAgeText": "18 Years",
+   "maxAgeText": "80 Years",
+   "healthy": false,
+   "testing": [
+    "Alendronate Sodium"
+   ],
+   "sponsor": "University of California, Davis",
+   "countries": [
+    "United States"
+   ],
+   "usStates": [
+    "California"
+   ],
+   "sites": 1,
+   "url": "https://clinicaltrials.gov/study/NCT06016634",
+   "lastUpdate": "2026-07-16",
+   "plain": null
+  },
+  {
+   "nct": "NCT06872333",
+   "title": "Allo HSCT for High Risk Hemoglobinopathies",
+   "status": "RECRUITING",
+   "kind": "transplant",
+   "kindLabel": "Transplant",
+   "phase": "Phase 2",
+   "minAge": null,
+   "maxAge": 55.0,
+   "minAgeText": null,
+   "maxAgeText": "55 Years",
+   "healthy": true,
+   "testing": [
+    "Alemtuzumab",
+    "Total Body Irradiation",
+    "Cell Infusion",
+    "Thymoglobulin"
+   ],
+   "sponsor": "Masonic Cancer Center, University of Minnesota",
+   "countries": [
+    "United States"
+   ],
+   "usStates": [
+    "Minnesota"
+   ],
+   "sites": 1,
+   "url": "https://clinicaltrials.gov/study/NCT06872333",
+   "lastUpdate": "2026-06-04",
+   "plain": null
+  },
+  {
+   "nct": "NCT02447874",
+   "title": "Arginine Therapy for the Treatment of Pain in Children With Sickle Cell Disease",
+   "status": "RECRUITING",
+   "kind": "medicine",
+   "kindLabel": "Testing a medicine",
+   "phase": "Phase 1, Phase 2",
+   "minAge": 7.0,
+   "maxAge": 21.0,
+   "minAgeText": "7 Years",
+   "maxAgeText": "21 Years",
+   "healthy": false,
+   "testing": [
+    "Arginine",
+    "Arginine (Loading)",
+    "Arginine (Continuous)"
+   ],
+   "sponsor": "Emory University",
+   "countries": [
+    "United States"
+   ],
+   "usStates": [
+    "Georgia"
+   ],
+   "sites": 2,
+   "url": "https://clinicaltrials.gov/study/NCT02447874",
+   "lastUpdate": "2026-07-29",
+   "plain": "Tests extra arginine for children and young adults in the hospital with a pain crisis."
+  },
+  {
+   "nct": "NCT07562451",
+   "title": "Assessing Molecular Mechanisms and Effects of Music Therapy in Youth With Sickle Cell Disease Using Single-cell RNA-sequencing",
+   "status": "RECRUITING",
+   "kind": "other",
+   "kindLabel": "Other study",
+   "phase": null,
+   "minAge": 8.0,
+   "maxAge": 18.0,
+   "minAgeText": "8 Years",
+   "maxAgeText": "18 Years",
+   "healthy": false,
+   "testing": [
+    "Music Therapy",
+    "Standard of Care"
+   ],
+   "sponsor": "Emory University",
+   "countries": [
+    "United States"
+   ],
+   "usStates": [
+    "Georgia"
+   ],
+   "sites": 1,
+   "url": "https://clinicaltrials.gov/study/NCT07562451",
+   "lastUpdate": "2026-09-10",
+   "plain": "Tests a 4-week music therapy program to lower ongoing pain in kids and teens 8 to 18."
+  },
+  {
+   "nct": "NCT00542230",
+   "title": "Blood Sampling for Research Related to Sickle Cell Disease",
+   "status": "RECRUITING",
+   "kind": "watch",
+   "kindLabel": "Watching and learning (no new treatment)",
+   "phase": null,
+   "minAge": 18.0,
+   "maxAge": 100.0,
+   "minAgeText": "18 Years",
+   "maxAgeText": "100 Years",
+   "healthy": true,
+   "testing": [],
+   "sponsor": "National Institute of Diabetes and Digestive and Kidney Diseases (NIDDK)",
+   "countries": [
+    "United States"
+   ],
+   "usStates": [
+    "Maryland"
+   ],
+   "sites": 1,
+   "url": "https://clinicaltrials.gov/study/NCT00542230",
+   "lastUpdate": "2026-10-26",
+   "plain": null
+  },
+  {
+   "nct": "NCT07083531",
+   "title": "Bone Loss, Physical Function and Frailty in Older Women With Sickle Cell Trait Sickle Cell Trait",
+   "status": "RECRUITING",
+   "kind": "watch",
+   "kindLabel": "Watching and learning (no new treatment)",
+   "phase": null,
+   "minAge": 50.0,
+   "maxAge": null,
+   "minAgeText": "50 Years",
+   "maxAgeText": null,
+   "healthy": true,
+   "testing": [
+    "Healthy volunteers without SCT",
+    "Healthy volunteers with SCT"
+   ],
+   "sponsor": "UConn Health",
+   "countries": [
+    "United States"
+   ],
+   "usStates": [
+    "Connecticut"
+   ],
+   "sites": 1,
+   "url": "https://clinicaltrials.gov/study/NCT07083531",
+   "lastUpdate": "2025-07-24",
+   "plain": null
+  },
+  {
+   "nct": "NCT06930703",
+   "title": "Cannabidiol in Sickle Cell Disease",
+   "status": "RECRUITING",
+   "kind": "medicine",
+   "kindLabel": "Testing a medicine",
+   "phase": "Phase 1, Phase 2",
+   "minAge": 18.0,
+   "maxAge": null,
+   "minAgeText": "18 Years",
+   "maxAgeText": null,
+   "healthy": false,
+   "testing": [
+    "Cannabidiol",
+    "Placebo"
+   ],
+   "sponsor": "Icahn School of Medicine at Mount Sinai",
+   "countries": [
+    "United States"
+   ],
+   "usStates": [
+    "New York"
+   ],
+   "sites": 1,
+   "url": "https://clinicaltrials.gov/study/NCT06930703",
+   "lastUpdate": "2025-06-25",
+   "plain": null
+  },
+  {
+   "nct": "NCT05519111",
+   "title": "Cannabinoids for the Reduction of Inflammation and Sickle Cell Related Pain",
+   "status": "RECRUITING",
+   "kind": "medicine",
+   "kindLabel": "Testing a medicine",
+   "phase": "Phase 2",
+   "minAge": 18.0,
+   "maxAge": null,
+   "minAgeText": "18 Years",
+   "maxAgeText": null,
+   "healthy": false,
+   "testing": [
+    "Dronabinol",
+    "Placebo"
+   ],
+   "sponsor": "Icahn School of Medicine at Mount Sinai",
+   "countries": [
+    "United States"
+   ],
+   "usStates": [
+    "New York"
+   ],
+   "sites": 1,
+   "url": "https://clinicaltrials.gov/study/NCT05519111",
+   "lastUpdate": "2025-10-02",
+   "plain": null
+  },
+  {
+   "nct": "NCT04157179",
+   "title": "Cerebral Oxygen Metabolism in Children",
+   "status": "RECRUITING",
+   "kind": "other",
+   "kindLabel": "Other study",
+   "phase": null,
+   "minAge": 3.0,
+   "maxAge": 50.0,
+   "minAgeText": "3 Years",
+   "maxAgeText": "50 Years",
+   "healthy": true,
+   "testing": [
+    "Carbon Dioxide"
+   ],
+   "sponsor": "Washington University School of Medicine",
+   "countries": [
+    "United States"
+   ],
+   "usStates": [
+    "Missouri"
+   ],
+   "sites": 1,
+   "url": "https://clinicaltrials.gov/study/NCT04157179",
+   "lastUpdate": "2025-09-11",
+   "plain": null
+  },
+  {
+   "nct": "NCT07776444",
+   "title": "Cerebrovascular Reactivity Measurements With High-Density Diffuse Optical Tomography",
+   "status": "RECRUITING",
+   "kind": "other",
+   "kindLabel": "Other study",
+   "phase": null,
+   "minAge": 6.0,
+   "maxAge": 70.0,
+   "minAgeText": "6 Years",
+   "maxAgeText": "70 Years",
+   "healthy": true,
+   "testing": [
+    "Carbon Dioxide"
+   ],
+   "sponsor": "Washington University School of Medicine",
+   "countries": [
+    "United States"
+   ],
+   "usStates": [
+    "Missouri"
+   ],
+   "sites": 1,
+   "url": "https://clinicaltrials.gov/study/NCT07776444",
+   "lastUpdate": "2026-08-20",
+   "plain": null
+  },
+  {
+   "nct": "NCT06665997",
+   "title": "Clinical and Biomarker Effects of Depot Medroxyprogesterone Acetate in Females With Sickle Cell Disease",
+   "status": "RECRUITING",
+   "kind": "medicine",
+   "kindLabel": "Testing a medicine",
+   "phase": "Phase 4",
+   "minAge": 18.0,
+   "maxAge": 50.0,
+   "minAgeText": "18 Years",
+   "maxAgeText": "50 Years",
+   "healthy": false,
+   "testing": [
+    "Depot medroxyprogesterone acetate (DMPA)"
+   ],
+   "sponsor": "University of Pennsylvania",
+   "countries": [
+    "United States"
+   ],
+   "usStates": [
+    "Georgia",
+    "Pennsylvania"
+   ],
+   "sites": 2,
+   "url": "https://clinicaltrials.gov/study/NCT06665997",
+   "lastUpdate": "2026-11-05",
+   "plain": null
+  },
+  {
+   "nct": "NCT03937817",
+   "title": "Collection of Human Biospecimens for Basic and Clinical Research Into Globin Variants",
+   "status": "RECRUITING",
+   "kind": "watch",
+   "kindLabel": "Watching and learning (no new treatment)",
+   "phase": null,
+   "minAge": 18.0,
+   "maxAge": 70.0,
+   "minAgeText": "18 Years",
+   "maxAgeText": "70 Years",
+   "healthy": true,
+   "testing": [],
+   "sponsor": "National Institute of Allergy and Infectious Diseases (NIAID)",
+   "countries": [
+    "United States"
+   ],
+   "usStates": [
+    "Maryland"
+   ],
+   "sites": 1,
+   "url": "https://clinicaltrials.gov/study/NCT03937817",
+   "lastUpdate": "2026-10-02",
+   "plain": null
+  },
+  {
+   "nct": "NCT06941389",
+   "title": "Comparing the Effectiveness of Matched Related Donor Hematopoietic Stem Cell Transplantation to Disease Modifying Therapy in Pediatric Patients With Sickle Cell Disease",
+   "status": "RECRUITING",
+   "kind": "watch",
+   "kindLabel": "Watching and learning (no new treatment)",
+   "phase": null,
+   "minAge": 3.0,
+   "maxAge": 20.0,
+   "minAgeText": "3 Years",
+   "maxAgeText": "20 Years",
+   "healthy": false,
+   "testing": [],
+   "sponsor": "University of Rochester",
+   "countries": [
+    "Canada",
+    "United States"
+   ],
+   "usStates": [
+    "Alabama",
+    "Delaware",
+    "District of Columbia",
+    "Georgia",
+    "Illinois",
+    "Indiana",
+    "Massachusetts",
+    "Missouri",
+    "New Jersey",
+    "New York",
+    "North Carolina",
+    "Ohio",
+    "Oklahoma",
+    "Pennsylvania",
+    "Tennessee",
+    "Texas"
+   ],
+   "sites": 37,
+   "url": "https://clinicaltrials.gov/study/NCT06941389",
+   "lastUpdate": "2026-06-04",
+   "plain": "Compares how kids do over many years after a matched-sibling transplant versus medicines like hydroxyurea (WeDecide study)."
+  },
+  {
+   "nct": "NCT05210114",
+   "title": "Cutaneous Hydration Assessment in SCD",
+   "status": "RECRUITING",
+   "kind": "device",
+   "kindLabel": "Testing a device",
+   "phase": null,
+   "minAge": 12.0,
+   "maxAge": null,
+   "minAgeText": "12 Years",
+   "maxAgeText": null,
+   "healthy": false,
+   "testing": [
+    "Skin Hydration Sensor"
+   ],
+   "sponsor": "Enrico Novelli",
+   "countries": [
+    "United States"
+   ],
+   "usStates": [
+    "Pennsylvania"
+   ],
+   "sites": 1,
+   "url": "https://clinicaltrials.gov/study/NCT05210114",
+   "lastUpdate": "2025-11-12",
+   "plain": "Tests a skin sensor that checks if you are drinking enough water, ages 12 and up."
+  },
+  {
+   "nct": "NCT06919224",
+   "title": "Delivering Patient-Facing Evidence-Based Guidelines Through mHealth to Adults With Sickle Cell Disease",
+   "status": "RECRUITING",
+   "kind": "program",
+   "kindLabel": "App, class or program",
+   "phase": null,
+   "minAge": 18.0,
+   "maxAge": null,
+   "minAgeText": "18 Years",
+   "maxAgeText": null,
+   "healthy": false,
+   "testing": [
+    "mHealth app + booklets"
+   ],
+   "sponsor": "Ohio State University",
+   "countries": [
+    "United States"
+   ],
+   "usStates": [
+    "Illinois",
+    "Missouri",
+    "Ohio",
+    "Tennessee"
+   ],
+   "sites": 4,
+   "url": "https://clinicaltrials.gov/study/NCT06919224",
+   "lastUpdate": "2026-03-23",
+   "plain": null
+  },
+  {
+   "nct": "NCT06313398",
+   "title": "Determination of Red Cell Survival in Sickle Cell Disease and Other Hemoglobinopathies Using Biotin Labeling",
+   "status": "RECRUITING",
+   "kind": "medicine",
+   "kindLabel": "Testing a medicine",
+   "phase": "EARLY Phase 1",
+   "minAge": 18.0,
+   "maxAge": 100.0,
+   "minAgeText": "18 Years",
+   "maxAgeText": "100 Years",
+   "healthy": false,
+   "testing": [
+    "Biotin-labeled red blood cells"
+   ],
+   "sponsor": "National Heart, Lung, and Blood Institute (NHLBI)",
+   "countries": [
+    "United States"
+   ],
+   "usStates": [
+    "Maryland"
+   ],
+   "sites": 1,
+   "url": "https://clinicaltrials.gov/study/NCT06313398",
+   "lastUpdate": "2026-09-28",
+   "plain": null
+  },
+  {
+   "nct": "NCT05170412",
+   "title": "Dietary Intake and Dietary Behaviors in Adults With Sickle Cell Disease",
+   "status": "RECRUITING",
+   "kind": "watch",
+   "kindLabel": "Watching and learning (no new treatment)",
+   "phase": null,
+   "minAge": 18.0,
+   "maxAge": 120.0,
+   "minAgeText": "18 Years",
+   "maxAgeText": "120 Years",
+   "healthy": false,
+   "testing": [],
+   "sponsor": "National Institutes of Health Clinical Center (CC)",
+   "countries": [
+    "United States"
+   ],
+   "usStates": [
+    "Maryland"
+   ],
+   "sites": 1,
+   "url": "https://clinicaltrials.gov/study/NCT05170412",
+   "lastUpdate": "2026-09-18",
+   "plain": null
+  },
+  {
+   "nct": "NCT05377372",
+   "title": "Early Life Exposures Among Children With Sickle Cell Disease",
+   "status": "RECRUITING",
+   "kind": "program",
+   "kindLabel": "App, class or program",
+   "phase": null,
+   "minAge": 18.0,
+   "maxAge": 50.0,
+   "minAgeText": "18 Years",
+   "maxAgeText": "50 Years",
+   "healthy": false,
+   "testing": [
+    "Breastfeeding support group",
+    "Observation"
+   ],
+   "sponsor": "University of Alabama at Birmingham",
+   "countries": [
+    "United States"
+   ],
+   "usStates": [
+    "Alabama"
+   ],
+   "sites": 1,
+   "url": "https://clinicaltrials.gov/study/NCT05377372",
+   "lastUpdate": "2026-07-15",
+   "plain": null
+  },
+  {
+   "nct": "NCT07023666",
+   "title": "Early Screening and Treatment of Heart Complication in Sickle Cell Disease",
+   "status": "RECRUITING",
+   "kind": "medicine",
+   "kindLabel": "Testing a medicine",
+   "phase": "Phase 2",
+   "minAge": 18.0,
+   "maxAge": null,
+   "minAgeText": "18 Years",
+   "maxAgeText": null,
+   "healthy": false,
+   "testing": [
+    "Deferoxamine",
+    "Deferasirox",
+    "Deferiprone",
+    "Echocardiography"
+   ],
+   "sponsor": "Inova Health Care Services",
+   "countries": [
+    "United States"
+   ],
+   "usStates": [
+    "Virginia"
+   ],
+   "sites": 2,
+   "url": "https://clinicaltrials.gov/study/NCT07023666",
+   "lastUpdate": "2026-09-09",
+   "plain": null
+  },
+  {
+   "nct": "NCT03353584",
+   "title": "Effect of Virtual Reality Technology for Pain Management of Vaso-Occlusive Crisis in Patients With Sickle Cell Disease",
+   "status": "RECRUITING",
+   "kind": "other",
+   "kindLabel": "Other study",
+   "phase": null,
+   "minAge": 6.0,
+   "maxAge": 25.0,
+   "minAgeText": "6 Years",
+   "maxAgeText": "25 Years",
+   "healthy": false,
+   "testing": [
+    "Virtual Reality Therapy"
+   ],
+   "sponsor": "St. Jude Children's Research Hospital",
+   "countries": [
+    "United States"
+   ],
+   "usStates": [
+    "Tennessee"
+   ],
+   "sites": 2,
+   "url": "https://clinicaltrials.gov/study/NCT03353584",
+   "lastUpdate": "2026-05-18",
+   "plain": "Tests virtual reality for pain during a pain crisis, ages 6 to 25."
+  },
+  {
+   "nct": "NCT07177300",
+   "title": "Effectiveness of Nontraditional Hydroxyurea Algorithms: Novel and Clinical Evaluations (ENHANCE)",
+   "status": "RECRUITING",
+   "kind": "medicine",
+   "kindLabel": "Testing a medicine",
+   "phase": "Phase 4",
+   "minAge": 0.5,
+   "maxAge": null,
+   "minAgeText": "6 Months",
+   "maxAgeText": null,
+   "healthy": false,
+   "testing": [
+    "PK-optimized oral hydroxyurea at MTD until 15 years of age."
+   ],
+   "sponsor": "Children's Hospital Medical Center, Cincinnati",
+   "countries": [
+    "United States"
+   ],
+   "usStates": [
+    "Ohio"
+   ],
+   "sites": 1,
+   "url": "https://clinicaltrials.gov/study/NCT07177300",
+   "lastUpdate": "2025-09-16",
+   "plain": "Tests a new way to pick each child's hydroxyurea dose, using a blood test that shows how their body handles the medicine, starting in babies."
+  },
+  {
+   "nct": "NCT05383911",
+   "title": "Empowering Adolescents and Young Adults With Sickle Cell Disease as Partners in Treatment Decision Making (EMPOWER-AYA)",
+   "status": "RECRUITING",
+   "kind": "program",
+   "kindLabel": "App, class or program",
+   "phase": null,
+   "minAge": 15.0,
+   "maxAge": null,
+   "minAgeText": "15 Years",
+   "maxAgeText": null,
+   "healthy": false,
+   "testing": [
+    "SCD Shared Decision-Making Toolkit for AYAs - including VR",
+    "SCD Shared Decision-Making Toolkit for AYAs - without VR"
+   ],
+   "sponsor": "Nemours Children's Clinic",
+   "countries": [
+    "United States"
+   ],
+   "usStates": [
+    "Delaware"
+   ],
+   "sites": 1,
+   "url": "https://clinicaltrials.gov/study/NCT05383911",
+   "lastUpdate": "2026-06-16",
+   "plain": "Tests tools, including virtual reality, that help teens and young adults make treatment choices with their doctors."
+  },
+  {
+   "nct": "NCT07566494",
+   "title": "Escalating Doses of VAS-101 in Subjects With Stable Sickle Cell Disease",
+   "status": "RECRUITING",
+   "kind": "medicine",
+   "kindLabel": "Testing a medicine",
+   "phase": "Phase 1",
+   "minAge": 18.0,
+   "maxAge": 90.0,
+   "minAgeText": "18 Years",
+   "maxAgeText": "90 Years",
+   "healthy": false,
+   "testing": [
+    "VAS-101"
+   ],
+   "sponsor": "National Heart, Lung, and Blood Institute (NHLBI)",
+   "countries": [
+    "United States"
+   ],
+   "usStates": [
+    "Maryland"
+   ],
+   "sites": 1,
+   "url": "https://clinicaltrials.gov/study/NCT07566494",
+   "lastUpdate": "2026-10-21",
+   "plain": null
+  },
+  {
+   "nct": "NCT05477563",
+   "title": "Evaluation of Efficacy and Safety of a Single Dose of CTX001 in Participants With Transfusion-Dependent β-Thalassemia and Severe Sickle Cell Disease",
+   "status": "RECRUITING",
+   "kind": "gene",
+   "kindLabel": "Gene therapy",
+   "phase": "Phase 3",
+   "minAge": 12.0,
+   "maxAge": 35.0,
+   "minAgeText": "12 Years",
+   "maxAgeText": "35 Years",
+   "healthy": false,
+   "testing": [
+    "CTX001"
+   ],
+   "sponsor": "Vertex Pharmaceuticals Incorporated",
+   "countries": [
+    "Germany",
+    "Italy",
+    "Saudi Arabia",
+    "United States"
+   ],
+   "usStates": [
+    "New York",
+    "North Carolina",
+    "Tennessee"
+   ],
+   "sites": 6,
+   "url": "https://clinicaltrials.gov/study/NCT05477563",
+   "lastUpdate": "2026-03-23",
+   "plain": "The study of Casgevy (exa-cel) gene editing in people 12 to 35."
+  },
+  {
+   "nct": "NCT05359991",
+   "title": "Exercise in Child Health",
+   "status": "RECRUITING",
+   "kind": "other",
+   "kindLabel": "Other study",
+   "phase": null,
+   "minAge": 10.0,
+   "maxAge": 17.0,
+   "minAgeText": "10 Years",
+   "maxAgeText": "17 Years",
+   "healthy": true,
+   "testing": [
+    "Exercise"
+   ],
+   "sponsor": "University of California, Irvine",
+   "countries": [
+    "United States"
+   ],
+   "usStates": [
+    "California"
+   ],
+   "sites": 1,
+   "url": "https://clinicaltrials.gov/study/NCT05359991",
+   "lastUpdate": "2026-10-02",
+   "plain": "Studies how exercise affects health in kids 10 to 17, including kids with sickle cell disease."
+  },
+  {
+   "nct": "NCT05099874",
+   "title": "Feasibility and Efficacy of Attentional-Control Training in Sickle Cell Disease",
+   "status": "RECRUITING",
+   "kind": "program",
+   "kindLabel": "App, class or program",
+   "phase": null,
+   "minAge": 8.0,
+   "maxAge": 16.0,
+   "minAgeText": "8 Years",
+   "maxAgeText": "16 Years",
+   "healthy": false,
+   "testing": [
+    "EndeavorRx"
+   ],
+   "sponsor": "Children's National Research Institute",
+   "countries": [
+    "United States"
+   ],
+   "usStates": [
+    "District of Columbia"
+   ],
+   "sites": 1,
+   "url": "https://clinicaltrials.gov/study/NCT05099874",
+   "lastUpdate": "2025-01-10",
+   "plain": "Tests a video game prescribed by doctors (EndeavorRx) to improve attention in kids 8 to 16."
+  },
+  {
+   "nct": "NCT07392216",
+   "title": "Functional Ovarian Reserve in Sickle Cell Disease",
+   "status": "RECRUITING",
+   "kind": "watch",
+   "kindLabel": "Watching and learning (no new treatment)",
+   "phase": null,
+   "minAge": 10.0,
+   "maxAge": 18.0,
+   "minAgeText": "10 Years",
+   "maxAgeText": "18 Years",
+   "healthy": true,
+   "testing": [],
+   "sponsor": "St. Jude Children's Research Hospital",
+   "countries": [
+    "United States"
+   ],
+   "usStates": [
+    "Tennessee"
+   ],
+   "sites": 1,
+   "url": "https://clinicaltrials.gov/study/NCT07392216",
+   "lastUpdate": "2026-06-04",
+   "plain": "Checks whether girls with sickle cell have the same egg supply as other girls as they go through puberty."
+  },
+  {
+   "nct": "NCT04819841",
+   "title": "Gene Correction in Autologous CD34+ Hematopoietic Stem Cells (HbS to HbA) to Treat Severe Sickle Cell Disease",
+   "status": "RECRUITING",
+   "kind": "gene",
+   "kindLabel": "Gene therapy",
+   "phase": "Phase 1, Phase 2",
+   "minAge": 12.0,
+   "maxAge": 50.0,
+   "minAgeText": "12 Years",
+   "maxAgeText": "50 Years",
+   "healthy": false,
+   "testing": [
+    "nula-cel Drug Product"
+   ],
+   "sponsor": "Kamau Therapeutics",
+   "countries": [
+    "United States"
+   ],
+   "usStates": [
+    "California",
+    "Missouri",
+    "New York",
+    "Ohio"
+   ],
+   "sites": 6,
+   "url": "https://clinicaltrials.gov/study/NCT04819841",
+   "lastUpdate": "2026-07-02",
+   "plain": "Tests nula-cel, which corrects the sickle gene in your own stem cells, ages 12 to 50."
+  },
+  {
+   "nct": "NCT06506461",
+   "title": "Gene Editing For Sickle Cell Disease",
+   "status": "RECRUITING",
+   "kind": "gene",
+   "kindLabel": "Gene therapy",
+   "phase": "Phase 1",
+   "minAge": 18.0,
+   "maxAge": 24.0,
+   "minAgeText": "18 Years",
+   "maxAgeText": "24 Years",
+   "healthy": false,
+   "testing": [
+    "Plerixafor",
+    "Busulfan",
+    "Gene-modified CD34+ cells",
+    "Motixafortide"
+   ],
+   "sponsor": "St. Jude Children's Research Hospital",
+   "countries": [
+    "United States"
+   ],
+   "usStates": [
+    "Tennessee"
+   ],
+   "sites": 1,
+   "url": "https://clinicaltrials.gov/study/NCT06506461",
+   "lastUpdate": "2026-10-15",
+   "plain": null
+  },
+  {
+   "nct": "NCT05810181",
+   "title": "Gene Therapy Communication: Use of a Needs Assessment to Drive Decision-AIDS for Gene Therapy for Rare Diseases (GENETX)",
+   "status": "RECRUITING",
+   "kind": "watch",
+   "kindLabel": "Watching and learning (no new treatment)",
+   "phase": null,
+   "minAge": 8.0,
+   "maxAge": null,
+   "minAgeText": "8 Years",
+   "maxAgeText": null,
+   "healthy": true,
+   "testing": [
+    "Interview",
+    "Interview",
+    "Interview",
+    "Interview"
+   ],
+   "sponsor": "St. Jude Children's Research Hospital",
+   "countries": [
+    "United States"
+   ],
+   "usStates": [
+    "Tennessee"
+   ],
+   "sites": 1,
+   "url": "https://clinicaltrials.gov/study/NCT05810181",
+   "lastUpdate": "2026-08-10",
+   "plain": "Interviews families to learn what information they need to decide about gene therapy."
+  },
+  {
+   "nct": "NCT03685721",
+   "title": "Genotype -Phenotype Correlation of PKLR Variants With Pyruvate Kinase, 2,3-Diphosphglycerate and Adenosine Triphosphate Activities in Red Blood Cells of People With Sickle Cell Disease",
+   "status": "RECRUITING",
+   "kind": "watch",
+   "kindLabel": "Watching and learning (no new treatment)",
+   "phase": null,
+   "minAge": 18.0,
+   "maxAge": 80.0,
+   "minAgeText": "18 Years",
+   "maxAgeText": "80 Years",
+   "healthy": true,
+   "testing": [],
+   "sponsor": "National Heart, Lung, and Blood Institute (NHLBI)",
+   "countries": [
+    "United States"
+   ],
+   "usStates": [
+    "Maryland"
+   ],
+   "sites": 1,
+   "url": "https://clinicaltrials.gov/study/NCT03685721",
+   "lastUpdate": "2026-11-10",
+   "plain": null
+  },
+  {
+   "nct": "NCT07616154",
+   "title": "Haploidentical Donor Hematopoietic Cell Transplant for Sickle Cell Disease",
+   "status": "RECRUITING",
+   "kind": "transplant",
+   "kindLabel": "Transplant",
+   "phase": "Phase 2",
+   "minAge": null,
+   "maxAge": 22.0,
+   "minAgeText": null,
+   "maxAgeText": "22 Years",
+   "healthy": false,
+   "testing": [
+    "Cyclophosphamide 50mg",
+    "Abatacept",
+    "Alemtuzumab",
+    "Hydroxyurea"
+   ],
+   "sponsor": "St. Jude Children's Research Hospital",
+   "countries": [
+    "United States"
+   ],
+   "usStates": [
+    "Tennessee"
+   ],
+   "sites": 1,
+   "url": "https://clinicaltrials.gov/study/NCT07616154",
+   "lastUpdate": "2026-11-12",
+   "plain": "Tests a gentler half-matched (often a parent) bone marrow transplant for people up to 22."
+  },
+  {
+   "nct": "NCT06647979",
+   "title": "Hematopoietic Stem Cell BCL11A Enhancer Gene Editing for Severe β-Hemoglobinopathies",
+   "status": "RECRUITING",
+   "kind": "gene",
+   "kindLabel": "Gene therapy",
+   "phase": "Phase 1",
+   "minAge": 13.0,
+   "maxAge": 40.0,
+   "minAgeText": "13 Years",
+   "maxAgeText": "40 Years",
+   "healthy": false,
+   "testing": [
+    "autologous bone marrow derived CD34+ HSPCs electroporated with BCL11A enhancer targeting Cas9 ribonucleoprotein",
+    "Sequencing Assay for Variant rs114518452"
+   ],
+   "sponsor": "Daniel Bauer",
+   "countries": [
+    "United States"
+   ],
+   "usStates": [
+    "Massachusetts"
+   ],
+   "sites": 1,
+   "url": "https://clinicaltrials.gov/study/NCT06647979",
+   "lastUpdate": "2026-02-03",
+   "plain": "Tests editing your own stem cells so they make fetal hemoglobin, ages 13 to 40."
+  },
+  {
+   "nct": "NCT07708350",
+   "title": "Hematopoietic Stem Cell BCL11A Enhancer Gene Editing for Sickle Cell Disease",
+   "status": "RECRUITING",
+   "kind": "gene",
+   "kindLabel": "Gene therapy",
+   "phase": "Phase 1",
+   "minAge": 13.0,
+   "maxAge": 35.0,
+   "minAgeText": "13 Years",
+   "maxAgeText": "35 Years",
+   "healthy": false,
+   "testing": [
+    "autologous bone marrow derived CD34+ HSPCs electroporated with BCL11A enhancer targeting Cas9 ribonucleoprotein",
+    "Sequencing Assay for Variant rs114518452"
+   ],
+   "sponsor": "Daniel Bauer",
+   "countries": [
+    "United States"
+   ],
+   "usStates": [
+    "Massachusetts"
+   ],
+   "sites": 1,
+   "url": "https://clinicaltrials.gov/study/NCT07708350",
+   "lastUpdate": "2026-10-21",
+   "plain": "Tests editing your own stem cells so they make fetal hemoglobin, ages 13 to 35."
+  },
+  {
+   "nct": "NCT04093986",
+   "title": "Hydroxyurea Exposure Limiting Pregnancy and Follow-Up Lactation",
+   "status": "RECRUITING",
+   "kind": "watch",
+   "kindLabel": "Watching and learning (no new treatment)",
+   "phase": null,
+   "minAge": null,
+   "maxAge": null,
+   "minAgeText": null,
+   "maxAgeText": null,
+   "healthy": false,
+   "testing": [
+    "Chart Review",
+    "Survey"
+   ],
+   "sponsor": "Children's Hospital Medical Center, Cincinnati",
+   "countries": [
+    "United States"
+   ],
+   "usStates": [
+    "Ohio"
+   ],
+   "sites": 1,
+   "url": "https://clinicaltrials.gov/study/NCT04093986",
+   "lastUpdate": "2026-06-18",
+   "plain": null
+  },
+  {
+   "nct": "NCT06725550",
+   "title": "Integrative Medicine in Pain Management in Sickle Cell Disease, 2.0",
+   "status": "RECRUITING",
+   "kind": "device",
+   "kindLabel": "Testing a device",
+   "phase": null,
+   "minAge": 14.0,
+   "maxAge": 80.0,
+   "minAgeText": "14 Years",
+   "maxAgeText": "80 Years",
+   "healthy": true,
+   "testing": [
+    "needling acupuncture",
+    "laser acupuncture"
+   ],
+   "sponsor": "University of Cincinnati",
+   "countries": [
+    "United States"
+   ],
+   "usStates": [
+    "Ohio"
+   ],
+   "sites": 1,
+   "url": "https://clinicaltrials.gov/study/NCT06725550",
+   "lastUpdate": "2026-08-12",
+   "plain": "Tests whether acupuncture helps with sickle cell pain, ages 14 and up."
+  },
+  {
+   "nct": "NCT06691867",
+   "title": "Integrative Training Program for Pediatric Sickle Cell Pain",
+   "status": "RECRUITING",
+   "kind": "program",
+   "kindLabel": "App, class or program",
+   "phase": null,
+   "minAge": 12.0,
+   "maxAge": 18.0,
+   "minAgeText": "12 Years",
+   "maxAgeText": "18 Years",
+   "healthy": false,
+   "testing": [
+    "I-STRONG",
+    "Enhanced Usual Care (EUC)"
+   ],
+   "sponsor": "Emory University",
+   "countries": [
+    "United States"
+   ],
+   "usStates": [
+    "Connecticut",
+    "Georgia",
+    "Ohio"
+   ],
+   "sites": 4,
+   "url": "https://clinicaltrials.gov/study/NCT06691867",
+   "lastUpdate": "2025-11-14",
+   "plain": "Tests I-STRONG, a group program for teens with ongoing pain that teaches mind and body skills."
+  },
+  {
+   "nct": "NCT06635902",
+   "title": "Intravenous L-Citrulline for Vaso-occlusive Pain Episode in Sickle Cell Disease",
+   "status": "RECRUITING",
+   "kind": "medicine",
+   "kindLabel": "Testing a medicine",
+   "phase": "Phase 2",
+   "minAge": 4.0,
+   "maxAge": 21.0,
+   "minAgeText": "4 Years",
+   "maxAgeText": "21 Years",
+   "healthy": false,
+   "testing": [
+    "L-citrulline",
+    "Placebo",
+    "L-citrulline"
+   ],
+   "sponsor": "Suvankar Majumdar",
+   "countries": [
+    "United States"
+   ],
+   "usStates": [
+    "District of Columbia"
+   ],
+   "sites": 1,
+   "url": "https://clinicaltrials.gov/study/NCT06635902",
+   "lastUpdate": "2026-04-13",
+   "plain": "Tests citrulline given through an IV during a hospital stay for a pain crisis, ages 4 to 21."
+  },
+  {
+   "nct": "NCT06853158",
+   "title": "MULTIsite Feasibility of MUSIc Therapy to Address Quality Of Life in Sickle Cell Disease",
+   "status": "RECRUITING",
+   "kind": "program",
+   "kindLabel": "App, class or program",
+   "phase": null,
+   "minAge": 14.0,
+   "maxAge": null,
+   "minAgeText": "14 Years",
+   "maxAgeText": null,
+   "healthy": false,
+   "testing": [
+    "Music therapy",
+    "Health education"
+   ],
+   "sponsor": "University of California, Irvine",
+   "countries": [
+    "United States"
+   ],
+   "usStates": [
+    "Ohio",
+    "South Carolina"
+   ],
+   "sites": 2,
+   "url": "https://clinicaltrials.gov/study/NCT06853158",
+   "lastUpdate": "2026-01-29",
+   "plain": "Tests music therapy (in person or online) to improve quality of life, ages 14 and up."
+  },
+  {
+   "nct": "NCT07226219",
+   "title": "Methylphenidate to Address Attention and Executive Deficits Among Children With Sickle Cell Disease",
+   "status": "RECRUITING",
+   "kind": "medicine",
+   "kindLabel": "Testing a medicine",
+   "phase": "Phase 1",
+   "minAge": 8.0,
+   "maxAge": 17.0,
+   "minAgeText": "8 Years",
+   "maxAgeText": "17 Years",
+   "healthy": false,
+   "testing": [
+    "Extended-Release Methylphenidate"
+   ],
+   "sponsor": "St. Jude Children's Research Hospital",
+   "countries": [
+    "United States"
+   ],
+   "usStates": [
+    "Tennessee"
+   ],
+   "sites": 1,
+   "url": "https://clinicaltrials.gov/study/NCT07226219",
+   "lastUpdate": "2026-09-09",
+   "plain": "Tests whether a once-a-day ADHD medicine helps attention and schoolwork in kids 8 to 17."
+  },
+  {
+   "nct": "NCT03587272",
+   "title": "Minimizing Toxicity in HLA-identical Sibling Donor Transplantation for Children With Sickle Cell Disease",
+   "status": "RECRUITING",
+   "kind": "transplant",
+   "kindLabel": "Transplant",
+   "phase": "Phase 2",
+   "minAge": 2.0,
+   "maxAge": 25.0,
+   "minAgeText": "2 Years",
+   "maxAgeText": "25 Years",
+   "healthy": false,
+   "testing": [
+    "Alemtuzumab, low dose total body irradiation, Sirolimus"
+   ],
+   "sponsor": "Robert Nickel",
+   "countries": [
+    "Canada",
+    "United States"
+   ],
+   "usStates": [
+    "District of Columbia",
+    "Illinois",
+    "New York",
+    "North Carolina",
+    "Ohio"
+   ],
+   "sites": 7,
+   "url": "https://clinicaltrials.gov/study/NCT03587272",
+   "lastUpdate": "2026-03-10",
+   "plain": "Tests a gentler bone marrow transplant from a matched brother or sister for kids and young adults 2 to 25."
+  },
+  {
+   "nct": "NCT02675959",
+   "title": "Myeloablative Conditioning, Prophylactic Defibrotide and Haplo AlloSCT for Patients With Sickle Cell Disease",
+   "status": "RECRUITING",
+   "kind": "medicine",
+   "kindLabel": "Testing a medicine",
+   "phase": "Phase 2",
+   "minAge": 0.5,
+   "maxAge": 21.0,
+   "minAgeText": "6 Months",
+   "maxAgeText": "21 Years",
+   "healthy": false,
+   "testing": [
+    "Defibrotide"
+   ],
+   "sponsor": "New York Medical College",
+   "countries": [
+    "United States"
+   ],
+   "usStates": [
+    "California",
+    "Florida",
+    "New York",
+    "Wisconsin"
+   ],
+   "sites": 4,
+   "url": "https://clinicaltrials.gov/study/NCT02675959",
+   "lastUpdate": "2026-07-27",
+   "plain": "Tests a medicine (defibrotide) to protect the liver during a half-matched transplant, up to age 21."
+  },
+  {
+   "nct": "NCT00081523",
+   "title": "Natural History of Sickle Cell Disease",
+   "status": "RECRUITING",
+   "kind": "watch",
+   "kindLabel": "Watching and learning (no new treatment)",
+   "phase": null,
+   "minAge": 2.0,
+   "maxAge": 90.0,
+   "minAgeText": "2 Years",
+   "maxAgeText": "90 Years",
+   "healthy": false,
+   "testing": [],
+   "sponsor": "National Heart, Lung, and Blood Institute (NHLBI)",
+   "countries": [
+    "United States"
+   ],
+   "usStates": [
+    "District of Columbia",
+    "Maryland"
+   ],
+   "sites": 3,
+   "url": "https://clinicaltrials.gov/study/NCT00081523",
+   "lastUpdate": "2026-11-12",
+   "plain": "A long-term NIH study that follows people with sickle cell to learn more. No new treatment."
+  },
+  {
+   "nct": "NCT05213572",
+   "title": "Observational Study to Deeply Phenotype Major Organs in Sickle Cell Disease After Curative Therapies",
+   "status": "RECRUITING",
+   "kind": "watch",
+   "kindLabel": "Watching and learning (no new treatment)",
+   "phase": null,
+   "minAge": 18.0,
+   "maxAge": 100.0,
+   "minAgeText": "18 Years",
+   "maxAgeText": "100 Years",
+   "healthy": false,
+   "testing": [],
+   "sponsor": "National Heart, Lung, and Blood Institute (NHLBI)",
+   "countries": [
+    "United States"
+   ],
+   "usStates": [
+    "Maryland"
+   ],
+   "sites": 1,
+   "url": "https://clinicaltrials.gov/study/NCT05213572",
+   "lastUpdate": "2026-10-22",
+   "plain": null
+  },
+  {
+   "nct": "NCT07599176",
+   "title": "Partial Stem Cell Transplant for Sickle Cell Disease From Matched Donors",
+   "status": "RECRUITING",
+   "kind": "transplant",
+   "kindLabel": "Transplant",
+   "phase": "Phase 1, Phase 2",
+   "minAge": 4.0,
+   "maxAge": 65.0,
+   "minAgeText": "4 Years",
+   "maxAgeText": "65 Years",
+   "healthy": false,
+   "testing": [
+    "Total Body Irradiation",
+    "Alemtuzumab",
+    "Abatacept",
+    "Research blood draw"
+   ],
+   "sponsor": "National Heart, Lung, and Blood Institute (NHLBI)",
+   "countries": [
+    "United States"
+   ],
+   "usStates": [
+    "Maryland"
+   ],
+   "sites": 1,
+   "url": "https://clinicaltrials.gov/study/NCT07599176",
+   "lastUpdate": "2026-10-13",
+   "plain": "Tests a partial stem cell transplant from a matched donor, ages 4 to 65."
+  },
+  {
+   "nct": "NCT06374238",
+   "title": "Peer Support for Adolescents and Emerging Adults With Sickle Cell Pain",
+   "status": "RECRUITING",
+   "kind": "program",
+   "kindLabel": "App, class or program",
+   "phase": null,
+   "minAge": 16.0,
+   "maxAge": 39.0,
+   "minAgeText": "16 Years",
+   "maxAgeText": "39 Years",
+   "healthy": false,
+   "testing": [
+    "CBT+ Health coach",
+    "CBT w/o Health Coach ( self-guided)",
+    "Usual Care"
+   ],
+   "sponsor": "University of Pittsburgh",
+   "countries": [
+    "United States"
+   ],
+   "usStates": [
+    "Alabama",
+    "California",
+    "Connecticut",
+    "Georgia",
+    "Illinois",
+    "Michigan",
+    "New Jersey",
+    "New York",
+    "North Carolina",
+    "Pennsylvania",
+    "Virginia"
+   ],
+   "sites": 14,
+   "url": "https://clinicaltrials.gov/study/NCT06374238",
+   "lastUpdate": "2026-10-08",
+   "plain": "Tests online therapy for pain, with or without a peer health coach, for people 16 to 39."
+  },
+  {
+   "nct": "NCT06477289",
+   "title": "Peripheral Arterial Tonometry and Neurocognition in Sickle Cell Disease",
+   "status": "RECRUITING",
+   "kind": "watch",
+   "kindLabel": "Watching and learning (no new treatment)",
+   "phase": null,
+   "minAge": 12.0,
+   "maxAge": 25.0,
+   "minAgeText": "12 Years",
+   "maxAgeText": "25 Years",
+   "healthy": false,
+   "testing": [],
+   "sponsor": "St. Jude Children's Research Hospital",
+   "countries": [
+    "United States"
+   ],
+   "usStates": [
+    "Tennessee"
+   ],
+   "sites": 1,
+   "url": "https://clinicaltrials.gov/study/NCT06477289",
+   "lastUpdate": "2026-06-29",
+   "plain": "Checks for sleep breathing problems at home and how they affect thinking, ages 12 to 25."
+  },
+  {
+   "nct": "NCT06139510",
+   "title": "Predictors of Pain in Sickle Cell Disease",
+   "status": "RECRUITING",
+   "kind": "other",
+   "kindLabel": "Other study",
+   "phase": null,
+   "minAge": 15.0,
+   "maxAge": 40.0,
+   "minAgeText": "15 Years",
+   "maxAgeText": "40 Years",
+   "healthy": false,
+   "testing": [
+    "Quantitative sensory testing"
+   ],
+   "sponsor": "Duke University",
+   "countries": [
+    "United States"
+   ],
+   "usStates": [
+    "North Carolina"
+   ],
+   "sites": 1,
+   "url": "https://clinicaltrials.gov/study/NCT06139510",
+   "lastUpdate": "2026-05-05",
+   "plain": null
+  },
+  {
+   "nct": "NCT06555939",
+   "title": "Promoting Resilience Among Adolescents and Young Adults With Sickle Cell Disease",
+   "status": "RECRUITING",
+   "kind": "program",
+   "kindLabel": "App, class or program",
+   "phase": null,
+   "minAge": 8.0,
+   "maxAge": 25.0,
+   "minAgeText": "8 Years",
+   "maxAgeText": "25 Years",
+   "healthy": false,
+   "testing": [
+    "Collaborative Care Model",
+    "Promoting Resilience in Stress Management"
+   ],
+   "sponsor": "Boston Children's Hospital",
+   "countries": [
+    "United States"
+   ],
+   "usStates": [
+    "Massachusetts"
+   ],
+   "sites": 1,
+   "url": "https://clinicaltrials.gov/study/NCT06555939",
+   "lastUpdate": "2026-05-05",
+   "plain": "Tests a program that builds resilience and stress skills for people 8 to 25."
+  },
+  {
+   "nct": "NCT04156893",
+   "title": "RH Genotype Matched RBC Transfusions",
+   "status": "RECRUITING",
+   "kind": "medicine",
+   "kindLabel": "Testing a medicine",
+   "phase": "Phase 1, Phase 2",
+   "minAge": 0.5,
+   "maxAge": null,
+   "minAgeText": "6 Months",
+   "maxAgeText": null,
+   "healthy": false,
+   "testing": [
+    "Red cell units that are genotype matched at the RHD and RHCE loci"
+   ],
+   "sponsor": "Children's Hospital of Philadelphia",
+   "countries": [
+    "United States"
+   ],
+   "usStates": [
+    "Pennsylvania"
+   ],
+   "sites": 1,
+   "url": "https://clinicaltrials.gov/study/NCT04156893",
+   "lastUpdate": "2026-04-27",
+   "plain": "Tests whether matching donated blood more closely to your genes means fewer transfusion problems."
+  },
+  {
+   "nct": "NCT06385886",
+   "title": "Recruitment and Engagement in Care to Impact Practice Enhancement (RECIPE) for Sickle Cell Disease",
+   "status": "RECRUITING",
+   "kind": "watch",
+   "kindLabel": "Watching and learning (no new treatment)",
+   "phase": null,
+   "minAge": 18.0,
+   "maxAge": null,
+   "minAgeText": "18 Years",
+   "maxAgeText": null,
+   "healthy": false,
+   "testing": [
+    "Linkage Coordinator"
+   ],
+   "sponsor": "RTI International",
+   "countries": [
+    "United States"
+   ],
+   "usStates": [
+    "Alabama",
+    "Arizona",
+    "California",
+    "Georgia",
+    "Illinois",
+    "Ohio",
+    "Pennsylvania",
+    "Tennessee",
+    "Texas"
+   ],
+   "sites": 9,
+   "url": "https://clinicaltrials.gov/study/NCT06385886",
+   "lastUpdate": "2025-06-22",
+   "plain": null
+  },
+  {
+   "nct": "NCT05583721",
+   "title": "Relationship Between Abnormal Myocardial Perfusion and Diastolic Dysfunction in Sickle Cell Disease Using PET",
+   "status": "RECRUITING",
+   "kind": "medicine",
+   "kindLabel": "Testing a medicine",
+   "phase": "Phase 2",
+   "minAge": 18.0,
+   "maxAge": 21.0,
+   "minAgeText": "18 Years",
+   "maxAgeText": "21 Years",
+   "healthy": true,
+   "testing": [
+    "[13N]NH3",
+    "Lexiscan",
+    "Positron emission tomography"
+   ],
+   "sponsor": "St. Jude Children's Research Hospital",
+   "countries": [
+    "United States"
+   ],
+   "usStates": [
+    "Tennessee"
+   ],
+   "sites": 1,
+   "url": "https://clinicaltrials.gov/study/NCT05583721",
+   "lastUpdate": "2026-11-18",
+   "plain": null
+  },
+  {
+   "nct": "NCT04008368",
+   "title": "Repeat Peripheral Blood Stem Cell Transplantation for Patients With Sickle Cell Disease and Falling Donor Myeloid Chimerism Levels",
+   "status": "RECRUITING",
+   "kind": "transplant",
+   "kindLabel": "Transplant",
+   "phase": "Phase 1, Phase 2",
+   "minAge": 2.0,
+   "maxAge": 80.0,
+   "minAgeText": "2 Years",
+   "maxAgeText": "80 Years",
+   "healthy": true,
+   "testing": [
+    "CliniMACS CD34 Reagent"
+   ],
+   "sponsor": "National Heart, Lung, and Blood Institute (NHLBI)",
+   "countries": [
+    "United States"
+   ],
+   "usStates": [
+    "Maryland"
+   ],
+   "sites": 1,
+   "url": "https://clinicaltrials.gov/study/NCT04008368",
+   "lastUpdate": "2026-10-26",
+   "plain": null
+  },
+  {
+   "nct": "NCT04657822",
+   "title": "Rollover Study for Patients With Sickle Cell Disease Who Have Completed a Prior Novartis-Sponsored Crizanlizumab Study",
+   "status": "RECRUITING",
+   "kind": "medicine",
+   "kindLabel": "Testing a medicine",
+   "phase": "Phase 4",
+   "minAge": 0.5,
+   "maxAge": 100.0,
+   "minAgeText": "6 Months",
+   "maxAgeText": "100 Years",
+   "healthy": false,
+   "testing": [
+    "Crizanlizumab"
+   ],
+   "sponsor": "Novartis Pharmaceuticals",
+   "countries": [
+    "Belgium",
+    "Brazil",
+    "Colombia",
+    "France",
+    "Germany",
+    "Italy",
+    "Lebanon",
+    "Oman",
+    "Spain",
+    "Turkey (Türkiye)",
+    "United States"
+   ],
+   "usStates": [
+    "Alabama",
+    "District of Columbia",
+    "Georgia",
+    "North Carolina",
+    "Pennsylvania",
+    "Texas"
+   ],
+   "sites": 31,
+   "url": "https://clinicaltrials.gov/study/NCT04657822",
+   "lastUpdate": "2026-06-08",
+   "plain": null
+  },
+  {
+   "nct": "NCT07252050",
+   "title": "Ruxolitinib-Enhanced Haplo HCT for Children and Young Adults With Sickle Cell Disease",
+   "status": "RECRUITING",
+   "kind": "medicine",
+   "kindLabel": "Testing a medicine",
+   "phase": "Phase 1, Phase 2",
+   "minAge": 12.0,
+   "maxAge": 45.0,
+   "minAgeText": "12 Years",
+   "maxAgeText": "45 Years",
+   "healthy": false,
+   "testing": [
+    "Ruxolitinib"
+   ],
+   "sponsor": "Arkansas Children's Hospital Research Institute",
+   "countries": [
+    "United States"
+   ],
+   "usStates": [
+    "Colorado",
+    "Georgia",
+    "Louisiana",
+    "Pennsylvania"
+   ],
+   "sites": 4,
+   "url": "https://clinicaltrials.gov/study/NCT07252050",
+   "lastUpdate": "2026-06-04",
+   "plain": "Tests adding ruxolitinib to a half-matched transplant so the new marrow takes hold better, ages 12 to 45."
+  },
+  {
+   "nct": "NCT06442761",
+   "title": "SCD Stem Cell Mobilization and Apheresis Using Motixafortide",
+   "status": "RECRUITING",
+   "kind": "transplant",
+   "kindLabel": "Transplant",
+   "phase": "Phase 1",
+   "minAge": 18.0,
+   "maxAge": null,
+   "minAgeText": "18 Years",
+   "maxAgeText": null,
+   "healthy": false,
+   "testing": [
+    "Motixafortide"
+   ],
+   "sponsor": "St. Jude Children's Research Hospital",
+   "countries": [
+    "United States"
+   ],
+   "usStates": [
+    "Alabama",
+    "Maryland",
+    "Tennessee"
+   ],
+   "sites": 3,
+   "url": "https://clinicaltrials.gov/study/NCT06442761",
+   "lastUpdate": "2026-09-08",
+   "plain": null
+  },
+  {
+   "nct": "NCT06035939",
+   "title": "SMYLS Multi-site Trial",
+   "status": "RECRUITING",
+   "kind": "program",
+   "kindLabel": "App, class or program",
+   "phase": null,
+   "minAge": 14.0,
+   "maxAge": 21.0,
+   "minAgeText": "14 Years",
+   "maxAgeText": "21 Years",
+   "healthy": true,
+   "testing": [
+    "Voice Crisis Alert V2",
+    "Electronic educational materials"
+   ],
+   "sponsor": "Medical University of South Carolina",
+   "countries": [
+    "United States"
+   ],
+   "usStates": [
+    "South Carolina"
+   ],
+   "sites": 1,
+   "url": "https://clinicaltrials.gov/study/NCT06035939",
+   "lastUpdate": "2025-12-08",
+   "plain": "Tests a phone app that helps teens and young adults learn to manage their symptoms."
+  },
+  {
+   "nct": "NCT07224360",
+   "title": "Safety of Anumigilimab (CSL324) in Adults With Sickle Cell Disease (SCD)",
+   "status": "RECRUITING",
+   "kind": "medicine",
+   "kindLabel": "Testing a medicine",
+   "phase": "Phase 2",
+   "minAge": 18.0,
+   "maxAge": null,
+   "minAgeText": "18 Years",
+   "maxAgeText": null,
+   "healthy": false,
+   "testing": [
+    "Anumigilimab",
+    "Placebo"
+   ],
+   "sponsor": "CSL Behring",
+   "countries": [
+    "Belgium",
+    "France",
+    "Italy",
+    "Netherlands",
+    "Turkey (Türkiye)",
+    "United Kingdom",
+    "United States"
+   ],
+   "usStates": [
+    "Arkansas",
+    "California",
+    "Florida",
+    "Georgia",
+    "Maryland",
+    "Massachusetts",
+    "Minnesota",
+    "Mississippi",
+    "New York",
+    "Ohio",
+    "Texas",
+    "Virginia"
+   ],
+   "sites": 38,
+   "url": "https://clinicaltrials.gov/study/NCT07224360",
+   "lastUpdate": "2026-11-03",
+   "plain": null
+  },
+  {
+   "nct": "NCT06699849",
+   "title": "Safety, Efficacy, and Pharmacokinetics of CSL889 in Adults and Adolescents With Sickle Cell Disease During Vaso-Occlusive Crisis",
+   "status": "RECRUITING",
+   "kind": "medicine",
+   "kindLabel": "Testing a medicine",
+   "phase": "Phase 2",
+   "minAge": 12.0,
+   "maxAge": null,
+   "minAgeText": "12 Years",
+   "maxAgeText": null,
+   "healthy": false,
+   "testing": [
+    "CSL889",
+    "Placebo"
+   ],
+   "sponsor": "CSL Behring",
+   "countries": [
+    "Turkey (Türkiye)",
+    "United Kingdom",
+    "United States"
+   ],
+   "usStates": [
+    "California",
+    "District of Columbia",
+    "Florida",
+    "Georgia",
+    "Illinois",
+    "Kentucky",
+    "Maryland",
+    "Michigan",
+    "Missouri",
+    "New York",
+    "North Carolina",
+    "Ohio",
+    "Pennsylvania",
+    "Virginia"
+   ],
+   "sites": 30,
+   "url": "https://clinicaltrials.gov/study/NCT06699849",
+   "lastUpdate": "2026-10-08",
+   "plain": null
+  },
+  {
+   "nct": "NCT06367192",
+   "title": "School Readiness Intervention for Preschool Children With Sickle Cell Disease",
+   "status": "RECRUITING",
+   "kind": "program",
+   "kindLabel": "App, class or program",
+   "phase": null,
+   "minAge": 3.5,
+   "maxAge": 6.5,
+   "minAgeText": "42 Months",
+   "maxAgeText": "78 Months",
+   "healthy": false,
+   "testing": [
+    "The adapted Kids in Transition to School Intervention",
+    "Standard school resources"
+   ],
+   "sponsor": "St. Jude Children's Research Hospital",
+   "countries": [
+    "United States"
+   ],
+   "usStates": [
+    "Tennessee"
+   ],
+   "sites": 1,
+   "url": "https://clinicaltrials.gov/study/NCT06367192",
+   "lastUpdate": "2026-04-24",
+   "plain": null
+  },
+  {
+   "nct": "NCT02098863",
+   "title": "Sickle Cell Clinical Research and Intervention Program",
+   "status": "RECRUITING",
+   "kind": "watch",
+   "kindLabel": "Watching and learning (no new treatment)",
+   "phase": null,
+   "minAge": null,
+   "maxAge": null,
+   "minAgeText": null,
+   "maxAgeText": null,
+   "healthy": false,
+   "testing": [],
+   "sponsor": "St. Jude Children's Research Hospital",
+   "countries": [
+    "United States"
+   ],
+   "usStates": [
+    "Illinois",
+    "Louisiana",
+    "North Carolina",
+    "Tennessee"
+   ],
+   "sites": 6,
+   "url": "https://clinicaltrials.gov/study/NCT02098863",
+   "lastUpdate": "2026-06-04",
+   "plain": null
+  },
+  {
+   "nct": "NCT02824471",
+   "title": "Sickle Cell Disease Biofluid Chip Technology (SCD BioChip)",
+   "status": "RECRUITING",
+   "kind": "watch",
+   "kindLabel": "Watching and learning (no new treatment)",
+   "phase": null,
+   "minAge": 12.0,
+   "maxAge": null,
+   "minAgeText": "12 Years",
+   "maxAgeText": null,
+   "healthy": true,
+   "testing": [
+    "SCD Group"
+   ],
+   "sponsor": "University Hospitals Cleveland Medical Center",
+   "countries": [
+    "United States"
+   ],
+   "usStates": [
+    "Ohio"
+   ],
+   "sites": 1,
+   "url": "https://clinicaltrials.gov/study/NCT02824471",
+   "lastUpdate": "2026-09-11",
+   "plain": null
+  },
+  {
+   "nct": "NCT06358638",
+   "title": "Sickle Cell Disease Transplant Using a Nonmyeloablative Approach for Patients With Anti-donor Red Cell Antibody",
+   "status": "RECRUITING",
+   "kind": "transplant",
+   "kindLabel": "Transplant",
+   "phase": "Phase 2",
+   "minAge": 2.0,
+   "maxAge": 25.0,
+   "minAgeText": "2 Years",
+   "maxAgeText": "25 Years",
+   "healthy": false,
+   "testing": [
+    "Daratumumab",
+    "Alemtuzumab",
+    "Sirolimus",
+    "Total Body Irradiation"
+   ],
+   "sponsor": "Children's National Research Institute",
+   "countries": [
+    "United States"
+   ],
+   "usStates": [
+    "District of Columbia"
+   ],
+   "sites": 1,
+   "url": "https://clinicaltrials.gov/study/NCT06358638",
+   "lastUpdate": "2025-09-26",
+   "plain": null
+  },
+  {
+   "nct": "NCT04416178",
+   "title": "Sickle Cell Disease and the Genomic and Gene Therapy Needs of Stakeholders",
+   "status": "RECRUITING",
+   "kind": "watch",
+   "kindLabel": "Watching and learning (no new treatment)",
+   "phase": null,
+   "minAge": 13.0,
+   "maxAge": null,
+   "minAgeText": "13 Years",
+   "maxAgeText": null,
+   "healthy": true,
+   "testing": [],
+   "sponsor": "St. Jude Children's Research Hospital",
+   "countries": [
+    "United States"
+   ],
+   "usStates": [
+    "Tennessee"
+   ],
+   "sites": 1,
+   "url": "https://clinicaltrials.gov/study/NCT04416178",
+   "lastUpdate": "2026-11-18",
+   "plain": null
+  },
+  {
+   "nct": "NCT05373771",
+   "title": "Sickle Cell Improvement: Enhancing Care in the Emergency Department",
+   "status": "RECRUITING",
+   "kind": "other",
+   "kindLabel": "Other study",
+   "phase": null,
+   "minAge": null,
+   "maxAge": 18.0,
+   "minAgeText": null,
+   "maxAgeText": "18 Years",
+   "healthy": false,
+   "testing": [
+    "Care pathway"
+   ],
+   "sponsor": "Medical College of Wisconsin",
+   "countries": [
+    "United States"
+   ],
+   "usStates": [
+    "Wisconsin"
+   ],
+   "sites": 1,
+   "url": "https://clinicaltrials.gov/study/NCT05373771",
+   "lastUpdate": "2023-08-14",
+   "plain": null
+  },
+  {
+   "nct": "NCT07064174",
+   "title": "Sickle Cell Kidney Biorepository",
+   "status": "RECRUITING",
+   "kind": "watch",
+   "kindLabel": "Watching and learning (no new treatment)",
+   "phase": null,
+   "minAge": 18.0,
+   "maxAge": 65.0,
+   "minAgeText": "18 Years",
+   "maxAgeText": "65 Years",
+   "healthy": true,
+   "testing": [],
+   "sponsor": "University of Texas Southwestern Medical Center",
+   "countries": [
+    "United States"
+   ],
+   "usStates": [
+    "Texas"
+   ],
+   "sites": 2,
+   "url": "https://clinicaltrials.gov/study/NCT07064174",
+   "lastUpdate": "2026-04-13",
+   "plain": null
+  },
+  {
+   "nct": "NCT07442851",
+   "title": "SickleFit Exercise and Nutrition Study",
+   "status": "RECRUITING",
+   "kind": "program",
+   "kindLabel": "App, class or program",
+   "phase": null,
+   "minAge": 35.0,
+   "maxAge": null,
+   "minAgeText": "35 Years",
+   "maxAgeText": null,
+   "healthy": false,
+   "testing": [
+    "SickleFit Exercise plus Nutrition"
+   ],
+   "sponsor": "Duke University",
+   "countries": [
+    "United States"
+   ],
+   "usStates": [
+    "North Carolina"
+   ],
+   "sites": 1,
+   "url": "https://clinicaltrials.gov/study/NCT07442851",
+   "lastUpdate": "2026-05-07",
+   "plain": null
+  },
+  {
+   "nct": "NCT07316478",
+   "title": "Stress Management and Mindfulness Intervention for Patients With Sickle Cell Disease",
+   "status": "RECRUITING",
+   "kind": "program",
+   "kindLabel": "App, class or program",
+   "phase": null,
+   "minAge": 18.0,
+   "maxAge": null,
+   "minAgeText": "18 Years",
+   "maxAgeText": null,
+   "healthy": false,
+   "testing": [
+    "Stress Management and Mindfulness Intervention for Patients with Sickle Cell Disease"
+   ],
+   "sponsor": "University of Pennsylvania",
+   "countries": [
+    "United States"
+   ],
+   "usStates": [
+    "Pennsylvania"
+   ],
+   "sites": 1,
+   "url": "https://clinicaltrials.gov/study/NCT07316478",
+   "lastUpdate": "2026-02-27",
+   "plain": null
+  },
+  {
+   "nct": "NCT03121001",
+   "title": "Study of HLA-Haploidentical Stem Cell Transplantation to Treat Clinically Aggressive Sickle Cell Disease",
+   "status": "RECRUITING",
+   "kind": "transplant",
+   "kindLabel": "Transplant",
+   "phase": "Phase 2",
+   "minAge": 16.0,
+   "maxAge": 60.0,
+   "minAgeText": "16 Years",
+   "maxAgeText": "60 Years",
+   "healthy": false,
+   "testing": [
+    "ATG",
+    "fludarabine",
+    "cyclophosphamide",
+    "Total body irradiation"
+   ],
+   "sponsor": "University of Illinois Chicago",
+   "countries": [
+    "United States"
+   ],
+   "usStates": [
+    "Illinois"
+   ],
+   "sites": 1,
+   "url": "https://clinicaltrials.gov/study/NCT03121001",
+   "lastUpdate": "2026-07-08",
+   "plain": null
+  },
+  {
+   "nct": "NCT01245179",
+   "title": "Study of Panobinostat (LBH589) in Patients With Sickle Cell Disease",
+   "status": "RECRUITING",
+   "kind": "medicine",
+   "kindLabel": "Testing a medicine",
+   "phase": "Phase 1",
+   "minAge": 18.0,
+   "maxAge": null,
+   "minAgeText": "18 Years",
+   "maxAgeText": null,
+   "healthy": false,
+   "testing": [
+    "panobinostat"
+   ],
+   "sponsor": "Abdullah Kutlar",
+   "countries": [
+    "United States"
+   ],
+   "usStates": [
+    "Georgia"
+   ],
+   "sites": 1,
+   "url": "https://clinicaltrials.gov/study/NCT01245179",
+   "lastUpdate": "2026-01-09",
+   "plain": null
+  },
+  {
+   "nct": "NCT07247188",
+   "title": "Study of a Single Dose of a 21-valent Pneumococcal Conjugate Vaccine in Children and Adolescents With Sickle Cell Disease",
+   "status": "RECRUITING",
+   "kind": "medicine",
+   "kindLabel": "Testing a medicine",
+   "phase": "Phase 3",
+   "minAge": 2.0,
+   "maxAge": 17.0,
+   "minAgeText": "2 Years",
+   "maxAgeText": "17 Years",
+   "healthy": false,
+   "testing": [
+    "PCV21",
+    "20vPCV"
+   ],
+   "sponsor": "Sanofi",
+   "countries": [
+    "Dominican Republic",
+    "United States"
+   ],
+   "usStates": [
+    "Georgia",
+    "Nebraska",
+    "New Jersey",
+    "Texas"
+   ],
+   "sites": 7,
+   "url": "https://clinicaltrials.gov/study/NCT07247188",
+   "lastUpdate": "2026-04-15",
+   "plain": "Tests a new pneumonia vaccine (PCV21) to see if it is safe and builds protection in kids and teens 2 to 17."
+  },
+  {
+   "nct": "NCT05799118",
+   "title": "Study of the Role of Genetic Modifiers in Hemoglobinopathies",
+   "status": "RECRUITING",
+   "kind": "watch",
+   "kindLabel": "Watching and learning (no new treatment)",
+   "phase": null,
+   "minAge": 2.0,
+   "maxAge": null,
+   "minAgeText": "2 Years",
+   "maxAgeText": null,
+   "healthy": false,
+   "testing": [
+    "GWAS"
+   ],
+   "sponsor": "Cyprus Institute of Neurology and Genetics",
+   "countries": [
+    "Angola",
+    "Argentina",
+    "Belgium",
+    "Brunei",
+    "Cyprus",
+    "Democratic Republic of the Congo",
+    "Denmark",
+    "Greece",
+    "Israel",
+    "Italy",
+    "Malaysia",
+    "Nigeria",
+    "Pakistan",
+    "Portugal",
+    "Spain",
+    "United States"
+   ],
+   "usStates": [
+    "Massachusetts"
+   ],
+   "sites": 26,
+   "url": "https://clinicaltrials.gov/study/NCT05799118",
+   "lastUpdate": "2024-03-20",
+   "plain": null
+  },
+  {
+   "nct": "NCT05904093",
+   "title": "Study to Evaluate the Safety and Tolerability of Escalating Doses of Fostamatinib in Subjects With Stable Sickle Cell Disease",
+   "status": "RECRUITING",
+   "kind": "medicine",
+   "kindLabel": "Testing a medicine",
+   "phase": "Phase 1",
+   "minAge": 18.0,
+   "maxAge": 65.0,
+   "minAgeText": "18 Years",
+   "maxAgeText": "65 Years",
+   "healthy": false,
+   "testing": [
+    "Fostamatinib"
+   ],
+   "sponsor": "National Heart, Lung, and Blood Institute (NHLBI)",
+   "countries": [
+    "United States"
+   ],
+   "usStates": [
+    "Maryland"
+   ],
+   "sites": 1,
+   "url": "https://clinicaltrials.gov/study/NCT05904093",
+   "lastUpdate": "2026-11-05",
+   "plain": null
+  },
+  {
+   "nct": "NCT06944067",
+   "title": "Study to Understand the Genetic Risk of Developing an Immune Response After Blood Transfusions Among Individuals With Sickle Cell Disease",
+   "status": "RECRUITING",
+   "kind": "watch",
+   "kindLabel": "Watching and learning (no new treatment)",
+   "phase": null,
+   "minAge": 2.0,
+   "maxAge": 99.0,
+   "minAgeText": "2 Years",
+   "maxAgeText": "99 Years",
+   "healthy": false,
+   "testing": [],
+   "sponsor": "National Human Genome Research Institute (NHGRI)",
+   "countries": [
+    "United States"
+   ],
+   "usStates": [
+    "Maryland"
+   ],
+   "sites": 1,
+   "url": "https://clinicaltrials.gov/study/NCT06944067",
+   "lastUpdate": "2026-09-11",
+   "plain": null
+  },
+  {
+   "nct": "NCT07369024",
+   "title": "Sub-dissociative Dose Ketamine in Treatment of Vaso-occlusive Pain Event in Children and Young Adults",
+   "status": "RECRUITING",
+   "kind": "medicine",
+   "kindLabel": "Testing a medicine",
+   "phase": "Phase 2",
+   "minAge": 5.0,
+   "maxAge": 20.0,
+   "minAgeText": "5 Years",
+   "maxAgeText": "20 Years",
+   "healthy": false,
+   "testing": [
+    "Sub-dissociative Ketamine Infusion",
+    "Normal Saline Placebo Infusion"
+   ],
+   "sponsor": "Mohsen Saidinejad",
+   "countries": [
+    "United States"
+   ],
+   "usStates": [
+    "California"
+   ],
+   "sites": 1,
+   "url": "https://clinicaltrials.gov/study/NCT07369024",
+   "lastUpdate": "2026-09-02",
+   "plain": "Tests a low dose of ketamine through an IV to ease pain crises in children and young adults 5 to 20."
+  },
+  {
+   "nct": "NCT03653338",
+   "title": "T-Cell Depleted Alternative Donor Bone Marrow Transplant for Sickle Cell Disease (SCD) and Other Anemias",
+   "status": "RECRUITING",
+   "kind": "transplant",
+   "kindLabel": "Transplant",
+   "phase": "Phase 1, Phase 2",
+   "minAge": 5.0,
+   "maxAge": 40.0,
+   "minAgeText": "5 Years",
+   "maxAgeText": "40 Years",
+   "healthy": false,
+   "testing": [
+    "CD3/CD19 depleted leukocytes",
+    "CD45RA depleted leukocytes",
+    "Hydroxyurea",
+    "Rituximab"
+   ],
+   "sponsor": "Paul Szabolcs",
+   "countries": [
+    "United States"
+   ],
+   "usStates": [
+    "Pennsylvania"
+   ],
+   "sites": 1,
+   "url": "https://clinicaltrials.gov/study/NCT03653338",
+   "lastUpdate": "2026-08-13",
+   "plain": "Tests a transplant from an unrelated or half-matched donor for people 5 to 40."
+  },
+  {
+   "nct": "NCT07175051",
+   "title": "Targeting the Pathophysiology of Sickle Cell-Related Kidney Disease Using the SGLT2 Inhibitors, Empagliflozin",
+   "status": "RECRUITING",
+   "kind": "medicine",
+   "kindLabel": "Testing a medicine",
+   "phase": "Phase 2",
+   "minAge": 18.0,
+   "maxAge": 60.0,
+   "minAgeText": "18 Years",
+   "maxAgeText": "60 Years",
+   "healthy": false,
+   "testing": [
+    "Empagliflozin (oral)"
+   ],
+   "sponsor": "University of Illinois Chicago",
+   "countries": [
+    "United States"
+   ],
+   "usStates": [
+    "Illinois"
+   ],
+   "sites": 1,
+   "url": "https://clinicaltrials.gov/study/NCT07175051",
+   "lastUpdate": "2026-05-19",
+   "plain": null
+  },
+  {
+   "nct": "NCT06975865",
+   "title": "The Efficacy and Safety of Rilzabrutinib in Participants Aged 10 to 65 Years With Sickle-cell Disease",
+   "status": "RECRUITING",
+   "kind": "medicine",
+   "kindLabel": "Testing a medicine",
+   "phase": "Phase 3",
+   "minAge": 10.0,
+   "maxAge": 65.0,
+   "minAgeText": "10 Years",
+   "maxAgeText": "65 Years",
+   "healthy": false,
+   "testing": [
+    "Rilzabrutinib",
+    "Placebo"
+   ],
+   "sponsor": "Sanofi",
+   "countries": [
+    "Belgium",
+    "Brazil",
+    "France",
+    "Germany",
+    "Greece",
+    "Israel",
+    "Italy",
+    "Netherlands",
+    "Oman",
+    "Saudi Arabia",
+    "Spain",
+    "Turkey (Türkiye)",
+    "United Kingdom",
+    "United States"
+   ],
+   "usStates": [
+    "Alabama",
+    "Arizona",
+    "California",
+    "District of Columbia",
+    "Florida",
+    "Illinois",
+    "Indiana",
+    "Louisiana",
+    "Maryland",
+    "Michigan",
+    "Mississippi",
+    "New York",
+    "Oregon",
+    "South Carolina",
+    "Tennessee",
+    "Texas",
+    "Virginia"
+   ],
+   "sites": 64,
+   "url": "https://clinicaltrials.gov/study/NCT06975865",
+   "lastUpdate": "2026-11-18",
+   "plain": "Tests rilzabrutinib, a pill that calms inflammation, to see if it lowers pain crises in people 10 to 65."
+  },
+  {
+   "nct": "NCT05640271",
+   "title": "Tocilizumab for Acute Chest Syndrome",
+   "status": "RECRUITING",
+   "kind": "medicine",
+   "kindLabel": "Testing a medicine",
+   "phase": "Phase 2",
+   "minAge": 12.0,
+   "maxAge": null,
+   "minAgeText": "12 Years",
+   "maxAgeText": null,
+   "healthy": false,
+   "testing": [
+    "Tocilizumab"
+   ],
+   "sponsor": "University of Chicago",
+   "countries": [
+    "United States"
+   ],
+   "usStates": [
+    "Illinois"
+   ],
+   "sites": 1,
+   "url": "https://clinicaltrials.gov/study/NCT05640271",
+   "lastUpdate": "2026-09-15",
+   "plain": "Tests a low dose of tocilizumab to treat acute chest syndrome, ages 12 and up."
+  },
+  {
+   "nct": "NCT07090668",
+   "title": "Trans-auricular Nerve Stimulation as an Innovative Approach to the Treatment of Pain in Pediatric Patients Suffering From Sickle Cell Disease",
+   "status": "RECRUITING",
+   "kind": "device",
+   "kindLabel": "Testing a device",
+   "phase": null,
+   "minAge": 7.0,
+   "maxAge": 18.0,
+   "minAgeText": "7 Years",
+   "maxAgeText": "18 Years",
+   "healthy": false,
+   "testing": [
+    "tAN device"
+   ],
+   "sponsor": "Emory University",
+   "countries": [
+    "United States"
+   ],
+   "usStates": [
+    "Georgia"
+   ],
+   "sites": 1,
+   "url": "https://clinicaltrials.gov/study/NCT07090668",
+   "lastUpdate": "2026-10-22",
+   "plain": "Tests a small ear device that gently stimulates nerves to ease pain in kids 7 to 18."
+  },
+  {
+   "nct": "NCT04774536",
+   "title": "Transplantation of Clustered Regularly Interspaced Short Palindromic Repeats Modified Hematopoietic Progenitor Stem Cells (CRISPR_SCD001) in Patients With Severe Sickle Cell Disease",
+   "status": "RECRUITING",
+   "kind": "gene",
+   "kindLabel": "Gene therapy",
+   "phase": "Phase 1, Phase 2",
+   "minAge": 12.0,
+   "maxAge": 35.0,
+   "minAgeText": "12 Years",
+   "maxAgeText": "35 Years",
+   "healthy": false,
+   "testing": [
+    "CRISPR_SCD001"
+   ],
+   "sponsor": "Mark Walters, MD",
+   "countries": [
+    "United States"
+   ],
+   "usStates": [
+    "California"
+   ],
+   "sites": 3,
+   "url": "https://clinicaltrials.gov/study/NCT04774536",
+   "lastUpdate": "2026-10-20",
+   "plain": "Tests CRISPR editing that fixes the sickle gene in your own stem cells, ages 12 to 35."
+  },
+  {
+   "nct": "NCT07356050",
+   "title": "Verifying Antibodies After Live Immunization Delivery (VALID): A Study of Measles Vaccine Immunogenicity in Children With Sickle Cell Disease",
+   "status": "RECRUITING",
+   "kind": "watch",
+   "kindLabel": "Watching and learning (no new treatment)",
+   "phase": null,
+   "minAge": 0.5,
+   "maxAge": 6.0,
+   "minAgeText": "6 Months",
+   "maxAgeText": "6 Years",
+   "healthy": false,
+   "testing": [],
+   "sponsor": "Children's Hospital Medical Center, Cincinnati",
+   "countries": [
+    "Ghana",
+    "Tanzania",
+    "United States"
+   ],
+   "usStates": [
+    "Ohio"
+   ],
+   "sites": 3,
+   "url": "https://clinicaltrials.gov/study/NCT07356050",
+   "lastUpdate": "2026-01-21",
+   "plain": "Checks whether babies and young kids with sickle cell get good protection from the measles vaccine."
+  },
+  {
+   "nct": "NCT06773715",
+   "title": "Virtual Reality As Adjunct Therapy for Vaso-Occlusive Pain",
+   "status": "RECRUITING",
+   "kind": "program",
+   "kindLabel": "App, class or program",
+   "phase": null,
+   "minAge": 8.0,
+   "maxAge": 21.0,
+   "minAgeText": "8 Years",
+   "maxAgeText": "21 Years",
+   "healthy": false,
+   "testing": [
+    "KindVR Aqua Program"
+   ],
+   "sponsor": "Louisiana State University Health Sciences Center in New Orleans",
+   "countries": [
+    "United States"
+   ],
+   "usStates": [
+    "Louisiana"
+   ],
+   "sites": 1,
+   "url": "https://clinicaltrials.gov/study/NCT06773715",
+   "lastUpdate": "2025-01-14",
+   "plain": "Tests whether a virtual reality headset helps with pain during a pain crisis, ages 8 to 21."
+  },
+  {
+   "nct": "NCT06184126",
+   "title": "Virtual Reality Devices as an Adjunct to Usual Care for Patients With Sickle Cell Disease Experiencing Vaso-Occlusive Crises",
+   "status": "RECRUITING",
+   "kind": "device",
+   "kindLabel": "Testing a device",
+   "phase": null,
+   "minAge": 18.0,
+   "maxAge": null,
+   "minAgeText": "18 Years",
+   "maxAgeText": null,
+   "healthy": false,
+   "testing": [
+    "Virtual Reality Headset and Hand-Held Controllers",
+    "Blindfolding and Noise Cancelling"
+   ],
+   "sponsor": "University of Maryland, Baltimore",
+   "countries": [
+    "United States"
+   ],
+   "usStates": [
+    "Maryland"
+   ],
+   "sites": 1,
+   "url": "https://clinicaltrials.gov/study/NCT06184126",
+   "lastUpdate": "2025-12-24",
+   "plain": null
+  },
+  {
+   "nct": "NCT07674277",
+   "title": "Virtual Reality for SCD VOC",
+   "status": "RECRUITING",
+   "kind": "device",
+   "kindLabel": "Testing a device",
+   "phase": null,
+   "minAge": 18.0,
+   "maxAge": 88.0,
+   "minAgeText": "18 Years",
+   "maxAgeText": "88 Years",
+   "healthy": false,
+   "testing": [
+    "Sham 2D Headset Control",
+    "Passive Immersive 3D Virtual Reality",
+    "Active Immersive Interactive 3D Virtual Reality"
+   ],
+   "sponsor": "University of Maryland, Baltimore",
+   "countries": [
+    "United States"
+   ],
+   "usStates": [
+    "Maryland"
+   ],
+   "sites": 1,
+   "url": "https://clinicaltrials.gov/study/NCT07674277",
+   "lastUpdate": "2026-10-16",
+   "plain": null
+  },
+  {
+   "nct": "NCT07222475",
+   "title": "Writing Relaxing Beats in Adolescents Who Have Sickle Cell Disease",
+   "status": "RECRUITING",
+   "kind": "program",
+   "kindLabel": "App, class or program",
+   "phase": null,
+   "minAge": 11.0,
+   "maxAge": 18.0,
+   "minAgeText": "11 Years",
+   "maxAgeText": "18 Years",
+   "healthy": false,
+   "testing": [
+    "Songwriting intervention (active music therapy)"
+   ],
+   "sponsor": "Mayo Clinic",
+   "countries": [
+    "United States"
+   ],
+   "usStates": [
+    "Minnesota"
+   ],
+   "sites": 1,
+   "url": "https://clinicaltrials.gov/study/NCT07222475",
+   "lastUpdate": "2026-02-23",
+   "plain": "Tests whether writing songs helps teens 11 to 18 feel less anxious."
+  },
+  {
+   "nct": "NCT06260891",
+   "title": "Zinc Supplementation in Sickle Cell Disease: A Precursor to the Think Zinc for Bones Trial",
+   "status": "RECRUITING",
+   "kind": "medicine",
+   "kindLabel": "Testing a medicine",
+   "phase": "Phase 2",
+   "minAge": 15.0,
+   "maxAge": 40.0,
+   "minAgeText": "15 Years",
+   "maxAgeText": "40 Years",
+   "healthy": false,
+   "testing": [
+    "25 mg/day zinc",
+    "40 mg/day zinc"
+   ],
+   "sponsor": "University of California, San Francisco",
+   "countries": [
+    "United States"
+   ],
+   "usStates": [
+    "California",
+    "North Carolina",
+    "Ohio",
+    "Pennsylvania",
+    "Texas"
+   ],
+   "sites": 6,
+   "url": "https://clinicaltrials.gov/study/NCT06260891",
+   "lastUpdate": "2026-03-13",
+   "plain": null
+  },
+  {
+   "nct": "NCT05953584",
+   "title": "A Phase 2 Open-label Study to Evaluate the Activity of Etavopivat on Transcranial Doppler Velocities in Pediatric Patients With Sickle Cell Disease Who Are at Increased Risk for Primary Stroke",
+   "status": "RECRUITING",
+   "kind": "medicine",
+   "kindLabel": "Testing a medicine",
+   "phase": "Phase 2",
+   "minAge": 12.0,
+   "maxAge": 16.0,
+   "minAgeText": "12 Years",
+   "maxAgeText": "16 Years",
+   "healthy": false,
+   "testing": [
+    "Etavopivat",
+    "Hydroxyurea"
+   ],
+   "sponsor": "Forma Therapeutics, Inc.",
+   "countries": [
+    "India",
+    "Nigeria",
+    "Oman"
+   ],
+   "usStates": [],
+   "sites": 9,
+   "url": "https://clinicaltrials.gov/study/NCT05953584",
+   "lastUpdate": "2026-09-10",
+   "plain": "Tests whether etavopivat lowers high blood-flow speeds in the brain (from the TCD scan) in kids 12 to 16, to help prevent stroke."
+  },
+  {
+   "nct": "NCT06198712",
+   "title": "A Study to Evaluate the Pharmacokinetics and Safety of Etavopivat in Pediatric Patients With Sickle Cell Disease",
+   "status": "RECRUITING",
+   "kind": "medicine",
+   "kindLabel": "Testing a medicine",
+   "phase": "Phase 2",
+   "minAge": 0.5,
+   "maxAge": 18.0,
+   "minAgeText": "6 Months",
+   "maxAgeText": "18 Years",
+   "healthy": false,
+   "testing": [
+    "Etavopivat"
+   ],
+   "sponsor": "Forma Therapeutics, Inc.",
+   "countries": [
+    "Canada",
+    "France",
+    "Kenya",
+    "Lebanon",
+    "Nigeria",
+    "Turkey (Türkiye)",
+    "United Kingdom"
+   ],
+   "usStates": [],
+   "sites": 18,
+   "url": "https://clinicaltrials.gov/study/NCT06198712",
+   "lastUpdate": "2026-09-18",
+   "plain": "Checks how children's bodies handle etavopivat and whether it is safe for kids as young as 6 months."
+  },
+  {
+   "nct": "NCT06650813",
+   "title": "Adapting the FACETS Program to Sickle Cell Disease",
+   "status": "RECRUITING",
+   "kind": "program",
+   "kindLabel": "App, class or program",
+   "phase": null,
+   "minAge": 18.0,
+   "maxAge": null,
+   "minAgeText": "18 Years",
+   "maxAgeText": null,
+   "healthy": false,
+   "testing": [
+    "Drépa-FACETS Program"
+   ],
+   "sponsor": "Versailles Hospital",
+   "countries": [
+    "France"
+   ],
+   "usStates": [],
+   "sites": 2,
+   "url": "https://clinicaltrials.gov/study/NCT06650813",
+   "lastUpdate": "2025-08-19",
+   "plain": null
+  },
+  {
+   "nct": "NCT05414045",
+   "title": "Autologous Testicular Tissue Transplantation",
+   "status": "RECRUITING",
+   "kind": "transplant",
+   "kindLabel": "Transplant",
+   "phase": null,
+   "minAge": 18.0,
+   "maxAge": 50.0,
+   "minAgeText": "18 Years",
+   "maxAgeText": "50 Years",
+   "healthy": false,
+   "testing": [
+    "Autologous testicular tissue transplantation of prepubertal frozen testicular tissue"
+   ],
+   "sponsor": "Universitair Ziekenhuis Brussel",
+   "countries": [
+    "Belgium"
+   ],
+   "usStates": [],
+   "sites": 1,
+   "url": "https://clinicaltrials.gov/study/NCT05414045",
+   "lastUpdate": "2026-04-23",
+   "plain": null
+  },
+  {
+   "nct": "NCT06565026",
+   "title": "CS-206 in Patients With Sickle Cell Disease",
+   "status": "RECRUITING",
+   "kind": "other",
+   "kindLabel": "Other study",
+   "phase": "EARLY Phase 1",
+   "minAge": 12.0,
+   "maxAge": 35.0,
+   "minAgeText": "12 Years",
+   "maxAgeText": "35 Years",
+   "healthy": false,
+   "testing": [
+    "CS-206"
+   ],
+   "sponsor": "CorrectSequence Therapeutics Co., Ltd",
+   "countries": [
+    "China"
+   ],
+   "usStates": [],
+   "sites": 1,
+   "url": "https://clinicaltrials.gov/study/NCT06565026",
+   "lastUpdate": "2026-02-10",
+   "plain": null
+  },
+  {
+   "nct": "NCT07001631",
+   "title": "Effect of EMDR for Reduction of Pain Interference in Children With Sickle Cell Disease",
+   "status": "RECRUITING",
+   "kind": "other",
+   "kindLabel": "Other study",
+   "phase": null,
+   "minAge": 6.0,
+   "maxAge": 18.0,
+   "minAgeText": "6 Years",
+   "maxAgeText": "18 Years",
+   "healthy": false,
+   "testing": [
+    "Eye Movement Desensitization and Reprocessing (EMDR)"
+   ],
+   "sponsor": "Academisch Medisch Centrum - Universiteit van Amsterdam (AMC-UvA)",
+   "countries": [
+    "Netherlands"
+   ],
+   "usStates": [],
+   "sites": 1,
+   "url": "https://clinicaltrials.gov/study/NCT07001631",
+   "lastUpdate": "2025-06-03",
+   "plain": "Tests EMDR, a kind of therapy that helps with scary memories, to lower how much pain gets in the way for kids 6 to 18."
+  },
+  {
+   "nct": "NCT07432867",
+   "title": "Efficacy Safety Study of Gene Therapy for Sickle Cell DiseaseSCD Using Autologous CD34+ Cells Transduced ex Vivo, Carrying a Corrected Globin Gene and a Silencing RNA.",
+   "status": "RECRUITING",
+   "kind": "gene",
+   "kindLabel": "Gene therapy",
+   "phase": "Phase 1, Phase 2",
+   "minAge": 12.0,
+   "maxAge": 35.0,
+   "minAgeText": "12 Years",
+   "maxAgeText": "35 Years",
+   "healthy": false,
+   "testing": [
+    "DREAM01 drug product",
+    "anti-inflammatory therapy"
+   ],
+   "sponsor": "Assistance Publique - Hôpitaux de Paris",
+   "countries": [
+    "France"
+   ],
+   "usStates": [],
+   "sites": 1,
+   "url": "https://clinicaltrials.gov/study/NCT07432867",
+   "lastUpdate": "2026-03-04",
+   "plain": "Tests DREAM01, a gene therapy using your own stem cells, ages 12 to 35."
+  },
+  {
+   "nct": "NCT07282210",
+   "title": "Efficacy and Safety of SIL-8301 for Control of Hemolysis in a Uniform Sickle Cell Disease Endotype",
+   "status": "RECRUITING",
+   "kind": "medicine",
+   "kindLabel": "Testing a medicine",
+   "phase": "Phase 2",
+   "minAge": 16.0,
+   "maxAge": 50.0,
+   "minAgeText": "16 Years",
+   "maxAgeText": "50 Years",
+   "healthy": false,
+   "testing": [
+    "Senicapoc",
+    "Placebo"
+   ],
+   "sponsor": "Biossil Inc.",
+   "countries": [
+    "Canada"
+   ],
+   "usStates": [],
+   "sites": 4,
+   "url": "https://clinicaltrials.gov/study/NCT07282210",
+   "lastUpdate": "2026-11-02",
+   "plain": "Tests senicapoc, a pill that may stop red cells from breaking apart, in people 16 to 50."
+  },
+  {
+   "nct": "NCT06818266",
+   "title": "Efficacy and Safety of Tocilizumab for Acute Chest Syndrome Treatment in Patients With Sickle Cell Disease",
+   "status": "RECRUITING",
+   "kind": "medicine",
+   "kindLabel": "Testing a medicine",
+   "phase": "Phase 3",
+   "minAge": 2.0,
+   "maxAge": null,
+   "minAgeText": "2 Years",
+   "maxAgeText": null,
+   "healthy": false,
+   "testing": [
+    "Tocilizumab (RoActemra®, 20 mg/mL).",
+    "Placebo (NaCl 0.9%)"
+   ],
+   "sponsor": "Assistance Publique - Hôpitaux de Paris",
+   "countries": [
+    "France"
+   ],
+   "usStates": [],
+   "sites": 1,
+   "url": "https://clinicaltrials.gov/study/NCT06818266",
+   "lastUpdate": "2026-06-24",
+   "plain": "Tests whether one dose of tocilizumab helps acute chest syndrome get better faster, ages 2 and up."
+  },
+  {
+   "nct": "NCT07188766",
+   "title": "Efficacy of Liberal Versus Restricted IV Fluid Approach in the Management of Sickle Cell Vaso-Occlusive Crisis",
+   "status": "RECRUITING",
+   "kind": "medicine",
+   "kindLabel": "Testing a medicine",
+   "phase": null,
+   "minAge": 18.0,
+   "maxAge": 60.0,
+   "minAgeText": "18 Years",
+   "maxAgeText": "60 Years",
+   "healthy": false,
+   "testing": [
+    "Sodium Chloride (NaCl) 0.9 %",
+    "Sodium Chloride (NaCl) 0.9 %"
+   ],
+   "sponsor": "Imam Abdulrahman Bin Faisal University",
+   "countries": [
+    "Saudi Arabia"
+   ],
+   "usStates": [],
+   "sites": 5,
+   "url": "https://clinicaltrials.gov/study/NCT07188766",
+   "lastUpdate": "2026-11-10",
+   "plain": null
+  },
+  {
+   "nct": "NCT07610239",
+   "title": "Evaluation of an Information Management and Communication System for Population-wide Point-of-Care Infant Sickle Cell Disease Screening",
+   "status": "RECRUITING",
+   "kind": "other",
+   "kindLabel": "Other study",
+   "phase": null,
+   "minAge": 18.0,
+   "maxAge": null,
+   "minAgeText": "18 Years",
+   "maxAgeText": null,
+   "healthy": true,
+   "testing": [
+    "Sickle Cell Disease screening information management and communication system"
+   ],
+   "sponsor": "Makerere University",
+   "countries": [
+    "Uganda"
+   ],
+   "usStates": [],
+   "sites": 1,
+   "url": "https://clinicaltrials.gov/study/NCT07610239",
+   "lastUpdate": "2026-05-27",
+   "plain": null
+  },
+  {
+   "nct": "NCT06619197",
+   "title": "Exploratory Study on Global Reflexology in Sickle Cell Disease",
+   "status": "RECRUITING",
+   "kind": "other",
+   "kindLabel": "Other study",
+   "phase": null,
+   "minAge": null,
+   "maxAge": 18.0,
+   "minAgeText": null,
+   "maxAgeText": "18 Years",
+   "healthy": false,
+   "testing": [
+    "Global reflexology"
+   ],
+   "sponsor": "Hospices Civils de Lyon",
+   "countries": [
+    "France"
+   ],
+   "usStates": [],
+   "sites": 1,
+   "url": "https://clinicaltrials.gov/study/NCT06619197",
+   "lastUpdate": "2025-07-08",
+   "plain": null
+  },
+  {
+   "nct": "NCT06031714",
+   "title": "Fetal Cell Receptors Repertoire",
+   "status": "RECRUITING",
+   "kind": "other",
+   "kindLabel": "Other study",
+   "phase": null,
+   "minAge": null,
+   "maxAge": null,
+   "minAgeText": null,
+   "maxAgeText": null,
+   "healthy": true,
+   "testing": [
+    "Saliva sampling",
+    "Blood sampling",
+    "Interviews",
+    "Clinical examination"
+   ],
+   "sponsor": "Assistance Publique - Hôpitaux de Paris",
+   "countries": [
+    "France"
+   ],
+   "usStates": [],
+   "sites": 1,
+   "url": "https://clinicaltrials.gov/study/NCT06031714",
+   "lastUpdate": "2025-09-12",
+   "plain": null
+  },
+  {
+   "nct": "NCT07800247",
+   "title": "Hemoglobin Disorders in Egypt: Sickle Cell Disease Ain Shams University Institutional Registry",
+   "status": "RECRUITING",
+   "kind": "watch",
+   "kindLabel": "Watching and learning (no new treatment)",
+   "phase": null,
+   "minAge": null,
+   "maxAge": 39.0,
+   "minAgeText": null,
+   "maxAgeText": "39 Years",
+   "healthy": false,
+   "testing": [],
+   "sponsor": "Ain Shams University",
+   "countries": [
+    "Egypt"
+   ],
+   "usStates": [],
+   "sites": 2,
+   "url": "https://clinicaltrials.gov/study/NCT07800247",
+   "lastUpdate": "2026-09-02",
+   "plain": null
+  },
+  {
+   "nct": "NCT07543289",
+   "title": "Hydroxyurea Optimisation in Sickle Cell Disease",
+   "status": "RECRUITING",
+   "kind": "watch",
+   "kindLabel": "Watching and learning (no new treatment)",
+   "phase": null,
+   "minAge": 18.0,
+   "maxAge": null,
+   "minAgeText": "18 Years",
+   "maxAgeText": null,
+   "healthy": false,
+   "testing": [
+    "Hydroxyurea (HU)"
+   ],
+   "sponsor": "Ochuko Orherhe",
+   "countries": [
+    "Nigeria"
+   ],
+   "usStates": [],
+   "sites": 1,
+   "url": "https://clinicaltrials.gov/study/NCT07543289",
+   "lastUpdate": "2026-10-27",
+   "plain": null
+  },
+  {
+   "nct": "NCT07001189",
+   "title": "Impact of Regional Anesthesia on Inflammatory Mechanisms During Vaso-occlusive Crisis in Sickle Cell Patients",
+   "status": "RECRUITING",
+   "kind": "watch",
+   "kindLabel": "Watching and learning (no new treatment)",
+   "phase": null,
+   "minAge": 18.0,
+   "maxAge": null,
+   "minAgeText": "18 Years",
+   "maxAgeText": null,
+   "healthy": false,
+   "testing": [],
+   "sponsor": "Centre Hospitalier Universitaire de la Guadeloupe",
+   "countries": [
+    "Guadeloupe"
+   ],
+   "usStates": [],
+   "sites": 1,
+   "url": "https://clinicaltrials.gov/study/NCT07001189",
+   "lastUpdate": "2025-06-03",
+   "plain": null
+  },
+  {
+   "nct": "NCT07488520",
+   "title": "Integrating Point of Care Testing (POCT) For Newborn Screening and Early Care for Sickle Cell Disease in Yopougon, Côte d'Ivoire",
+   "status": "RECRUITING",
+   "kind": "other",
+   "kindLabel": "Other study",
+   "phase": "Phase 4",
+   "minAge": 0.0,
+   "maxAge": 0.5,
+   "minAgeText": "0 Months",
+   "maxAgeText": "6 Months",
+   "healthy": false,
+   "testing": [
+    "Gazelle-Multispectral point of care testing for newborn sickle cell disease screening; and initiation of early comprehensive clinical interventions"
+   ],
+   "sponsor": "Swiss Tropical & Public Health Institute",
+   "countries": [
+    "Côte d’Ivoire"
+   ],
+   "usStates": [],
+   "sites": 2,
+   "url": "https://clinicaltrials.gov/study/NCT07488520",
+   "lastUpdate": "2026-10-05",
+   "plain": null
+  },
+  {
+   "nct": "NCT06399107",
+   "title": "Investigation Into the Use of BAH243 Lentiviral Vector for Gene Therapy in Treating Sickle Cell Disease",
+   "status": "RECRUITING",
+   "kind": "gene",
+   "kindLabel": "Gene therapy",
+   "phase": "Phase 1, Phase 2",
+   "minAge": 2.0,
+   "maxAge": 90.0,
+   "minAgeText": "2 Years",
+   "maxAgeText": "90 Years",
+   "healthy": false,
+   "testing": [
+    "Drug Product is administered by IV infusion following myeloablative conditioning with busulfan"
+   ],
+   "sponsor": "Essen Biotech",
+   "countries": [
+    "China"
+   ],
+   "usStates": [],
+   "sites": 1,
+   "url": "https://clinicaltrials.gov/study/NCT06399107",
+   "lastUpdate": "2024-11-05",
+   "plain": "Tests a gene therapy that uses a lab-made virus to carry a helpful gene into your own stem cells, ages 2 to 90."
+  },
+  {
+   "nct": "NCT07274254",
+   "title": "Lidocaine for Opioid Sparing in Vaso-occlusive Crisis of Sickle Cell Disease",
+   "status": "RECRUITING",
+   "kind": "medicine",
+   "kindLabel": "Testing a medicine",
+   "phase": "Phase 3",
+   "minAge": 18.0,
+   "maxAge": null,
+   "minAgeText": "18 Years",
+   "maxAgeText": null,
+   "healthy": false,
+   "testing": [
+    "Lidocain",
+    "Placebo",
+    "Standard of care"
+   ],
+   "sponsor": "Nantes University Hospital",
+   "countries": [
+    "France",
+    "Guadeloupe"
+   ],
+   "usStates": [],
+   "sites": 12,
+   "url": "https://clinicaltrials.gov/study/NCT07274254",
+   "lastUpdate": "2026-09-09",
+   "plain": null
+  },
+  {
+   "nct": "NCT06823219",
+   "title": "Long-term Endurance Training in Sickle Cell Disease Patients: Impact on Clinical Profile, Physical Fitness, and Quality of Life.",
+   "status": "RECRUITING",
+   "kind": "program",
+   "kindLabel": "App, class or program",
+   "phase": null,
+   "minAge": 15.0,
+   "maxAge": null,
+   "minAgeText": "15 Years",
+   "maxAgeText": null,
+   "healthy": false,
+   "testing": [
+    "endurance training program"
+   ],
+   "sponsor": "Assistance Publique - Hôpitaux de Paris",
+   "countries": [
+    "France"
+   ],
+   "usStates": [],
+   "sites": 1,
+   "url": "https://clinicaltrials.gov/study/NCT06823219",
+   "lastUpdate": "2025-02-12",
+   "plain": null
+  },
+  {
+   "nct": "NCT07000747",
+   "title": "Molecular and Cellular Basis of Severe Forms of Dengue in Sickle Cell Patients",
+   "status": "RECRUITING",
+   "kind": "watch",
+   "kindLabel": "Watching and learning (no new treatment)",
+   "phase": null,
+   "minAge": 6.0,
+   "maxAge": 25.0,
+   "minAgeText": "6 Years",
+   "maxAgeText": "25 Years",
+   "healthy": true,
+   "testing": [],
+   "sponsor": "Centre Hospitalier Universitaire de la Guadeloupe",
+   "countries": [
+    "Guadeloupe"
+   ],
+   "usStates": [],
+   "sites": 1,
+   "url": "https://clinicaltrials.gov/study/NCT07000747",
+   "lastUpdate": "2025-06-03",
+   "plain": null
+  },
+  {
+   "nct": "NCT07246265",
+   "title": "Morphine Clearance and Glomerular Filtration in Sickle Cell Patients in Crisis in Intensive Care",
+   "status": "RECRUITING",
+   "kind": "medicine",
+   "kindLabel": "Testing a medicine",
+   "phase": null,
+   "minAge": 18.0,
+   "maxAge": null,
+   "minAgeText": "18 Years",
+   "maxAgeText": null,
+   "healthy": false,
+   "testing": [
+    "Injection of iohexol for glomerular filtration rate (GFR) measurement"
+   ],
+   "sponsor": "University Hospital, Tours",
+   "countries": [
+    "France"
+   ],
+   "usStates": [],
+   "sites": 6,
+   "url": "https://clinicaltrials.gov/study/NCT07246265",
+   "lastUpdate": "2026-03-10",
+   "plain": null
+  },
+  {
+   "nct": "NCT07488091",
+   "title": "Multi Disciplinary Sickle Cell Disease Obstetrics Care Program in Ghana",
+   "status": "RECRUITING",
+   "kind": "program",
+   "kindLabel": "App, class or program",
+   "phase": null,
+   "minAge": 18.0,
+   "maxAge": 45.0,
+   "minAgeText": "18 Years",
+   "maxAgeText": "45 Years",
+   "healthy": false,
+   "testing": [
+    "Multidisciplinary sickle cell disease (SCD) obstetrics program for women with SCD in a non-academic hospital."
+   ],
+   "sponsor": "University of Ghana Medical School",
+   "countries": [
+    "Ghana"
+   ],
+   "usStates": [],
+   "sites": 1,
+   "url": "https://clinicaltrials.gov/study/NCT07488091",
+   "lastUpdate": "2026-03-23",
+   "plain": null
+  },
+  {
+   "nct": "NCT03214354",
+   "title": "Nonmyeloablative Stem Cell Transplant in Children With Sickle Cell Disease and a Major ABO-Incompatible Matched Sibling Donor",
+   "status": "RECRUITING",
+   "kind": "transplant",
+   "kindLabel": "Transplant",
+   "phase": "Phase 2",
+   "minAge": 1.0,
+   "maxAge": 19.0,
+   "minAgeText": "1 Year",
+   "maxAgeText": "19 Years",
+   "healthy": false,
+   "testing": [
+    "Alemtuzumab",
+    "Total Body Irradiation",
+    "Sirolimus"
+   ],
+   "sponsor": "University of Calgary",
+   "countries": [
+    "Canada"
+   ],
+   "usStates": [],
+   "sites": 1,
+   "url": "https://clinicaltrials.gov/study/NCT03214354",
+   "lastUpdate": "2026-05-01",
+   "plain": "Tests a gentler transplant for kids 1 to 19 whose matched donor has a different blood type."
+  },
+  {
+   "nct": "NCT06761560",
+   "title": "Optimizing Hydroxyurea Dosage With Pharmakokinetic in Patients Suffering of Moderate to Severe Sickle Cell Anemia",
+   "status": "RECRUITING",
+   "kind": "other",
+   "kindLabel": "Other study",
+   "phase": "Phase 2, Phase 3",
+   "minAge": 0.5,
+   "maxAge": 18.0,
+   "minAgeText": "6 Months",
+   "maxAgeText": "18 Years",
+   "healthy": false,
+   "testing": [
+    "Pharmacokinetic based dosage change",
+    "Pharmacokinetic dosing"
+   ],
+   "sponsor": "Yves Pastore",
+   "countries": [
+    "Canada"
+   ],
+   "usStates": [],
+   "sites": 1,
+   "url": "https://clinicaltrials.gov/study/NCT06761560",
+   "lastUpdate": "2026-08-21",
+   "plain": null
+  },
+  {
+   "nct": "NCT07708714",
+   "title": "Optimizing Hydroxyurea Therapy in Children With Sickle Cell Anemia In Malaria Endemic Areas: The NOHARM Maximum Tolerated Dose (MTD) Study",
+   "status": "RECRUITING",
+   "kind": "medicine",
+   "kindLabel": "Testing a medicine",
+   "phase": "Phase 1, Phase 2",
+   "minAge": 11.0,
+   "maxAge": 18.0,
+   "minAgeText": "11 Years",
+   "maxAgeText": "18 Years",
+   "healthy": false,
+   "testing": [
+    "hydroxycarbamide"
+   ],
+   "sponsor": "Children's Hospital Medical Center, Cincinnati",
+   "countries": [
+    "Uganda"
+   ],
+   "usStates": [],
+   "sites": 1,
+   "url": "https://clinicaltrials.gov/study/NCT07708714",
+   "lastUpdate": "2026-07-16",
+   "plain": null
+  },
+  {
+   "nct": "NCT06923111",
+   "title": "PASS of Xromi Comparing Safety and Effectiveness in Children Under 2 Years With Sickle Cell Disease [PRECISE PASS]",
+   "status": "RECRUITING",
+   "kind": "watch",
+   "kindLabel": "Watching and learning (no new treatment)",
+   "phase": null,
+   "minAge": 0.75,
+   "maxAge": 1.92,
+   "minAgeText": "9 Months",
+   "maxAgeText": "23 Months",
+   "healthy": false,
+   "testing": [
+    "Xromi"
+   ],
+   "sponsor": "Nova Laboratories Limited",
+   "countries": [
+    "Germany",
+    "United Kingdom"
+   ],
+   "usStates": [],
+   "sites": 12,
+   "url": "https://clinicaltrials.gov/study/NCT06923111",
+   "lastUpdate": "2026-03-05",
+   "plain": null
+  },
+  {
+   "nct": "NCT03786549",
+   "title": "Pediatric -Adult Care Transition Program of Patients With Sickle Cell Disease",
+   "status": "RECRUITING",
+   "kind": "program",
+   "kindLabel": "App, class or program",
+   "phase": null,
+   "minAge": 16.0,
+   "maxAge": 17.0,
+   "minAgeText": "16 Years",
+   "maxAgeText": "17 Years",
+   "healthy": false,
+   "testing": [
+    "pediatric-adult care transition program"
+   ],
+   "sponsor": "Hospices Civils de Lyon",
+   "countries": [
+    "France"
+   ],
+   "usStates": [],
+   "sites": 8,
+   "url": "https://clinicaltrials.gov/study/NCT03786549",
+   "lastUpdate": "2024-06-21",
+   "plain": null
+  },
+  {
+   "nct": "NCT06578507",
+   "title": "Pharmacokinetics, Efficacy and Safety of Twice Daily Dosing Regimen of Hydroxycarbamide Dispersible Tablets in Children With Sickle Cell Disease",
+   "status": "RECRUITING",
+   "kind": "medicine",
+   "kindLabel": "Testing a medicine",
+   "phase": "Phase 2",
+   "minAge": 0.75,
+   "maxAge": 11.0,
+   "minAgeText": "9 Months",
+   "maxAgeText": "11 Years",
+   "healthy": false,
+   "testing": [
+    "Hydroxycarbamid"
+   ],
+   "sponsor": "Theravia",
+   "countries": [
+    "France",
+    "French Guiana"
+   ],
+   "usStates": [],
+   "sites": 7,
+   "url": "https://clinicaltrials.gov/study/NCT06578507",
+   "lastUpdate": "2026-10-01",
+   "plain": null
+  },
+  {
+   "nct": "NCT06887907",
+   "title": "Phenotypic and Transcriptomic Description of Megakaryocytes in Sickle Cell Patient",
+   "status": "RECRUITING",
+   "kind": "watch",
+   "kindLabel": "Watching and learning (no new treatment)",
+   "phase": null,
+   "minAge": 18.0,
+   "maxAge": null,
+   "minAgeText": "18 Years",
+   "maxAgeText": null,
+   "healthy": false,
+   "testing": [],
+   "sponsor": "University Hospital, Toulouse",
+   "countries": [
+    "France"
+   ],
+   "usStates": [],
+   "sites": 1,
+   "url": "https://clinicaltrials.gov/study/NCT06887907",
+   "lastUpdate": "2025-03-20",
+   "plain": null
+  },
+  {
+   "nct": "NCT06735625",
+   "title": "Pilot Study \"AHSP as a Biomarker of Sickle Cell Disease in a Population of Adults and Children\"",
+   "status": "RECRUITING",
+   "kind": "medicine",
+   "kindLabel": "Testing a medicine",
+   "phase": null,
+   "minAge": 3.0,
+   "maxAge": null,
+   "minAgeText": "3 Years",
+   "maxAgeText": null,
+   "healthy": false,
+   "testing": [
+    "Measurement of AHSP concentration"
+   ],
+   "sponsor": "Centre Hospitalier de Saint-Denis",
+   "countries": [
+    "France"
+   ],
+   "usStates": [],
+   "sites": 1,
+   "url": "https://clinicaltrials.gov/study/NCT06735625",
+   "lastUpdate": "2025-04-02",
+   "plain": null
+  },
+  {
+   "nct": "NCT06529874",
+   "title": "Pressure Pain Tolerance in Relation to Balance and Strength in Children",
+   "status": "RECRUITING",
+   "kind": "other",
+   "kindLabel": "Other study",
+   "phase": null,
+   "minAge": 9.0,
+   "maxAge": 14.0,
+   "minAgeText": "9 Years",
+   "maxAgeText": "14 Years",
+   "healthy": true,
+   "testing": [
+    "Pressure pain tolerance measurement using Digital Pressure Algometer",
+    "Balance assessment using HUMAC balance system",
+    "Lower limb muscular strength using Lafayette hand held dynamometer"
+   ],
+   "sponsor": "Adly A Adam",
+   "countries": [
+    "Egypt"
+   ],
+   "usStates": [],
+   "sites": 1,
+   "url": "https://clinicaltrials.gov/study/NCT06529874",
+   "lastUpdate": "2025-04-01",
+   "plain": null
+  },
+  {
+   "nct": "NCT05285917",
+   "title": "Promoting Utilization and Safety of Hydroxyurea Using Precision in Africa",
+   "status": "RECRUITING",
+   "kind": "medicine",
+   "kindLabel": "Testing a medicine",
+   "phase": "Phase 3",
+   "minAge": 0.5,
+   "maxAge": 12.0,
+   "minAgeText": "6 Months",
+   "maxAgeText": "12 Years",
+   "healthy": false,
+   "testing": [
+    "Hydroxyurea"
+   ],
+   "sponsor": "Brown University",
+   "countries": [
+    "Angola"
+   ],
+   "usStates": [],
+   "sites": 1,
+   "url": "https://clinicaltrials.gov/study/NCT05285917",
+   "lastUpdate": "2026-08-20",
+   "plain": null
+  },
+  {
+   "nct": "NCT06757829",
+   "title": "Pulmonary Functions in Sickle Cell Disease: Response to Acu-TENS",
+   "status": "RECRUITING",
+   "kind": "program",
+   "kindLabel": "App, class or program",
+   "phase": null,
+   "minAge": 20.0,
+   "maxAge": 50.0,
+   "minAgeText": "20 Years",
+   "maxAgeText": "50 Years",
+   "healthy": false,
+   "testing": [
+    "inspiratory muscle training and acupucnture like transcutanoeus electrical nerve stimulation",
+    "inspiratory muscle training"
+   ],
+   "sponsor": "Cairo University",
+   "countries": [
+    "Egypt"
+   ],
+   "usStates": [],
+   "sites": 1,
+   "url": "https://clinicaltrials.gov/study/NCT06757829",
+   "lastUpdate": "2025-01-03",
+   "plain": null
+  },
+  {
+   "nct": "NCT05392894",
+   "title": "RElated Haplo-DonoR Haematopoietic stEm Cell Transplantation for Adults With Severe Sickle Cell Disease",
+   "status": "RECRUITING",
+   "kind": "transplant",
+   "kindLabel": "Transplant",
+   "phase": "Phase 3",
+   "minAge": 18.0,
+   "maxAge": null,
+   "minAgeText": "18 Years",
+   "maxAgeText": null,
+   "healthy": false,
+   "testing": [
+    "Haploidentical stem cell transplantation",
+    "Standard medical care"
+   ],
+   "sponsor": "King's College Hospital NHS Trust",
+   "countries": [
+    "United Kingdom"
+   ],
+   "usStates": [],
+   "sites": 1,
+   "url": "https://clinicaltrials.gov/study/NCT05392894",
+   "lastUpdate": "2023-05-10",
+   "plain": null
+  },
+  {
+   "nct": "NCT07116772",
+   "title": "Serial Assessment of Fertility Experiences",
+   "status": "RECRUITING",
+   "kind": "watch",
+   "kindLabel": "Watching and learning (no new treatment)",
+   "phase": null,
+   "minAge": 8.0,
+   "maxAge": null,
+   "minAgeText": "8 Years",
+   "maxAgeText": null,
+   "healthy": false,
+   "testing": [],
+   "sponsor": "Children's Hospital Medical Center, Cincinnati",
+   "countries": [
+    "Dominican Republic",
+    "Jamaica",
+    "Tanzania"
+   ],
+   "usStates": [],
+   "sites": 3,
+   "url": "https://clinicaltrials.gov/study/NCT07116772",
+   "lastUpdate": "2026-02-04",
+   "plain": "Follows people over time to see how hydroxyurea affects growth, puberty and having children someday."
+  },
+  {
+   "nct": "NCT03327428",
+   "title": "Sickle-cell Disease Registry of the GPOH",
+   "status": "RECRUITING",
+   "kind": "watch",
+   "kindLabel": "Watching and learning (no new treatment)",
+   "phase": null,
+   "minAge": 0.0,
+   "maxAge": 100.0,
+   "minAgeText": "0 Years",
+   "maxAgeText": "100 Years",
+   "healthy": false,
+   "testing": [],
+   "sponsor": "University Hospital Heidelberg",
+   "countries": [
+    "Germany"
+   ],
+   "usStates": [],
+   "sites": 1,
+   "url": "https://clinicaltrials.gov/study/NCT03327428",
+   "lastUpdate": "2025-01-24",
+   "plain": null
+  },
+  {
+   "nct": "NCT06526117",
+   "title": "Stroke Prevention in Nigeria 2 Trial",
+   "status": "RECRUITING",
+   "kind": "medicine",
+   "kindLabel": "Testing a medicine",
+   "phase": "Phase 4",
+   "minAge": 5.0,
+   "maxAge": 12.0,
+   "minAgeText": "5 Years",
+   "maxAgeText": "12 Years",
+   "healthy": false,
+   "testing": [
+    "Hydroxyurea"
+   ],
+   "sponsor": "Vanderbilt University Medical Center",
+   "countries": [
+    "Nigeria"
+   ],
+   "usStates": [],
+   "sites": 2,
+   "url": "https://clinicaltrials.gov/study/NCT06526117",
+   "lastUpdate": "2026-03-05",
+   "plain": null
+  },
+  {
+   "nct": "NCT06581900",
+   "title": "Study of Vitamin B12 Metabolism in Children With Sickle Cell Disease Exposed to MEOPA",
+   "status": "RECRUITING",
+   "kind": "watch",
+   "kindLabel": "Watching and learning (no new treatment)",
+   "phase": null,
+   "minAge": 2.0,
+   "maxAge": 18.0,
+   "minAgeText": "2 Years",
+   "maxAgeText": "18 Years",
+   "healthy": false,
+   "testing": [
+    "Vitamin B12"
+   ],
+   "sponsor": "CHU de Reims",
+   "countries": [
+    "France"
+   ],
+   "usStates": [],
+   "sites": 1,
+   "url": "https://clinicaltrials.gov/study/NCT06581900",
+   "lastUpdate": "2025-12-10",
+   "plain": null
+  },
+  {
+   "nct": "NCT06301893",
+   "title": "Uganda Sickle Surveillance Study (US-3)",
+   "status": "RECRUITING",
+   "kind": "watch",
+   "kindLabel": "Watching and learning (no new treatment)",
+   "phase": null,
+   "minAge": null,
+   "maxAge": 1.0,
+   "minAgeText": null,
+   "maxAgeText": "12 Months",
+   "healthy": false,
+   "testing": [],
+   "sponsor": "Children's Hospital Medical Center, Cincinnati",
+   "countries": [
+    "Uganda"
+   ],
+   "usStates": [],
+   "sites": 4,
+   "url": "https://clinicaltrials.gov/study/NCT06301893",
+   "lastUpdate": "2026-06-16",
+   "plain": null
+  },
+  {
+   "nct": "NCT07719972",
+   "title": "Universal Newborn Screening For Sickle Cell Disease In Mozambique",
+   "status": "RECRUITING",
+   "kind": "other",
+   "kindLabel": "Other study",
+   "phase": null,
+   "minAge": null,
+   "maxAge": null,
+   "minAgeText": null,
+   "maxAgeText": null,
+   "healthy": true,
+   "testing": [
+    "Point-of-care testing (POCT) -Patient participants",
+    "Point-of-care testing (POCT) - Healthy control participants",
+    "Context Assessment for Community Health (COACH) survey",
+    "Semi-structured interview"
+   ],
+   "sponsor": "St. Jude Children's Research Hospital",
+   "countries": [
+    "Mozambique"
+   ],
+   "usStates": [],
+   "sites": 1,
+   "url": "https://clinicaltrials.gov/study/NCT07719972",
+   "lastUpdate": "2026-11-10",
+   "plain": null
+  },
+  {
+   "nct": "NCT06318143",
+   "title": "mAnaging siCkle CELl disEase Through incReased AdopTion of hydroxyurEa in Nigeria",
+   "status": "RECRUITING",
+   "kind": "program",
+   "kindLabel": "App, class or program",
+   "phase": null,
+   "minAge": 1.0,
+   "maxAge": null,
+   "minAgeText": "12 Months",
+   "maxAgeText": null,
+   "healthy": true,
+   "testing": [
+    "TASSH",
+    "SIM"
+   ],
+   "sponsor": "New York University",
+   "countries": [
+    "Nigeria"
+   ],
+   "usStates": [],
+   "sites": 1,
+   "url": "https://clinicaltrials.gov/study/NCT06318143",
+   "lastUpdate": "2026-11-12",
+   "plain": null
+  },
+  {
+   "nct": "NCT06989567",
+   "title": "A Study of Intravenous L-Citrulline in Patients Aged 6-21 Years Old With Sickle Cell Disease Presenting to Emergency Departments in Acute Vaso-Occlusive Crisis",
+   "status": "NOT_YET_RECRUITING",
+   "kind": "medicine",
+   "kindLabel": "Testing a medicine",
+   "phase": "Phase 3",
+   "minAge": 6.0,
+   "maxAge": 21.0,
+   "minAgeText": "6 Years",
+   "maxAgeText": "21 Years",
+   "healthy": false,
+   "testing": [
+    "L-citrulline",
+    "Placebo"
+   ],
+   "sponsor": "Asklepion Pharmaceuticals, LLC",
+   "countries": [
+    "United States"
+   ],
+   "usStates": [
+    "District of Columbia",
+    "Florida",
+    "Georgia",
+    "Maryland",
+    "Michigan",
+    "North Carolina"
+   ],
+   "sites": 6,
+   "url": "https://clinicaltrials.gov/study/NCT06989567",
+   "lastUpdate": "2025-05-29",
+   "plain": "Tests IV citrulline in the emergency room for pain crises, ages 6 to 21."
+  },
+  {
+   "nct": "NCT07922460",
+   "title": "Anti-VEGF Versus Prompt Laser or Observation for Proliferative Sickle Cell Retinopathy (ALPS)",
+   "status": "NOT_YET_RECRUITING",
+   "kind": "medicine",
+   "kindLabel": "Testing a medicine",
+   "phase": "Phase 3",
+   "minAge": 18.0,
+   "maxAge": null,
+   "minAgeText": "18 Years",
+   "maxAgeText": null,
+   "healthy": false,
+   "testing": [
+    "Faricimab Injection for stage 3 or stage 4 Proliferative sickle cell eyes",
+    "Vitrectomy",
+    "Laser photocoagulation"
+   ],
+   "sponsor": "University of Illinois Chicago",
+   "countries": [
+    "United States"
+   ],
+   "usStates": [
+    "Illinois"
+   ],
+   "sites": 1,
+   "url": "https://clinicaltrials.gov/study/NCT07922460",
+   "lastUpdate": "2026-11-06",
+   "plain": null
+  },
+  {
+   "nct": "NCT07799571",
+   "title": "Buprenorphine for the Management of Pain in Children With Sickle Cell Disease",
+   "status": "NOT_YET_RECRUITING",
+   "kind": "medicine",
+   "kindLabel": "Testing a medicine",
+   "phase": "Phase 1",
+   "minAge": 12.0,
+   "maxAge": 22.0,
+   "minAgeText": "12 Years",
+   "maxAgeText": "22 Years",
+   "healthy": false,
+   "testing": [
+    "Buprenorphine Buccal Film [Belbuca]"
+   ],
+   "sponsor": "Natasha Archer",
+   "countries": [
+    "United States"
+   ],
+   "usStates": [
+    "Massachusetts"
+   ],
+   "sites": 1,
+   "url": "https://clinicaltrials.gov/study/NCT07799571",
+   "lastUpdate": "2026-11-04",
+   "plain": "Tests whether buprenorphine, a pain medicine film that melts in the cheek, is safe for kids and teens 12 to 22 during pain."
+  },
+  {
+   "nct": "NCT07911618",
+   "title": "Data Collection For Patients With Sickle Cell Disease",
+   "status": "NOT_YET_RECRUITING",
+   "kind": "watch",
+   "kindLabel": "Watching and learning (no new treatment)",
+   "phase": null,
+   "minAge": 18.0,
+   "maxAge": null,
+   "minAgeText": "18 Years",
+   "maxAgeText": null,
+   "healthy": false,
+   "testing": [
+    "data collection"
+   ],
+   "sponsor": "M.D. Anderson Cancer Center",
+   "countries": [
+    "United States"
+   ],
+   "usStates": [
+    "Texas"
+   ],
+   "sites": 1,
+   "url": "https://clinicaltrials.gov/study/NCT07911618",
+   "lastUpdate": "2026-11-03",
+   "plain": null
+  },
+  {
+   "nct": "NCT06563440",
+   "title": "Development and Evaluation of an Information Management System and Communication System for Population-wide Point-of-care Infant Sickle Cell Disease Screening",
+   "status": "NOT_YET_RECRUITING",
+   "kind": "program",
+   "kindLabel": "App, class or program",
+   "phase": null,
+   "minAge": null,
+   "maxAge": 5.0,
+   "minAgeText": null,
+   "maxAgeText": "5 Years",
+   "healthy": true,
+   "testing": [
+    "Digital app and information system"
+   ],
+   "sponsor": "Makerere University",
+   "countries": [
+    "Uganda",
+    "United States"
+   ],
+   "usStates": [
+    "Texas"
+   ],
+   "sites": 2,
+   "url": "https://clinicaltrials.gov/study/NCT06563440",
+   "lastUpdate": "2024-08-22",
+   "plain": null
+  },
+  {
+   "nct": "NCT07540767",
+   "title": "Development of a Provider-Focused Intervention to Improve Health Outcomes in Pediatric Sickle Cell Disease",
+   "status": "NOT_YET_RECRUITING",
+   "kind": "program",
+   "kindLabel": "App, class or program",
+   "phase": null,
+   "minAge": 18.0,
+   "maxAge": null,
+   "minAgeText": "18 Years",
+   "maxAgeText": null,
+   "healthy": true,
+   "testing": [
+    "Individuation and Perspective-Taking (IPT)",
+    "pediatric SCD pain management education session"
+   ],
+   "sponsor": "Connecticut Children's Medical Center",
+   "countries": [
+    "United States"
+   ],
+   "usStates": [
+    "Connecticut"
+   ],
+   "sites": 1,
+   "url": "https://clinicaltrials.gov/study/NCT07540767",
+   "lastUpdate": "2026-04-29",
+   "plain": null
+  },
+  {
+   "nct": "NCT07648043",
+   "title": "Feasibility and Acceptability of Amani",
+   "status": "NOT_YET_RECRUITING",
+   "kind": "program",
+   "kindLabel": "App, class or program",
+   "phase": "Phase 1, Phase 2",
+   "minAge": 18.0,
+   "maxAge": null,
+   "minAgeText": "18 Years",
+   "maxAgeText": null,
+   "healthy": false,
+   "testing": [
+    "Amani"
+   ],
+   "sponsor": "Massachusetts General Hospital",
+   "countries": [
+    "United States"
+   ],
+   "usStates": [
+    "Massachusetts"
+   ],
+   "sites": 1,
+   "url": "https://clinicaltrials.gov/study/NCT07648043",
+   "lastUpdate": "2026-08-07",
+   "plain": null
+  },
+  {
+   "nct": "NCT07910396",
+   "title": "Focused Ultrasound Neuromodulation for Chronic Pain",
+   "status": "NOT_YET_RECRUITING",
+   "kind": "device",
+   "kindLabel": "Testing a device",
+   "phase": null,
+   "minAge": 18.0,
+   "maxAge": null,
+   "minAgeText": "18 Years",
+   "maxAgeText": null,
+   "healthy": false,
+   "testing": [
+    "Focused PCM-Guided CMN LIFU",
+    "Unfocused Control LIFU"
+   ],
+   "sponsor": "University of Minnesota",
+   "countries": [
+    "United States"
+   ],
+   "usStates": [
+    "Minnesota"
+   ],
+   "sites": 1,
+   "url": "https://clinicaltrials.gov/study/NCT07910396",
+   "lastUpdate": "2026-11-02",
+   "plain": null
+  },
+  {
+   "nct": "NCT06743113",
+   "title": "Hypoxic Red Blood Cells in Sickle Cell Anemia",
+   "status": "NOT_YET_RECRUITING",
+   "kind": "device",
+   "kindLabel": "Testing a device",
+   "phase": null,
+   "minAge": 7.0,
+   "maxAge": null,
+   "minAgeText": "7 Years",
+   "maxAgeText": null,
+   "healthy": false,
+   "testing": [
+    "Hemanext ONE System",
+    "Conventional RBCs"
+   ],
+   "sponsor": "Hemanext",
+   "countries": [
+    "United States"
+   ],
+   "usStates": [
+    "Connecticut",
+    "Georgia",
+    "Illinois",
+    "Maryland",
+    "Pennsylvania"
+   ],
+   "sites": 5,
+   "url": "https://clinicaltrials.gov/study/NCT06743113",
+   "lastUpdate": "2026-11-02",
+   "plain": "Tests a new way of preparing donated blood (low-oxygen red cells) for people who get transfusions, ages 7 and up."
+  },
+  {
+   "nct": "NCT07682662",
+   "title": "Low Dose Bolus Ketamine For Use In Sickle Cell Pain Crisis",
+   "status": "NOT_YET_RECRUITING",
+   "kind": "medicine",
+   "kindLabel": "Testing a medicine",
+   "phase": "Phase 4",
+   "minAge": 2.0,
+   "maxAge": 21.0,
+   "minAgeText": "2 Years",
+   "maxAgeText": "21 Years",
+   "healthy": false,
+   "testing": [
+    "Standardized Low-dose bolus IV Ketamine within 30 minutes of arrival and every 1 hour as needed for max of 3 doses.",
+    "Standard Care (in control arm)"
+   ],
+   "sponsor": "University of Mississippi Medical Center",
+   "countries": [
+    "United States"
+   ],
+   "usStates": [
+    "Mississippi"
+   ],
+   "sites": 1,
+   "url": "https://clinicaltrials.gov/study/NCT07682662",
+   "lastUpdate": "2026-07-06",
+   "plain": "Compares a low dose of ketamine with usual pain medicine in the emergency room, ages 2 to 21."
+  },
+  {
+   "nct": "NCT07928089",
+   "title": "Mechanisms Within the Autonomic Nervous SysTEm undeRlying MusIc Therapy's aNalgesic Effects in Sickle Cell Disease (MASTERMIND)",
+   "status": "NOT_YET_RECRUITING",
+   "kind": "program",
+   "kindLabel": "App, class or program",
+   "phase": null,
+   "minAge": 18.0,
+   "maxAge": null,
+   "minAgeText": "18 Years",
+   "maxAgeText": null,
+   "healthy": false,
+   "testing": [
+    "Music Therapy"
+   ],
+   "sponsor": "University Hospitals Cleveland Medical Center",
+   "countries": [
+    "United States"
+   ],
+   "usStates": [
+    "Ohio"
+   ],
+   "sites": 1,
+   "url": "https://clinicaltrials.gov/study/NCT07928089",
+   "lastUpdate": "2026-11-10",
+   "plain": null
+  },
+  {
+   "nct": "NCT07450430",
+   "title": "Optimal Timing of Ketamine Initiation for SCD Pain",
+   "status": "NOT_YET_RECRUITING",
+   "kind": "medicine",
+   "kindLabel": "Testing a medicine",
+   "phase": "Phase 3",
+   "minAge": 6.0,
+   "maxAge": 24.0,
+   "minAgeText": "6 Years",
+   "maxAgeText": "24 Years",
+   "healthy": false,
+   "testing": [
+    "Ketamine hydrochloride injection",
+    "Placebo"
+   ],
+   "sponsor": "Boston Children's Hospital",
+   "countries": [
+    "United States"
+   ],
+   "usStates": [
+    "Massachusetts"
+   ],
+   "sites": 1,
+   "url": "https://clinicaltrials.gov/study/NCT07450430",
+   "lastUpdate": "2026-03-09",
+   "plain": "Tests whether giving ketamine early in the emergency room helps kids and young adults avoid a hospital stay."
+  },
+  {
+   "nct": "NCT07875777",
+   "title": "Self-administered Acupressure in Patients With Sickle Cell Disease",
+   "status": "NOT_YET_RECRUITING",
+   "kind": "device",
+   "kindLabel": "Testing a device",
+   "phase": null,
+   "minAge": 18.0,
+   "maxAge": 80.0,
+   "minAgeText": "18 Years",
+   "maxAgeText": "80 Years",
+   "healthy": false,
+   "testing": [
+    "Verum Acupressure (using AcuWand)",
+    "Sham Acupressure (using AcuWand)"
+   ],
+   "sponsor": "University of Cincinnati",
+   "countries": [
+    "United States"
+   ],
+   "usStates": [
+    "California",
+    "Ohio"
+   ],
+   "sites": 2,
+   "url": "https://clinicaltrials.gov/study/NCT07875777",
+   "lastUpdate": "2026-10-15",
+   "plain": null
+  },
+  {
+   "nct": "NCT07217548",
+   "title": "Solving Stigma Through POV Simulation: Enhancing Pharmacist Empathy-based Practices With Sickle Cell Disease Patients",
+   "status": "NOT_YET_RECRUITING",
+   "kind": "program",
+   "kindLabel": "App, class or program",
+   "phase": null,
+   "minAge": 18.0,
+   "maxAge": null,
+   "minAgeText": "18 Years",
+   "maxAgeText": null,
+   "healthy": true,
+   "testing": [
+    "point of view simulation",
+    "Control"
+   ],
+   "sponsor": "Ohio State University",
+   "countries": [
+    "United States"
+   ],
+   "usStates": [
+    "Ohio"
+   ],
+   "sites": 1,
+   "url": "https://clinicaltrials.gov/study/NCT07217548",
+   "lastUpdate": "2026-07-01",
+   "plain": null
+  },
+  {
+   "nct": "NCT07826988",
+   "title": "Adaptive Platform Trial for Pain Management in Sickle Cell Vaso-Occlusive Crisis",
+   "status": "NOT_YET_RECRUITING",
+   "kind": "medicine",
+   "kindLabel": "Testing a medicine",
+   "phase": "Phase 4",
+   "minAge": 18.0,
+   "maxAge": null,
+   "minAgeText": "18 Years",
+   "maxAgeText": null,
+   "healthy": false,
+   "testing": [
+    "Group 02 Paracetamol + Morphine + Ketamine",
+    "Group 01 Control: Paracetamol + Morphine",
+    "Group 03 : Paracetamol + Morphine + Nefopam",
+    "Group 04 : Paracetamol + Morphine + Nefopam + Ketamine"
+   ],
+   "sponsor": "Assistance Publique - Hôpitaux de Paris",
+   "countries": [],
+   "usStates": [],
+   "sites": 0,
+   "url": "https://clinicaltrials.gov/study/NCT07826988",
+   "lastUpdate": "2026-09-18",
+   "plain": null
+  },
+  {
+   "nct": "NCT07942857",
+   "title": "Advanced Reticulocyte Parameters in Hemolytic Anemias",
+   "status": "NOT_YET_RECRUITING",
+   "kind": "watch",
+   "kindLabel": "Watching and learning (no new treatment)",
+   "phase": null,
+   "minAge": 18.0,
+   "maxAge": null,
+   "minAgeText": "18 Years",
+   "maxAgeText": null,
+   "healthy": true,
+   "testing": [],
+   "sponsor": "Assiut University",
+   "countries": [],
+   "usStates": [],
+   "sites": 0,
+   "url": "https://clinicaltrials.gov/study/NCT07942857",
+   "lastUpdate": "2026-11-17",
+   "plain": null
+  },
+  {
+   "nct": "NCT06315920",
+   "title": "Analgesic Effect of Parecoxib Versus Morphine in SCD Patients Presenting to the Emergency Department",
+   "status": "NOT_YET_RECRUITING",
+   "kind": "medicine",
+   "kindLabel": "Testing a medicine",
+   "phase": "Phase 3",
+   "minAge": 18.0,
+   "maxAge": null,
+   "minAgeText": "18 Years",
+   "maxAgeText": null,
+   "healthy": true,
+   "testing": [
+    "Parecoxib",
+    "Morphine"
+   ],
+   "sponsor": "Oman Medical Speciality Board",
+   "countries": [],
+   "usStates": [],
+   "sites": 0,
+   "url": "https://clinicaltrials.gov/study/NCT06315920",
+   "lastUpdate": "2025-03-20",
+   "plain": null
+  },
+  {
+   "nct": "NCT06698120",
+   "title": "Awake Prone Positioning for Severe Acute Chest Syndrome",
+   "status": "NOT_YET_RECRUITING",
+   "kind": "program",
+   "kindLabel": "App, class or program",
+   "phase": null,
+   "minAge": 18.0,
+   "maxAge": null,
+   "minAgeText": "18 Years",
+   "maxAgeText": null,
+   "healthy": false,
+   "testing": [
+    "Awake prone positioning (APP)"
+   ],
+   "sponsor": "Assistance Publique - Hôpitaux de Paris",
+   "countries": [
+    "France"
+   ],
+   "usStates": [],
+   "sites": 1,
+   "url": "https://clinicaltrials.gov/study/NCT06698120",
+   "lastUpdate": "2025-09-02",
+   "plain": null
+  },
+  {
+   "nct": "NCT07703566",
+   "title": "CPAP for Hypoxemic Acute Chest Syndrome in Sickle Cell Disease",
+   "status": "NOT_YET_RECRUITING",
+   "kind": "other",
+   "kindLabel": "Other study",
+   "phase": null,
+   "minAge": 18.0,
+   "maxAge": null,
+   "minAgeText": "18 Years",
+   "maxAgeText": null,
+   "healthy": false,
+   "testing": [
+    "O2+CPAP group"
+   ],
+   "sponsor": "Assistance Publique - Hôpitaux de Paris",
+   "countries": [],
+   "usStates": [],
+   "sites": 0,
+   "url": "https://clinicaltrials.gov/study/NCT07703566",
+   "lastUpdate": "2026-07-23",
+   "plain": null
+  },
+  {
+   "nct": "NCT07000318",
+   "title": "CS-206 in Patients With Sickle Cell Disease",
+   "status": "NOT_YET_RECRUITING",
+   "kind": "other",
+   "kindLabel": "Other study",
+   "phase": "EARLY Phase 1",
+   "minAge": 12.0,
+   "maxAge": 18.0,
+   "minAgeText": "12 Years",
+   "maxAgeText": "18 Years",
+   "healthy": false,
+   "testing": [
+    "CS-206"
+   ],
+   "sponsor": "Children's Hospital of Fudan University",
+   "countries": [
+    "China"
+   ],
+   "usStates": [],
+   "sites": 1,
+   "url": "https://clinicaltrials.gov/study/NCT07000318",
+   "lastUpdate": "2026-05-15",
+   "plain": null
+  },
+  {
+   "nct": "NCT07785752",
+   "title": "Clinical Utility of Urinary N-Acetyl-β-D-Glucosaminidase (NAG), Kidney Injury Molecule-1 (KIM-1), and Diffusion-Weighted Renal MRI for the Early Detection of Sickle Cell Nephropathy in Children",
+   "status": "NOT_YET_RECRUITING",
+   "kind": "watch",
+   "kindLabel": "Watching and learning (no new treatment)",
+   "phase": null,
+   "minAge": 4.0,
+   "maxAge": 18.0,
+   "minAgeText": "4 Years",
+   "maxAgeText": "18 Years",
+   "healthy": true,
+   "testing": [
+    "Hydroxy Urea"
+   ],
+   "sponsor": "Assiut University",
+   "countries": [
+    "Egypt"
+   ],
+   "usStates": [],
+   "sites": 1,
+   "url": "https://clinicaltrials.gov/study/NCT07785752",
+   "lastUpdate": "2026-08-25",
+   "plain": null
+  },
+  {
+   "nct": "NCT06351462",
+   "title": "Comparative Health Status and Quality of Life of Patients With Sickle Cell Disease (SCD) Who Underwent Matched-sibling Hematopoietic Stem Cell Transplantation Versus Non Transplanted SCD Case-control Patients",
+   "status": "NOT_YET_RECRUITING",
+   "kind": "transplant",
+   "kindLabel": "Transplant",
+   "phase": null,
+   "minAge": 15.0,
+   "maxAge": 80.0,
+   "minAgeText": "15 Years",
+   "maxAgeText": "80 Years",
+   "healthy": false,
+   "testing": [
+    "Spermogram",
+    "Hospital Anxiety and Depression Scale (HADS)",
+    "SF36 Quality of life questionnaire",
+    "Psychologist interview"
+   ],
+   "sponsor": "Assistance Publique - Hôpitaux de Paris",
+   "countries": [],
+   "usStates": [],
+   "sites": 0,
+   "url": "https://clinicaltrials.gov/study/NCT06351462",
+   "lastUpdate": "2024-04-19",
+   "plain": null
+  },
+  {
+   "nct": "NCT07852442",
+   "title": "Comparison of Thrombin Generation, Platelet Activation and Aggregation Profiles in Patients With Sickle Cell Disease Depending on Their SS or SC Genotype (DrepAgreg)",
+   "status": "NOT_YET_RECRUITING",
+   "kind": "watch",
+   "kindLabel": "Watching and learning (no new treatment)",
+   "phase": null,
+   "minAge": 18.0,
+   "maxAge": null,
+   "minAgeText": "18 Years",
+   "maxAgeText": null,
+   "healthy": false,
+   "testing": [],
+   "sponsor": "Centre Hospitalier Universitaire de la Guadeloupe",
+   "countries": [
+    "France",
+    "Guadeloupe"
+   ],
+   "usStates": [],
+   "sites": 2,
+   "url": "https://clinicaltrials.gov/study/NCT07852442",
+   "lastUpdate": "2026-10-01",
+   "plain": null
+  },
+  {
+   "nct": "NCT05469828",
+   "title": "Crizanlizumab Improves Tissue Oxygen Supply Demand Matching in Patients With Sickle Cell Anemia",
+   "status": "NOT_YET_RECRUITING",
+   "kind": "medicine",
+   "kindLabel": "Testing a medicine",
+   "phase": "Phase 1, Phase 2",
+   "minAge": 16.0,
+   "maxAge": null,
+   "minAgeText": "16 Years",
+   "maxAgeText": null,
+   "healthy": false,
+   "testing": [
+    "Crizanlizumab",
+    "control"
+   ],
+   "sponsor": "Children's Hospital Los Angeles",
+   "countries": [],
+   "usStates": [],
+   "sites": 0,
+   "url": "https://clinicaltrials.gov/study/NCT05469828",
+   "lastUpdate": "2023-08-30",
+   "plain": null
+  },
+  {
+   "nct": "NCT07802210",
+   "title": "Effectiveness of Innovative Educational Methods in Empowering Children With Sickle Cell Disease",
+   "status": "NOT_YET_RECRUITING",
+   "kind": "program",
+   "kindLabel": "App, class or program",
+   "phase": null,
+   "minAge": 11.0,
+   "maxAge": 18.0,
+   "minAgeText": "11 Years",
+   "maxAgeText": "18 Years",
+   "healthy": false,
+   "testing": [
+    "video intervention",
+    "game intervention"
+   ],
+   "sponsor": "Aula Ibrahim abd alrazak",
+   "countries": [
+    "Iraq"
+   ],
+   "usStates": [],
+   "sites": 1,
+   "url": "https://clinicaltrials.gov/study/NCT07802210",
+   "lastUpdate": "2026-09-03",
+   "plain": null
+  },
+  {
+   "nct": "NCT07639008",
+   "title": "Epidemiology of Invasive Bacterial Infections in Children With Sickle Cell Disease in France Between 2020 and 2025",
+   "status": "NOT_YET_RECRUITING",
+   "kind": "watch",
+   "kindLabel": "Watching and learning (no new treatment)",
+   "phase": null,
+   "minAge": null,
+   "maxAge": 17.0,
+   "minAgeText": null,
+   "maxAgeText": "17 Years",
+   "healthy": false,
+   "testing": [],
+   "sponsor": "Assistance Publique - Hôpitaux de Paris",
+   "countries": [
+    "France"
+   ],
+   "usStates": [],
+   "sites": 31,
+   "url": "https://clinicaltrials.gov/study/NCT07639008",
+   "lastUpdate": "2026-06-10",
+   "plain": null
+  },
+  {
+   "nct": "NCT07498309",
+   "title": "Evaluation of the Efficacy of Iloprost in the Management of Vaso-occlusive Crises in Adult Patients With Sickle Cell Disease",
+   "status": "NOT_YET_RECRUITING",
+   "kind": "medicine",
+   "kindLabel": "Testing a medicine",
+   "phase": "Phase 3",
+   "minAge": 18.0,
+   "maxAge": null,
+   "minAgeText": "18 Years",
+   "maxAgeText": null,
+   "healthy": false,
+   "testing": [
+    "Iloprost",
+    "Placebo"
+   ],
+   "sponsor": "University Hospital, Rouen",
+   "countries": [
+    "France"
+   ],
+   "usStates": [],
+   "sites": 1,
+   "url": "https://clinicaltrials.gov/study/NCT07498309",
+   "lastUpdate": "2026-03-27",
+   "plain": null
+  },
+  {
+   "nct": "NCT06769139",
+   "title": "Evaluation of the Impact of Red Blood Cell Exchange on Thrombo-inflammation in Sickle Cell Disease",
+   "status": "NOT_YET_RECRUITING",
+   "kind": "watch",
+   "kindLabel": "Watching and learning (no new treatment)",
+   "phase": null,
+   "minAge": 18.0,
+   "maxAge": null,
+   "minAgeText": "18 Years",
+   "maxAgeText": null,
+   "healthy": false,
+   "testing": [
+    "Red blood cell exchange"
+   ],
+   "sponsor": "University Hospital, Toulouse",
+   "countries": [
+    "France"
+   ],
+   "usStates": [],
+   "sites": 1,
+   "url": "https://clinicaltrials.gov/study/NCT06769139",
+   "lastUpdate": "2025-01-10",
+   "plain": null
+  },
+  {
+   "nct": "NCT07940569",
+   "title": "Glutamine Early Start in Children With SCD Younger Than Five",
+   "status": "NOT_YET_RECRUITING",
+   "kind": "medicine",
+   "kindLabel": "Testing a medicine",
+   "phase": "Phase 3",
+   "minAge": 1.0,
+   "maxAge": 5.0,
+   "minAgeText": "1 Year",
+   "maxAgeText": "5 Years",
+   "healthy": false,
+   "testing": [
+    "Glutamine",
+    "Standard of Care (SOC)"
+   ],
+   "sponsor": "Ain Shams University",
+   "countries": [
+    "Egypt"
+   ],
+   "usStates": [],
+   "sites": 1,
+   "url": "https://clinicaltrials.gov/study/NCT07940569",
+   "lastUpdate": "2026-11-17",
+   "plain": "Tests whether L-glutamine powder started early prevents pain crises in children 1 to 4 years old."
+  },
+  {
+   "nct": "NCT07865039",
+   "title": "Inflammatory Markers and Pain in Sickle Cell Disease",
+   "status": "NOT_YET_RECRUITING",
+   "kind": "watch",
+   "kindLabel": "Watching and learning (no new treatment)",
+   "phase": null,
+   "minAge": 18.0,
+   "maxAge": null,
+   "minAgeText": "18 Years",
+   "maxAgeText": null,
+   "healthy": false,
+   "testing": [],
+   "sponsor": "Assiut University",
+   "countries": [
+    "Egypt"
+   ],
+   "usStates": [],
+   "sites": 1,
+   "url": "https://clinicaltrials.gov/study/NCT07865039",
+   "lastUpdate": "2026-10-08",
+   "plain": null
+  },
+  {
+   "nct": "NCT06181695",
+   "title": "Intranasal Sufentanil for Analgesia of Severe Sickle Cell Vaso-occlusive Pain Crisis in the Pediatric",
+   "status": "NOT_YET_RECRUITING",
+   "kind": "medicine",
+   "kindLabel": "Testing a medicine",
+   "phase": "Phase 3",
+   "minAge": null,
+   "maxAge": 18.0,
+   "minAgeText": null,
+   "maxAgeText": "18 Years",
+   "healthy": false,
+   "testing": [
+    "Sufentanil"
+   ],
+   "sponsor": "Assistance Publique - Hôpitaux de Paris",
+   "countries": [],
+   "usStates": [],
+   "sites": 0,
+   "url": "https://clinicaltrials.gov/study/NCT06181695",
+   "lastUpdate": "2023-12-26",
+   "plain": null
+  },
+  {
+   "nct": "NCT06579703",
+   "title": "Ketorolac for Acute Vaso-Occlusive Crisis in Pediatric Sickle Cell Disease",
+   "status": "NOT_YET_RECRUITING",
+   "kind": "medicine",
+   "kindLabel": "Testing a medicine",
+   "phase": "Phase 4",
+   "minAge": 0.0,
+   "maxAge": 21.0,
+   "minAgeText": "1 Day",
+   "maxAgeText": "21 Years",
+   "healthy": false,
+   "testing": [
+    "Ketorolac"
+   ],
+   "sponsor": "Children's Blood and Cancer Center at Dell Children's Medical Center",
+   "countries": [],
+   "usStates": [],
+   "sites": 0,
+   "url": "https://clinicaltrials.gov/study/NCT06579703",
+   "lastUpdate": "2024-08-30",
+   "plain": null
+  },
+  {
+   "nct": "NCT07797582",
+   "title": "MBI for Pain and Sleep in Adolescents and Young Adults With Sickle Cell Disease",
+   "status": "NOT_YET_RECRUITING",
+   "kind": "program",
+   "kindLabel": "App, class or program",
+   "phase": null,
+   "minAge": 15.0,
+   "maxAge": 39.0,
+   "minAgeText": "15 Years",
+   "maxAgeText": "39 Years",
+   "healthy": false,
+   "testing": [
+    "Mindfulness-based intervention"
+   ],
+   "sponsor": "University of Illinois Chicago",
+   "countries": [],
+   "usStates": [],
+   "sites": 0,
+   "url": "https://clinicaltrials.gov/study/NCT07797582",
+   "lastUpdate": "2026-09-21",
+   "plain": null
+  },
+  {
+   "nct": "NCT06850337",
+   "title": "Megakaryocyte Heterogeneity in Sickle Cell Disease",
+   "status": "NOT_YET_RECRUITING",
+   "kind": "watch",
+   "kindLabel": "Watching and learning (no new treatment)",
+   "phase": null,
+   "minAge": 18.0,
+   "maxAge": null,
+   "minAgeText": "18 Years",
+   "maxAgeText": null,
+   "healthy": true,
+   "testing": [],
+   "sponsor": "Centre Hospitalier Universitaire de la Guadeloupe",
+   "countries": [
+    "Guadeloupe"
+   ],
+   "usStates": [],
+   "sites": 1,
+   "url": "https://clinicaltrials.gov/study/NCT06850337",
+   "lastUpdate": "2025-05-25",
+   "plain": null
+  },
+  {
+   "nct": "NCT05605366",
+   "title": "Minocycline In Neurocognitive Outcomes - Sickle Cell Disease",
+   "status": "NOT_YET_RECRUITING",
+   "kind": "medicine",
+   "kindLabel": "Testing a medicine",
+   "phase": "Phase 1",
+   "minAge": 18.0,
+   "maxAge": null,
+   "minAgeText": "18 Years",
+   "maxAgeText": null,
+   "healthy": false,
+   "testing": [
+    "Minocycline",
+    "Placebo"
+   ],
+   "sponsor": "University of Cincinnati",
+   "countries": [],
+   "usStates": [],
+   "sites": 0,
+   "url": "https://clinicaltrials.gov/study/NCT05605366",
+   "lastUpdate": "2026-11-03",
+   "plain": null
+  },
+  {
+   "nct": "NCT07530965",
+   "title": "Omega-3-Fatty Acids in Children With Sickle Cell Disease",
+   "status": "NOT_YET_RECRUITING",
+   "kind": "other",
+   "kindLabel": "Other study",
+   "phase": null,
+   "minAge": 5.0,
+   "maxAge": 18.0,
+   "minAgeText": "5 Years",
+   "maxAgeText": "18 Years",
+   "healthy": false,
+   "testing": [
+    "Flaxseed"
+   ],
+   "sponsor": "University of Alabama at Birmingham",
+   "countries": [],
+   "usStates": [],
+   "sites": 0,
+   "url": "https://clinicaltrials.gov/study/NCT07530965",
+   "lastUpdate": "2026-08-21",
+   "plain": null
+  },
+  {
+   "nct": "NCT07200869",
+   "title": "Outcomes of Vaso-occlusive Crisis in Pediatric Sickle Cell Disease",
+   "status": "NOT_YET_RECRUITING",
+   "kind": "watch",
+   "kindLabel": "Watching and learning (no new treatment)",
+   "phase": null,
+   "minAge": 1.0,
+   "maxAge": 18.0,
+   "minAgeText": "1 Year",
+   "maxAgeText": "18 Years",
+   "healthy": false,
+   "testing": [
+    "No intervention"
+   ],
+   "sponsor": "Assiut University",
+   "countries": [
+    "Egypt"
+   ],
+   "usStates": [],
+   "sites": 1,
+   "url": "https://clinicaltrials.gov/study/NCT07200869",
+   "lastUpdate": "2025-10-01",
+   "plain": null
+  },
+  {
+   "nct": "NCT06755385",
+   "title": "Pilot Study on the Value of Bedside Pleuropulmonary Ultrasound in Patients With Sickle Cell Disease Presenting With Vaso-occlusive Crisis",
+   "status": "NOT_YET_RECRUITING",
+   "kind": "watch",
+   "kindLabel": "Watching and learning (no new treatment)",
+   "phase": null,
+   "minAge": 18.0,
+   "maxAge": null,
+   "minAgeText": "18 Years",
+   "maxAgeText": null,
+   "healthy": false,
+   "testing": [
+    "Pleuropulmonary ultrasound"
+   ],
+   "sponsor": "University Hospital, Grenoble",
+   "countries": [],
+   "usStates": [],
+   "sites": 0,
+   "url": "https://clinicaltrials.gov/study/NCT06755385",
+   "lastUpdate": "2025-01-01",
+   "plain": null
+  },
+  {
+   "nct": "NCT07782489",
+   "title": "Pleuropulmonary Ultrasound Imaging in Patients With Sickle Cell Disease in a Vaso-occlusive Crisis. \"ECHODREP\"",
+   "status": "NOT_YET_RECRUITING",
+   "kind": "watch",
+   "kindLabel": "Watching and learning (no new treatment)",
+   "phase": null,
+   "minAge": 18.0,
+   "maxAge": null,
+   "minAgeText": "18 Years",
+   "maxAgeText": null,
+   "healthy": false,
+   "testing": [
+    "Pleuropulmonary ultrasound"
+   ],
+   "sponsor": "Assistance Publique - Hôpitaux de Paris",
+   "countries": [],
+   "usStates": [],
+   "sites": 0,
+   "url": "https://clinicaltrials.gov/study/NCT07782489",
+   "lastUpdate": "2026-08-24",
+   "plain": null
+  },
+  {
+   "nct": "NCT05883254",
+   "title": "Pumilio1 (PUM1) Expression, Sickle Cell Anemia, β-thalassemia Intermedia",
+   "status": "NOT_YET_RECRUITING",
+   "kind": "watch",
+   "kindLabel": "Watching and learning (no new treatment)",
+   "phase": null,
+   "minAge": null,
+   "maxAge": null,
+   "minAgeText": null,
+   "maxAgeText": null,
+   "healthy": false,
+   "testing": [
+    "RNA Binding Protein Pumilio1 (PUM1) Expression by reverse transcriptase quantatative PCR"
+   ],
+   "sponsor": "Assiut University",
+   "countries": [],
+   "usStates": [],
+   "sites": 0,
+   "url": "https://clinicaltrials.gov/study/NCT05883254",
+   "lastUpdate": "2023-05-31",
+   "plain": null
+  },
+  {
+   "nct": "NCT06619093",
+   "title": "Relationship Between Biological Phenotype, Clinical Severity of Sickle Cell Disease, and Blood Coagulation",
+   "status": "NOT_YET_RECRUITING",
+   "kind": "watch",
+   "kindLabel": "Watching and learning (no new treatment)",
+   "phase": null,
+   "minAge": 8.0,
+   "maxAge": null,
+   "minAgeText": "8 Years",
+   "maxAgeText": null,
+   "healthy": false,
+   "testing": [
+    "blood sampling"
+   ],
+   "sponsor": "Hospices Civils de Lyon",
+   "countries": [
+    "France"
+   ],
+   "usStates": [],
+   "sites": 2,
+   "url": "https://clinicaltrials.gov/study/NCT06619093",
+   "lastUpdate": "2025-01-15",
+   "plain": null
+  },
+  {
+   "nct": "NCT07341022",
+   "title": "STEM CELL MOBILIZATION WITH HIGH-DOSE PLERIXAFOR IN PATIENTS WITH SICKLE CELL DISEASE",
+   "status": "NOT_YET_RECRUITING",
+   "kind": "transplant",
+   "kindLabel": "Transplant",
+   "phase": "Phase 1, Phase 2",
+   "minAge": 18.0,
+   "maxAge": 25.0,
+   "minAgeText": "18 Years",
+   "maxAgeText": "25 Years",
+   "healthy": false,
+   "testing": [
+    "Plerixafor Dose Escalation"
+   ],
+   "sponsor": "Hospital Israelita Albert Einstein",
+   "countries": [],
+   "usStates": [],
+   "sites": 0,
+   "url": "https://clinicaltrials.gov/study/NCT07341022",
+   "lastUpdate": "2026-01-14",
+   "plain": null
+  },
+  {
+   "nct": "NCT07752043",
+   "title": "Standard of Care Comparative Arm of Phase 1/2 Gene Therapy Trial DREPAMIR\" in Severe Sickle Cell Disease Patients",
+   "status": "NOT_YET_RECRUITING",
+   "kind": "gene",
+   "kindLabel": "Gene therapy",
+   "phase": null,
+   "minAge": 12.0,
+   "maxAge": 35.0,
+   "minAgeText": "12 Years",
+   "maxAgeText": "35 Years",
+   "healthy": false,
+   "testing": [
+    "standard of care"
+   ],
+   "sponsor": "Assistance Publique - Hôpitaux de Paris",
+   "countries": [
+    "France"
+   ],
+   "usStates": [],
+   "sites": 1,
+   "url": "https://clinicaltrials.gov/study/NCT07752043",
+   "lastUpdate": "2026-08-07",
+   "plain": null
+  },
+  {
+   "nct": "NCT06797583",
+   "title": "Transcranial Photobiomodulation Treatment in Patients With Sickle Cell Disease",
+   "status": "NOT_YET_RECRUITING",
+   "kind": "device",
+   "kindLabel": "Testing a device",
+   "phase": null,
+   "minAge": 8.0,
+   "maxAge": 17.0,
+   "minAgeText": "8 Years",
+   "maxAgeText": "17 Years",
+   "healthy": false,
+   "testing": [
+    "Active Transcranial Photobiomodulation (TPBM)",
+    "Sham Transcranial photobiomodulation (TPBM)"
+   ],
+   "sponsor": "St. Jude Children's Research Hospital",
+   "countries": [],
+   "usStates": [],
+   "sites": 0,
+   "url": "https://clinicaltrials.gov/study/NCT06797583",
+   "lastUpdate": "2026-09-10",
+   "plain": null
+  },
+  {
+   "nct": "NCT07168447",
+   "title": "Transfusion Exchanges and Cognition in Sickle Cell Disease",
+   "status": "NOT_YET_RECRUITING",
+   "kind": "watch",
+   "kindLabel": "Watching and learning (no new treatment)",
+   "phase": null,
+   "minAge": 18.0,
+   "maxAge": null,
+   "minAgeText": "18 Years",
+   "maxAgeText": null,
+   "healthy": false,
+   "testing": [],
+   "sponsor": "Centre Hospitalier St Anne",
+   "countries": [
+    "France"
+   ],
+   "usStates": [],
+   "sites": 6,
+   "url": "https://clinicaltrials.gov/study/NCT07168447",
+   "lastUpdate": "2025-09-11",
+   "plain": null
+  },
+  {
+   "nct": "NCT07190001",
+   "title": "YOLT-204 in Patients With Hemoglobinopathies",
+   "status": "NOT_YET_RECRUITING",
+   "kind": "medicine",
+   "kindLabel": "Testing a medicine",
+   "phase": "EARLY Phase 1",
+   "minAge": 3.0,
+   "maxAge": 17.0,
+   "minAgeText": "3 Years",
+   "maxAgeText": "17 Years",
+   "healthy": false,
+   "testing": [
+    "YOLT-204"
+   ],
+   "sponsor": "Guangzhou Women and Children's Medical Center",
+   "countries": [
+    "China"
+   ],
+   "usStates": [],
+   "sites": 1,
+   "url": "https://clinicaltrials.gov/study/NCT07190001",
+   "lastUpdate": "2025-09-24",
+   "plain": null
+  }
+ ]
+}
