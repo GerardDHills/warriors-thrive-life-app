@@ -261,7 +261,7 @@ const lerp=(a,b,t)=>a+(b-a)*t;
 const imgs={};function img(src){if(!imgs[src]){const i=new Image();i.decoding="async";i.src=src;imgs[src]=i}return imgs[src]}
 const ready=i=>i&&i.complete&&i.naturalWidth>0;
 const ASSETS=["bg/lab.webp","bg/city.webp","bg/hosp.webp","img/coin.webp","img/crystal.webp","img/logo.webp",
- ...["wall","block","agent","bollard","cone","lamp","pillar","tree","crates","tape","title"].map(n=>"obj/"+n+".webp"),
+ ...["wall","block","agent","agent_run","society_face","bollard","cone","lamp","pillar","tree","crates","tape","title"].map(n=>"obj/"+n+".webp"),
  ...CHARS.flatMap(c=>["sprites/"+c.id+".webp","faces/"+c.id+".webp"])];
 let loaded=0;ASSETS.forEach(a=>{const i=img(a);const done=()=>{loaded++;if(loaded===ASSETS.length)boot()};if(i.complete)done();else{i.onload=done;i.onerror=done}});
 setTimeout(()=>boot(),8000);
@@ -403,7 +403,7 @@ function showCard(kind,obs){
  const c=nextCard();G.state="card";hint(null);
  const P=$("cardP"),bonus=kind==="bonus";
  const head=bonus?`<div class="card-h"><img src="img/coin.webp" alt=""><div><span class="tag bonus">Warrior Bonus</span><h2>${G.coins} coins! Bonus question</h2></div></div><p class="sub" style="margin:0 0 6px">${EMBED?"Get it right for <b>+5 real points</b> in your Life App.":"Get it right for <b>+500 score</b>."}</p>`
-  :`<div class="card-h"><img src="obj/agent.webp" alt=""><div><span class="tag">Warrior Card</span><h2>${obs.t==="gap"?"You fell in a gap!":"The Society caught you!"}</h2></div></div><div class="myth"><b>"${obs.text}"</b>Answer right to break free and keep running.</div>`;
+  :`<div class="card-h"><img src="obj/society_face.webp" alt="" style="border-radius:50%;background:radial-gradient(circle,#2a1236,#12041c)"><div><span class="tag">Warrior Card</span><h2>${obs.t==="gap"?"You fell in a gap!":"The Society caught you!"}</h2></div></div><div class="myth"><b>"${obs.text}"</b>Answer right to break free and keep running.</div>`;
  P.innerHTML=head+`<div class="q">${c.q}</div><div class="ans">${c.a.map((a,i)=>`<button data-i="${i}">${a}</button>`).join("")}</div><div id="resBox"></div>`;
  $("cardL").classList.remove("hide");P.scrollTop=0;
  P.querySelectorAll(".ans button").forEach(b=>b.onclick=()=>{
@@ -570,7 +570,7 @@ function drawObj(o){
  else if(o.t==="block"){const x=laneX(o.lane);shadow(x,o.z,2);const r=sprite("block",x,o.z,2.15);if(r&&r.w>14){ctx.globalAlpha=f;fitText(o.text,r.x,r.y-r.h*(1-.305),r.w*.66,r.h*.16,"#b0153a");ctx.globalAlpha=1}}
  else if(o.t==="crates"){const x=laneX(o.lane);shadow(x,o.z,1.9);const r=sprite("crates",x,o.z,2.0);if(r&&dz<90)label(o.text,r.x,r.y-r.h-r.s*.15,r.s,f*smooth(90,74,dz),"#7b4dff")}
  else if(o.t==="cone"){const x=laneX(o.lane);shadow(x-.5,o.z,1);shadow(x+.5,o.z,1);sprite("cone",x-.5,o.z,1.05);sprite("cone",x+.5,o.z,1.05)}
- else if(o.t==="agent"){const x=laneX(o.lane);shadow(x,o.z,1.8,.4);const bob=Math.abs(Math.sin(G.t*4+o.z))*.08;const r=sprite("agent",x,o.z,2.1,bob);if(r&&dz<75)speech(o.text,r.x,r.y-r.h-r.s*.2,r.s,f*smooth(75,60,dz))}
+ else if(o.t==="agent"){const x=laneX(o.lane);shadow(x,o.z,1.9,.45);const gp=proj(x,1.9,o.z);if(gp){const gr=gp.s*2.1,g=ctx.createRadialGradient(gp.x,gp.y,0,gp.x,gp.y,gr);g.addColorStop(0,"rgba(94,231,255,.32)");g.addColorStop(1,"rgba(94,231,255,0)");ctx.globalAlpha=f;ctx.fillStyle=g;ctx.fillRect(gp.x-gr,gp.y-gr,gr*2,gr*2);ctx.globalAlpha=1}const bob=Math.abs(Math.sin(G.t*4+o.z))*.08;const r=sprite("agent",x,o.z,2.5,bob);if(r&&dz<75)speech(o.text,r.x,r.y-r.h-r.s*.2,r.s,f*smooth(75,60,dz))}
  else if(o.t==="gate"){const L=proj(-HALF-.7,0,o.z),R=proj(HALF+.7,0,o.z),T=proj(0,6.2,o.z);if(!L||!R||!T)return;ctx.globalAlpha=f;const pw=Math.max(3,L.s*.5);
   const pg=ctx.createLinearGradient(L.x-pw/2,0,L.x+pw/2,0);pg.addColorStop(0,"#b97f0a");pg.addColorStop(.5,"#ffd76a");pg.addColorStop(1,"#b97f0a");ctx.fillStyle=pg;ctx.fillRect(L.x-pw/2,T.y,pw,L.y-T.y);ctx.fillRect(R.x-pw/2,T.y,pw,R.y-T.y);
   const bh=Math.max(14,L.s*1.15);const bg=ctx.createLinearGradient(0,T.y-bh*.2,0,T.y+bh*.8);bg.addColorStop(0,"#9b78ff");bg.addColorStop(1,"#5b2bd0");ctx.fillStyle=bg;rr(L.x-pw,T.y-bh*.2,R.x-L.x+pw*2,bh,bh*.3);ctx.fill();ctx.strokeStyle="#ffc23d";ctx.lineWidth=Math.max(1.5,L.s*.08);ctx.stroke();
@@ -593,7 +593,7 @@ function drawPlayer(){
  if(runAnim&&G.y<=0&&Math.random()<.35)G.parts.push({x:sh.x+(Math.random()-.5)*wid*.4,y:sh.y,vx:(Math.random()-.5)*40,vy:-30-Math.random()*30,life:.35,max:.35,col:"rgba(230,210,255,.6)",size:3+Math.random()*3});
 }
 function drawChase(){if(!(G.chase>0||G.state==="hit"))return;const a=G.state==="hit"?1:Math.min(1,G.chase/1.5)*.9;
- [-1.5,1.5].forEach((o,i)=>sprite("agent",G.x+o,G.pz-(G.state==="hit"?.8:2.4)+Math.sin(G.t*6+i)*.3,1.9,0,a))}
+ [-1.6,1.6].forEach((o,i)=>sprite("agent_run",G.x+o,G.pz-(G.state==="hit"?.8:2.4)+Math.sin(G.t*6+i)*.3,2.6,Math.abs(Math.sin(G.t*9+i))*.15,a,o>0))}
 function drawSpeed(){const sp=G.state==="run"?(G.speed-9)/6:0;if(sp<=0)return;ctx.strokeStyle=`rgba(255,255,255,${.1+.16*sp})`;ctx.lineWidth=2;
  for(let i=0;i<12;i++){const side=i%2?1:-1,ph=((G.t*1.8+i*.29)%1),x=W/2+side*W*(.36+ph*.3),y=HOR+(H-HOR)*(.15+((i*.37)%1)*.6);const dx=(x-W/2)*.12*(1+sp),dy=(y-HOR)*.12*(1+sp);ctx.beginPath();ctx.moveTo(x,y);ctx.lineTo(x+dx,y+dy);ctx.stroke()}}
 function render(){
