@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<meta name="theme-color" content="#1b0b24">
+<title>Warrior Mission · Warriors Thrive</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lilita+One&family=Atkinson+Hyperlegible:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="wm.css">
+</head><body>
+<canvas id="cv"></canvas>
+
+<!-- HUD -->
+<div id="hud" class="hide">
+  <div class="hrow">
+    <div id="hearts"></div>
+    <div id="hyd" title="Hydration"><i>💧</i><b><span id="hydFill"></span></b></div>
+  </div>
+  <div class="hrow r">
+    <span class="chip"><img src="img/token.webp" alt=""><b id="hTok">0</b></span>
+    <span class="chip"><img src="img/crystal.webp" alt=""><b id="hCrys">0/3</b></span>
+    <span class="chip"><img src="img/clue.webp" alt=""><b id="hClue">0/3</b></span>
+    <button id="pauseBtn" class="pbtn" aria-label="Pause">❚❚</button>
+  </div>
+  <div id="bossBar" class="hide"><span id="bossName"></span><b><i id="bossFill"></i></b></div>
+</div>
+
+<!-- touch controls -->
+<div id="pad" class="hide">
+  <div class="lpad"><button id="bL" aria-label="Left">◀</button><button id="bR" aria-label="Right">▶</button></div>
+  <div class="rpad"><button id="bP" aria-label="Power"><img id="pFace" alt=""><span id="pCount">2</span></button><button id="bJ" aria-label="Jump">▲</button></div>
+</div>
+
+<div id="bubble" class="hide"><img id="bubFace" alt=""><span id="bubTxt"></span></div>
+<div id="clueBan" class="hide"><img src="img/clue.webp" alt=""><div><b id="clueHd"></b><span id="clueTx"></span></div></div>
+<div id="toast" class="hide"></div>
+<div id="crisisFx"></div>
+
+<!-- screens -->
+<div id="scr" class="scr">
+  <section id="sTitle" class="pane on">
+    <img class="logo" src="img/title.webp" alt="Warrior Mission">
+    <p class="story" id="storyTx"></p>
+    <div class="btns"><button class="cta" id="playBtn">Play ▶</button></div>
+    <button class="link" id="exitBtn">← Back to the Life App</button>
+  </section>
+
+  <section id="sChar" class="pane">
+    <h2>Choose your Warrior</h2>
+    <div id="charGrid" class="cgrid"></div>
+    <div id="charInfo" class="cinfo"></div>
+    <div class="btns"><button class="ghost" data-back="sTitle">← Back</button><button class="cta" id="charGo">Choose mission ▶</button></div>
+  </section>
+
+  <section id="sMission" class="pane">
+    <h2>Pick a mission</h2>
+    <div id="misGrid" class="mgrid"></div>
+    <div class="btns"><button class="ghost" data-back="sChar">← Warriors</button></div>
+  </section>
+
+  <section id="sBrief" class="pane brief">
+    <div class="bcard">
+      <img id="brKid" alt="">
+      <div>
+        <small id="brNum"></small>
+        <h2 id="brTitle"></h2>
+        <p id="brNeed"></p>
+        <div class="myth"><span>The myth</span><b id="brMyth"></b></div>
+        <ul class="goals">
+          <li><img src="img/clue.webp" alt="">Find 3 Truth Clues</li>
+          <li><img src="img/crystal.webp" alt="">Collect 3 Health Crystals</li>
+          <li><img id="brBossImg" alt="">Beat <b id="brBoss"></b></li>
+        </ul>
+        <div class="btns"><button class="ghost" data-back="sMission">← Back</button><button class="cta" id="brGo">Start mission ▶</button></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="sPause" class="pane">
+    <h2>Paused</h2>
+    <div class="btns col">
+      <button class="cta" id="resumeBtn">Keep going ▶</button>
+      <button class="ghost" id="musicBtn">Music: on</button>
+      <button class="ghost" id="voiceBtn">Voices: on</button>
+      <button class="ghost" id="restartBtn">Restart from checkpoint</button>
+      <button class="link" id="quitBtn">Quit to missions</button>
+    </div>
+  </section>
+
+  <section id="sCard" class="pane">
+    <div class="qcard">
+      <small id="qHead">Warrior Card</small>
+      <h3 id="qQ"></h3>
+      <div id="qA"></div>
+      <p id="qFb" class="fb"></p>
+      <button class="link" id="qSkip">Not now</button>
+    </div>
+  </section>
+
+  <section id="sWin" class="pane">
+    <div class="win">
+      <img id="wKid" alt="">
+      <div>
+        <small>Myth busted!</small>
+        <h2 id="wMyth"></h2>
+        <p id="wTruth" class="truth"></p>
+        <ul id="wClues" class="wclues"></ul>
+        <div class="stats" id="wStats"></div>
+        <p id="wUnlock" class="unlock hide"></p>
+        <div class="btns"><button class="ghost" id="wMenu">Missions</button><button class="cta" id="wNext">Next mission ▶</button></div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<div id="rotate"><div><b>Turn your phone sideways</b><span>Warrior Mission plays best in landscape.</span><button class="link" id="rotExit">← Back to the Life App</button></div></div>
+<div id="loading"><img src="img/title.webp" alt=""><b><i id="loadBar"></i></b></div>
+
+<audio id="music" src="../runner/theme.mp3" loop preload="none"></audio>
+<script src="data.js"></script>
+<script src="wm.js"></script>
+</body></html>
