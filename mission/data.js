@@ -64,7 +64,34 @@ WM.MISSIONS = [
      "Hydroxyurea is a daily medicine that helps red blood cells stay rounder and can mean fewer pain crises.",
      "Regular checkups, vaccines and blood transfusions help protect Warriors' bodies.",
      "A bone marrow transplant or a gene therapy can cure sickle cell for some Warriors, and science keeps moving!"],
-   truth:"There's a lot Warriors and their care teams can do, and Dr. Amos' lab is back to finding even more."}
+   truth:"There's a lot Warriors and their care teams can do, and Dr. Amos' lab is back to finding even more."},
+  {n:4, title:"Breath of Truth", world:4, body:"lungs", bg:"img/bg4.webp", kid:"darius", kidName:"Darius", kidAge:16,
+   myth:"“Chest pain and a cough? Just sleep it off.”",
+   need:"Darius has chest pain and a cough, and The Smog Baron told him to just sleep it off. The Warriors shrink down to fight inside his lungs.",
+   boss:"The Smog Baron", bossImg:"img/boss4.webp",
+   clues:[
+     "Chest pain, fever, coughing or trouble breathing can be acute chest syndrome, an emergency. Go to the ER right away.",
+     "In the hospital, breathing into an incentive spirometer every hour you're awake helps keep your lungs open.",
+     "Pulmonary hypertension is high pressure in the lungs' blood vessels. Tell your care team if you get short of breath easily; a heart ultrasound can check."],
+   truth:"Chest pain with sickle cell is never something to sleep off. Getting checked fast keeps Darius's lungs strong."},
+  {n:5, title:"Mind Over Myth", world:5, body:"brain", bg:"img/bg5.webp", kid:"rafael", kidName:"Rafael", kidAge:"Mateo's dad",
+   myth:"“Kids with sickle cell don't have strokes. Skip that brain scan.”",
+   need:"Rafael's son Mateo has a brain scan appointment, but The Static told Rafael it's a waste of time. The Warriors shrink down to fight inside the brain.",
+   boss:"The Static", bossImg:"img/boss5.webp",
+   clues:[
+     "Children with sickle cell can have strokes. A painless yearly ultrasound called a TCD checks blood flow in the brain, starting around age 2.",
+     "Know the signs: a drooping face, arm or leg weakness, trouble talking or seeing, or a sudden bad headache. Call 911 right away.",
+     "If a TCD shows high risk, regular blood transfusions or other treatments can help prevent a stroke."],
+   truth:"Rafael keeps Mateo's TCD scan every year, because screening can stop a stroke before it happens."},
+  {n:6, title:"Kidney Canyon", world:6, body:"kidneys", bg:"img/bg6.webp", kid:"aaliyah", kidName:"Aaliyah", kidAge:11,
+   myth:"“Wetting the bed means you're just lazy.”",
+   need:"Aaliyah wet the bed again, and The Clogmaster told her it's because she's lazy. The Warriors shrink down to fight inside the kidneys.",
+   boss:"The Clogmaster", bossImg:"img/boss6.webp",
+   clues:[
+     "Sickle cell can keep kidneys from concentrating urine, so kids make more pee, even at night. It's not your fault.",
+     "Keep drinking water all day, take bathroom breaks, and talk with your care team. There are ways to help with bedwetting.",
+     "Yearly urine and blood pressure checks help catch kidney problems early, when they're easier to treat."],
+   truth:"Aaliyah isn't lazy. Her kidneys work differently with sickle cell, and her care team has a plan to help."}
 ];
 
 /* ---------- level builder ---------- */
@@ -171,5 +198,53 @@ WM.LEVELS = {
     return b.build(3);
   }
 };
+Object.assign(WM.LEVELS,{
+  4(){ const b=new Builder();
+    b.seg(14,9,(x)=>{ b.tokens(x+3,7,5,1).row(x+8,5,"WS?"); });
+    b.hole(2).seg(6,8,(x)=>{ b.e("cloud",x+3,3); });
+    b.hole(3).seg(6,8,(x)=>{ b.e("clue",x+2,7,{i:0}).e("agent",x+4,8); });
+    b.seg(12,9,(x)=>{ b.row(x+2,6,"-----").tokens(x+2,5,5).e("thrower",x+9,9).row(x+7,8,"b"); });
+    b.hole(7,(x)=>{ b.e("mover",x+1,7,{dx:4}); b.e("cloud",x+3,2); });
+    b.seg(8,9,(x)=>{ b.e("flag",x+2,9).e("water",x+5,8); });
+    b.stairs(3,-1).seg(5,6,(x)=>{ b.e("spring",x+2,6).row(x+3,1,"===").e("crystal",x+4,0); }).stairs(3,1);
+    b.seg(14,9,(x)=>{ b.e("agent",x+3,9).e("agent",x+6,9).e("thrower",x+11,9).row(x+4,5,"?H?").e("clue",x+9,8,{i:1}); });
+    b.hole(2).seg(3,7).hole(2).seg(3,5,(x)=>{ b.tokens(x,3,3); }).hole(2).seg(3,7).hole(2);
+    b.seg(16,9,(x)=>{ gateRoom(b,x); b.e("cloud",x+13,3); });
+    b.seg(10,9,(x)=>{ b.e("flag",x+2,9).row(x+5,8,"b").e("water",x+8,8); });
+    b.hole(10,(x)=>{ b.e("mover",x+1,6,{dx:6}); });
+    b.seg(12,9,(x)=>{ b.e("thrower",x+4,9).e("cloud",x+7,2).row(x+6,5,"=W=").e("clue",x+10,8,{i:2}); });
+    b.seg(10,9,(x)=>{ b.e("spring",x+2,9).row(x+4,2,"---").e("crystal",x+5,1).e("agent",x+8,9); });
+    arena(b); return b.build(4); },
+  5(){ const b=new Builder();
+    b.seg(12,9,(x)=>{ b.tokens(x+3,7,5,1).row(x+7,5,"?SW"); });
+    b.hole(3).seg(5,7).hole(3).seg(5,5,(x)=>{ b.e("clue",x+2,4,{i:0}); }).hole(3).seg(5,7);
+    b.hole(2).seg(14,9,(x)=>{ b.e("thrower",x+5,9).e("thrower",x+11,9).row(x+7,8,"b").e("cloud",x+8,3); });
+    b.hole(6,(x)=>{ b.e("mover",x+1,7,{dy:3}); });
+    b.seg(10,9,(x)=>{ b.e("flag",x+1,9).e("water",x+4,8).row(x+5,5,"=M=").e("agent",x+7,9); });
+    b.stairs(4,-1).seg(3,5).hole(3).seg(4,5,(x)=>{ b.e("spring",x+1,5).e("crystal",x+2,0).row(x+1,1,"---"); }).hole(3).seg(3,5).stairs(4,1);
+    b.seg(14,9,(x)=>{ b.e("clue",x+3,8,{i:1}).e("agent",x+5,9).e("agent",x+8,9).e("agent",x+11,9).row(x+5,5,"?W?H?"); });
+    b.seg(16,9,(x)=>{ gateRoom(b,x); b.e("thrower",x+14,9); });
+    b.hole(12,(x)=>{ b.e("mover",x+1,6,{dx:8}); b.e("cloud",x+5,2); });
+    b.seg(10,9,(x)=>{ b.e("flag",x+2,9).row(x+5,8,"b").e("cloud",x+7,3); });
+    b.seg(12,9,(x)=>{ b.e("spring",x+2,9).row(x+4,2,"===").e("crystal",x+5,1).e("clue",x+9,8,{i:2}).e("thrower",x+10,9); });
+    b.seg(6,9,(x)=>{ b.e("water",x+2,8); });
+    arena(b); return b.build(5); },
+  6(){ const b=new Builder();
+    b.seg(14,9,(x)=>{ b.tokens(x+3,7,6,1).row(x+8,5,"WSW"); });
+    b.hole(4,(x)=>{ b.e("mover",x+0,7,{dx:2}); });
+    b.seg(10,8,(x)=>{ b.e("clue",x+2,7,{i:0}).e("agent",x+5,8).e("agent",x+7,8); });
+    b.hole(2).seg(3,6).hole(2).seg(3,4,(x)=>{ b.e("cloud",x+1,1).tokens(x,3,3); }).hole(2).seg(3,6).hole(2);
+    b.seg(14,9,(x)=>{ b.e("thrower",x+6,9).row(x+3,8,"b").row(x+9,8,"b").e("water",x+11,8); });
+    b.seg(10,9,(x)=>{ b.e("flag",x+1,9).row(x+3,5,"-----").tokens(x+3,4,5).e("cloud",x+6,2); });
+    b.hole(7,(x)=>{ b.e("mover",x+1,7,{dy:3}); });
+    b.seg(10,8,(x)=>{ b.e("clue",x+3,7,{i:1}).e("thrower",x+8,8); });
+    b.seg(16,9,(x)=>{ gateRoom(b,x); b.e("agent",x+13,9); });
+    b.stairs(3,-1).seg(5,6,(x)=>{ b.e("spring",x+2,6).row(x+3,1,"===").e("crystal",x+4,0); }).stairs(3,1);
+    b.seg(12,9,(x)=>{ b.e("flag",x+1,9).e("agent",x+4,9).e("agent",x+7,9).e("thrower",x+10,9).row(x+4,5,"?W?H"); });
+    b.hole(12,(x)=>{ b.e("mover",x+1,6,{dx:8}); b.e("cloud",x+6,2); });
+    b.seg(12,9,(x)=>{ b.e("spring",x+2,9).row(x+4,2,"---").e("crystal",x+5,1).e("clue",x+8,8,{i:2}).e("cloud",x+9,3); });
+    b.seg(6,9,(x)=>{ b.e("water",x+2,8); });
+    arena(b); return b.build(6); }
+});
 WM.ROWS = ROWS;
 })();
