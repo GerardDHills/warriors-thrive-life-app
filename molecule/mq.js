@@ -1,6 +1,6 @@
 "use strict";
 /* =====================================================================
-   Molecule Quest — Warriors Thrive
+   Hemoglobin Heroes — Warriors Thrive
    Dr. Amos and the Warriors shrink into the molecular world to see how
    sickle cell works and how each treatment fights back.
    ===================================================================== */
@@ -243,14 +243,14 @@ function reward(B,i,score){
  const first=!SAVE.done[B.id];SAVE.done[B.id]={score,at:Date.now()};saveP();post({type:"board",id:B.id,first,score});
  sfx.win();confetti(B.final?140:70);
  const group=B.final?`<div class="group">${["malcolm","tasha","theo","amos_cheer","ritika","luciana","krystal"].map(c=>`<img src="char/${c}.webp" alt="">`).join("")}</div>`:`<img class="big" src="../runner/img/crystal.webp" alt="">`;
- panel(`<div class="reward">${group}<span class="ptag gold">${B.final?"Quest complete!":"Board complete!"}</span><h2>${B.final?"You finished Molecule Quest!":B.title}</h2>
+ panel(`<div class="reward">${group}<span class="ptag gold">${B.final?"Quest complete!":"Board complete!"}</span><h2>${B.final?"You're a Hemoglobin Hero!":B.title}</h2>
   <div class="badge">💎 ${B.med} crystal ${first?"earned":"earned again"}</div>
   <p style="margin:6px 0 0;font-weight:700">Lab Check: ${score} of ${B.quiz.length} correct</p>
   ${EMBED&&first?`<p style="color:var(--gold);font-weight:700;margin:6px 0 0">+ Warrior points added to your Life App</p>`:""}
   ${B.final?`<p class="sub" style="margin:10px 0 0;line-height:1.45">From one changed letter to a cure: you've seen how every sickle cell treatment works. Share what you learned with your family and your care team!</p>`:""}
-  <button class="cta" id="rwGo" style="margin-top:14px">${B.final?"Back to the map":"Next board ▶"}</button>
+  <button class="cta" id="rwGo" style="margin-top:14px">${B.final?"Play again from Board 1 ▶":"Next board ▶"}</button>
   <button class="cta alt small" id="rwMap" style="margin-top:10px">World map</button></div>`);
- $("rwGo").onclick=()=>{$("panel").classList.add("hide");if(B.final||i+1>=BOARDS.length)openMap();else openBoard(i+1)};
+ $("rwGo").onclick=()=>{$("panel").classList.add("hide");if(B.final){resetQuest();openMap()}else if(i+1>=BOARDS.length)openMap();else openBoard(i+1)};
  $("rwMap").onclick=()=>{$("panel").classList.add("hide");openMap()};
 }
 
@@ -275,8 +275,11 @@ $("mapHome").onclick=()=>openTitle();
 /* ---------- title ---------- */
 function openTitle(){show("title");const crew=$("crew");crew.innerHTML="";
  const cast=["tasha","malcolm","amos","luciana","theo"];cast.forEach((c,k)=>{const im=document.createElement("img");im.src="char/"+c+".webp";im.style.left=(k*19-2)+"%";im.style.height=(c==="amos"?180:146)+"px";im.style.zIndex=c==="amos"?3:k%2?2:1;if(c==="amos")im.style.left="31%";crew.appendChild(im)});
- const d=doneCount();$("progressTxt").textContent=d?`${d} of 10 boards complete`:"10 boards · about 3 minutes each";$("startBtn").textContent=d?"Continue the quest ▶":"Start the quest ▶"}
+ const d=doneCount();$("progressTxt").textContent=d?`${d} of 10 boards complete`:"10 boards · about 3 minutes each";$("startBtn").textContent=d>=10?"Replay any board ▶":d?"Continue the quest ▶":"Start the quest ▶";$("resetBtn").classList.toggle("hide",!d)}
 $("startBtn").onclick=()=>{audio();openMap()};
+function resetQuest(){SAVE={done:{}};saveP()}
+{let armed=0,tm;const rb=$("resetBtn");rb.onclick=()=>{if(!armed){armed=1;rb.classList.add("confirm");rb.textContent="Tap again to erase progress and restart";clearTimeout(tm);tm=setTimeout(()=>{armed=0;rb.classList.remove("confirm");rb.textContent="↺ Start over from Board 1"},3500);return}
+ clearTimeout(tm);armed=0;rb.classList.remove("confirm");rb.textContent="↺ Start over from Board 1";resetQuest();sfx.pop&&sfx.pop();toast("Fresh start!","All 10 boards are ready to play again.",1600,"#ffc23d");openTitle()}}
 if(EMBED){document.body.classList.add("embed");$("exitBtn").classList.remove("hide");$("exitBtn").onclick=()=>post({type:"exit"})}
 
 /* =====================================================================
