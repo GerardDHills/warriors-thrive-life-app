@@ -65,6 +65,7 @@ function quip(key,force){
   if(!force && now-lastQuip<4500) return;
   const txt=(WM.QUIPS[c.id]||{})[key]; if(!txt) return;
   lastQuip=now;
+  if(!$("clueBan").classList.contains("hide")) { if(save.voice){ try{ if(!voiceEl) voiceEl=new Audio(); voiceEl.src="voice/"+c.id+"/"+key+".mp3"; voiceEl.play().catch(()=>{}); }catch(e){} } return; }
   $("bubFace").src=IMG["face_"+c.id].src; $("bubTxt").textContent=txt;
   const b=$("bubble"); b.classList.remove("hide"); b.style.animation="none"; void b.offsetWidth; b.style.animation="";
   clearTimeout(bubbleT); bubbleT=setTimeout(()=>b.classList.add("hide"), 3200);
@@ -73,7 +74,7 @@ function quip(key,force){
 let toastT=null;
 function toast(big,small){ const t=$("toast"); t.innerHTML=big+(small?"<small>"+small+"</small>":""); t.classList.remove("hide"); t.style.animation="none"; void t.offsetWidth; t.style.animation=""; clearTimeout(toastT); toastT=setTimeout(()=>t.classList.add("hide"),1650); }
 let clueT=null;
-function clueBanner(head,tx){ $("clueHd").textContent=head; $("clueTx").textContent=tx; const b=$("clueBan"); b.classList.remove("hide"); b.style.animation="none"; void b.offsetWidth; b.style.animation=""; clearTimeout(clueT); clueT=setTimeout(()=>b.classList.add("hide"),6500); }
+function clueBanner(head,tx){ $("bubble").classList.add("hide"); $("clueHd").textContent=head; $("clueTx").textContent=tx; const b=$("clueBan"); b.classList.remove("hide"); b.style.animation="none"; void b.offsetWidth; b.style.animation=""; clearTimeout(clueT); clueT=setTimeout(()=>b.classList.add("hide"),6500); }
 
 /* ---------------- canvas ---------------- */
 const cv=$("cv"), ctx=cv.getContext("2d");
@@ -672,7 +673,19 @@ function buildMissions(){
 function brief(m){
   $("brKid").src="img/"+m.kid+".webp"; $("brNum").textContent="Mission "+m.n+" · "+m.kidName+", age "+m.kidAge; $("brTitle").textContent=m.title;
   $("brNeed").textContent=m.need; $("brMyth").textContent=m.myth; $("brBoss").textContent=m.boss; $("brBossImg").src=m.bossImg;
-  $("brGo").onclick=()=>startMission(m.n); show("sBrief");
+  $("brGo").onclick=()=>playIntro(m.n); show("sBrief");
+}
+function playIntro(n){
+  ac();
+  // unlock audio on this tap so music and voices can play after the cutscene (iOS)
+  try{ music.muted=true; music.play().then(()=>{ music.pause(); music.muted=false; }).catch(()=>{ music.muted=false; }); }catch(e){}
+  try{ if(!voiceEl) voiceEl=new Audio(); voiceEl.muted=true; voiceEl.src="voice/"+(save.char||"malcolm")+"/start.mp3"; voiceEl.play().then(()=>{ voiceEl.pause(); voiceEl.muted=false; }).catch(()=>{ voiceEl.muted=false; }); }catch(e){}
+  const cut=$("cut"), v=$("cutVid"); let done=false;
+  const finish=()=>{ if(done) return; done=true; v.pause(); v.removeAttribute("src"); v.load(); cut.classList.add("hide"); startMission(n); };
+  show(null); cut.classList.remove("hide");
+  v.onended=finish; v.onerror=finish; $("cutSkip").onclick=finish;
+  v.src="vid/intro"+n+".mp4"; v.currentTime=0;
+  const pr=v.play(); if(pr&&pr.catch) pr.catch(()=>{ v.muted=true; v.play().catch(finish); });
 }
 function pause(){ if(!G||G.state!=="play"||!running) return; G.state="pause"; musicOn(false); K.l=K.r=K.j=false; show("sPause"); }
 $("pauseBtn").onclick=pause;
