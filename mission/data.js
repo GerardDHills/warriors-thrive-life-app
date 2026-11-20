@@ -75,10 +75,10 @@ Builder.prototype = {
   flat(n,g){ if(g!==undefined) this.g=g; for(let i=0;i<n;i++){ const c=new Array(ROWS).fill(0); for(let r=this.g;r<ROWS;r++) c[r]=1; this.cols.push(c);} return this; },
   gap(n){ for(let i=0;i<n;i++) this.cols.push(new Array(ROWS).fill(0)); return this; },
   t(x,r,v){ if(this.cols[x]) this.cols[x][r]=v; return this; },
-  /* '=' brick, '?' token block, 'W' water block, 'H' heart block, 'M' multi-token block, '-' one-way, 'b' barrier(2 tall), 'L' gate(3 tall) */
+  /* 'S' Warrior Spark block, '=' brick, '?' token block, 'W' water block, 'H' heart block, 'M' multi-token block, '-' one-way, 'b' barrier(2 tall), 'L' gate(3 tall) */
   row(x,r,s){ for(let i=0;i<s.length;i++){ const ch=s[i], X=x+i;
       if(ch==="=") this.t(X,r,2); else if(ch==="?") this.t(X,r,3); else if(ch==="W") this.t(X,r,8);
-      else if(ch==="H") this.t(X,r,9); else if(ch==="M") this.t(X,r,10); else if(ch==="-") this.t(X,r,7);
+      else if(ch==="H") this.t(X,r,9); else if(ch==="M") this.t(X,r,10); else if(ch==="S") this.t(X,r,11); else if(ch==="-") this.t(X,r,7);
       else if(ch==="b"){ this.t(X,r,5); this.t(X,r-1,5); }
       else if(ch==="L"){ this.t(X,r,6); this.t(X,r-1,6); this.t(X,r-2,6); }
     } return this; },
@@ -98,14 +98,14 @@ function gateRoom(b,x){ /* a Society-locked room under a roof; the main path run
   b.tokens(x+6,8,3).e("crystal",x+9,8);
 }
 function arena(b){
-  b.flat(3, 9); const a0=b.x; b.e("arena",a0,9); b.flat(20, 9); const a1=b.x;
+  b.flat(3, 9); const a0=b.x; b.e("arena",a0,9); b.e("spark",a0-2,8); b.e("spring",a0+3,9); b.e("spring",a0+16,9); b.flat(20, 9); const a1=b.x;
   b.flat(2,9); for(let r=0;r<9;r++) b.t(b.x-1,r,1);
   return b;
 }
 
 WM.LEVELS = {
   1(){ const b=new Builder();
-    b.seg(18,9,(x)=>{ b.e("sign",x+3,9,{text:"Tap ▲ to jump · ◀ ▶ to run"}).tokens(x+6,7,5,1).row(x+11,5,"=?=W=").e("token",x+13,4); });
+    b.seg(18,9,(x)=>{ b.e("sign",x+3,9,{text:"▲ jump · ◀ ▶ run · 🛡 hold to block"}).tokens(x+6,7,5,1).row(x+11,5,"=S=W=").e("token",x+13,4); });
     b.seg(14,9,(x)=>{ b.e("sign",x+1,9,{text:"Jump on Society agents to stop them!"}).e("agent",x+8,9).tokens(x+5,8,3).e("water",x+11,8); });
     b.seg(4,9,(x)=>{ b.e("sign",x+1,9,{text:"Grab water! Warriors need it to stay strong."}); });
     b.hole(2);
@@ -113,7 +113,7 @@ WM.LEVELS = {
     b.stairs(2,-1).seg(6,7,(x)=>{ b.e("agent",x+3,7); });
     b.hole(3);
     b.seg(12,8,(x)=>{ b.e("spring",x+1,8).row(x+5,3,"=M=").e("crystal",x+6,2).e("agent",x+8,8).e("agent",x+10,8); });
-    b.seg(14,9,(x)=>{ b.row(x+3,5,"?==?").e("cloud",x+7,4).tokens(x+2,8,6).e("flag",x+12,9); });
+    b.seg(14,9,(x)=>{ b.row(x+3,5,"?=S?").e("cloud",x+7,4).tokens(x+2,8,6).e("flag",x+12,9); });
     b.seg(8,9,(x)=>{ b.row(x+2,8,"b").e("agent",x+5,9); });
     b.hole(2).seg(4,9).hole(2).seg(5,9,(x)=>{ b.tokens(x-6,6,4,1).e("water",x+3,8); });
     b.seg(14,9,(x)=>{ b.row(x+2,5,"=W=?=").row(x+6,2,"---").tokens(x+6,1,3).e("agent",x+3,9).e("agent",x+9,9).e("clue",x+12,8,{i:1}); });
@@ -129,7 +129,7 @@ WM.LEVELS = {
     return b.build(1);
   },
   2(){ const b=new Builder();
-    b.seg(16,9,(x)=>{ b.tokens(x+4,7,5,1).row(x+8,5,"?W?").e("agent",x+13,9); });
+    b.seg(16,9,(x)=>{ b.tokens(x+4,7,5,1).row(x+8,5,"SW?").e("agent",x+13,9); });
     b.hole(2).seg(6,8,(x)=>{ b.e("clue",x+3,7,{i:0}); });
     b.hole(7,(x)=>{ b.e("mover",x+1,7,{dx:4}); b.tokens(x+2,5,4); });
     b.seg(14,9,(x)=>{ b.e("thrower",x+11,9).row(x+3,5,"=?=?=").e("agent",x+5,9).e("cloud",x+8,3); });
@@ -149,7 +149,7 @@ WM.LEVELS = {
     return b.build(2);
   },
   3(){ const b=new Builder();
-    b.seg(14,9,(x)=>{ b.tokens(x+3,7,6,1).row(x+8,5,"W?W"); });
+    b.seg(14,9,(x)=>{ b.tokens(x+3,7,6,1).row(x+8,5,"WSW"); });
     b.hole(3).seg(6,7,(x)=>{ b.e("clue",x+3,6,{i:0}); });
     b.hole(7,(x)=>{ b.e("mover",x+1,6,{dx:4}); });
     b.seg(12,9,(x)=>{ b.e("thrower",x+10,9).row(x+3,5,"=M=").e("cloud",x+6,3); });
@@ -160,7 +160,7 @@ WM.LEVELS = {
     b.hole(6,(x)=>{ b.e("mover",x+1,7,{dy:3}); });
     b.seg(10,8,(x)=>{ b.e("clue",x+2,7,{i:1}); });
     b.seg(16,9,(x)=>{ gateRoom(b,x); b.e("agent",x+13,9); });
-    b.seg(10,9,(x)=>{ b.e("agent",x+2,9).e("agent",x+5,9).e("agent",x+8,9).row(x+2,5,"?W?H?"); });
+    b.seg(10,9,(x)=>{ b.e("agent",x+2,9).e("agent",x+5,9).e("agent",x+8,9).row(x+2,5,"?WSH?"); });
     b.hole(2).seg(3,6).hole(2).seg(3,4,(x)=>{ b.e("cloud",x+1,1); }).hole(2).seg(3,6).hole(2);
     b.seg(10,9,(x)=>{ b.e("flag",x+2,9).e("cloud",x+6,3).row(x+7,8,"b"); });
     b.seg(4,9,(x)=>{ b.e("thrower",x+2,9); });
