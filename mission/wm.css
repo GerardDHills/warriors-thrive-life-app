@@ -39,7 +39,7 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer}
 #bP.ready{box-shadow:0 0 0 3px var(--gold),0 0 18px var(--gold)}
 
 /* bubble + banners */
-#bubble{position:fixed;left:50%;top:calc(60px + var(--sat));transform:translateX(-50%);display:flex;align-items:center;gap:8px;background:#fff;color:var(--ink);padding:6px 14px 6px 6px;border-radius:999px;font-weight:700;font-size:15px;max-width:min(560px,80vw);box-shadow:0 6px 16px rgba(0,0,0,.35);z-index:7;animation:pop .25s}
+#bubble{position:fixed;left:50%;top:calc(92px + var(--sat));transform:translateX(-50%);display:flex;align-items:center;gap:8px;background:#fff;color:var(--ink);padding:6px 14px 6px 6px;border-radius:999px;font-weight:700;font-size:15px;max-width:min(560px,80vw);box-shadow:0 6px 16px rgba(0,0,0,.35);z-index:7;animation:pop .25s}
 #bubble img{width:34px;height:34px;border-radius:50%;object-fit:cover;flex:none}
 @keyframes pop{from{transform:translateX(-50%) scale(.6);opacity:0}}
 #clueBan{position:fixed;left:50%;bottom:calc(14px + var(--sab));transform:translateX(-50%);width:min(560px,58vw);display:flex;gap:10px;align-items:center;background:linear-gradient(90deg,#fff7d6,#ffe7a3);color:var(--ink);border-radius:18px;padding:10px 14px;box-shadow:0 8px 20px rgba(0,0,0,.4);z-index:7;animation:up .35s}
