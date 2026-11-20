@@ -96,6 +96,7 @@ function makeTiles(world){
              4:{top:"#ffb3c4",lip:"#e8738f",fill:"#c9475f",fill2:"#b83e55",mortar:"#8c2c40"},
              5:{top:"#c7a8ff",lip:"#8e5cff",fill:"#4a2a7a",fill2:"#40246b",mortar:"#2a1650"},
              6:{top:"#ffb27a",lip:"#e0703a",fill:"#9a3a24",fill2:"#88321f",mortar:"#5e2014"}}[world]||{top:"#c9c4c0",lip:"#9d958f",fill:"#8a3f2f",fill2:"#7a3528",mortar:"#5d281f"};
+  TILE.P=P;
   TILE.top=mk(x=>{ x.fillStyle=P.fill; x.fillRect(0,0,T,T);
     for(let r=0;r<4;r++){ x.fillStyle=r%2?P.fill2:P.fill; x.fillRect(0,14+r*9,T,9); x.fillStyle=P.mortar; x.fillRect(0,14+r*9,T,1); x.fillRect(((r%2)*T/2+T/4)|0,14+r*9,1,9); }
     const g=x.createLinearGradient(0,0,0,14); g.addColorStop(0,P.top); g.addColorStop(1,P.lip); x.fillStyle=g; x.fillRect(0,0,T,14);
@@ -526,7 +527,10 @@ function draw(){
   const c0=Math.max(0,Math.floor(G.cam/T)-1), c1=Math.min(G.w-1,Math.floor((G.cam+VW)/T)+1);
   for(let c=c0;c<=c1;c++){ const col=G.cols[c];
     for(let r=0;r<ROWS;r++){ const v=col[r]; if(!v) continue; const x=c*T, y=r*T;
-      if(v===1){ ctx.drawImage((r>0&&col[r-1]===1)?TILE.fill:TILE.top,x,y,T+.5,T+.5); }
+      if(v===1){ const top=!(r>0&&col[r-1]===1);
+        /* solid color underneath first: if iOS ever drops the tile art, the ground still shows */
+        ctx.fillStyle=TILE.P.fill; ctx.fillRect(x,y+(top?12:0),T+.5,T+.5-(top?12:0)); if(top){ ctx.fillStyle=TILE.P.top; ctx.fillRect(x,y,T+.5,13); }
+        ctx.drawImage(top?TILE.top:TILE.fill,x,y,T+.5,T+.5); }
       else if(v===2) ctx.drawImage(IMG.brick,x,y,T,T);
       else if(v===3||v===8||v===9||v===10||v===11){ const bob=Math.sin(G.t*4+c)*1.5; ctx.drawImage(IMG.bonus,x,y+bob,T,T); }
       else if(v===4) ctx.drawImage(IMG.used,x,y,T,T);
@@ -710,6 +714,6 @@ $("wMenu").onclick=()=>{ buildMissions(); show("sMission"); };
 $("wNext").onclick=()=>{ const m=WM.MISSIONS[G.n]; if(m) brief(m); };
 
 /* ---------------- boot ---------------- */
-window.wmDebug = { get G(){ return G; }, start:startMission, save:()=>save, K, tile:(c,r)=>tile(c,r), solid:(c,r)=>isSolid(c,r) };
+window.wmDebug = { get G(){ return G; }, TILE, start:startMission, save:()=>save, K, tile:(c,r)=>tile(c,r), solid:(c,r)=>isSolid(c,r) };
 loadAll().then(()=>{ $("loading").classList.add("hide"); show("sTitle"); requestAnimationFrame(loop); });
 })();
