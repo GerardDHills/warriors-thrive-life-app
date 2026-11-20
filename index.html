@@ -1054,9 +1054,9 @@ function pN({ store: t, openSettings: e }) {
       #wt-intro .wti-title .wti-row{display:block}
       @keyframes wtiDrop{to{opacity:1;transform:none}}
       #wt-intro .wti-crew{display:flex;justify-content:center;align-items:flex-end;margin-top:14px;width:100%;padding:0 2vw;box-sizing:border-box}
-      #wt-intro .wti-crew img{width:auto;height:min(29vw,124px);margin:0 -1.5vw;opacity:0;transform:translateY(50px) scale(.6);filter:drop-shadow(0 6px 8px rgba(0,0,0,.45));
+      #wt-intro .wti-crew img{width:auto;height:calc(min(33vw,150px) * var(--h,1));margin:0 -1.8vw;opacity:0;transform:translateY(50px) scale(.6);filter:drop-shadow(0 6px 8px rgba(0,0,0,.45));
         animation:wtiHop .6s cubic-bezier(.2,1.6,.4,1) forwards,wtiBob 1.4s ease-in-out infinite}
-      #wt-intro .wti-crew img.wti-lead{width:auto;height:min(38vw,160px);z-index:2;position:relative}
+      #wt-intro .wti-crew img.wti-lead{width:auto;z-index:2;position:relative}
       @keyframes wtiHop{to{opacity:1;transform:none}}
       @keyframes wtiBob{50%{translate:0 -5px}}
       #wt-intro .wti-tag{margin-top:14px;padding:0 14px;font-size:clamp(13px,3.8vw,17px);font-weight:700;letter-spacing:.06em;color:#dff9ff;text-align:center;opacity:0;animation:wtiUp .6s ease-out 3.3s forwards}
@@ -1090,8 +1090,8 @@ function pN({ store: t, openSettings: e }) {
           for(i=0;i<14;i++){h+='<i class="wti-spark" style="left:'+(Math.random()*100)+'%;top:'+(Math.random()*100)+'%;--dl:'+(Math.random()*2.5)+'s"></i>';}
           var t1="WARRIORS",t2="THRIVE",d=1.45;
           function letters(t){var o="";for(var j=0;j<t.length;j++){o+='<span style="animation-delay:'+d.toFixed(2)+'s">'+t[j]+'</span>';d+=.055;}return o;}
-          var crew=["kim","malcolm","tasha","theo","amos","ritika","luciana","krystal"],c="";
-          for(i=0;i<crew.length;i++){var lead=crew[i]==="amos";c+='<img alt="" '+(lead?'class="wti-lead" ':'')+'src="media/intro/crew/'+crew[i]+'.webp" style="animation-delay:'+(2.35+Math.abs(i-4)*0.11).toFixed(2)+'s,'+(3+i*0.13).toFixed(2)+'s">';}
+          var HT={amos:1.08,kim:.97,tasha:.9,krystal:.9,malcolm:.92,ritika:.8,theo:.76,luciana:.73};var crew=["kim","malcolm","tasha","theo","amos","ritika","luciana","krystal"],c="";
+          for(i=0;i<crew.length;i++){var lead=crew[i]==="amos";c+='<img alt="" '+(lead?'class="wti-lead" ':'')+'src="media/intro/crew/'+crew[i]+'.webp" style="--h:'+HT[crew[i]]+';animation-delay:'+(2.35+Math.abs(i-4)*0.11).toFixed(2)+'s,'+(3+i*0.13).toFixed(2)+'s">';}
           h+='<div class="wti-stage">'
             +'<div class="wti-hero"><div class="wti-rays"></div><div class="wti-glow"></div><img class="wti-crystal" alt="" src="runner/img/crystal.webp">'
             +'<div class="wti-emblem"><img alt="Warriors Thrive" src="media/intro/emblem.webp"></div><div class="wti-burst"></div><div class="wti-burst wti-b2"></div></div>'
