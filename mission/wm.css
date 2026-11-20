@@ -84,6 +84,8 @@ h2{font-family:"Lilita One",sans-serif;font-weight:400;font-size:28px;margin:0;t
 .cinfo{text-align:center;min-height:52px;font-size:15px;line-height:1.35}
 .cinfo b{font-family:"Lilita One";font-weight:400;font-size:20px;color:var(--gold)}
 .mgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;width:100%}
+.mhead{grid-column:1/-1;font-family:"Lilita One";font-size:20px;color:var(--gold);margin-top:4px}
+.mhead span{font-family:inherit;font-size:13px;color:#ffe9df;margin-left:6px;font-weight:700;font-family:system-ui}
 .mc{position:relative;border-radius:20px;overflow:hidden;min-height:180px;text-align:left;padding:12px;display:flex;flex-direction:column;justify-content:flex-end;background-size:cover;background-position:center;border:3px solid rgba(255,255,255,.2)}
 .mc::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(27,11,36,.1),rgba(27,11,36,.92))}
 .mc>*{position:relative}

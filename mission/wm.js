@@ -17,7 +17,7 @@ const post = msg => { try{ if(window.parent!==window) window.parent.postMessage(
 
 /* ---------------- assets ---------------- */
 const IMG = {};
-const imgList = ["title","bg1","bg2","bg3","boss1","boss2","boss3","cloud","water","bonus","used","brick","flag","clue","heart","token","crystal","barrier","jasmine","jordan","amara"].map(n=>[n,"img/"+n+".webp"])
+const imgList = ["title","bg1","bg2","bg3","bg4","bg5","bg6","boss1","boss2","boss3","boss4","boss5","boss6","cloud","water","bonus","used","brick","flag","clue","heart","token","crystal","barrier","jasmine","jordan","amara","darius","rafael","aaliyah"].map(n=>[n,"img/"+n+".webp"])
   .concat(WM.CHARS.map(c=>["spr_"+c.id,"spr/"+c.id+".webp"]))
   .concat(WM.CHARS.map(c=>["face_"+c.id,"../runner/faces/"+c.id+".webp"]))
   .concat([["spr_agent","spr/agent.webp"]]);
@@ -85,18 +85,27 @@ addEventListener("resize",resize); resize();
 /* ground tile art per world */
 const TILE={};
 function makeTiles(world){
-  const mk=(f)=>{ const c=document.createElement("canvas"); c.width=c.height=T*2; const x=c.getContext("2d"); x.scale(2,2); f(x); return c; };
+  /* tiles are baked into <img> elements: iOS can wipe off-screen canvases under memory pressure, which made the ground vanish */
+  const mk=(f,key)=>{ const c=document.createElement("canvas"); c.width=c.height=T*2; const x=c.getContext("2d"); x.scale(2,2); f(x);
+    try{ const im=new Image(); im.onload=()=>{ if(TILE._w===world) TILE[key]=im; }; im.src=c.toDataURL("image/png"); }catch(e){}
+    return c; };
+  TILE._w=world;
   const P = {1:{top:"#c9c4c0",lip:"#9d958f",fill:"#8a3f2f",fill2:"#7a3528",mortar:"#5d281f"},
              2:{top:"#5fcf4f",lip:"#3e9e36",fill:"#8a5a35",fill2:"#7a4d2c",mortar:"#5e3a20"},
-             3:{top:"#3a3352",lip:"#b05cff",fill:"#262038",fill2:"#211b31",mortar:"#151122"}}[world];
+             3:{top:"#3a3352",lip:"#b05cff",fill:"#262038",fill2:"#211b31",mortar:"#151122"},
+             4:{top:"#ffb3c4",lip:"#e8738f",fill:"#c9475f",fill2:"#b83e55",mortar:"#8c2c40"},
+             5:{top:"#c7a8ff",lip:"#8e5cff",fill:"#4a2a7a",fill2:"#40246b",mortar:"#2a1650"},
+             6:{top:"#ffb27a",lip:"#e0703a",fill:"#9a3a24",fill2:"#88321f",mortar:"#5e2014"}}[world]||{top:"#c9c4c0",lip:"#9d958f",fill:"#8a3f2f",fill2:"#7a3528",mortar:"#5d281f"};
   TILE.top=mk(x=>{ x.fillStyle=P.fill; x.fillRect(0,0,T,T);
     for(let r=0;r<4;r++){ x.fillStyle=r%2?P.fill2:P.fill; x.fillRect(0,14+r*9,T,9); x.fillStyle=P.mortar; x.fillRect(0,14+r*9,T,1); x.fillRect(((r%2)*T/2+T/4)|0,14+r*9,1,9); }
     const g=x.createLinearGradient(0,0,0,14); g.addColorStop(0,P.top); g.addColorStop(1,P.lip); x.fillStyle=g; x.fillRect(0,0,T,14);
     x.fillStyle="rgba(255,255,255,.35)"; x.fillRect(0,0,T,2);
     if(world===2){ x.fillStyle="#7ee06a"; for(let i=0;i<8;i++){ x.fillRect(i*6+2,0,2,4+(i%3)); } }
     if(world===3){ x.fillStyle=P.lip; x.shadowColor=P.lip; x.shadowBlur=6; x.fillRect(0,11,T,3); x.shadowBlur=0; }
-    if(world===1){ x.fillStyle="rgba(0,0,0,.12)"; x.fillRect(T-1,0,1,14); } });
-  TILE.fill=mk(x=>{ for(let r=0;r<6;r++){ x.fillStyle=r%2?P.fill2:P.fill; x.fillRect(0,r*8,T,8); x.fillStyle=P.mortar; x.fillRect(0,r*8,T,1); x.fillRect(((r%2)*T/2+T/4)|0,r*8,1,8); } });
+    if(world===1){ x.fillStyle="rgba(0,0,0,.12)"; x.fillRect(T-1,0,1,14); }
+    if(world>=4){ /* soft, living tissue: rounded bumps and glowing cells */ x.fillStyle=P.top; for(let i=0;i<4;i++){ x.beginPath(); x.arc(i*12+6,2,6,0,7); x.fill(); }
+      x.fillStyle=world===5?"rgba(160,230,255,.55)":"rgba(255,235,240,.45)"; for(let i=0;i<3;i++){ x.beginPath(); x.arc(8+i*16,30+(i%2)*10,3,0,7); x.fill(); } } },"top");
+  TILE.fill=mk(x=>{ for(let r=0;r<6;r++){ x.fillStyle=r%2?P.fill2:P.fill; x.fillRect(0,r*8,T,8); x.fillStyle=P.mortar; x.fillRect(0,r*8,T,1); x.fillRect(((r%2)*T/2+T/4)|0,r*8,1,8); } },"fill");
 }
 
 /* ---------------- game state ---------------- */
@@ -128,7 +137,7 @@ function startMission(n){
   $("bossBar").classList.add("hide"); $("crisisFx").classList.remove("on");
   blockT=0; blockCool=0; G.pshots=[]; setSpark(false); running=true; lastT=performance.now(); musicOn(true);
   toast("Mission "+n, m.title);
-  quip("start",true);
+  quip(G.n>3?"q1":"start",true); /* start lines talk about the lab; body missions use a general line */
 }
 
 /* ---------------- HUD ---------------- */
@@ -402,8 +411,9 @@ function pickup(e){
 /* ---------------- boss ---------------- */
 function enterArena(){
   const a=G.arena; for(let r=0;r<9;r++) G.cols[a.x0-1][r]=2;
-  const n=G.n, bw=[0,150,190,230][n], bh=[0,200,250,225][n];
-  G.boss={n, hp:[0,3,5,7][n], max:[0,3,5,7][n], x:a.x1*T-bw-80, y:n===2?9*T-bh:120, w:bw, h:bh, vx:-120, vy:0, st:"intro", st_t:1.6, inv:0, cyc:0, face:-1, flash:0};
+  /* bosses 4-6 (inside the body) reuse the three fight styles, bigger and faster */
+  const n=G.n, k=(n-1)%3+1, big=n>3?1.12:1, bw=[0,150,190,230][k]*big|0, bh=[0,200,250,225][k]*big|0, hp=[0,3,5,7,6,8,9][n]||7;
+  G.boss={n, k, spd:n>3?1.15:1, hp, max:hp, x:a.x1*T-bw-80, y:k===2?9*T-bh:120, w:bw, h:bh, vx:-120, vy:0, st:"intro", st_t:1.6, inv:0, cyc:0, face:-1, flash:0};
   $("bossName").textContent=G.m.boss; $("bossBar").classList.remove("hide"); bossBar();
   toast(G.m.boss,"Stomp it when it's open!"); beep("boss"); G.shake=.5;
 }
@@ -411,8 +421,8 @@ function bossBar(){ $("bossFill").style.width=(G.boss.hp/G.boss.max*100)+"%"; }
 function hitBoss(power){
   const b=G.boss; if(b.inv>0&&!power) return; b.hp--; b.inv=1.2; b.flash=.4; bossBar(); beep("boss"); G.shake=.4;
   G.parts.push({k:"stars",x:b.x+b.w/2,y:b.y,t:.8});
-  if(b.hp<=0){ b.st="dead"; b.st_t=2.2; G.shots=[]; toast("MYTH BUSTED!","The truth wins!"); quip("win",true); }
-  else { if(b.n===1){ b.st="rise"; b.st_t=.8; } else if(b.n===2){ b.st="recover"; b.st_t=.8; } else { b.st="rise"; b.st_t=.9; } }
+  if(b.hp<=0){ b.st="dead"; b.st_t=2.2; G.shots=[]; toast("MYTH BUSTED!","The truth wins!"); quip(G.n>3&&G.ch.id==="amos"?"stomp":"win",true); }
+  else { if(b.k===1){ b.st="rise"; b.st_t=.8; } else if(b.k===2){ b.st="recover"; b.st_t=.8; } else { b.st="rise"; b.st_t=.9; } }
 }
 function updateBoss(dt){
   const b=G.boss, p=G.p, a0=G.arena.x0*T, a1=G.arena.x1*T, floor=9*T;
@@ -421,15 +431,15 @@ function updateBoss(dt){
   if(G.freeze>0){ /* frozen: can be stomped any time */ }
   else {
   b.st_t-=dt;
-  const fast=b.hp<=Math.ceil(b.max/2)?1.35:1;
-  if(b.n===1){
+  const fast=(b.hp<=Math.ceil(b.max/2)?1.35:1)*b.spd;
+  if(b.k===1){
     if(b.st==="intro"&&b.st_t<=0){ b.st="hover"; b.st_t=5; }
     if(b.st==="hover"){ b.x+=b.vx*fast*dt; if(b.x<a0+20||b.x+b.w>a1-20){ b.vx*=-1; b.x=clamp(b.x,a0+21,a1-b.w-21); } b.y+=(110+Math.sin(G.t*2)*20-b.y)*dt*3; b.face=p.x<b.x?-1:1;
       b.cool=(b.cool||1.4)-dt; if(b.cool<=0){ b.cool=2/fast; const ang=Math.atan2((p.y+40)-(b.y+80),(p.x)-(b.x+b.w/2)); G.shots.push({k:"smoke",x:b.x+b.w/2,y:b.y+80,vx:Math.cos(ang)*250,vy:Math.sin(ang)*250,g:0,r:16,life:5}); }
       if(b.st_t<=0){ b.st="swoop"; b.st_t=3.6; b.tx=clamp(p.x-b.w/2,a0+20,a1-b.w-20); } }
     if(b.st==="swoop"){ if(b.tx==null) b.tx=b.x; b.y+=((floor-b.h)-b.y)*dt*4; b.x+=(b.tx-b.x)*dt*1.5; if(b.st_t<=0){ b.st="rise"; b.st_t=.8; } }
     if(b.st==="rise"){ b.y+=(110-b.y)*dt*4; if(b.st_t<=0){ b.st="hover"; b.st_t=rnd(4,6)/fast; } }
-  } else if(b.n===2){
+  } else if(b.k===2){
     b.vy=Math.min(b.vy+GRAV*dt,MAXFALL); b.y+=b.vy*dt; if(b.y+b.h>=floor){ b.y=floor-b.h; if(b.vy>400&&b.st==="slam"){ G.shake=.5; beep("boss");
       G.shots.push({k:"wave",x:b.x-10,y:floor-14,vx:-330,vy:0,g:0,r:14,life:3},{k:"wave",x:b.x+b.w+10,y:floor-14,vx:330,vy:0,g:0,r:14,life:3}); b.st="recover"; b.st_t=.9; } b.vy=0; }
     if(b.st==="intro"&&b.st_t<=0){ b.st="wind"; b.st_t=.8; }
@@ -450,7 +460,7 @@ function updateBoss(dt){
   }
   }
   // collision with player
-  const open = G.freeze>0 || (b.n===1&&b.st==="swoop") || (b.n===2&&b.st==="dizzy") || (b.n===3&&b.st==="land");
+  const open = G.freeze>0 || (b.k===1&&b.st==="swoop") || (b.k===2&&b.st==="dizzy") || (b.k===3&&b.st==="land");
   /* when open the boss slumps down, so its head is in easy jumping range */
   const box=open?{x:b.x+b.w*.12,y:b.y+b.h*.42,w:b.w*.76,h:b.h*.58}:{x:b.x+b.w*.18,y:b.y+b.h*.12,w:b.w*.64,h:b.h*.82};
   if(overlap(p,box)&&b.st!=="dead"){
@@ -507,7 +517,7 @@ function draw(){
   const bg=IMG["bg"+G.lv.world];
   const bh=VH*1.02, bw=bg.width*bh/bg.height;
   ctx.setTransform(SC,0,0,SC,0,0);
-  ctx.fillStyle=G.lv.world===3?"#2a1f45":G.lv.world===2?"#cfe8ff":"#f3b27f"; ctx.fillRect(0,0,VW,VHV);
+  ctx.fillStyle=["#f3b27f","#f3b27f","#cfe8ff","#2a1f45","#f4a7b6","#3a2266","#b8573a"][G.lv.world]||"#f3b27f"; ctx.fillRect(0,0,VW,VHV);
   const off=-(G.cam*.3)%(bw*2), by=-G.camY*.6;
   for(let x=off-bw*2;x<VW+bw;x+=bw*2){ ctx.drawImage(bg,x,by,bw,bh); ctx.save(); ctx.translate(x+bw*2,by); ctx.scale(-1,1); ctx.drawImage(bg,0,0,bw,bh); ctx.restore(); }
   let sx=0,sy=0; if(G.shake>0){ sx=rnd(-6,6); sy=rnd(-5,5); }
@@ -522,7 +532,7 @@ function draw(){
       else if(v===4) ctx.drawImage(IMG.used,x,y,T,T);
       else if(v===5){ if(r===0||col[r-1]!==5) ctx.drawImage(IMG.barrier,x-6,y-4,T+12,T*2+4); }
       else if(v===6) drawGate(x,y,(r===0||col[r-1]!==6));
-      else if(v===7){ ctx.fillStyle=G.lv.world===3?"#7b4dff":"#8a5a35"; roundRect(x,y,T,12,5); ctx.fill(); ctx.fillStyle="rgba(255,255,255,.35)"; ctx.fillRect(x+3,y+2,T-6,2); }
+      else if(v===7){ ctx.fillStyle=G.lv.world===3?"#7b4dff":G.lv.world>=4?"#e86a8a":"#8a5a35"; roundRect(x,y,T,12,5); ctx.fill(); ctx.fillStyle="rgba(255,255,255,.35)"; ctx.fillRect(x+3,y+2,T-6,2); }
     }
   }
   // entities
@@ -581,7 +591,7 @@ function drawEnt(e){
     case "clue": { ctx.save(); ctx.shadowColor="#ffe14d"; ctx.shadowBlur=16+Math.sin(e.t*5)*6; ctx.drawImage(IMG.clue,e.x-20,e.y-24+bob,40,46); ctx.restore(); break; }
     case "flag": { const im=IMG.flag, h=e.got?118:110; ctx.globalAlpha=e.got?1:.9; ctx.drawImage(im,e.x-h*im.width/im.height/2,e.y-h,h*im.width/im.height,h); ctx.globalAlpha=1; break; }
     case "spring": { const s=e.sq>0?.55:1; ctx.fillStyle="#ff5fa2"; roundRect(e.x-22,e.y-20*s,44,10,4); ctx.fill(); ctx.strokeStyle="#ffc83d"; ctx.lineWidth=4; ctx.beginPath(); for(let i=0;i<4;i++){ ctx.moveTo(e.x-14,e.y-(i+.5)*5*s); ctx.lineTo(e.x+14,e.y-(i+1)*5*s); } ctx.stroke(); ctx.fillStyle="#7b4dff"; ctx.fillRect(e.x-24,e.y-4,48,4); break; }
-    case "mover": { ctx.fillStyle=G.lv.world===3?"#7b4dff":"#ffc83d"; roundRect(e.x,e.y,e.w,e.h,8); ctx.fill(); ctx.fillStyle="rgba(255,255,255,.45)"; ctx.fillRect(e.x+8,e.y+3,e.w-16,3); ctx.fillStyle="rgba(0,0,0,.2)"; ctx.fillRect(e.x+8,e.y+e.h-5,e.w-16,3); break; }
+    case "mover": { ctx.fillStyle=G.lv.world===3?"#7b4dff":G.lv.world>=4?"#ff8fb1":"#ffc83d"; roundRect(e.x,e.y,e.w,e.h,8); ctx.fill(); ctx.fillStyle="rgba(255,255,255,.45)"; ctx.fillRect(e.x+8,e.y+3,e.w-16,3); ctx.fillStyle="rgba(0,0,0,.2)"; ctx.fillRect(e.x+8,e.y+e.h-5,e.w-16,3); break; }
     case "sign": case "gatehint": { const txt=e.type==="gatehint"?(G.ch.id==="theo"||G.ch.id==="luciana"?"Locked room ahead! Use your power to open it.":"Locked room ahead! Touch the gate to answer a Warrior Card."):e.text;
       ctx.font="700 15px 'Atkinson Hyperlegible',sans-serif"; const w=Math.min(260,ctx.measureText(txt).width+20);
       ctx.fillStyle="#6b4a2b"; ctx.fillRect(e.x-3,e.y-70,6,70);
@@ -599,16 +609,16 @@ function drawEnt(e){
 function wrap(t,x,y,maxW,lh){ const words=t.split(" "); let line="",yy=y; for(const w of words){ const tl=line?line+" "+w:w; if(ctx.measureText(tl).width>maxW&&line){ ctx.fillText(line,x,yy); line=w; yy+=lh; } else line=tl; } ctx.fillText(line,x,yy); }
 function drawBoss(){
   const b=G.boss, im=IMG["boss"+b.n]; const s=Math.max(b.w/im.width*1.35,b.h/im.height*1.12);
-  const w=im.width*s, h=im.height*s; const cx=b.x+b.w/2, by=b.y+b.h+ (b.n===3?10:4);
+  const w=im.width*s, h=im.height*s; const cx=b.x+b.w/2, by=b.y+b.h+ (b.k===3?10:4);
   ctx.save();
   if(b.open&&b.st!=="dead"){ ctx.shadowColor="#ffe14d"; ctx.shadowBlur=30+Math.sin(G.t*10)*10; }
   if(b.flash>0&&Math.floor(b.flash*20)%2===0) ctx.globalAlpha=.4;
   if(b.st==="dead") ctx.globalAlpha=Math.max(0,b.st_t/2.2);
-  ctx.translate(cx,by); const face=b.n===3?1:(b.face>0?-1:1); ctx.scale(face,1);
-  if(b.n===2&&b.st==="dizzy") ctx.rotate(Math.sin(G.t*8)*.06);
+  ctx.translate(cx,by); const face=b.k===3?1:(b.face>0?-1:1); ctx.scale(face,1);
+  if(b.k===2&&b.st==="dizzy") ctx.rotate(Math.sin(G.t*8)*.06);
   if(b.slump) ctx.scale(1,1-.3*b.slump);
   ctx.drawImage(im,-w/2,-h,w,h); ctx.restore();
-  if(b.n===2&&b.st==="dizzy"){ ctx.fillStyle="#ffe14d"; for(let i=0;i<4;i++){ const a=G.t*5+i*1.57; ctx.beginPath(); ctx.arc(cx+Math.cos(a)*50,b.y+10+Math.sin(a)*12,6,0,7); ctx.fill(); } }
+  if(b.k===2&&b.st==="dizzy"){ ctx.fillStyle="#ffe14d"; for(let i=0;i<4;i++){ const a=G.t*5+i*1.57; ctx.beginPath(); ctx.arc(cx+Math.cos(a)*50,b.y+10+Math.sin(a)*12,6,0,7); ctx.fill(); } }
   if(b.open&&b.st!=="dead"){ ctx.fillStyle="#ffe14d"; ctx.font="28px 'Lilita One',sans-serif"; ctx.textAlign="center"; ctx.fillText("▼ STOMP! ▼",cx,b.y+b.h*.3*(b.slump||0)-14+Math.sin(G.t*8)*4); ctx.textAlign="left"; }
   if(G.freeze>0){ ctx.fillStyle="rgba(140,210,255,.25)"; ctx.fillRect(b.x,b.y,b.w,b.h); }
 }
@@ -665,13 +675,14 @@ $("charGo").onclick=()=>{ if(!unlocked(CH[save.char])) save.char="malcolm"; buil
 function buildMissions(){
   const g=$("misGrid"); g.innerHTML="";
   WM.MISSIONS.forEach(m=>{ const open=m.n===1||save.done[m.n-1]; const b=document.createElement("button");
+    if(m.n===4){ const h=document.createElement("div"); h.className="mhead"; h.innerHTML="🔬 Inside the Body <span>Shrink down with the Amos Lab Micro-Shrinker</span>"; g.appendChild(h); }
     b.className="mc"+(open?"":" lock"); b.style.backgroundImage="url("+m.bg+")";
     const best=save.best[m.n];
     b.innerHTML='<img class="kid" src="img/'+m.kid+'.webp" alt=""><small>Mission '+m.n+(save.done[m.n]?' · ✓ Cleared':'')+'</small><b>'+m.title+'</b><span>Help '+m.kidName+' bust the myth '+m.myth+'</span>'+(best?'<div class="st"><span>💎 '+best.crystals+'/3</span><span>🪙 '+best.tokens+'</span></div>':'');
     b.onclick=()=>{ if(!open) return; brief(m); }; g.appendChild(b); });
 }
 function brief(m){
-  $("brKid").src="img/"+m.kid+".webp"; $("brNum").textContent="Mission "+m.n+" · "+m.kidName+", age "+m.kidAge; $("brTitle").textContent=m.title;
+  $("brKid").src="img/"+m.kid+".webp"; $("brNum").textContent="Mission "+m.n+" · "+m.kidName+(typeof m.kidAge==="number"?", age "+m.kidAge:" · "+m.kidAge); $("brTitle").textContent=m.title;
   $("brNeed").textContent=m.need; $("brMyth").textContent=m.myth; $("brBoss").textContent=m.boss; $("brBossImg").src=m.bossImg;
   $("brGo").onclick=()=>playIntro(m.n); show("sBrief");
 }
