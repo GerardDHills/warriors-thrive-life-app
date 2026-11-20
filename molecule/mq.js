@@ -14,8 +14,8 @@ const app=store.get("wt-state-v1",null),prof=(app&&app.profile)||{};
 const AGE=(()=>{if(prof.birthday){const b=new Date(prof.birthday+"T12:00"),n=new Date();let a=n.getFullYear()-b.getFullYear();if(n<new Date(n.getFullYear(),b.getMonth(),b.getDate()))a--;return a}return{"5-7":6,"8-12":10,"13-17":15,"18-22":20}[prof.ageGroup]??null})();
 let LVL=store.get("wt-mq-lvl",AGE!=null&&AGE>=13?"teen":"kid");
 
-const CH={amos:{name:"Dr. Amos"},amos_cheer:{name:"Dr. Amos"},kim:{name:"Dr. Kim"},malcolm:{name:"Malcolm"},tasha:{name:"Tasha"},theo:{name:"Theo"},ritika:{name:"Ritika"},luciana:{name:"Luciana"},krystal:{name:"Krystal"}};
-const OBJ=["alpha","beta","betaS","gamma","rbc","sickle","capsule","radical","antibody","pselectin","bacteria","folate","iron","chelator","stem","cas9","vector","cox","receptor","packet","title"];
+const CH={amos:{name:"Dr. Amos"},amos_cheer:{name:"Dr. Amos"},kim:{name:"Dr. Kim"},malcolm:{name:"Malcolm"},tasha:{name:"Tasha"},theo:{name:"Theo"},ritika:{name:"Ritika"},luciana:{name:"Luciana"},krystal:{name:"Krystal"},mom:{name:"Mom"},dad:{name:"Dad"}};
+const OBJ=["alpha","beta","betaS","hbbS","hbbC","gamma","rbc","sickle","capsule","radical","antibody","pselectin","bacteria","folate","iron","chelator","stem","cas9","vector","cox","receptor","packet","title"];
 const imgs={};
 function load(){const list=[...OBJ.map(o=>"obj/"+o+".webp"),...Object.keys(CH).map(c=>"char/"+c+".webp"),"bg/map.webp",...Array.from({length:10},(_,i)=>`bg/b${i+1}.webp`),"../runner/img/crystal.webp"];
  let n=0;return new Promise(res=>{list.forEach(src=>{const i=new Image();i.decoding="async";const done=()=>{n++;$("loadBar").style.width=(n/list.length*100)+"%";if(n===list.length)res()};i.onload=done;i.onerror=done;i.src=src;imgs[src]=i});setTimeout(res,9000)})}
@@ -51,7 +51,7 @@ const BOARDS=[
         ["tasha","So how does someone get sickle cell?"],
         ["amos","Everyone gets <em>two</em> beta-globin genes: one from each parent. If you get two sickle genes, you have <i>sickle cell disease</i>. One sickle gene and one usual gene is <i>sickle cell trait</i>."],
         ["kim","I have sickle cell trait! It usually doesn't make me sick, but I can pass the gene on."],
-        ["amos","Let's fill in a <em>Punnett square</em>. Tap each box to see what a child could inherit."]],
+        ["amos","Let's use a <em>Punnett square</em>: a grid that shows every way a child can get one gene from Dad and one from Mom."]],
  outro:[["tasha","So two parents with trait can have a child with sickle cell, a child with trait, or a child without either!"],["amos","Exactly. Sickle cell is <em>never</em> caught like a cold. You're born with it, from your genes."]],
  learn:{kid:[["🧬","You get one beta gene from each parent."],["🟡🔴","One sickle gene + one usual gene = sickle cell trait (HbAS)."],["🔴🔴","Two sickle genes = sickle cell disease (HbSS)."],["🔴🟢","Sickle + hemoglobin C gene = HbSC, another kind of sickle cell disease."],["🙅🏾","You can't catch sickle cell. You're born with it."]],
         teen:[["🧬","Autosomal recessive inheritance: each parent passes one HBB allele."],["🎲","Two trait (AS) parents: each pregnancy has a 25% chance HbSS, 50% HbAS (trait), 25% HbAA."],["🧪","Common types of sickle cell disease: HbSS, HbSC, HbSβ⁰-thalassemia and HbSβ⁺-thalassemia."],["🩸","Newborn screening in every US state finds sickle cell disease and trait at birth."]]},
@@ -302,26 +302,89 @@ function gameBuild(S,done){
 }
 
 function gamePunnett(S,done){
- const NAMES={AA:["HbAA","No sickle cell"],AS:["HbAS","Sickle cell trait"],SS:["HbSS","Sickle cell disease"],AC:["HbAC","Hemoglobin C trait"],SC:["HbSC","Sickle cell disease"],CC:["HbCC","Hemoglobin C"]};
+ const NAMES={AA:["HbAA","No sickle cell"],AS:["HbAS","Sickle cell trait"],SS:["HbSS","Sickle cell disease"],AC:["HbAC","Hemoglobin C trait"],SC:["HbSC","Sickle cell disease"],CC:["HbCC","Hemoglobin C disease"]};
+ const AL={A:{img:"beta",name:"usual beta",long:"Usual beta gene: builds normal hemoglobin"},S:{img:"hbbS",name:"sickle beta",long:"Sickle beta gene: one tiny change makes a sticky spot"},C:{img:"hbbC",name:"hemoglobin C beta",long:"Hemoglobin C gene: a different tiny change"}};
  const ORD="ASC";const geno=(a,b)=>[a,b].sort((x,y)=>ORD.indexOf(x)-ORD.indexOf(y)).join("");
- const dot=g=>`<span class="gdot g${g}"></span>`;
- const ROUNDS=[{p1:"AS",p2:"AS",ask:"SS",q:"Chance a child has sickle cell disease (HbSS)?",c:1},{p1:"AS",p2:"AC",ask:"SC",q:"Chance a child has HbSC disease?",c:1},{p1:"SS",p2:"AA",ask:"AS",q:"Chance a child has sickle cell trait?",c:3}];
+ const sev=g=>g==="SS"||g==="SC"||g==="CC"?"bad":g==="AA"?"ok":"trait";
+ const ROUNDS=[
+  {dad:"AS",mom:"AS",ask:"SS",q:"Chance a child has sickle cell disease (HbSS)?",c:1,
+   card:"Dad and Mom <b>both have sickle cell trait</b>. Each carries one usual gene and one sickle gene."},
+  {dad:"AS",mom:"AC",ask:"SC",q:"Chance a child has HbSC disease?",c:1,
+   card:"Dad has <b>sickle cell trait</b>. Mom has <b>hemoglobin C trait</b>: one usual gene and one hemoglobin C gene."},
+  {dad:"SS",mom:"AA",ask:"AS",q:"Chance a child has sickle cell trait?",c:3,
+   card:"Dad has <b>sickle cell disease</b> (two sickle genes). Mom has <b>no sickle gene</b>."}];
  const CH4=["0%","1 in 4 (25%)","1 in 2 (50%)","Every child (100%)"];
+ const DADC="#4da3ff",MOMC="#ff5fa8";
+ const alChip=(x,who,big)=>`<div class="pq-al ${who}"><img src="obj/${AL[x].img}.webp" alt=""><b>${x}</b>${big?`<small>${AL[x].name}</small>`:""}</div>`;
+ const pDesc=g=>`${NAMES[g][0]} · ${NAMES[g][1].toLowerCase()}`;
  let r=0;
- function round(){S.el.innerHTML="";const R=ROUNDS[r];
-  S.goal(`Round ${r+1} of 3: <b>tap each box</b> to see what a child could inherit.`);
-  const legend=`${dot("A")} usual (A) &nbsp; ${dot("S")} sickle (S) &nbsp; ${dot("C")} hemoglobin C`;
-  S.div("parent",`<span style="font-size:36px">👩🏾</span><div><b>Parent 1</b><small>${dot(R.p1[0])} ${dot(R.p1[1])} ${NAMES[R.p1][0]}</small></div>`,{left:"27%",top:.215*S.H()+"px"});
-  S.div("parent",`<span style="font-size:36px">👨🏾</span><div><b>Parent 2</b><small>${dot(R.p2[0])} ${dot(R.p2[1])} ${NAMES[R.p2][0]}</small></div>`,{left:"73%",top:.215*S.H()+"px"});
-  const P=S.div("punnett","",{top:.29*S.H()+"px",width:"66%",gridTemplateColumns:"40px repeat(2,1fr)",gridTemplateRows:"40px repeat(2,auto)"});
-  let html=`<div></div><div class="h">${dot(R.p1[0])}</div><div class="h">${dot(R.p1[1])}</div>`;
-  for(let a=0;a<2;a++){html+=`<div class="h">${dot(R.p2[a])}</div>`;for(let b=0;b<2;b++)html+=`<div class="cell" data-g="${geno(R.p1[b],R.p2[a])}">?</div>`}
-  P.innerHTML=html;S.div("tag",legend,{left:"50%",top:.74*S.H()+"px",transform:"translate(-50%,-50%)",fontSize:"12px",position:"absolute"});
-  let n=0;P.querySelectorAll(".cell").forEach(c=>c.onclick=()=>{if(c.classList.contains("filled"))return;audio();sfx.snap();c.classList.add("filled");const g=c.dataset.g;const[nm,desc]=NAMES[g];
-   c.innerHTML=`<div>${dot(g[0])}${dot(g[1])}</div>${nm}<small>${desc}</small>`;c.style.borderColor=g==="SS"||g==="SC"?"#ff6b6b":g.includes("S")||g.includes("C")?"#ffc23d":"#57d68d";c.animate([{transform:"scale(.6)"},{transform:"scale(1)"}],{duration:300,easing:"cubic-bezier(.2,1.6,.4,1)"});
-   n++;if(n===4)S.after(500,ask)});
-  function ask(){S.goal(`<b>${R.q}</b>`);const row=S.div("choiceRow",CH4.map((t,k)=>`<button data-k="${k}">${t}</button>`).join(""),{bottom:`calc(16px + env(safe-area-inset-bottom))`});
-   row.querySelectorAll("button").forEach(b=>b.onclick=()=>{const k=+b.dataset.k;if(k===R.c){b.classList.add("right");sfx.win();S.after(900,()=>{r++;if(r<ROUNDS.length)round();else done()})}else{b.classList.add("wrong");sfx.bad();toast("Count the boxes!",`How many of the 4 boxes show ${NAMES[R.ask][0]}?`,1800)}})}
+
+ function card(R,then){
+  const first=r===0,used=[...new Set((R.dad+R.mom).split(""))].sort((a,b)=>ORD.indexOf(a)-ORD.indexOf(b));
+  const c=S.div("pq-card",`
+   ${first?`<h3>What is a Punnett square?</h3>
+   <p>Everyone has <b>two copies</b> of the beta-globin gene: <span style="color:${DADC}">one from Dad</span> and <span style="color:${MOMC}">one from Mom</span>.</p>`:`<h3>Round ${r+1} of 3</h3>`}
+   <div class="pq-key">${used.map(x=>`<div><img src="obj/${AL[x].img}.webp" alt=""><span><b>${x}</b> ${AL[x].long}</span></div>`).join("")}</div>
+   <div class="pq-parents"><div><img src="char/dad.webp" alt=""><b style="color:${DADC}">Dad</b><small>${R.dad[0]} + ${R.dad[1]} · ${NAMES[R.dad][1]}</small></div><div><img src="char/mom.webp" alt=""><b style="color:${MOMC}">Mom</b><small>${R.mom[0]} + ${R.mom[1]} · ${NAMES[R.mom][1]}</small></div></div>
+   <p class="pq-why">${R.card}</p>
+   ${first?`<p class="pq-why">Each box is <b>one possible child</b>. The child gets the gene at the <span style="color:${DADC}">top of its column ↓ from Dad</span> and the gene at the <span style="color:${MOMC}">start of its row → from Mom</span>.</p>`:""}
+   <button class="cta small" type="button">${first?"Let's fill it in ▶":"Start round ▶"}</button>`,{});
+  c.querySelector("button").onclick=()=>{audio();sfx.pop();c.remove();then()};
+ }
+
+ function round(){S.el.innerHTML="";const R=ROUNDS[r];S.hud("");
+  S.goal(`Round ${r+1} of 3: meet the parents`);
+  card(R,()=>build(R));
+ }
+
+ function build(R){
+  S.goal(`<b>Tap each ? box</b> to see which gene the child gets from Dad and from Mom.`);
+  const W=Math.min(S.W()-16,420);
+  const gb=$("goal").getBoundingClientRect(),sb=S.el.getBoundingClientRect();
+  const top=Math.max(gb.bottom-sb.top+8,110);
+  const small=S.H()<740,avail=S.H()-top-(small?76:150);
+  const momW=Math.round(W*.17),hdr=Math.round(W*.19),gap=6,dadH=Math.min(86,Math.round(avail*.2)),hdrH=Math.min(84,Math.round(avail*.2));
+  let cell=Math.floor((W-momW-hdr-gap*3)/2);cell=Math.min(cell,Math.floor((avail-dadH-hdrH-gap*3)/2));
+  const G=S.div("pq"+(cell<100?" compact":""),``,{top:top+"px",width:(momW+hdr+cell*2+gap*3)+"px",gridTemplateColumns:`${momW}px ${hdr}px ${cell}px ${cell}px`,gridTemplateRows:`${dadH}px ${hdrH}px ${cell}px ${cell}px`,gap:gap+"px"});
+  let h=`<div class="pq-corner" style="grid-column:1/3;grid-row:1/3"><span style="color:${DADC}">Dad's genes ↓</span><span style="color:${MOMC}">Mom's genes →</span></div>
+   <div class="pq-dad" style="grid-column:3/5;grid-row:1"><img src="char/dad.webp" alt=""><div><b style="color:${DADC}">Dad</b><small>${pDesc(R.dad)}</small></div></div>
+   <div class="pq-mom" style="grid-column:1;grid-row:3/5"><img src="char/mom.webp" alt=""><b style="color:${MOMC}">Mom</b><small>${NAMES[R.mom][0]}</small></div>`;
+  for(let b=0;b<2;b++)h+=`<div class="pq-h dad" data-c="${b}" style="grid-column:${3+b};grid-row:2">${alChip(R.dad[b],"dad",true)}</div>`;
+  for(let a=0;a<2;a++){h+=`<div class="pq-h mom" data-r="${a}" style="grid-column:2;grid-row:${3+a}">${alChip(R.mom[a],"mom",true)}</div>`;
+   for(let b=0;b<2;b++)h+=`<div class="pq-cell" data-r="${a}" data-c="${b}" style="grid-column:${3+b};grid-row:${3+a}"><span class="q">?</span></div>`}
+  G.innerHTML=h+`<svg class="pq-svg"><defs><marker id="pqAd" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="${DADC}"/></marker><marker id="pqAm" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="${MOMC}"/></marker></defs></svg>`;
+  const svg=G.querySelector("svg");
+  let n=0,busy=false;
+  const rel=el=>{const a=el.getBoundingClientRect(),g=G.getBoundingClientRect();return{x:a.left-g.left,y:a.top-g.top,w:a.width,h:a.height}};
+  function arrow(x1,y1,x2,y2,col,mk){const p=document.createElementNS("http://www.w3.org/2000/svg","path");const len=Math.hypot(x2-x1,y2-y1);
+   p.setAttribute("d",`M${x1},${y1} L${x2},${y2}`);p.setAttribute("stroke",col);p.setAttribute("stroke-width","5");p.setAttribute("stroke-linecap","round");p.setAttribute("fill","none");p.setAttribute("marker-end",`url(#${mk})`);
+   p.style.strokeDasharray=len;p.style.strokeDashoffset=len;p.style.filter=`drop-shadow(0 0 6px ${col})`;svg.appendChild(p);
+   p.animate([{strokeDashoffset:len},{strokeDashoffset:0}],{duration:520,easing:"cubic-bezier(.3,.8,.3,1)",fill:"forwards"});return p}
+  function fly(src,x,y,tx,ty,delay){const im=document.createElement("img");im.src=src;im.className="pq-fly";G.appendChild(im);
+   const a=im.animate([{left:x+"px",top:y+"px",transform:"translate(-50%,-50%) scale(1)",opacity:1},{left:tx+"px",top:ty+"px",transform:"translate(-50%,-50%) scale(.75)",opacity:1}],{duration:520,delay,easing:"cubic-bezier(.3,.8,.3,1)",fill:"forwards"});
+   a.onfinish=()=>im.remove()}
+  G.querySelectorAll(".pq-cell").forEach(c=>c.onclick=()=>{if(c.classList.contains("filled")||busy)return;busy=true;audio();sfx.snap();
+   const a=+c.dataset.r,b=+c.dataset.c,dA=R.dad[b],mA=R.mom[a],g=geno(dA,mA);
+   svg.querySelectorAll("path").forEach(p=>p.remove());G.querySelectorAll(".pq-h.lit,.pq-cell.lit").forEach(e=>e.classList.remove("lit"));
+   const dh=G.querySelector(`.pq-h.dad[data-c="${b}"]`),mh=G.querySelector(`.pq-h.mom[data-r="${a}"]`);dh.classList.add("lit");mh.classList.add("lit");c.classList.add("lit");
+   const D=rel(dh),M=rel(mh),C=rel(c);
+   arrow(D.x+D.w/2,D.y+D.h*.55,C.x+C.w*.3,C.y+C.h*.42,DADC,"pqAd");
+   S.after(160,()=>arrow(M.x+M.w*.55,M.y+M.h*.62,C.x+C.w*.42,C.y+C.h*.62,MOMC,"pqAm"));
+   fly(`obj/${AL[dA].img}.webp`,D.x+D.w/2,D.y+D.h*.42,C.x+C.w*.3,C.y+C.h*.32,120);
+   fly(`obj/${AL[mA].img}.webp`,M.x+M.w*.32,M.y+M.h/2,C.x+C.w*.7,C.y+C.h*.32,280);
+   S.after(820,()=>{c.classList.add("filled",sev(g));
+    c.innerHTML=`<div class="pq-pair"><span class="dad">${alChip(dA,"dad")}</span><span class="plus">+</span><span class="mom">${alChip(mA,"mom")}</span></div><b>${NAMES[g][0]}</b><small>${NAMES[g][1]}</small>`;
+    c.animate([{transform:"scale(.8)"},{transform:"scale(1)"}],{duration:320,easing:"cubic-bezier(.2,1.6,.4,1)"});
+    S.goal(`Dad gave <b style="color:${DADC}">${dA}</b>, Mom gave <b style="color:${MOMC}">${mA}</b> → this child is <b>${NAMES[g][0]}</b>: ${NAMES[g][1].toLowerCase()}.`);
+    S.after(1400,()=>{svg.querySelectorAll("path").forEach(p=>p.animate([{opacity:1},{opacity:.0}],{duration:400,fill:"forwards"}))});
+    busy=false;n++;if(n===4)S.after(1500,ask)})});
+  function ask(){G.querySelectorAll(".lit").forEach(e=>e.classList.remove("lit"));S.goal(`All 4 possible children are filled in. <b>${R.q}</b>`);
+   const row=S.div("choiceRow"+(small?" four":""),CH4.map((t,k)=>`<button data-k="${k}">${small?["0%","25%","50%","100%"][k]:t}</button>`).join(""),{bottom:`calc(10px + env(safe-area-inset-bottom))`});
+   row.querySelectorAll("button").forEach(bt=>bt.onclick=()=>{const k=+bt.dataset.k;
+    if(k===R.c){bt.classList.add("right");sfx.win();const hits=[...G.querySelectorAll(".pq-cell")].filter(c=>(c.querySelector(":scope > b")||{}).textContent===NAMES[R.ask][0]);hits.forEach(c=>c.classList.add("hit"));
+     toast(`${hits.length} of 4 boxes`,`${hits.length===1?"1 in 4 (25%)":hits.length===2?"1 in 2 (50%)":hits.length===4?"Every child (100%)":"0%"} chance for each pregnancy`,1800,"#ffc23d");
+     S.after(2200,()=>{r++;if(r<ROUNDS.length)round();else done()})}
+    else{bt.classList.add("wrong");sfx.bad();toast("Count the boxes!",`How many of the 4 boxes say ${NAMES[R.ask][0]}?`,1800)}})}
  }
  round();
 }
