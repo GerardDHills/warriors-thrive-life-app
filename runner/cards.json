@@ -1937,5 +1937,31 @@
 "c": 0,
 "lvl": "all",
 "topic": "acs"
+},
+{
+"id": "acs18",
+"q": "Which of these is an IV antibiotic often used in the hospital for acute chest syndrome?",
+"a": [
+"Ceftriaxone",
+"Ibuprofen",
+"Folic acid",
+"Hydroxyurea"
+],
+"c": 0,
+"lvl": "all",
+"topic": "acs"
+},
+{
+"id": "acs19",
+"q": "Ampicillin-sulbactam is given through an IV to do what?",
+"a": [
+"Lower a fever only",
+"Fight bacteria that can cause infections like acute chest",
+"Help you sleep",
+"Make more red blood cells"
+],
+"c": 1,
+"lvl": "all",
+"topic": "acs"
 }
 ]
