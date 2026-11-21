@@ -636,9 +636,22 @@ function loop(now){
 }
 
 /* ---------------- warrior cards ---------------- */
+/* No repeats: cards already answered are remembered (save.seen) and only come back once the whole deck has been seen.
+   Each mission tries cards about its own topic first. */
+const TOPIC={1:/pain|crisis|real|believe|feel/i,2:/sport|exercis|play|active|water/i,3:/hydroxyurea|treat|medicine|transplant|gene|research|cure/i,
+  4:/chest|lung|breath|spirometer|cough|oxygen|ACS/i,5:/stroke|brain|TCD|transcranial|doppler/i,6:/kidney|urine|pee|bathroom|bedwet|renal|blood pressure/i};
+function pickCard(){
+  const pool=CARDS.filter(c=>c.lvl!=="teen"); if(!pool.length) return null;
+  save.seen=save.seen||[]; let fresh=pool.filter(c=>!save.seen.includes(c.id));
+  if(!fresh.length){ save.seen=[]; fresh=pool; }
+  const re=G&&TOPIC[G.n], on=re?fresh.filter(c=>(c.topic==="acs"&&G.n===4)||re.test(c.q)):[];
+  const kid=a=>a.filter(c=>c.lvl==="kid"||c.topic);
+  const from=[kid(on),on,kid(fresh),fresh].find(a=>a.length), c=from[Math.random()*from.length|0];
+  save.seen.push(c.id); persist(); return c;
+}
 let cardCb=null;
 function askCard(head,cb,skippable){
-  cardCb=cb; const pool=CARDS.filter(c=>c.lvl==="kid"); const c=(pool.length?pool:CARDS)[Math.random()*(pool.length||CARDS.length)|0];
+  cardCb=cb; const c=pickCard();
   musicOn(false);
   if(!c){ cb(true); return; }
   $("qHead").textContent=head; $("qQ").textContent=c.q; $("qFb").textContent="";
@@ -714,6 +727,6 @@ $("wMenu").onclick=()=>{ buildMissions(); show("sMission"); };
 $("wNext").onclick=()=>{ const m=WM.MISSIONS[G.n]; if(m) brief(m); };
 
 /* ---------------- boot ---------------- */
-window.wmDebug = { get G(){ return G; }, TILE, start:startMission, save:()=>save, K, tile:(c,r)=>tile(c,r), solid:(c,r)=>isSolid(c,r) };
+window.wmDebug = { get G(){ return G; }, TILE, pickCard, start:startMission, save:()=>save, K, tile:(c,r)=>tile(c,r), solid:(c,r)=>isSolid(c,r) };
 loadAll().then(()=>{ $("loading").classList.add("hide"); show("sTitle"); requestAnimationFrame(loop); });
 })();
