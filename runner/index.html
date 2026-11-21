@@ -67,7 +67,7 @@ body.embed #select{padding-top:calc(54px + env(safe-area-inset-top))}
 #zoneBanner.on{opacity:1;transform:translate(-50%,-50%) scale(1)}
 #zoneBanner small{display:block;font-weight:700;letter-spacing:.2em;text-transform:uppercase;font-size:13px;color:var(--cyan);text-shadow:0 2px 6px rgba(0,0,0,.9)}
 #zoneBanner b{display:block;font-family:var(--display);font-weight:400;font-size:clamp(28px,9vw,40px);line-height:1;color:var(--gold);text-shadow:0 4px 0 #6a2a00,0 0 24px rgba(255,194,61,.5);white-space:nowrap}
-#toast{position:fixed;left:50%;top:19%;transform:translate(-50%,-50%);z-index:4;font-family:var(--display);font-size:30px;text-align:center;text-shadow:0 3px 0 rgba(0,0,0,.5);pointer-events:none;transition:opacity .3s;max-width:90vw;line-height:1.15;opacity:0}
+#toast{position:fixed;left:50%;top:19%;transform:translate(-50%,-50%);z-index:6;font-family:var(--display);font-size:30px;text-align:center;text-shadow:0 3px 0 rgba(0,0,0,.5);pointer-events:none;transition:opacity .3s;max-width:90vw;line-height:1.15;opacity:0}
 #toast small{display:block;font-family:var(--body);font-size:16px;font-weight:700;text-shadow:0 2px 4px rgba(0,0,0,.8);margin-top:4px}
 #habit{position:fixed;left:12px;right:12px;bottom:calc(16px + env(safe-area-inset-bottom));z-index:4;display:flex;gap:12px;align-items:center;max-width:440px;margin:0 auto;background:rgba(27,8,44,.88);border:2px solid var(--crys);border-radius:20px;padding:10px 14px;box-shadow:0 0 24px rgba(93,255,160,.35);pointer-events:none;transform:translateY(150%);transition:transform .35s cubic-bezier(.2,1.4,.4,1)}
 #habit.on{transform:none}
@@ -109,6 +109,13 @@ body.embed #select{padding-top:calc(54px + env(safe-area-inset-top))}
 .ctl b{display:block;font-size:15px}
 .storyCrys{display:flex;gap:10px;align-items:center;background:rgba(93,255,160,.1);border:1px solid rgba(93,255,160,.35);border-radius:16px;padding:10px 12px;margin:12px 0 0}
 .storyCrys img{width:44px;height:44px;flex:none}
+.lvls{display:grid;grid-template-columns:1fr 1fr;gap:8px;width:100%;max-width:440px;margin:10px 0 0}
+.lvl{border-radius:16px;padding:8px 10px;background:rgba(255,255,255,.09);border:3px solid transparent;text-align:left;line-height:1.2}
+.lvl b{font-family:var(--display);font-weight:400;font-size:18px;display:block}.lvl span{font-size:13px;font-weight:700;opacity:.9}
+.lvl.on{border-color:var(--gold);background:rgba(255,194,61,.2)}.lvl.lock{opacity:.55}
+.lvl .new{font-style:normal;font-size:11px;background:var(--magenta);border-radius:99px;padding:1px 7px;vertical-align:middle;font-family:var(--body);font-weight:700}
+#introL{background:#000;z-index:8}#introL video{width:100%;height:100%;object-fit:contain}
+#introL .skip{position:absolute;right:16px;bottom:calc(16px + env(safe-area-inset-bottom));padding:10px 18px;border-radius:99px;background:rgba(255,255,255,.18);border:2px solid rgba(255,255,255,.5);font-weight:700;font-size:16px}
 #count{font-family:var(--display);font-size:110px;color:var(--gold);text-shadow:0 6px 0 #8a3b00,0 0 30px rgba(255,194,61,.5);pointer-events:none}
 #loading{position:fixed;inset:0;z-index:9;display:grid;place-items:center;background:var(--night);font-family:var(--display);font-size:22px;color:var(--gold)}
 </style>
@@ -141,6 +148,10 @@ body.embed #select{padding-top:calc(54px + env(safe-area-inset-top))}
   <div class="stage"><div class="glow"></div><canvas id="prev" width="300" height="360"></canvas></div>
   <div class="who"><b id="whoName">Malcolm</b><small id="whoAbil"></small></div>
   <div class="grid" id="grid"></div>
+  <div class="lvls" id="lvls">
+    <button class="lvl on" data-l="1"><b>Level 1</b><span>Lab → City → Hospital</span></button>
+    <button class="lvl" data-l="2"><b>Level 2 <i class="new">NEW</i></b><span>Acute Chest Rescue 🫁</span></button>
+  </div>
   <div class="wrapw">
     <button class="cta" id="goBtn">Run! ▶</button>
     <div class="best" id="bestTxt"></div>
@@ -162,6 +173,18 @@ body.embed #select{padding-top:calc(54px + env(safe-area-inset-top))}
     </div>
     <p class="sub" style="margin:12px 0 0;font-size:14px">Get caught? Answer a <b>Warrior Card</b>. Right: keep running. Wrong: learn the answer and restart from your last checkpoint.</p>
     <button class="cta" id="storyGo">Let's go!</button>
+  </div>
+</div>
+
+<div id="introL" class="layer hide"><video id="introV" playsinline preload="none"></video><button class="skip" id="introSkip">Skip ▶</button></div>
+<div id="story2" class="layer dim hide">
+  <div class="panel">
+    <span class="tag">IV Bag → Bloodstream → Lungs</span>
+    <h2 style="margin:6px 0 8px">Acute Chest Rescue!</h2>
+    <p class="sub" style="margin:0">Darius has <b>acute chest syndrome</b>, a serious lung problem in sickle cell. Dr. Amos shrinks you down to ride his IV antibiotics through the <b>bloodstream</b> and into his <b>lungs</b>. You'll run faster this time!</p>
+    <div class="storyCrys"><img src="img/crystal.webp" alt=""><div class="sub" style="font-size:14px"><b>Each crystal is a treatment:</b> IV antibiotics (ceftriaxone or ampicillin-sulbactam), azithromycin, a transfusion, oxygen, pain control, the incentive spirometer, and hydroxyurea. Deliver all 7 to the inflamed part of the lung!</div></div>
+    <p class="sub" style="margin:12px 0 0;font-size:14px">The Society blocks the way with acute chest myths. Get caught? Answer a <b>Warrior Card</b> to break free.</p>
+    <button class="cta" id="story2Go">Let's go!</button>
   </div>
 </div>
 
@@ -212,7 +235,7 @@ const CHARS=[
  {id:"amos",name:"Dr. Amos",w:208,color:"#19b3ad",abil:"Stops disease progression"},
  {id:"kim",name:"Dr. Kim",w:171,color:"#a46bff",abil:"Keeps warriors out of crisis"}];
 const SPR_H=480;
-const HABITS=[
+let HABITS=[
  {icon:"💊",name:"Hydroxyurea Crystal",short:"Hydroxyurea",fact:"Taking hydroxyurea every day helps prevent pain crises."},
  {icon:"🥗",name:"Healthy Food Crystal",short:"Healthy food",fact:"Healthy food and folic acid help your body make new red blood cells."},
  {icon:"💧",name:"Water Crystal",short:"Water",fact:"Drinking lots of water helps keep your blood flowing smoothly."},
@@ -220,7 +243,7 @@ const HABITS=[
  {icon:"😴",name:"Rest Crystal",short:"Rest",fact:"Good sleep and rest help your body heal and recharge."},
  {icon:"🩺",name:"Checkup Crystal",short:"Checkups",fact:"Hematology checkups catch problems early, even when you feel well."},
  {icon:"🌡️",name:"Fever Plan Crystal",short:"Fever plan",fact:"With sickle cell, a fever can be an emergency. Tell a grown-up and call your care team right away."}];
-const MYTHS={
+let MYTHS={
  "IT'S ALL IN YOUR HEAD":"Sickle cell pain is real. Sickled cells block blood flow, and that hurts.",
  "JUST TRY HARDER":"A pain crisis isn't about trying harder. Warriors deserve care, not blame.",
  "YOU'RE FAKING IT":"Pain can be invisible and still be real. Believe warriors.",
@@ -235,15 +258,54 @@ const MYTHS={
  "DETOUR":"Some days have detours. Keep going, and ask for help when you need it.",
  "RED TAPE":"Paperwork can slow down care. Your care team and social worker can help cut through it.",
  "GAP IN CARE":"Keep going to your hematology checkups, even when you feel well."};
-const WALLS=["IT'S ALL IN YOUR HEAD","JUST TRY HARDER","YOU'RE FAKING IT","IT'S CONTAGIOUS","YOU CAN'T PLAY SPORTS","SKIP YOUR MEDS"];
-const BLOCKS=["LONG WAIT","NO RIDE","NOT COVERED","NO ONE LISTENS"];
-const END=2800;
-const ZONES=[
+let WALLS=["IT'S ALL IN YOUR HEAD","JUST TRY HARDER","YOU'RE FAKING IT","IT'S CONTAGIOUS","YOU CAN'T PLAY SPORTS","SKIP YOUR MEDS"];
+let BLOCKS=["LONG WAIT","NO RIDE","NOT COVERED","NO ONE LISTENS"];
+let END=2800;
+let ZONES=[
  {id:"lab",z0:0,z1:850,name:"Amos Research Lab",img:"bg/lab.webp",vpy:.285,road:[136,42,236],road2:[120,36,214],zoom:.42},
  {id:"city",z0:850,z1:2100,name:"Warrior City",img:"bg/city.webp",vpy:.268,road:[112,30,178],road2:[100,26,162],zoom:.45},
  {id:"hosp",z0:2100,z1:END,name:"The Hospital",img:"bg/hosp.webp",vpy:.282,road:[128,34,212],road2:[116,30,196],zoom:1.25}];
-const CPS=[{z:0,name:"Amos Research Lab"},{z:850,name:"Warrior City"},{z:1475,name:"City Center"},{z:2100,name:"Hospital Gardens"}];
-const CRYSTAL_Z=[300,640,1060,1460,1860,2300,2590];
+let CPS=[{z:0,name:"Amos Research Lab"},{z:850,name:"Warrior City"},{z:1475,name:"City Center"},{z:2100,name:"Hospital Gardens"}];
+let CRYSTAL_Z=[300,640,1060,1460,1860,2300,2590];
+/* ---- levels: level 1 is the original Lab → City → Hospital run; level 2 is the Acute Chest Rescue inside the body ---- */
+const LVL1={n:1,HABITS,MYTHS,WALLS,BLOCKS,END,ZONES,CPS,CRYSTAL_Z,speed:10,goal:"🏥",props:["lab","city","hosp"],
+ OBJ:{crates:"crates",cone:"cone"},TX:{crates:"NO FUNDING",cone:"DETOUR",tape:"RED TAPE",gap:"GAP IN CARE"},best:"wt-runner-best"};
+const LVL2={n:2,speed:13,goal:"🫁",props:["iv","vessel","lung"],best:"wt-runner-best2",
+ OBJ:{crates:"germs",cone:"mucus"},TX:{crates:"GERMS",cone:"MUCUS",tape:"SHALLOW BREATHING",gap:"MISSED DOSE"},
+ END:2800,
+ ZONES:[{id:"iv",z0:0,z1:800,name:"The IV Antibiotic Bag",img:"bg/iv.webp",vpy:.265,road:[70,150,214],road2:[60,134,198],zoom:.42},
+  {id:"vessel",z0:800,z1:2000,name:"The Bloodstream",img:"bg/vessel.webp",vpy:.235,road:[150,32,62],road2:[132,26,52],zoom:.45},
+  {id:"lung",z0:2000,z1:2800,name:"Darius's Lungs",img:"bg/lung.webp",vpy:.31,road:[214,92,132],road2:[196,80,118],zoom:1.25}],
+ CPS:[{z:0,name:"IV Bag"},{z:800,name:"Bloodstream"},{z:1400,name:"Heart Express"},{z:2000,name:"Lung Airway"}],
+ CRYSTAL_Z:[260,560,1000,1350,1750,2250,2560],
+ HABITS:[
+  {icon:"💉",name:"IV Antibiotic Crystal",short:"IV antibiotics",fact:"In the hospital, IV antibiotics like ceftriaxone or ampicillin-sulbactam fight bacteria that can cause acute chest. Later you may switch to pills like amoxicillin-clavulanate (Augmentin)."},
+  {icon:"🦠",name:"Azithromycin Crystal",short:"Azithromycin",fact:"Azithromycin fights 'atypical' germs like mycoplasma, a common cause of acute chest."},
+  {icon:"🩸",name:"Transfusion Crystal",short:"Transfusion",fact:"When acute chest is serious, a blood transfusion adds healthy red cells that carry oxygen."},
+  {icon:"🫧",name:"Oxygen Crystal",short:"Oxygen",fact:"If your oxygen level is low, extra oxygen helps your body while your lungs heal."},
+  {icon:"🩹",name:"Pain Control Crystal",short:"Pain control",fact:"Treating pain lets you take deep breaths, and deep breaths help your lungs heal."},
+  {icon:"🌬️",name:"Spirometer Crystal",short:"Spirometer",fact:"Use your incentive spirometer about every hour while you're awake to keep your lungs open."},
+  {icon:"🛡️",name:"Hydroxyurea Crystal",short:"Hydroxyurea",fact:"Taking hydroxyurea every day helps prevent acute chest from coming back."}],
+ MYTHS:{
+  "IT'S JUST A COLD":"With sickle cell, chest pain, fever, cough or fast breathing can be acute chest syndrome. Get checked right away.",
+  "SLEEP OFF CHEST PAIN":"Chest pain with sickle cell is an emergency. Go to the ER or call your care team.",
+  "FEVER CAN WAIT":"A fever with sickle cell needs care right away. Call your care team.",
+  "SKIP THE SPIROMETER":"Using your incentive spirometer about every hour while awake keeps your lungs open.",
+  "STOP ANTIBIOTICS EARLY":"Finish every dose of your antibiotics, even when you start to feel better.",
+  "DON'T BREATHE DEEP":"Pain medicine helps you breathe deep, and deep breaths help your lungs heal.",
+  "WAIT AND SEE":"Acute chest can get worse fast. Getting care early helps.",
+  "NO X-RAY NEEDED":"A chest X-ray helps your care team see what's happening in your lungs.",
+  "STAY IN BED ALL DAY":"Sitting up and walking when you can helps open up your lungs.",
+  "SKIP THE TRANSFUSION":"When acute chest is serious, a blood transfusion can help your body get more oxygen.",
+  "GERMS":"Antibiotics like ceftriaxone, ampicillin-sulbactam and azithromycin fight the germs that can cause acute chest.",
+  "MUCUS":"Deep breaths, coughing and your spirometer help clear mucus out of your lungs.",
+  "SHALLOW BREATHING":"Small, shallow breaths let parts of the lungs close up. Deep breaths and good pain control help.",
+  "MISSED DOSE":"Take every dose of your medicines on time. Your care team can help you make a plan."},
+ WALLS:["IT'S JUST A COLD","SLEEP OFF CHEST PAIN","FEVER CAN WAIT","SKIP THE SPIROMETER","STOP ANTIBIOTICS EARLY","DON'T BREATHE DEEP"],
+ BLOCKS:["WAIT AND SEE","NO X-RAY NEEDED","STAY IN BED ALL DAY","SKIP THE TRANSFUSION"]};
+const LEVELS={1:LVL1,2:LVL2};let LV=LVL1;
+function setLevel(n){LV=LEVELS[n]||LVL1;({HABITS,MYTHS,WALLS,BLOCKS,END,ZONES,CPS,CRYSTAL_Z}=LV);
+ document.querySelector("#prog em").textContent=LV.goal;resize()}
 
 /* ================= helpers ================= */
 const $=id=>document.getElementById(id);
@@ -260,7 +322,8 @@ const smooth=(a,b,v)=>{const t=clamp((v-a)/(b-a),0,1);return t*t*(3-2*t)};
 const lerp=(a,b,t)=>a+(b-a)*t;
 const imgs={};function img(src){if(!imgs[src]){const i=new Image();i.decoding="async";i.src=src;imgs[src]=i}return imgs[src]}
 const ready=i=>i&&i.complete&&i.naturalWidth>0;
-const ASSETS=["bg/lab.webp","bg/city.webp","bg/hosp.webp","img/coin.webp","img/crystal.webp","img/logo.webp",
+const ASSETS=["bg/lab.webp","bg/city.webp","bg/hosp.webp","bg/iv.webp","bg/vessel.webp","bg/lung.webp",
+ ...["germs","mucus","molecule","rbc","sickle","wbc","platelet","alveoli"].map(n=>"obj/"+n+".webp"),"img/coin.webp","img/crystal.webp","img/logo.webp",
  ...["wall","block","agent","agent_run","society_face","bollard","cone","lamp","pillar","tree","crates","tape","title"].map(n=>"obj/"+n+".webp"),
  ...CHARS.flatMap(c=>["sprites/"+c.id+".webp","faces/"+c.id+".webp"])];
 let loaded=0;ASSETS.forEach(a=>{const i=img(a);const done=()=>{loaded++;if(loaded===ASSETS.length)boot()};if(i.complete)done();else{i.onload=done;i.onerror=done}});
@@ -273,9 +336,13 @@ fetch("cards.json").then(r=>r.json()).then(d=>{
  const kid=AGE!=null&&AGE<12,teen=AGE!=null&&AGE>=13;
  let pool=d.filter(c=>c.lvl==="kid"||(!kid&&c.lvl==="all")||(teen&&c.lvl==="teen"));
  if(AGE==null)pool=d.filter(c=>c.lvl!=="teen");
- DECK=shuffle(pool);
+ DECK=pool;
 }).catch(()=>{});
-function nextCard(){if(!DECK.length)return{q:"What do red blood cells carry around the body?",a:["Oxygen","Sugar","Water","Germs"],c:0};const c=DECK[deckI%DECK.length];deckI++;if(deckI%DECK.length===0)shuffle(DECK);return c}
+/* no repeats: answered cards are remembered and only come back after the whole deck; level 2 asks acute chest cards first */
+function nextCard(){if(!DECK.length)return{q:"What do red blood cells carry around the body?",a:["Oxygen","Sugar","Water","Germs"],c:0};
+ let seen=store.get("wt-runner-seen",[]);let fresh=DECK.filter(c=>!seen.includes(c.id));if(!fresh.length){seen=[];fresh=DECK}
+ const acs=LV.n===2?fresh.filter(c=>c.topic==="acs"):[],from=acs.length?acs:fresh.filter(c=>c.topic!=="acs").length?fresh.filter(c=>c.topic!=="acs"):fresh;
+ const c=from[Math.floor(Math.random()*from.length)];seen.push(c.id);store.set("wt-runner-seen",seen);return c}
 
 /* ================= audio ================= */
 let AC=null,musicOn=store.get("wt-runner-music",true);
@@ -304,27 +371,29 @@ const fade=dz=>1-smooth(100,128,dz);
 /* ================= level ================= */
 let G=null,char=CHARS.find(c=>c.id===(prof.character||prof.avatar))||CHARS[0];
 function zoneAt(z){const i=ZONES.findIndex(Z=>z<Z.z1);return i<0?2:i}
+const TX=k=>LV.TX[k];
 function newLevel(){
- const r=rng(20261119),O=[],gaps=[],props=[];
+ const r=rng(20261119+LV.n*7919),O=[],gaps=[],props=[];
  const pick=a=>a[Math.floor(r()*a.length)];
  let force=true;const COINP=.12;
  const coinLine=(lane,z0,n,y=1.25)=>{if(!force&&r()>COINP)return;for(let i=0;i<n;i++)O.push({t:"coin",lane,z:z0+i*2.4,y})};
  const arc=(lane,zc)=>{if(!force&&r()>.3)return;for(let i=-3;i<=3;i++){const k=i/3;O.push({t:"coin",lane,z:zc+i*1.5,y:1.25+1.5*(1-k*k)})}};
- const tx=k=>k==="crates"?"NO FUNDING":k==="cone"?"DETOUR":k==="agent"?pick(WALLS):pick(BLOCKS);
+ const tx=k=>k==="crates"?TX("crates"):k==="cone"?TX("cone"):k==="agent"?pick(WALLS):pick(BLOCKS);
  const P={
   dodge(z,zi){const b=Math.floor(r()*3);const kind=zi===0?(r()<.6?"crates":"agent"):zi===1?(r()<.45?"block":r()<.55?"cone":"agent"):(r()<.6?"block":"agent");
    O.push({t:kind,lane:b,z,text:tx(kind)});coinLine((b+1+Math.floor(r()*2))%3,z-9,6)},
   double(z,zi){const f=Math.floor(r()*3);[0,1,2].filter(l=>l!==f).forEach((l,i)=>{const kind=zi===0?(i?"crates":"agent"):i?"block":(r()<.5?"cone":"agent");O.push({t:kind,lane:l,z,text:tx(kind)})});coinLine(f,z-12,7)},
   wall(z){O.push({t:"wall",lane:-1,z,text:pick(WALLS)});arc(Math.floor(r()*3),z)},
-  tape(z){O.push({t:"tape",lane:-1,z,text:"RED TAPE"});coinLine(Math.floor(r()*3),z-6,5,.7)},
-  gap(z,zi){gaps.push([z-1.7,z+1.7]);O.push({t:"gap",lane:-1,z,z0:z-1.7,z1:z+1.7,text:"GAP IN CARE",zi});arc(Math.floor(r()*3),z)},
+  tape(z){O.push({t:"tape",lane:-1,z,text:TX("tape")});coinLine(Math.floor(r()*3),z-6,5,.7)},
+  gap(z,zi){gaps.push([z-1.7,z+1.7]);O.push({t:"gap",lane:-1,z,z0:z-1.7,z1:z+1.7,text:TX("gap"),zi});arc(Math.floor(r()*3),z)},
   coins(z){const l=Math.floor(r()*3);coinLine(l,z-8,9);if(r()<.5)coinLine((l+1+Math.floor(r()*2))%3,z+16,6)},
   zig(z){if(r()>.3)return;let l=Math.floor(r()*3);for(let i=0;i<12;i++){if(i%4===3)l=clamp(l+(r()<.5?-1:1),0,2);O.push({t:"coin",lane:l,z:z-10+i*2.4,y:1.25})}}};
  coinLine(1,30,10);
- O.push({t:"crates",lane:1,z:90,text:"NO FUNDING",tut:"Swipe LEFT or RIGHT to dodge!"});coinLine(0,80,5);coinLine(2,80,5);
- O.push({t:"wall",lane:-1,z:130,text:"IT'S ALL IN YOUR HEAD",tut:"Swipe UP to jump the barricade!"});arc(1,130);
- O.push({t:"tape",lane:-1,z:170,text:"RED TAPE",tut:"Swipe DOWN to slide under!"});coinLine(1,164,5,.7);
- gaps.push([208.3,211.7]);O.push({t:"gap",lane:-1,z:210,z0:208.3,z1:211.7,text:"GAP IN CARE",zi:0,tut:"Swipe UP to jump the gap!"});arc(1,210);
+ const T1=LV.n===1;
+ O.push({t:"crates",lane:1,z:90,text:TX("crates"),tut:T1&&"Swipe LEFT or RIGHT to dodge!"});coinLine(0,80,5);coinLine(2,80,5);
+ O.push({t:"wall",lane:-1,z:130,text:WALLS[0],tut:T1&&"Swipe UP to jump the barricade!"});arc(1,130);
+ O.push({t:"tape",lane:-1,z:170,text:TX("tape"),tut:T1&&"Swipe DOWN to slide under!"});coinLine(1,164,5,.7);
+ gaps.push([208.3,211.7]);O.push({t:"gap",lane:-1,z:210,z0:208.3,z1:211.7,text:TX("gap"),zi:0,tut:T1&&"Swipe UP to jump the gap!"});arc(1,210);
  coinLine(0,235,8);force=false;
  const avoid=[...CPS.map(c=>c.z),...CRYSTAL_Z,...ZONES.map(Z=>Z.z1)];
  let z=262;
@@ -344,7 +413,12 @@ function newLevel(){
  const solid=O.filter(o=>["crates","block","agent","cone"].includes(o.t));
  const O2=O.filter(o=>!(o.t==="coin"&&solid.some(s=>s.lane===o.lane&&Math.abs(s.z-o.z)<1.6)));
  O2.sort((a,b)=>a.z-b.z);
- for(let z=6;z<END+40;z+=10){const zi=zoneAt(z),n=Math.round(z/10);
+ if(LV.n===2){const cells=["rbc","rbc","sickle","wbc","rbc","platelet"];
+  for(let z=6;z<END+40;z+=10){const zi=zoneAt(z),n=Math.round(z/10);
+   if(zi===0){const ab=["CEFTRIAXONE","AMPICILLIN-SULBACTAM","AZITHROMYCIN"];props.push({k:"molecule",z,side:-1,y:1.2+(n%3)*.5,lbl:n%3===0?ab[(n/3|0)%3]:null},{k:"molecule",z:z+5,side:1,y:1.6+(n%2)*.6,lbl:n%3===1?ab[((n/3|0)+1)%3]:null})}
+   else if(zi===1){props.push({k:cells[n%6],z,side:-1,y:.8+(n%4)*.5},{k:cells[(n+3)%6],z:z+5,side:1,y:1+(n%3)*.6})}
+   else if(n%2)props.push({k:"alveoli",z,side:-1},{k:"alveoli",z,side:1})}
+ }else for(let z=6;z<END+40;z+=10){const zi=zoneAt(z),n=Math.round(z/10);
   if(zi===0){if(n%2)props.push({k:"pillar",z,side:-1},{k:"pillar",z,side:1})}
   else if(zi===1){props.push({k:n%3===0?"lamp":"tree",z,side:-1},{k:n%3===1?"lamp":"tree",z,side:1})}
   else props.push({k:n%2?"bollard":"tree",z,side:-1},{k:n%2?"tree":"bollard",z,side:1});}
@@ -359,7 +433,7 @@ function startRun(){
  buildProg();updHud();countdown();
 }
 function buildProg(){const p=$("prog");p.querySelectorAll("b,.z").forEach(b=>b.remove());
- const cols={lab:"#5ee7ff",city:"#ffc23d",hosp:"#ff8ac2"};
+ const cols={lab:"#5ee7ff",city:"#ffc23d",hosp:"#ff8ac2",iv:"#5ee7ff",vessel:"#ff6b6b",lung:"#ff8ac2"};
  ZONES.forEach(Z=>{const d=document.createElement("div");d.className="z";d.style.left=(Z.z0/END*100)+"%";d.style.width=((Z.z1-Z.z0)/END*100)+"%";d.style.background=cols[Z.id];p.insertBefore(d,p.firstChild)});
  CPS.slice(1).forEach(c=>{const b=document.createElement("b");b.style.left=(c.z/END*100)+"%";b.dataset.z=c.z;p.appendChild(b)})}
 function updHud(){$("hCoins").textContent=G.coins;$("hCrys").textContent=G.crys+"/7";
@@ -442,7 +516,7 @@ function update(dt){
  if(G.state==="hit"){if(G.falling)G.fallY-=dt*14;return}
  if(G.state==="ending"){G.speed=Math.max(0,G.speed-dt*9);G.pz+=G.speed*dt;G.endT+=dt;G.x+=(0-G.x)*Math.min(1,dt*4);if(G.endT>1.6){G.state="won";showWin()}return}
  if(G.state!=="run")return;
- G.speed=10+5*(G.pz/END);
+ G.speed=LV.speed+5*(G.pz/END);
  const prevZ=G.pz;G.pz+=G.speed*dt;
  G.x+=(laneX(G.lane)-G.x)*Math.min(1,dt*15);
  if(G.y>0||G.vy>0){G.vy-=30*dt;G.y+=G.vy*dt;if(G.y<=0){G.y=0;G.vy=0}}
@@ -474,26 +548,29 @@ function update(dt){
 function showWin(){
  music.volume=.2;
  const score=Math.floor(G.score+END);
- const best=store.get("wt-runner-best",{}),prev=best[char.id]||0;if(score>prev){best[char.id]=score;store.set("wt-runner-best",best)}
- $("winT").textContent=G.crys===7?"All 7 crystals delivered!":G.crys?"Crystals delivered!":"You made it to the hospital!";
- $("winS").textContent=G.crys===7?`${char.name} brought every healthy habit to the hospital. That's how warriors thrive!`:`${char.name} delivered ${G.crys} Health Crystal${G.crys===1?"":"s"}. Run again to collect all 7 healthy habits!`;
+ const best=store.get(LV.best,{}),prev=best[char.id]||0;if(score>prev){best[char.id]=score;store.set(LV.best,best)}
+ if(LV.n===1)store.set("wt-runner-done1",true);
+ const L2=LV.n===2;
+ $("winT").textContent=G.crys===7?(L2?"Acute chest, treated!":"All 7 crystals delivered!"):G.crys?"Crystals delivered!":(L2?"You made it to the lungs!":"You made it to the hospital!");
+ $("winS").textContent=L2?(G.crys===7?`${char.name} delivered every treatment to Darius's lungs. His lungs can heal!`:`${char.name} delivered ${G.crys} treatment crystal${G.crys===1?"":"s"} to Darius's lungs. Run again to bring all 7!`)
+  :G.crys===7?`${char.name} brought every healthy habit to the hospital. That's how warriors thrive!`:`${char.name} delivered ${G.crys} Health Crystal${G.crys===1?"":"s"}. Run again to collect all 7 healthy habits!`;
  $("wHabits").innerHTML=HABITS.map((h,i)=>`<div class="${G.got.includes(i)?"got":"miss"}"><span>${h.icon}</span>${h.short}${G.got.includes(i)?" ✓":""}</div>`).join("");
  $("wCrys").textContent=G.crys+"/7";$("wCoins").textContent=G.coins;$("wScore").textContent=score.toLocaleString();
  $("wBest").textContent=score>prev?"New best score for "+char.name+"!":"Best with "+char.name+": "+prev.toLocaleString();
- $("wApp").textContent=EMBED?"+25 Life App points for reaching the hospital (once a day)":"";
- post({type:"level",level:1,crystals:G.crys,coins:G.coins,score});
+ $("wApp").textContent=EMBED?(L2?"+25 Life App points for reaching the lungs (once a day)":"+25 Life App points for reaching the hospital (once a day)"):"";
+ post({type:"level",level:LV.n,crystals:G.crys,coins:G.coins,score});
  $("winL").classList.remove("hide");$("hud").classList.add("hide");
 }
 $("againBtn").onclick=()=>{audioInit();music.volume=.35;startRun()};
 $("charBtn").onclick=()=>toSelect();
-function toSelect(){G=null;$("winL").classList.add("hide");$("hud").classList.add("hide");$("select").classList.remove("hide");hint(null);music.volume=.35;showBest();drawPrev();ctx.clearRect(0,0,W,H)}
+function toSelect(){G=null;refreshLocks();$("winL").classList.add("hide");$("hud").classList.add("hide");$("select").classList.remove("hide");hint(null);music.volume=.35;showBest();drawPrev();ctx.clearRect(0,0,W,H)}
 
 /* ================= render ================= */
 function drawBackdrop(){
  const z=G.pz,zi=zoneAt(z),Z=ZONES[zi];
  const t=clamp((z-Z.z0)/(Z.z1-Z.z0),0,1);
  const parX=-camX*F/CAM_BACK*.12;
- const zoomOf=(Zn,tt)=>Zn.id==="hosp"?1+Zn.zoom*Math.pow(tt,1.6):1+Zn.zoom*tt;
+ const zoomOf=(Zn,tt)=>Zn===ZONES[2]?1+Zn.zoom*Math.pow(tt,1.6):1+Zn.zoom*tt;
  const draw=(Zn,zoom,alpha)=>{const im=imgs[Zn.img];if(!ready(im)||alpha<=0)return;const s=S0*zoom,w=IW*s,h=IH*s;ctx.globalAlpha=alpha;ctx.drawImage(im,W/2-w/2+parX*zoom,HOR-Zn.vpy*h,w,h);ctx.globalAlpha=1};
  const tail=55;
  if(zi<2&&z>Z.z1-tail){const k=smooth(Z.z1-tail,Z.z1,z);draw(Z,zoomOf(Z,1)+k*.9,1);draw(ZONES[zi+1],1,k)}
@@ -552,8 +629,9 @@ function speech(text,x,y,s,alpha){if(alpha<=0)return;const size=clamp(s*.4,10,18
  const bw=Math.max(...lines.map(l=>ctx.measureText(l).width))+size*1.2,bh=lines.length*size*1.1+size*.7;
  ctx.globalAlpha=alpha;ctx.fillStyle="#fff";rr(x-bw/2,y-bh,bw,bh,size*.6);ctx.fill();ctx.beginPath();ctx.moveTo(x-6,y-1);ctx.lineTo(x+6,y-1);ctx.lineTo(x,y+8);ctx.fill();
  ctx.fillStyle="#7a1a52";ctx.textAlign="center";ctx.textBaseline="middle";lines.forEach((l,i)=>ctx.fillText(l,x,y-bh+size*.9+i*size*1.1));ctx.globalAlpha=1}
-const PROP={pillar:1.6,lamp:1.9,tree:3.4,bollard:1.5};
-function drawProp(p){const x=p.side*(HALF+(p.k==="tree"?2.6:1.5));sprite(p.k,x,p.z,PROP[p.k],0,1,p.side>0)}
+const PROP={pillar:1.6,lamp:1.9,tree:3.4,bollard:1.5,molecule:1.5,rbc:1.6,sickle:1.6,wbc:1.7,platelet:1,alveoli:3.4};
+function drawProp(p){const fl=p.y!=null,x=p.side*(HALF+(p.k==="tree"||p.k==="alveoli"?2.6:1.5))+(fl?Math.sin(G.t*1.3+p.z)*.25:0);const r=sprite(p.k,x,p.z,PROP[p.k],fl?p.y+Math.sin(G.t*2+p.z*.3)*.2:0,1,p.side>0);
+ if(p.lbl&&r&&r.dz<60)label("💉 "+p.lbl,r.x,r.y-r.h-r.s*.1,r.s*.8,fade(r.dz)*smooth(60,46,r.dz),"#1b7fc4")}
 function drawObj(o){
  const dz=o.z-G.pz+CAM_BACK;if(dz<.4||dz>110)return;const f=fade(dz);
  if(o.t==="coin"){if(o.taken)return;const p=proj(laneX(o.lane),o.y,o.z);if(!p)return;const sz=1.05*p.s,sp=Math.max(.15,Math.abs(Math.cos(G.t*5+o.z*.7)));const im=imgs["img/coin.webp"];
@@ -563,13 +641,13 @@ function drawObj(o){
   const gl=ctx.createRadialGradient(p.x,p.y+bob,1,p.x,p.y+bob,sz*1.2);gl.addColorStop(0,"rgba(150,255,200,.75)");gl.addColorStop(1,"rgba(93,255,160,0)");ctx.fillStyle=gl;ctx.fillRect(p.x-sz*1.2,p.y+bob-sz*1.2,sz*2.4,sz*2.4);
   const im=imgs["img/crystal.webp"];ready(im)&&ctx.drawImage(im,p.x-sz/2,p.y-sz/2+bob,sz,sz);ctx.globalAlpha=1;
   if(dz<70){const h=HABITS[o.h];label(h.icon+" "+h.short,p.x,p.y-sz*.6+bob,p.s,f*smooth(70,56,dz),"#16824f")}return}
- if(o.t==="gap"){if(o.cleared)return;const p=proj(0,0,o.z1);if(p&&dz<80)label("GAP IN CARE",p.x,p.y-p.s*.3,p.s,f*smooth(80,64,dz),"#8a1f8f");return}
+ if(o.t==="gap"){if(o.cleared)return;const p=proj(0,0,o.z1);if(p&&dz<80)label(o.text,p.x,p.y-p.s*.3,p.s,f*smooth(80,64,dz),"#8a1f8f");return}
  if(o.cleared&&o.t!=="gate")return;
  if(o.t==="wall"){for(let l=0;l<3;l++){shadow(laneX(l),o.z,2.1);const r=sprite("wall",laneX(l),o.z,2.15);if(r&&r.w>14){ctx.globalAlpha=f;fitText(l===1?o.text:"MYTH",r.x,r.y-r.h*(1-.515),r.w*.7,r.h*.22,"#4a1366");ctx.globalAlpha=1}}}
- else if(o.t==="tape"){const r=sprite("tape",0,o.z,2*HALF+1.2);if(r&&dz<90)label("RED TAPE",r.x,r.y-r.h*.98,r.s,f*smooth(90,74,dz),"#c2183c")}
+ else if(o.t==="tape"){const r=sprite("tape",0,o.z,2*HALF+1.2);if(r&&dz<90)label(o.text,r.x,r.y-r.h*.98,r.s,f*smooth(90,74,dz),"#c2183c")}
  else if(o.t==="block"){const x=laneX(o.lane);shadow(x,o.z,2);const r=sprite("block",x,o.z,2.15);if(r&&r.w>14){ctx.globalAlpha=f;fitText(o.text,r.x,r.y-r.h*(1-.305),r.w*.66,r.h*.16,"#b0153a");ctx.globalAlpha=1}}
- else if(o.t==="crates"){const x=laneX(o.lane);shadow(x,o.z,1.9);const r=sprite("crates",x,o.z,2.0);if(r&&dz<90)label(o.text,r.x,r.y-r.h-r.s*.15,r.s,f*smooth(90,74,dz),"#7b4dff")}
- else if(o.t==="cone"){const x=laneX(o.lane);shadow(x-.5,o.z,1);shadow(x+.5,o.z,1);sprite("cone",x-.5,o.z,1.05);sprite("cone",x+.5,o.z,1.05)}
+ else if(o.t==="crates"){const x=laneX(o.lane);shadow(x,o.z,1.9);const r=sprite(LV.OBJ.crates,x,o.z,2.0);if(r&&dz<90)label(o.text,r.x,r.y-r.h-r.s*.15,r.s,f*smooth(90,74,dz),"#7b4dff")}
+ else if(o.t==="cone"){const x=laneX(o.lane);shadow(x-.5,o.z,1);shadow(x+.5,o.z,1);sprite(LV.OBJ.cone,x-.5,o.z,1.05);sprite(LV.OBJ.cone,x+.5,o.z,1.05)}
  else if(o.t==="agent"){const x=laneX(o.lane);shadow(x,o.z,1.9,.45);const gp=proj(x,1.9,o.z);if(gp){const gr=gp.s*2.1,g=ctx.createRadialGradient(gp.x,gp.y,0,gp.x,gp.y,gr);g.addColorStop(0,"rgba(94,231,255,.32)");g.addColorStop(1,"rgba(94,231,255,0)");ctx.globalAlpha=f;ctx.fillStyle=g;ctx.fillRect(gp.x-gr,gp.y-gr,gr*2,gr*2);ctx.globalAlpha=1}const bob=Math.abs(Math.sin(G.t*4+o.z))*.08;const r=sprite("agent",x,o.z,2.5,bob);if(r&&dz<75)speech(o.text,r.x,r.y-r.h-r.s*.2,r.s,f*smooth(75,60,dz))}
  else if(o.t==="gate"){const L=proj(-HALF-.7,0,o.z),R=proj(HALF+.7,0,o.z),T=proj(0,6.2,o.z);if(!L||!R||!T)return;ctx.globalAlpha=f;const pw=Math.max(3,L.s*.5);
   const pg=ctx.createLinearGradient(L.x-pw/2,0,L.x+pw/2,0);pg.addColorStop(0,"#b97f0a");pg.addColorStop(.5,"#ffd76a");pg.addColorStop(1,"#b97f0a");ctx.fillStyle=pg;ctx.fillRect(L.x-pw/2,T.y,pw,L.y-T.y);ctx.fillRect(R.x-pw/2,T.y,pw,R.y-T.y);
@@ -624,12 +702,26 @@ const pv=$("prev"),pctx=pv.getContext("2d");let pvT=0,pvOn=false;
 function drawPrev(){if(pvOn)return;pvOn=true;(function f(){pvT+=1/60;pctx.clearRect(0,0,pv.width,pv.height);const sp=imgs["sprites/"+char.id+".webp"];if(ready(sp)){const fr=Math.floor(pvT*9)%6,h=330,w=h*char.w/SPR_H,bob=Math.abs(Math.sin(pvT*9*Math.PI/3))*8;pctx.drawImage(sp,fr*char.w,0,char.w,SPR_H,pv.width/2-w/2,pv.height-h-bob,w,h)}
  if(!$("select").classList.contains("hide"))requestAnimationFrame(f);else pvOn=false})()}
 function pickChar(c){char=c;$("whoName").textContent=c.name;$("whoName").style.color=c.color;$("whoAbil").textContent=c.abil;document.querySelectorAll(".pick").forEach(p=>p.classList.toggle("on",p.dataset.id===c.id));store.set("wt-runner-char",c.id);showBest()}
-function showBest(){const b=store.get("wt-runner-best",{})[char.id];$("bestTxt").textContent=b?`Best with ${char.name}: ${b.toLocaleString()}`:""}
+function showBest(){const b=store.get(LV.best,{})[char.id];$("bestTxt").textContent=b?`Best with ${char.name}: ${b.toLocaleString()}`:""}
 (function(){const g=$("grid");CHARS.forEach(c=>{const b=document.createElement("button");b.className="pick";b.dataset.id=c.id;b.innerHTML=`<img src="faces/${c.id}.webp" alt=""><span>${c.name}</span>`;b.onclick=()=>{pickChar(c);tone(880,.06,"sine",.06)};g.appendChild(b)});
  const saved=CHARS.find(c=>c.id===store.get("wt-runner-char",null));pickChar(saved||char)})();
 if(EMBED){document.body.classList.add("embed");["exitBtn","exitBtn2","exitBtn3"].forEach(id=>{const b=$(id);b.classList.remove("hide");b.onclick=()=>{music.pause();post({type:"exit"})}})}
 let seenStory=store.get("wt-runner-story2",false);
-$("goBtn").onclick=()=>{audioInit();if(!seenStory)$("story").classList.remove("hide");else startRun()};
+const lvl2Open=()=>store.get("wt-runner-done1",false)||Object.keys(store.get("wt-runner-best",{})).length>0;
+function pickLevel(n){if(n===2&&!lvl2Open()){toast("Level 2 is locked","Finish Level 1 to unlock it!",1800,"#ffc23d");return}
+ setLevel(n);store.set("wt-runner-level",n);document.querySelectorAll(".lvl").forEach(b=>b.classList.toggle("on",+b.dataset.l===n));
+ document.querySelector(".tag-line").textContent=n===2?"Shrink down and race treatment crystals to Darius's lungs!":"Race healthy-habit crystals from the lab to the hospital!";
+ $("select").style.backgroundImage=n===2?"linear-gradient(180deg,rgba(27,11,36,.15) 0%,rgba(27,11,36,.55) 38%,rgba(27,11,36,.92) 62%,#1b0b24 100%),url(bg/lung.webp)":"";showBest()}
+document.querySelectorAll(".lvl").forEach(b=>b.onclick=()=>{pickLevel(+b.dataset.l);tone(880,.06,"sine",.06)});
+function refreshLocks(){const q=document.querySelector('.lvl[data-l="2"]');q.classList.toggle("lock",!lvl2Open());q.querySelector("span").textContent=lvl2Open()?"Acute Chest Rescue 🫁":"🔒 Finish Level 1"}
+refreshLocks();if(store.get("wt-runner-level",1)===2&&lvl2Open())pickLevel(2);
+/* level 2 opens with Dr. Amos and the Micro-Shrinker clip */
+function playIntro(done){const L=$("introL"),v=$("introV");let fin=false;const end=()=>{if(fin)return;fin=true;v.pause();L.classList.add("hide");if(musicOn)music.play().catch(()=>{});done()};
+ music.pause();v.src="vid/acs.mp4";L.classList.remove("hide");v.onended=end;v.onerror=end;$("introSkip").onclick=end;v.play().catch(end)}
+function go(){if(LV.n===2){playIntro(()=>{if(!store.get("wt-runner-story-acs",false))$("story2").classList.remove("hide");else startRun()})}
+ else if(!seenStory)$("story").classList.remove("hide");else startRun()}
+$("story2Go").onclick=()=>{audioInit();store.set("wt-runner-story-acs",true);$("story2").classList.add("hide");startRun()};
+$("goBtn").onclick=()=>{audioInit();go()};
 $("howBtn").onclick=()=>$("story").classList.remove("hide");
 $("storyGo").onclick=()=>{audioInit();seenStory=true;store.set("wt-runner-story2",true);$("story").classList.add("hide");startRun()};
 let booted=false;
