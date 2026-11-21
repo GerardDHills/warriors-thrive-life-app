@@ -1963,5 +1963,226 @@
 "c": 1,
 "lvl": "all",
 "topic": "acs"
+},
+{
+"id": "stk01",
+"q": "What is a stroke?",
+"a": [
+"A very bad cold",
+"When your heart beats too fast",
+"When blood flow to part of the brain is blocked",
+"A muscle cramp in your leg"
+],
+"c": 2,
+"lvl": "all",
+"topic": "stroke"
+},
+{
+"id": "stk02",
+"q": "What is a silent stroke?",
+"a": [
+"A stroke with no obvious signs that can be found on a brain MRI",
+"A stroke that can't hurt the brain",
+"A stroke that only happens at night",
+"A loud headache"
+],
+"c": 0,
+"lvl": "all",
+"topic": "stroke"
+},
+{
+"id": "stk03",
+"q": "Which test can find a silent stroke?",
+"a": [
+"A hearing test",
+"A blood sugar test",
+"A brain MRI",
+"A chest X-ray"
+],
+"c": 2,
+"lvl": "all",
+"topic": "stroke"
+},
+{
+"id": "stk04",
+"q": "What does a TCD ultrasound measure?",
+"a": [
+"How well you can see",
+"How fast blood flows in the brain's arteries",
+"How strong your bones are",
+"Your blood type"
+],
+"c": 1,
+"lvl": "all",
+"topic": "stroke"
+},
+{
+"id": "stk05",
+"q": "Kids with sickle cell anemia should get a TCD screening how often?",
+"a": [
+"Every year, from about age 2 to 16",
+"Every 10 years",
+"Only if they have a headache",
+"Only once, at birth"
+],
+"c": 0,
+"lvl": "all",
+"topic": "stroke"
+},
+{
+"id": "stk06",
+"q": "Does a TCD screening hurt?",
+"a": [
+"Yes, it needs a big needle",
+"Yes, it uses an electric shock",
+"It requires surgery",
+"No, it's a gentle ultrasound with warm gel on the head"
+],
+"c": 3,
+"lvl": "all",
+"topic": "stroke"
+},
+{
+"id": "stk07",
+"q": "What can a high (abnormal) TCD result mean?",
+"a": [
+"That you need glasses",
+"Higher stroke risk, so the care team may start regular transfusions",
+"Nothing at all",
+"That you have a cold"
+],
+"c": 1,
+"lvl": "all",
+"topic": "stroke"
+},
+{
+"id": "stk08",
+"q": "How do regular (chronic) blood transfusions help prevent stroke?",
+"a": [
+"They stop all headaches",
+"They lower the amount of sickle cells in the blood",
+"They make the brain bigger",
+"They are a kind of vaccine"
+],
+"c": 1,
+"lvl": "all",
+"topic": "stroke"
+},
+{
+"id": "stk09",
+"q": "Chronic transfusions for stroke prevention are usually given about how often?",
+"a": [
+"Every day",
+"Only during a fever",
+"Every 3 to 4 weeks",
+"Once a year"
+],
+"c": 2,
+"lvl": "all",
+"topic": "stroke"
+},
+{
+"id": "stk10",
+"q": "Which of these is a stroke warning sign?",
+"a": [
+"Sneezing",
+"One side of the face drooping",
+"Feeling hungry",
+"A runny nose"
+],
+"c": 1,
+"lvl": "all",
+"topic": "stroke"
+},
+{
+"id": "stk11",
+"q": "You see stroke warning signs in someone with sickle cell. What should you do?",
+"a": [
+"Call 911 right away",
+"Wait to see if it goes away",
+"Tell them to take a nap",
+"Give them a snack"
+],
+"c": 0,
+"lvl": "all",
+"topic": "stroke"
+},
+{
+"id": "stk12",
+"q": "What does a brain MRA show?",
+"a": [
+"The blood vessels in the brain",
+"The bones in your arm",
+"Your lungs",
+"Your heartbeat"
+],
+"c": 0,
+"lvl": "all",
+"topic": "stroke"
+},
+{
+"id": "stk13",
+"q": "How can a silent stroke affect a child?",
+"a": [
+"It has no effect ever",
+"It only affects their hair",
+"It makes them taller",
+"It can make memory, attention and learning harder"
+],
+"c": 3,
+"lvl": "all",
+"topic": "stroke"
+},
+{
+"id": "stk14",
+"q": "What is a neurocognitive (thinking and memory) test for?",
+"a": [
+"Finding learning challenges so kids can get school support",
+"Checking eyesight only",
+"Measuring blood pressure",
+"Testing how fast you run"
+],
+"c": 0,
+"lvl": "all",
+"topic": "stroke"
+},
+{
+"id": "stk15",
+"q": "What do the letters in BE FAST help you remember?",
+"a": [
+"Ways to make friends",
+"How to cook rice",
+"The warning signs of a stroke",
+"The rules of a game"
+],
+"c": 2,
+"lvl": "all",
+"topic": "stroke"
+},
+{
+"id": "stk16",
+"q": "Why is it important to keep every transfusion appointment?",
+"a": [
+"It isn't important",
+"It keeps sickle cells low to help protect the brain",
+"So you can skip school",
+"To get a free snack"
+],
+"c": 1,
+"lvl": "all",
+"topic": "stroke"
+},
+{
+"id": "stk17",
+"q": "Regular transfusions can build up extra iron in the body. What helps remove it?",
+"a": [
+"Drinking soda",
+"More iron pills",
+"Skipping meals",
+"Iron chelation medicine"
+],
+"c": 3,
+"lvl": "all",
+"topic": "stroke"
 }
 ]
