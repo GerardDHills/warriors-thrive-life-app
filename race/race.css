@@ -42,7 +42,7 @@ h1,h2,h3{font-family:var(--display);font-weight:400;margin:0;letter-spacing:.5px
 .best{font-size:13px;opacity:.8}
 
 /* pick */
-#pick,#track{background:linear-gradient(160deg,#2a0b28,#12040e)}
+#pickW,#pickK{background:radial-gradient(90% 80% at 60% 30%,rgba(255,60,110,.18),transparent 70%),linear-gradient(160deg,#2a0b28,#12040e)}
 .pick-head{display:flex;align-items:center;gap:12px;justify-content:space-between;margin-bottom:8px}
 .pick-head h2{font-size:22px;flex:1;text-align:center}
 .pick-head .back{position:static}
@@ -112,9 +112,6 @@ h1,h2,h3{font-family:var(--display);font-weight:400;margin:0;letter-spacing:.5px
 .myth b{color:#ff8ad8}
 .myth i{font-style:normal;color:var(--crys)}
 .controls{position:absolute;left:0;right:0;bottom:calc(8px + var(--sb));padding:0 calc(14px + var(--sr)) 0 calc(14px + var(--sl));display:flex;justify-content:space-between;align-items:flex-end}
-.steer{display:flex;gap:12px}
-.pad{width:78px;height:78px;border-radius:50%;background:rgba(255,255,255,.14);box-shadow:inset 0 0 0 3px rgba(255,255,255,.35);font-size:28px;touch-action:none}
-.pad.on{background:rgba(255,194,61,.45)}
 .act{display:flex;align-items:flex-end;gap:10px}
 .bag{display:flex;flex-direction:column;gap:4px}
 .bag span{width:34px;height:34px;border-radius:10px;display:grid;place-items:center;font-size:18px;background:rgba(0,0,0,.5);box-shadow:inset 0 0 0 2px rgba(255,255,255,.2)}
@@ -162,7 +159,6 @@ h1,h2,h3{font-family:var(--display);font-weight:400;margin:0;letter-spacing:.5px
 
 /* small landscape phones */
 @media (max-height:400px){
-  .pad{width:66px;height:66px}
   .treat{width:80px;height:80px}
   .pos b{font-size:28px}
   .mercy img{width:44px;height:44px}
@@ -202,4 +198,103 @@ h1,h2,h3{font-family:var(--display);font-weight:400;margin:0;letter-spacing:.5px
   .mercy-txt{font-size:11.5px;padding:5px 8px}
   .hud-mid .prog{width:min(100%,220px)}
   .myth{font-size:12px;width:min(42%,320px)}
+}
+
+/* ---------- v2: two-step garage ---------- */
+.pick-head h2 small{display:block;font-family:var(--body);font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);opacity:.9}
+.pickw-body{flex:1;min-height:0;display:grid;grid-template-columns:1fr minmax(200px,34%);gap:16px;align-items:center}
+#pickW .warriors{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;overflow:auto;align-content:center;padding:4px}
+.w-card{display:flex;flex-direction:column;align-items:center;gap:6px;padding:10px 6px;border-radius:20px;background:rgba(255,255,255,.06);box-shadow:inset 0 0 0 2px rgba(255,255,255,.08);transition:transform .15s}
+.w-card img{width:min(100%,92px,19vh);aspect-ratio:1;border-radius:50%;object-fit:cover;background:#3a1a4a;box-shadow:0 0 0 3px var(--wc)}
+.w-card b{font-family:var(--display);font-weight:400;font-size:16px}
+.w-card.on{background:rgba(255,194,61,.16);box-shadow:inset 0 0 0 3px var(--gold);transform:scale(1.04)}
+.w-hero{display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center}
+.w-ring{width:min(100%,200px,46vh);aspect-ratio:1;border-radius:50%;padding:6px;background:conic-gradient(from 0deg,var(--wc),#fff3,var(--wc));animation:spin 8s linear infinite;box-shadow:0 0 40px color-mix(in srgb,var(--wc) 60%,transparent)}
+.w-ring img{width:100%;height:100%;border-radius:50%;object-fit:cover;background:#2a1236;animation:spin 8s linear infinite reverse}
+@keyframes spin{to{transform:rotate(360deg)}}
+.w-hero h3{font-size:30px}
+.pickk-body{flex:1;min-height:0;display:grid;grid-template-columns:minmax(220px,42%) 1fr;gap:14px}
+#pickK .karts{grid-template-columns:repeat(4,1fr)}
+.pv-tag{font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--cyan)}
+.k-chip.gene{background:linear-gradient(160deg,rgba(94,231,255,.14),rgba(167,123,255,.14));box-shadow:inset 0 0 0 2px rgba(94,231,255,.45)}
+.k-chip.gene.on{box-shadow:inset 0 0 0 2px var(--gold),0 0 18px rgba(94,231,255,.5)}
+.music-pick{align-self:flex-start;padding:7px 14px;border-radius:999px;background:rgba(0,0,0,.45);box-shadow:inset 0 0 0 2px rgba(255,255,255,.22);font-size:13px}
+.music-pick span{font-family:var(--display);color:var(--gold)}
+.seg-pick{display:flex;border-radius:999px;background:rgba(0,0,0,.35);padding:3px;gap:3px}
+.seg-pick button{flex:1;padding:8px 6px;border-radius:999px;font-size:12.5px;line-height:1.1}
+.seg-pick button.on{background:var(--gold);color:#2a0b28;font-weight:700}
+
+/* ---------- v2: steering arrows in the corners ---------- */
+.controls{display:block;height:0}
+.pad{position:absolute;bottom:0;width:108px;height:108px;border-radius:30px;background:rgba(10,4,16,.38);backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px);box-shadow:inset 0 0 0 3px rgba(255,255,255,.32),0 6px 18px rgba(0,0,0,.35);display:grid;place-items:center;touch-action:none;transition:transform .08s,background .08s}
+.pad.left{left:calc(12px + var(--sl))}
+.pad.right{right:calc(12px + var(--sr))}
+.pad svg{width:58%;height:58%;fill:none;stroke:#fff;stroke-width:6;stroke-linecap:round;stroke-linejoin:round;filter:drop-shadow(0 2px 2px rgba(0,0,0,.5))}
+.pad.on{transform:scale(.93);background:rgba(255,194,61,.55);box-shadow:inset 0 0 0 3px var(--gold),0 0 26px rgba(255,194,61,.7)}
+.pad.on svg{stroke:#2a0b28}
+.act{position:absolute;right:calc(18px + var(--sr));bottom:122px;display:flex;align-items:flex-end;gap:8px}
+.treat{width:84px;height:84px}
+
+/* ---------- v2: learning card ---------- */
+.learn{position:absolute;left:calc(12px + var(--sl));top:38%;display:flex;gap:10px;align-items:center;width:min(36%,330px);padding:8px 12px 8px 8px;border-radius:16px;background:rgba(8,26,40,.9);box-shadow:inset 0 0 0 2px rgba(94,231,255,.55),0 8px 20px rgba(0,0,0,.4);animation:slideL .3s ease-out}
+@keyframes slideL{from{transform:translateX(-20px);opacity:0}}
+.l-icon{flex:none;width:48px;height:48px;display:grid;place-items:center;font-size:30px;border-radius:12px;background:rgba(255,255,255,.08)}
+.l-icon img{width:44px;height:44px;object-fit:contain}
+.learn b{display:block;font-family:var(--display);font-weight:400;color:var(--cyan);font-size:14px}
+.learn span{font-size:12px;line-height:1.3}
+
+/* ---------- v2: results recap ---------- */
+.res-learn{width:100%;background:rgba(8,26,40,.75);border-radius:18px;padding:10px 14px;text-align:left;box-shadow:inset 0 0 0 1.5px rgba(94,231,255,.4)}
+.res-learn h3{font-size:17px;color:var(--cyan);margin-bottom:6px}
+.res-learn .cells{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:6px}
+.cell-chip{display:flex;align-items:center;gap:5px;padding:2px 9px 2px 3px;border-radius:999px;background:rgba(255,255,255,.08);font-size:12px}
+.cell-chip img{width:24px;height:24px;object-fit:contain}
+.res-learn ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:3px;font-size:12.5px;line-height:1.3}
+
+@media (max-height:420px){
+  .pad{width:88px;height:88px;border-radius:24px}
+  .act{bottom:100px}
+  .treat{width:72px;height:72px;font-size:26px}
+  .learn{top:36%}
+  .w-hero h3{font-size:22px}
+  .w-card{padding:6px 4px}.w-card b{font-size:14px}
+}
+@media (max-width:760px){
+  #pickW .warriors{grid-template-columns:repeat(4,1fr);gap:6px}
+  #pickK .karts{grid-template-columns:repeat(3,1fr)}
+  .pickk-body{grid-template-columns:minmax(180px,44%) 1fr}
+  .learn{width:min(40%,280px)}
+}
+
+/* ---------- v2 layout: keep every pop-up in its own lane ---------- */
+/* toast: top centre under the race position */
+.toast{top:calc(92px + var(--st));bottom:auto;max-width:44%;white-space:normal;text-align:center;font-size:15px;line-height:1.2;padding:6px 14px}
+@media (max-height:420px){.toast{top:calc(80px + var(--st));bottom:auto;font-size:13.5px}}
+/* myths: right column, compact */
+.myth{width:min(34%,340px);font-size:12px;line-height:1.3;padding:7px 10px}
+/* crystal button sits beside the right arrow, inside the thumb's reach */
+.act{right:calc(132px + var(--sr));bottom:4px;flex-direction:row-reverse}
+.bag{flex-direction:column}
+@media (max-height:420px){.act{right:calc(108px + var(--sr));bottom:2px}}
+/* learning card: left column under Mercy */
+.learn{width:min(32%,300px)}
+.learn span{font-size:11.5px}
+/* title: music chip in the corner */
+.music-pick{position:absolute;top:calc(10px + var(--st));left:calc(14px + var(--sl));z-index:2}
+@media (max-height:420px){.title-box{gap:7px;padding-top:28px}.logo{font-size:40px}}
+
+/* ---------- v2 layout, round 2 ---------- */
+.music-pick{left:auto;right:calc(66px + var(--sr))}
+.toast{top:44%;max-width:52%}
+@media (max-height:420px){.toast{top:42%}}
+.learn{top:auto;bottom:calc(128px + var(--sb))}
+@media (max-height:420px){.learn{bottom:calc(100px + var(--sb))}}
+/* narrow phones: crystal button rides above the right arrow */
+@media (max-width:700px){.act{right:calc(16px + var(--sr));bottom:96px;flex-direction:row}}
+@media (max-width:700px){
+  .act{right:calc(104px + var(--sr));bottom:2px;flex-direction:column-reverse;align-items:center;gap:4px}
+  .bag{flex-direction:row}
+  .bag span{width:26px;height:26px;font-size:14px;border-radius:8px}
+  .treat{width:66px;height:66px;font-size:24px}
+  .treat small{font-size:9px}
 }
