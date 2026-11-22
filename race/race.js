@@ -1,0 +1,1161 @@
+/* Bloodstream Rush · Warriors Thrive
+ * A kart race through the body. Board 1: bone marrow → bloodstream → heart →
+ * lungs → heart → spleen → bone marrow. Pseudo-3D road on a 2D canvas.
+ */
+"use strict";
+
+/* ================= helpers ================= */
+const $ = (id) => document.getElementById(id);
+const store = {
+  get(k, d) { try { const v = localStorage.getItem(k); return v == null ? d : JSON.parse(v); } catch { return d; } },
+  set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch {} },
+};
+const EMBED = window.parent !== window;
+const app = store.get("wt-state-v1", null);
+const prof = (app && app.profile) || {};
+const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
+const lerp = (a, b, t) => a + (b - a) * t;
+const rand = (a, b) => a + Math.random() * (b - a);
+const pick = (a) => a[Math.floor(Math.random() * a.length)];
+function post(msg) { if (EMBED) try { parent.postMessage({ source: "warriors-thrive-race", ...msg }, location.origin); } catch {} }
+function ageYears() {
+  if (prof.birthday) { const b = new Date(prof.birthday + "T12:00"), n = new Date(); let a = n.getFullYear() - b.getFullYear(); if (n < new Date(n.getFullYear(), b.getMonth(), b.getDate())) a--; return a; }
+  return { "5-7": 6, "8-12": 10, "13-17": 15, "18-22": 20 }[prof.ageGroup] ?? null;
+}
+const AGE = ageYears();
+const imgs = {};
+function img(src) { if (!imgs[src]) { const i = new Image(); i.decoding = "async"; i.src = src; imgs[src] = i; } return imgs[src]; }
+const ready = (i) => i && i.complete && i.naturalWidth > 0;
+
+/* ================= content ================= */
+const WARRIORS = [
+  { id: "theo", name: "Theo", color: "#ffd23d" },
+  { id: "luciana", name: "Luciana", color: "#ff7ab8" },
+  { id: "ritika", name: "Ritika", color: "#a77bff" },
+  { id: "malcolm", name: "Malcolm", color: "#4cc3ff" },
+  { id: "tasha", name: "Tasha", color: "#ff9a4c" },
+  { id: "krystal", name: "Krystal", color: "#5dffa0" },
+  { id: "dr_kim", name: "Dr. Kim", color: "#ffffff" },
+];
+// seat: [centre x, top of seat opening y, seat width] as fractions of the kart image
+const KARTS = [
+  { id: "rbc", name: "Red Blood Cell", tag: "Cell", spd: 3, acc: 3, hnd: 3, seat: [0.496, 0.404, 0.275],
+    fact: "Red blood cells carry oxygen from the lungs to the whole body. Healthy ones are soft, round discs.",
+    perk: "Boosts last longer in the lungs, where red cells load up on oxygen." },
+  { id: "retic", name: "Reticulocyte", tag: "Cell", spd: 3, acc: 5, hnd: 3, seat: [0.496, 0.418, 0.258],
+    fact: "A reticulocyte is a brand-new red blood cell, fresh out of the bone marrow.",
+    perk: "Fastest off the starting line and out of every slowdown." },
+  { id: "neutrophil", name: "Neutrophil", tag: "Cell", spd: 5, acc: 3, hnd: 2, seat: [0.494, 0.431, 0.267],
+    fact: "Neutrophils are white blood cells and first responders. They rush to fight germs.",
+    perk: "Highest top speed." },
+  { id: "macrophage", name: "Macrophage", tag: "Cell", spd: 3, acc: 2, hnd: 3, seat: [0.456, 0.194, 0.217],
+    fact: "Macrophages are big white cells that gobble up germs and old cells.",
+    perk: "Gobbles Society nets: traps hold you half as long." },
+  { id: "tcell", name: "T-Cell", tag: "Cell", spd: 3, acc: 3, hnd: 5, seat: [0.503, 0.324, 0.239],
+    fact: "T-cells are lymphocytes that find and fight infected cells.",
+    perk: "Best handling for dodging." },
+  { id: "bcell", name: "B-Cell", tag: "Cell", spd: 3, acc: 3, hnd: 4, seat: [0.497, 0.212, 0.256],
+    fact: "B-cells are lymphocytes that make antibodies, like the ones vaccines teach your body to make.",
+    perk: "Immune to myth bubbles." },
+  { id: "stem", name: "Stem Cell", tag: "Cell", spd: 3, acc: 3, hnd: 3, seat: [0.503, 0.152, 0.239],
+    fact: "Blood stem cells live in the bone marrow and can grow into every kind of blood cell.",
+    perk: "Starts the race with two Health Crystals." },
+  { id: "platelet", name: "Platelet", tag: "Cell", spd: 2, acc: 4, hnd: 5, seat: [0.503, 0.153, 0.272],
+    fact: "Platelets are tiny cell pieces that plug leaks and help blood clot.",
+    perk: "Small and nimble: squeezes past blockages more easily." },
+  { id: "hydroxyurea", name: "Hydroxyurea", tag: "Medicine", spd: 3, acc: 3, hnd: 3, seat: [0.504, 0.156, 0.277],
+    fact: "Hydroxyurea helps the body make fetal hemoglobin, which keeps red cells from sickling. It lowers pain crises.",
+    perk: "Blockages slow you down half as much." },
+  { id: "etavopivat", name: "Etavopivat", tag: "Medicine", spd: 4, acc: 3, hnd: 2, seat: [0.5, 0.111, 0.267],
+    fact: "Etavopivat is a new medicine under FDA review. It helps red cells make more energy so they sickle less.",
+    perk: "Crystal boosts are extra strong." },
+  { id: "glutamine", name: "L-Glutamine", tag: "Medicine", spd: 3, acc: 4, hnd: 3, seat: [0.497, 0.147, 0.217],
+    fact: "L-glutamine is a powder medicine that helps protect red cells from stress and can lower pain crises.",
+    perk: "Recovers faster after a blockage." },
+];
+const KART = Object.fromEntries(KARTS.map((k) => [k.id, k]));
+
+const CRYSTALS = [
+  { id: "water", icon: "💧", name: "Hydration", verb: "Fluids washed the blockage away" },
+  { id: "pain", icon: "💊", name: "Pain Plan", verb: "Pain treatment eased the crisis" },
+  { id: "hu", icon: "🟣", name: "Hydroxyurea", verb: "Hydroxyurea kept the cells from sickling" },
+  { id: "warm", icon: "🧣", name: "Stay Warm", verb: "Warmth got the blood flowing" },
+  { id: "o2", icon: "🫧", name: "Oxygen", verb: "Oxygen helped the red cells unsickle" },
+];
+
+const MYTHS = [
+  ["Sickle cell is contagious.", "Sickle cell disease is inherited from parents. You can't catch it."],
+  ["Kids with sickle cell can't play sports.", "Many Warriors play sports with water, rest breaks and a plan."],
+  ["Pain crises are all in your head.", "Pain from a crisis is real and needs real treatment."],
+  ["Only one group of people gets sickle cell.", "Sickle cell affects people of many backgrounds all over the world."],
+  ["Sickle cell trait is the same as the disease.", "Trait usually causes no symptoms. The disease needs care."],
+  ["If you look fine, you feel fine.", "Sickle cell symptoms can be invisible. Believe Warriors."],
+  ["Warriors can't have big dreams.", "Warriors become doctors, artists, athletes and more."],
+];
+
+// The route. len is in road segments; road has curves (c) and hills (h).
+const ZONES = [
+  { id: "marrow", name: "Bone Marrow", bg: "img/bg_marrow.webp", len: 700,
+    road: ["#d9b98c", "#cfae80"], side: ["#6b3b22", "#5c321d"], rumble: ["#fff1d6", "#ff9b6a"], lane: "rgba(255,240,210,.55)", fog: "#2b1410",
+    deco: "stem", mercy: ["marrow", "marrow2"] },
+  { id: "vessel", name: "Bloodstream", bg: "img/bg_vessel.webp", len: 1300,
+    road: ["#8c1d2c", "#801a28"], side: ["#3d0710", "#33060d"], rumble: ["#ff8ba0", "#c0283f"], lane: "rgba(255,200,210,.5)", fog: "#260308",
+    deco: "rbc", mercy: ["vessel", "vocfact"] },
+  { id: "heartR", name: "Heart · right side", bg: "img/bg_heart.webp", len: 650,
+    road: ["#5a1530", "#4f1229"], side: ["#1a0a2a", "#160823"], rumble: ["#4c8dff", "#c0283f"], lane: "rgba(150,190,255,.55)", fog: "#120618",
+    deco: "beat", mercy: ["heart1"] },
+  { id: "lung", name: "Lungs", bg: "img/bg_lung.webp", len: 1150,
+    road: ["#3d6fae", "#3766a1"], side: ["#1a2f5c", "#162951"], rumble: ["#ffffff", "#ff9cc8"], lane: "rgba(255,255,255,.6)", fog: "#0e1f3d",
+    deco: "bubble", mercy: ["lung", "lung2"] },
+  { id: "heartL", name: "Heart · left side", bg: "img/bg_heart.webp", len: 650,
+    road: ["#7a1626", "#6d1322"], side: ["#2a0612", "#23050f"], rumble: ["#ff4361", "#ffd0d8"], lane: "rgba(255,190,200,.55)", fog: "#1a0309",
+    deco: "beat", mercy: ["heart2"] },
+  { id: "spleen", name: "Spleen", bg: "img/bg_spleen.webp", len: 1250,
+    road: ["#4a1a4a", "#421742"], side: ["#1d0920", "#18071b"], rumble: ["#b04cff", "#5ee7ff"], lane: "rgba(210,160,255,.5)", fog: "#120614",
+    deco: "spleen", mercy: ["spleen", "spleen2"] },
+  { id: "home", name: "Back to the marrow", bg: "img/bg_marrow.webp", len: 800,
+    road: ["#c9a06e", "#be9663"], side: ["#5a2e18", "#4d2714"], rumble: ["#fff1d6", "#ffc23d"], lane: "rgba(255,240,210,.6)", fog: "#2b1410",
+    deco: "stem", mercy: ["final"] },
+];
+
+// What Mercy says, keyed to her recordings in voice/mercy/<key>.mp3
+const MERCY = {
+  count: "Three… two… one… Go!",
+  marrow: "We're starting in the bone marrow, the body's cell factory. Stem cells here grow into red cells, white cells and platelets.",
+  marrow2: "Fun fact: a healthy red blood cell lives about 120 days. In sickle cell disease, red cells may last only 10 to 20 days.",
+  vessel: "Now we're in the bloodstream! Red blood cells carry oxygen to every part of the body.",
+  voc: "Heads up! Sickled cells are jamming the vessel. That's a vaso-occlusive crisis. Use a Health Crystal to treat it!",
+  vocfact: "Drinking water, staying warm and taking your medicines help keep blood flowing.",
+  heart1: "Entering the right side of the heart. It pumps blood to the lungs to pick up oxygen.",
+  lung: "Welcome to the lungs! Tiny air sacs called alveoli load oxygen onto your red cells.",
+  lung2: "Chest pain, fever or trouble breathing could be acute chest syndrome. That's an emergency, so get care right away.",
+  heart2: "Back in the heart, on the left side! Now it pumps oxygen-rich blood out to the whole body.",
+  spleen: "Careful, Warriors, we're entering the spleen. It filters the blood and helps fight infection.",
+  spleen2: "Sickled cells can get trapped here. That's splenic sequestration. A big belly, pale skin or feeling very tired means get help fast.",
+  seq: "Oh no, you're stuck in the spleen! Answer this Warrior Card to break free.",
+  society: "Watch out! The Society is spreading myths. Steer clear of their drones!",
+  share: "Sharing is caring! Warriors are stronger together.",
+  crystal: "Nice! You picked up a Health Crystal. Save it for a blockage, or use it for a boost.",
+  final: "Final stretch! Race back to the bone marrow!",
+  lead: "You're in first place! Keep it up!",
+  behind: "Don't give up! Use your crystals and catch up!",
+  finish1: "You crossed the finish line! Amazing driving!",
+  finish: "Race complete! Let's see who made the biggest impact.",
+};
+
+/* ================= settings ================= */
+const opts = Object.assign({ music: true, sfx: true, voice: true }, store.get("wt-race-opts", {}));
+const saveOpts = () => store.set("wt-race-opts", opts);
+
+/* ================= audio ================= */
+let AC = null, master = null, engine = null;
+const music = $("music");
+music.volume = 0.32;
+function audioInit() {
+  if (!AC) {
+    try {
+      AC = new (window.AudioContext || window.webkitAudioContext)();
+      master = AC.createGain(); master.gain.value = 0.9; master.connect(AC.destination);
+    } catch {}
+  }
+  if (AC && AC.state === "suspended") AC.resume();
+}
+function tone(f, d = 0.08, type = "sine", v = 0.12, slide = 0, delay = 0) {
+  if (!AC || !opts.sfx) return;
+  const t = AC.currentTime + delay, o = AC.createOscillator(), g = AC.createGain();
+  o.type = type; o.frequency.setValueAtTime(f, t);
+  if (slide) o.frequency.exponentialRampToValueAtTime(Math.max(20, f * slide), t + d);
+  g.gain.setValueAtTime(v, t); g.gain.exponentialRampToValueAtTime(0.001, t + d);
+  o.connect(g).connect(master); o.start(t); o.stop(t + d + 0.05);
+}
+let noiseBuf = null;
+function noise(d = 0.3, v = 0.15, freq = 1200, q = 0.7, delay = 0, type = "bandpass") {
+  if (!AC || !opts.sfx) return;
+  if (!noiseBuf) { noiseBuf = AC.createBuffer(1, AC.sampleRate, AC.sampleRate); const a = noiseBuf.getChannelData(0); for (let i = 0; i < a.length; i++) a[i] = Math.random() * 2 - 1; }
+  const t = AC.currentTime + delay, s = AC.createBufferSource(), f = AC.createBiquadFilter(), g = AC.createGain();
+  s.buffer = noiseBuf; s.loop = true; f.type = type; f.frequency.value = freq; f.Q.value = q;
+  g.gain.setValueAtTime(0.0001, t); g.gain.exponentialRampToValueAtTime(v, t + d * 0.3); g.gain.exponentialRampToValueAtTime(0.0001, t + d);
+  s.connect(f).connect(g).connect(master); s.start(t); s.stop(t + d + 0.05);
+}
+const sfx = {
+  tap() { tone(660, 0.05, "sine", 0.06); },
+  crystal() { [880, 1110, 1320, 1760].forEach((f, i) => tone(f, 0.16, "triangle", 0.09, 0, i * 0.06)); },
+  boost() { noise(0.7, 0.22, 900, 0.6); tone(220, 0.6, "sawtooth", 0.06, 3); },
+  treat() { [523, 659, 784, 1046, 1318].forEach((f, i) => tone(f, 0.2, "triangle", 0.1, 0, i * 0.05)); noise(0.5, 0.12, 3000, 0.5); },
+  hit() { tone(110, 0.4, "sawtooth", 0.18, 0.4); noise(0.35, 0.25, 400, 0.8); },
+  trap() { tone(300, 0.5, "square", 0.08, 0.3); noise(0.6, 0.12, 2500, 3); },
+  bump() { tone(180, 0.12, "square", 0.08, 0.6); },
+  share() { [784, 988, 1175].forEach((f, i) => tone(f, 0.22, "sine", 0.1, 0, i * 0.09)); },
+  beep() { tone(880, 0.18, "square", 0.08); },
+  go() { tone(1320, 0.5, "square", 0.1); },
+  good() { [660, 880, 1320].forEach((f, i) => tone(f, 0.16, "triangle", 0.12, 0, i * 0.09)); },
+  bad() { tone(300, 0.35, "triangle", 0.12, 0.6); },
+  win() { [523, 659, 784, 1046, 784, 1046, 1318].forEach((f, i) => tone(f, 0.25, "triangle", 0.12, 0, i * 0.12)); },
+  beat() { tone(62, 0.16, "sine", 0.35, 0.6); tone(58, 0.14, "sine", 0.28, 0.6, 0.22); },
+  breath() { noise(2.2, 0.07, 700, 0.4, 0, "lowpass"); },
+};
+function engineStart() {
+  if (!AC || engine) return;
+  const o = AC.createOscillator(), o2 = AC.createOscillator(), f = AC.createBiquadFilter(), g = AC.createGain();
+  o.type = "sawtooth"; o2.type = "square"; f.type = "lowpass"; f.frequency.value = 500; g.gain.value = 0;
+  o.connect(f); o2.connect(f); f.connect(g).connect(master); o.start(); o2.start();
+  engine = { o, o2, f, g };
+}
+function engineSet(speedFrac, on) {
+  if (!engine) return;
+  const t = AC.currentTime, f = 55 + speedFrac * 140;
+  engine.o.frequency.setTargetAtTime(f, t, 0.08);
+  engine.o2.frequency.setTargetAtTime(f * 0.5, t, 0.08);
+  engine.f.frequency.setTargetAtTime(300 + speedFrac * 900, t, 0.1);
+  engine.g.gain.setTargetAtTime(on && opts.sfx ? 0.035 + speedFrac * 0.03 : 0, t, 0.1);
+}
+
+/* voices: one clip at a time per speaker group */
+const voiceCache = {};
+let mercyAudio = null, warriorAudio = null, mercyBusyUntil = 0;
+function playClip(src, kind) {
+  if (!opts.voice) return null;
+  const a = voiceCache[src] || (voiceCache[src] = new Audio(src));
+  try { a.currentTime = 0; } catch {}
+  a.volume = kind === "mercy" ? 1 : 0.95;
+  a.play().catch(() => {});
+  return a;
+}
+const mercyQueue = [];
+let mercyHideT = 0;
+function mercySay(key, force = false) {
+  if (!MERCY[key]) return;
+  if (!force && R && R.mercySaid.has(key) && !["voc", "society", "seq", "lead", "behind"].includes(key)) return;
+  if (R) R.mercySaid.add(key);
+  if (performance.now() < mercyBusyUntil && !force) { if (mercyQueue.length < 3 && !mercyQueue.includes(key)) mercyQueue.push(key); return; }
+  mercyShow(key);
+}
+function mercyShow(key) {
+  const text = MERCY[key];
+  const el = $("mercyTxt"), box = $("mercy");
+  el.innerHTML = `<b>Mercy</b>${text}`;
+  el.classList.remove("hidden"); box.classList.add("talk");
+  if (mercyAudio) try { mercyAudio.pause(); } catch {}
+  mercyAudio = playClip(`voice/mercy/${key}.mp3`, "mercy");
+  const dur = mercyAudio && isFinite(mercyAudio.duration) && mercyAudio.duration > 0 ? mercyAudio.duration * 1000 + 500 : 0;
+  const ms = Math.max(2600, text.length * 66, dur);
+  // duck the music while Mercy talks
+  if (opts.music) { music.volume = 0.14; clearTimeout(mercyAudio && mercyAudio._duck); setTimeout(() => (music.volume = 0.32), ms); }
+  mercyBusyUntil = performance.now() + ms;
+  clearTimeout(mercyHideT);
+  mercyHideT = setTimeout(() => {
+    box.classList.remove("talk");
+    if (mercyQueue.length) mercyShow(mercyQueue.shift());
+    else el.classList.add("hidden");
+  }, ms);
+}
+let warriorNext = 0;
+function warriorSay(id, key, force = false) {
+  const now = performance.now();
+  if (!force && now < warriorNext) return;
+  warriorNext = now + 3500;
+  if (warriorAudio) try { warriorAudio.pause(); } catch {}
+  warriorAudio = playClip(`voice/${id}/${key}.mp3`, "warrior");
+}
+
+/* ================= Warrior Cards ================= */
+let DECK = [];
+fetch("cards.json").then((r) => r.json()).then((d) => {
+  const kid = AGE != null && AGE < 12, teen = AGE != null && AGE >= 13;
+  let pool = d.filter((c) => !c.topic && (c.lvl === "kid" || (!kid && c.lvl === "all") || (teen && c.lvl === "teen")));
+  if (AGE == null) pool = d.filter((c) => !c.topic && c.lvl !== "teen");
+  DECK = pool.length ? pool : d;
+}).catch(() => {});
+function nextCard() {
+  if (!DECK.length) return { q: "What does the spleen do?", a: ["Filters the blood and fights infection", "Pumps blood", "Makes hair", "Digests food"], c: 0 };
+  let seen = store.get("wt-race-seen", []);
+  let fresh = DECK.filter((c) => !seen.includes(c.id));
+  if (!fresh.length) { seen = []; fresh = DECK; }
+  const c = pick(fresh); seen.push(c.id); store.set("wt-race-seen", seen); return c;
+}
+
+/* ================= canvas + road geometry ================= */
+const cv = $("cv"), ctx = cv.getContext("2d");
+let W = 0, H = 0, DPR = 1;
+function resize() {
+  DPR = Math.min(window.devicePixelRatio || 1, 2);
+  W = Math.round(innerWidth * DPR); H = Math.round(innerHeight * DPR);
+  cv.width = W; cv.height = H;
+}
+addEventListener("resize", resize); resize();
+// Safe areas: the Life App measures them upright and passes them in the URL.
+// Held sideways, the notch side becomes the left or right edge.
+const QS = new URLSearchParams(location.search);
+const qIn = ["sat", "sar", "sab", "sal"].map((k) => parseFloat(QS.get(k)) || 0);
+function applyInsets() {
+  if (!QS.has("sat")) return;
+  const land = innerWidth > innerHeight, root = document.documentElement.style;
+  const side = Math.max(qIn[0], qIn[1], qIn[3]);
+  root.setProperty("--st", (land ? 0 : qIn[0]) + "px");
+  root.setProperty("--sb", (land ? Math.min(qIn[2], 21) : qIn[2]) + "px");
+  root.setProperty("--sl", (land ? side : qIn[3]) + "px");
+  root.setProperty("--sr", (land ? side : qIn[1]) + "px");
+}
+addEventListener("resize", applyInsets); applyInsets();
+
+const SEG = 200, ROAD = 2000, LANES = 3, CAM_H = 1000, DRAW = 200, CAM_BACK = 840, KART_W = 0.26;
+const CAM_DEPTH = 1 / Math.tan((100 / 2) * Math.PI / 180);
+const MAXSPD = SEG * 60; // world units per second
+let SEGS = [], TRACK_LEN = 0, ZONE_START = [];
+
+function easeIn(a, b, p) { return a + (b - a) * Math.pow(p, 2); }
+function easeInOut(a, b, p) { return a + (b - a) * (-Math.cos(p * Math.PI) / 2 + 0.5); }
+function buildTrack() {
+  SEGS = []; ZONE_START = [];
+  const lastY = () => (SEGS.length ? SEGS[SEGS.length - 1].p2.y : 0);
+  const add = (curve, y, zi) => {
+    const n = SEGS.length;
+    SEGS.push({ i: n, p1: { x: 0, y: lastY(), z: n * SEG }, p2: { x: 0, y, z: (n + 1) * SEG }, curve, zi, sprites: [], objs: [] });
+  };
+  const road = (enter, hold, leave, curve, hill, zi) => {
+    const startY = lastY(), endY = startY + hill * SEG, total = enter + hold + leave;
+    for (let n = 0; n < enter; n++) add(easeIn(0, curve, n / enter), easeInOut(startY, endY, n / total), zi);
+    for (let n = 0; n < hold; n++) add(curve, easeInOut(startY, endY, (enter + n) / total), zi);
+    for (let n = 0; n < leave; n++) add(easeInOut(curve, 0, n / leave), easeInOut(startY, endY, (enter + hold + n) / total), zi);
+  };
+  // deterministic layout so the track is the same every race
+  let seed = 7331; const r = () => ((seed = (seed * 16807) % 2147483647) / 2147483647);
+  ZONES.forEach((Z, zi) => {
+    ZONE_START[zi] = SEGS.length;
+    const end = SEGS.length + Z.len;
+    while (SEGS.length < end) {
+      const left = end - SEGS.length;
+      const L = Math.min(left, 60 + Math.floor(r() * 90));
+      const e = Math.floor(L * 0.25), l = Math.floor(L * 0.25), h = L - e - l;
+      let curve = (r() < 0.25 ? 0 : (r() < 0.5 ? -1 : 1) * (1 + r() * 3.5));
+      let hill = (r() - 0.5) * 50;
+      if (Z.id === "lung") hill = (r() - 0.5) * 90;          // airy rolling hills
+      if (Z.id === "marrow" && SEGS.length < 80) { curve = 0; hill = 0; }
+      if (Z.id === "spleen") curve *= 1.3;                    // twisty filter maze
+      road(e, h, l, curve, hill, zi);
+    }
+  });
+  // run-off past the finish so the road keeps drawing
+  const zi = ZONES.length - 1;
+  for (let n = 0; n < DRAW + 20; n++) add(0, lastY(), zi);
+  TRACK_LEN = (SEGS.length - DRAW - 20) * SEG;
+  decorate(r);
+}
+function segAt(z) { return SEGS[Math.floor(z / SEG) % SEGS.length]; }
+const laneX = (l) => (l - (LANES - 1) / 2) * (2 / LANES); // -0.667, 0, 0.667
+
+function decorate(r) {
+  const START = 40, ENDSEG = ZONE_START[ZONES.length - 1] + ZONES[ZONES.length - 1].len;
+  for (let i = 0; i < SEGS.length; i++) {
+    const s = SEGS[i], Z = ZONES[s.zi];
+    // floating cells and scenery beside the road
+    if (i % 3 === 0 && r() < 0.75) {
+      const side = r() < 0.5 ? -1 : 1;
+      s.sprites.push({ kind: Z.deco, x: side * (1.35 + r() * 2.2), y: r() * 1200, s: 0.6 + r() * 0.9, rot: r() * 6.28, spin: (r() - 0.5) * 2 });
+    }
+  }
+  SEGS[START].sprites.push({ kind: "arch", x: 0, y: 0, s: 1 });
+  SEGS[ENDSEG].sprites.push({ kind: "arch", x: 0, y: 0, s: 1 });
+  // gameplay objects
+  const place = (i, o) => SEGS[i] && SEGS[i].objs.push(o);
+  for (let zi = 0; zi < ZONES.length; zi++) {
+    const a = Math.max(ZONE_START[zi], 90), b = ZONE_START[zi] + ZONES[zi].len - 20, id = ZONES[zi].id;
+    for (let i = a; i < b; i += 22 + Math.floor(r() * 22)) {
+      const roll = r(), lane = Math.floor(r() * 3);
+      if (roll < 0.34) {
+        // a little line of crystals
+        const o2 = id === "lung" && r() < 0.5;
+        place(i, { t: "crystal", x: laneX(lane), w: 0.32, type: o2 ? "o2" : pick(["water", "pain", "hu", "warm"]) });
+      } else if (roll < 0.47) {
+        place(i, { t: "boost", x: laneX(lane), w: 0.42 });
+      } else if (roll < 0.70 && id !== "marrow") {
+        // vaso-occlusion: sickled cells jamming one or two lanes
+        const two = r() < 0.35;
+        place(i, { t: "voc", x: laneX(lane), w: 0.5 });
+        if (two) place(i, { t: "voc", x: laneX((lane + 1) % 3), w: 0.5 });
+      } else if (roll < 0.82 && id !== "marrow" && zi > 0) {
+        place(i, { t: "drone", x: laneX(lane), w: 0.45, myth: Math.floor(r() * MYTHS.length) });
+      } else if (roll < 0.92 && id !== "marrow") {
+        place(i, { t: "myth", x: laneX(lane), w: 0.4, myth: Math.floor(r() * MYTHS.length), roll: (r() - 0.5) * 0.6 });
+      }
+    }
+  }
+}
+
+/* procedural decoration sprites, drawn once into small canvases */
+const decoCache = {};
+function decoSprite(kind) {
+  if (decoCache[kind]) return decoCache[kind];
+  const c = document.createElement("canvas"); c.width = c.height = 128; const g = c.getContext("2d");
+  const disc = (inner, outer, rim) => {
+    const gr = g.createRadialGradient(64, 64, 8, 64, 64, 58); gr.addColorStop(0, inner); gr.addColorStop(0.55, outer); gr.addColorStop(0.85, rim); gr.addColorStop(1, "rgba(0,0,0,0)");
+    g.fillStyle = gr; g.beginPath(); g.ellipse(64, 64, 58, 50, 0, 0, 7); g.fill();
+  };
+  if (kind === "rbc") disc("#8a0f1e", "#e0243a", "#ff6b7d");
+  else if (kind === "stem") { disc("#fff4e6", "#ffd1b8", "#ffb08a"); g.fillStyle = "rgba(180,120,255,.45)"; g.beginPath(); g.arc(58, 58, 18, 0, 7); g.fill(); }
+  else if (kind === "bubble") { const gr = g.createRadialGradient(48, 44, 4, 64, 64, 60); gr.addColorStop(0, "rgba(255,255,255,.9)"); gr.addColorStop(0.3, "rgba(170,220,255,.35)"); gr.addColorStop(0.9, "rgba(255,160,210,.35)"); gr.addColorStop(1, "rgba(255,255,255,0)"); g.fillStyle = gr; g.beginPath(); g.arc(64, 64, 60, 0, 7); g.fill(); }
+  else if (kind === "spleen") { disc("#2a0a30", "#6a1e70", "#b04cff"); }
+  else if (kind === "sickle") { g.fillStyle = "#c0283f"; g.beginPath(); g.arc(64, 64, 52, 0.4, Math.PI - 0.4); g.arc(64, 30, 46, Math.PI - 0.55, 0.55, true); g.fill(); }
+  else if (kind === "beat") { disc("#ff9db0", "#c0283f", "#5a0b1c"); }
+  decoCache[kind] = c; return c;
+}
+
+/* ================= race state ================= */
+let R = null;            // the current race
+let state = "title";     // title | pick | track | film | count | race | card | pause | results
+let me = { warrior: store.get("wt-race-warrior", prof.character || "theo"), kart: store.get("wt-race-kart", "rbc") };
+if (!WARRIORS.some((w) => w.id === me.warrior)) me.warrior = "theo";
+
+function statMul(k) {
+  const K = KART[k];
+  return { top: 0.9 + K.spd * 0.03, acc: 0.6 + K.acc * 0.12, hnd: 0.7 + K.hnd * 0.12 };
+}
+function makeRacer(w, kart, ai, z, x) {
+  return { id: w.id, name: w.name, color: w.color, kart, ai, z, x, speed: 0, lane: x,
+    stun: 0, slow: 0, boost: 0, trapped: 0, seq: 0, bag: [], impact: 0, finish: null,
+    nearT: 0, seqDone: false, think: 0, stuckNoted: false };
+}
+function newRace() {
+  buildTrack();
+  const others = WARRIORS.filter((w) => w.id !== me.warrior);
+  const kartPool = KARTS.map((k) => k.id).filter((k) => k !== me.kart).sort(() => Math.random() - 0.5);
+  const grid = [];
+  const startZ = 40 * SEG;
+  // seven karts on a staggered grid; the player starts fourth
+  const order = [others[0], others[1], others[2], null, others[3], others[4], others[5]];
+  order.forEach((w, i) => {
+    const z = startZ - i * 260, x = [-0.55, 0.55][i % 2];
+    if (!w) grid.push(makeRacer(WARRIORS.find((q) => q.id === me.warrior), me.kart, false, z, 0));
+    else grid.push(makeRacer(w, kartPool[i % kartPool.length], true, z, x));
+  });
+  const P = grid.find((r) => !r.ai);
+  if (me.kart === "stem") P.bag.push(pick(["water", "pain"]), pick(["hu", "warm"]));
+  R = { racers: grid, P, t: 0, zone: -1, mercySaid: new Set(), shareCool: 6, posSaid: 0, finished: false,
+        cleared: new Set(), taken: new Set(), beatT: 0, breathT: 0, steer: 0, camX: 0, bgX: 0, shake: 0, endT: 0,
+        firstVoc: true, firstDrone: true, firstCrystal: true, correct: 0 };
+  R.racers.forEach((r) => { if (r.ai) r.bag.push(pick(["water", "pain", "hu"])); });
+  updateBag(); $("impact").textContent = "0";
+  buildProgress();
+}
+
+/* ================= input ================= */
+const keys = { left: false, right: false };
+function bindPad(id, k) {
+  const el = $(id);
+  const on = (e) => { e.preventDefault(); keys[k] = true; el.classList.add("on"); audioInit(); };
+  const off = (e) => { e && e.preventDefault(); keys[k] = false; el.classList.remove("on"); };
+  el.addEventListener("pointerdown", on); el.addEventListener("pointerup", off);
+  el.addEventListener("pointercancel", off); el.addEventListener("pointerleave", off);
+}
+bindPad("left", "left"); bindPad("right", "right");
+$("treat").addEventListener("pointerdown", (e) => { e.preventDefault(); useCrystal(); });
+addEventListener("keydown", (e) => {
+  if (e.key === "ArrowLeft" || e.key === "a") keys.left = true;
+  if (e.key === "ArrowRight" || e.key === "d") keys.right = true;
+  if (e.key === " " || e.key === "ArrowUp") { e.preventDefault(); useCrystal(); }
+  if (e.key === "Escape" && state === "race") pause();
+});
+addEventListener("keyup", (e) => {
+  if (e.key === "ArrowLeft" || e.key === "a") keys.left = false;
+  if (e.key === "ArrowRight" || e.key === "d") keys.right = false;
+});
+// tilt-free drag steering: drag anywhere on the left half of the road
+let drag = null;
+cv.addEventListener("pointerdown", (e) => { if (state === "race") drag = { x0: e.clientX, id: e.pointerId }; });
+cv.addEventListener("pointermove", (e) => { if (drag && e.pointerId === drag.id) { const d = (e.clientX - drag.x0) / 60; keys.left = d < -0.3; keys.right = d > 0.3; } });
+const endDrag = (e) => { if (drag && e.pointerId === drag.id) { drag = null; keys.left = keys.right = false; } };
+cv.addEventListener("pointerup", endDrag); cv.addEventListener("pointercancel", endDrag);
+
+/* ================= crystals ================= */
+function updateBag() {
+  if (!R) return;
+  const b = R.P.bag;
+  $("bag").innerHTML = b.slice(1).map((t) => `<span>${CRYSTALS.find((c) => c.id === t).icon}</span>`).join("");
+  const btn = $("treat");
+  if (b.length) { const c = CRYSTALS.find((q) => q.id === b[0]); $("treatIcon").textContent = c.icon; $("treatLbl").textContent = c.name; btn.classList.remove("empty"); }
+  else { $("treatIcon").textContent = "💎"; $("treatLbl").textContent = "No crystal"; btn.classList.add("empty"); }
+}
+function vocAhead(r, dist) {
+  const s0 = Math.floor(r.z / SEG);
+  for (let i = s0; i < s0 + dist; i++) {
+    const s = SEGS[i]; if (!s) break;
+    for (const o of s.objs) if (o.t === "voc" && !o.gone) return { s, o };
+  }
+  return null;
+}
+function useCrystal() {
+  if (state !== "race" || !R || R.P.finish != null) return;
+  const P = R.P;
+  if (!P.bag.length) { sfx.bad(); return; }
+  const type = P.bag.shift(), C = CRYSTALS.find((c) => c.id === type);
+  const hit = vocAhead(P, 26);
+  if (hit || P.stun > 0) {
+    // treat the blockage: clear every jam on that stretch of vessel
+    const s0 = hit ? hit.s.i : Math.floor(P.z / SEG);
+    for (let i = s0 - 2; i < s0 + 3; i++) SEGS[i] && SEGS[i].objs.forEach((o) => { if (o.t === "voc") { o.gone = true; o.burst = R.t; } });
+    P.stun = 0; P.slow = 0; P.boost = Math.max(P.boost, 1.0);
+    P.impact += 100; impactPop(100);
+    sfx.treat(); flash("rgba(93,255,160,.35)");
+    toast(`${C.icon} ${C.verb}! +100`);
+    warriorSay(P.id, "clear", true);
+  } else {
+    const strong = P.kart === "etavopivat" ? 1.5 : 1;
+    const lungBonus = P.kart === "rbc" && ZONES[segAt(P.z).zi].id === "lung" ? 1.5 : 1;
+    P.boost = 2.2 * strong * lungBonus; P.impact += 10; impactPop(10);
+    sfx.boost(); toast(`${C.icon} ${C.name} boost!`);
+    warriorSay(P.id, "boost");
+  }
+  $("treat").classList.remove("urgent");
+  updateBag();
+}
+function impactPop(n) { $("impact").textContent = R.P.impact; }
+
+/* ================= UI bits ================= */
+let toastT = 0;
+function toast(t, ms = 1700) { const el = $("toast"); el.textContent = t; el.classList.remove("hidden"); el.style.animation = "none"; void el.offsetWidth; el.style.animation = ""; clearTimeout(toastT); toastT = setTimeout(() => el.classList.add("hidden"), ms); }
+let mythT = 0;
+function showMyth(i) { const [m, t] = MYTHS[i % MYTHS.length]; const el = $("myth"); el.innerHTML = `<b>Society myth:</b> "${m}"<br><i>Truth:</i> ${t}`; el.classList.remove("hidden"); clearTimeout(mythT); mythT = setTimeout(() => el.classList.add("hidden"), 3400); }
+function flash(col) { const f = $("flash"); f.style.background = col; f.style.opacity = 1; setTimeout(() => (f.style.opacity = 0), 160); }
+function buildProgress() {
+  const el = $("prog"), total = TRACK_LEN; let html = "";
+  ZONES.forEach((Z, zi) => { const a = (ZONE_START[zi] * SEG) / total * 100, w = (Z.len * SEG) / total * 100; html += `<div class="seg" style="left:${a}%;width:${w}%"></div>`; });
+  R.racers.forEach((r) => { html += `<div class="dot${r.ai ? "" : " me"}" data-id="${r.id}" style="background-image:url(img/faces/${r.id}.webp)"></div>`; });
+  el.innerHTML = html;
+}
+function updateHud() {
+  const P = R.P, sorted = [...R.racers].sort((a, b) => (a.finish ?? 1e9) - (b.finish ?? 1e9) || b.z - a.z);
+  const pos = sorted.indexOf(P) + 1;
+  $("pos").textContent = pos; $("posOf").textContent = `/${R.racers.length}`;
+  R.pos = pos;
+  for (const r of R.racers) {
+    const d = $("prog").querySelector(`[data-id="${r.id}"]`);
+    if (d) d.style.left = `${clamp(r.z / TRACK_LEN, 0, 1) * 100}%`;
+  }
+  const zi = segAt(P.z).zi; $("zoneName").textContent = ZONES[zi].name;
+}
+
+/* ================= physics ================= */
+function stepRacer(r, dt) {
+  const st = statMul(r.kart), seg = segAt(r.z), Z = ZONES[seg.zi];
+  let target = MAXSPD * st.top;
+  if (r.ai) {
+    // rubber-banding keeps the pack close to the player
+    const gap = r.z - R.P.z;
+    target *= gap > 4000 ? 0.86 : gap > 1500 ? 0.95 : gap < -4000 ? 1.1 : gap < -1500 ? 1.03 : 0.985;
+    target *= r.skill;
+  }
+  if (r.boost > 0) { target *= 1.35; r.boost -= dt; }
+  if (r.slow > 0) { target *= 0.55; r.slow -= dt; }
+  if (r.stun > 0 || r.trapped > 0 || r.seq > 0) target = r.seq > 0 || r.trapped > 0 ? 0 : MAXSPD * 0.12;
+  r.stun = Math.max(0, r.stun - dt); r.trapped = Math.max(0, r.trapped - dt);
+  if (!r.ai) r.seq = r.seq; else r.seq = Math.max(0, r.seq - dt);
+  if (r.finish != null) target = MAXSPD * 0.5;
+  // off the road is sticky (vessel wall)
+  if (Math.abs(r.x) > 1.05) target *= 0.55;
+  const a = target > r.speed ? MAXSPD * 0.45 * st.acc : MAXSPD * 1.4;
+  r.speed = r.speed < target ? Math.min(target, r.speed + a * dt) : Math.max(target, r.speed - a * dt);
+  r.z += r.speed * dt;
+  return { seg, Z, st };
+}
+function hitObjects(r, prevZ) {
+  const s0 = Math.floor(prevZ / SEG), s1 = Math.floor(r.z / SEG);
+  for (let i = s0; i <= s1; i++) {
+    const s = SEGS[i]; if (!s) continue;
+    for (const o of s.objs) {
+      if (o.gone) continue;
+      const half = (o.w + (r.kart === "platelet" ? 0.22 : 0.3)) / 2;
+      if (Math.abs(r.x - o.x) > half) {
+        if (!r.ai && o.t === "drone" && !o.passed) { o.passed = true; }
+        continue;
+      }
+      onHit(r, o, s);
+    }
+  }
+}
+function onHit(r, o, s) {
+  const P = R.P, me_ = r === P;
+  if (o.t === "crystal") {
+    const key = o; if (o.takenBy && o.takenBy.has(r.id)) return;
+    (o.takenBy || (o.takenBy = new Set())).add(r.id);
+    if (r.bag.length < 3) r.bag.push(o.type); else r.boost = Math.max(r.boost, 1.2);
+    if (me_) {
+      sfx.crystal(); updateBag();
+      const C = CRYSTALS.find((c) => c.id === o.type);
+      toast(`${C.icon} ${C.name} crystal!`, 1200);
+      if (R.firstCrystal) { R.firstCrystal = false; mercySay("crystal"); }
+    }
+  } else if (o.t === "boost") {
+    if (o.hitBy && o.hitBy.has(r.id)) return; (o.hitBy || (o.hitBy = new Set())).add(r.id);
+    r.boost = Math.max(r.boost, 1.3);
+    if (me_) { sfx.boost(); toast("Boost pad!", 900); }
+  } else if (o.t === "voc") {
+    if (o.hitBy && o.hitBy.has(r.id)) return; (o.hitBy || (o.hitBy = new Set())).add(r.id);
+    if (r.ai) {
+      // AI Warriors treat a blockage if they carry a crystal and react in time
+      if (r.bag.length && Math.random() < 0.55) { r.bag.shift(); r.impact += 100; o.gone = true; o.burst = R.t; return; }
+      r.stun = 0.9; r.speed *= 0.3; return;
+    }
+    const k = r.kart === "hydroxyurea" ? 0.5 : r.kart === "glutamine" ? 0.7 : 1;
+    r.stun = 1.3 * k; r.speed *= 0.25 + (1 - k) * 0.5; r.slow = 1.2 * k;
+    R.shake = 0.5; sfx.hit(); flash("rgba(255,40,70,.45)");
+    toast("Vaso-occlusion! Use a crystal!", 1500);
+    warriorSay(r.id, "voc", true);
+    if (R.firstVoc) { R.firstVoc = false; mercySay("voc", true); }
+    if (navigator.vibrate) navigator.vibrate(60);
+  } else if (o.t === "drone") {
+    if (o.hitBy && o.hitBy.has(r.id)) return; (o.hitBy || (o.hitBy = new Set())).add(r.id);
+    const t = r.kart === "macrophage" ? 0.7 : r.kart === "tcell" ? 1.0 : 1.4;
+    r.trapped = t; r.speed *= 0.2;
+    if (me_) {
+      sfx.trap(); flash("rgba(176,76,255,.4)"); showMyth(o.myth); warriorSay(r.id, "trap", true);
+      if (R.firstDrone) { R.firstDrone = false; mercySay("society", true); }
+    }
+  } else if (o.t === "myth") {
+    if (o.hitBy && o.hitBy.has(r.id)) return; (o.hitBy || (o.hitBy = new Set())).add(r.id);
+    if (r.kart === "bcell") { if (me_) toast("B-Cell antibodies! Myth blocked 🛡️", 1300); return; }
+    r.slow = 0.9; r.speed *= 0.6;
+    if (me_) { sfx.bump(); showMyth(o.myth); }
+  }
+}
+
+function aiThink(r, dt) {
+  r.think -= dt;
+  if (r.think <= 0) {
+    r.think = 0.25 + Math.random() * 0.3;
+    // look ahead for trouble in this lane
+    const s0 = Math.floor(r.z / SEG);
+    let danger = false;
+    for (let i = s0 + 2; i < s0 + 14; i++) {
+      const s = SEGS[i]; if (!s) break;
+      for (const o of s.objs) if (!o.gone && (o.t === "voc" || o.t === "drone" || o.t === "myth") && Math.abs(o.x - r.lane) < 0.4) danger = true;
+      for (const o of s.objs) if (!o.gone && o.t === "crystal" && Math.random() < 0.15) r.lane = o.x;
+    }
+    if (danger && Math.random() < r.dodge) {
+      const lanes = [laneX(0), laneX(1), laneX(2)].filter((x) => Math.abs(x - r.lane) > 0.3);
+      r.lane = pick(lanes);
+    } else if (Math.random() < 0.04) r.lane = laneX(Math.floor(Math.random() * 3));
+    // splenic sequestration can catch AI Warriors too
+    const Z = ZONES[segAt(r.z).zi];
+    if (Z.id === "spleen" && !r.seqDone && Math.random() < 0.012) { r.seqDone = true; r.seq = 2.2 + Math.random() * 1.5; }
+    // AI Warriors also boost now and then
+    if (r.bag.length > 1 && Math.random() < 0.05) { r.bag.shift(); r.boost = 1.6; r.impact += 10; }
+  }
+  r.x = lerp(r.x, r.lane, Math.min(1, dt * 2.2));
+}
+
+function sharing(dt) {
+  R.shareCool -= dt;
+  const P = R.P;
+  for (const r of R.racers) {
+    if (!r.ai) continue;
+    const near = Math.abs(r.z - P.z) < 420 && Math.abs(r.x - P.x) < 0.6;
+    r.nearT = near ? r.nearT + dt : 0;
+    if (r.nearT > 0.7 && R.shareCool <= 0) {
+      r.nearT = 0;
+      const canGive = r.bag.length > 0 && P.bag.length < 3, canGet = P.bag.length > 0 && r.bag.length === 0;
+      if (!canGive && !canGet) continue;
+      R.shareCool = 14;
+      const giveToMe = canGive && (!canGet || Math.random() < 0.6);
+      if (giveToMe) {
+        const t = r.bag.splice(Math.floor(Math.random() * r.bag.length), 1)[0];
+        P.bag.push(t); r.impact += 50;
+        const C = CRYSTALS.find((c) => c.id === t);
+        toast(`${r.name} shared ${C.icon} ${C.name} with you!`, 2200);
+        warriorSay(r.id, "share", true);
+      } else {
+        const t = P.bag.splice(Math.floor(Math.random() * P.bag.length), 1)[0];
+        r.bag.push(t); P.impact += 50; impactPop(50);
+        const C = CRYSTALS.find((c) => c.id === t);
+        toast(`You shared ${C.icon} ${C.name} with ${r.name}! +50`, 2200);
+        warriorSay(P.id, "share", true);
+      }
+      sfx.share(); updateBag();
+      if (!R.mercySaid.has("share")) setTimeout(() => mercySay("share"), 2400);
+      break;
+    }
+  }
+}
+
+function sequestrationCheck(dt) {
+  const P = R.P, Z = ZONES[segAt(P.z).zi];
+  if (Z.id !== "spleen" || P.seqDone || P.finish != null) return;
+  const into = (P.z / SEG - ZONE_START[ZONES.indexOf(Z)]) / Z.len;
+  // can happen any time in the spleen; it is certain by the last quarter
+  if (Math.random() < dt * 0.06 || into > 0.75) {
+    P.seqDone = true; P.seq = 99; P.speed = 0;
+    sfx.trap(); flash("rgba(176,76,255,.45)");
+    warriorSay(P.id, "stuck", true);
+    mercySay("seq", true);
+    setTimeout(() => showCard(), 900);
+  }
+}
+
+/* ================= Warrior Card: escape the spleen ================= */
+function showCard() {
+  state = "card";
+  const c = nextCard(), P = R.P;
+  $("cardP").innerHTML = `<div class="card-h"><img src="img/mercy_face.webp" alt=""><div><span class="tag">Splenic sequestration</span><h2>Stuck in the spleen!</h2></div></div>
+    <p class="fact" style="margin:0 0 4px">Sickled cells got trapped in the spleen's filter. Answer this Warrior Card to break free.</p>
+    <div class="q">${c.q}</div><div class="ans">${c.a.map((a, i) => `<button data-i="${i}">${a}</button>`).join("")}</div><p id="verdict" class="verdict"></p>`;
+  $("card").classList.remove("hidden");
+  $("cardP").querySelectorAll(".ans button").forEach((b) => b.addEventListener("click", () => {
+    const i = +b.dataset.i, ok = i === c.c;
+    $("cardP").querySelectorAll(".ans button").forEach((q) => { q.disabled = true; if (+q.dataset.i === c.c) q.classList.add("ok"); });
+    if (!ok) b.classList.add("no");
+    $("verdict").innerHTML = ok ? "<b>Correct!</b> You broke free with a burst of speed. +75 impact" : `Not quite. The answer is <b>${c.a[c.c]}</b>. Getting help takes a moment…`;
+    if (ok) { sfx.good(); P.impact += 75; impactPop(75); R.correct++; post({ type: "bonus", correct: true }); }
+    else sfx.bad();
+    setTimeout(() => {
+      $("card").classList.add("hidden"); state = "race"; last = performance.now();
+      P.seq = 0;
+      if (ok) { P.boost = 2; warriorSay(P.id, "boost", true); } else { P.trapped = 2.2; }
+    }, ok ? 1400 : 2600);
+  }));
+}
+
+/* ================= main update ================= */
+function update(dt) {
+  R.t += dt;
+  const P = R.P;
+  // steering
+  const st = statMul(P.kart);
+  const steer = (keys.right ? 1 : 0) - (keys.left ? 1 : 0);
+  R.steer = lerp(R.steer, steer, Math.min(1, dt * 10));
+  const sf = P.speed / MAXSPD;
+  if (P.seq <= 0 && P.trapped <= 0) P.x += R.steer * dt * 2.1 * st.hnd * (0.35 + sf * 0.65);
+  // curves push the kart outward
+  const seg = segAt(P.z);
+  P.x -= dt * sf * seg.curve * 0.32;
+  P.x = clamp(P.x, -1.6, 1.6);
+
+  const prevZ = P.z;
+  stepRacer(P, dt);
+  hitObjects(P, prevZ);
+
+  for (const r of R.racers) {
+    if (!r.ai) continue;
+    const pz = r.z; aiThink(r, dt); stepRacer(r, dt); hitObjects(r, pz);
+    // bumping into the player
+    if (Math.abs(r.z - P.z) < 160 && Math.abs(r.x - P.x) < 0.38) {
+      const push = Math.sign(P.x - r.x || 1) * 0.22; P.x += push; r.x -= push * 0.6; P.speed *= 0.97; if (Math.random() < 0.2) sfx.bump();
+    }
+  }
+  sharing(dt);
+  sequestrationCheck(dt);
+
+  // warn about blockages ahead
+  const ahead = vocAhead(P, 18);
+  $("treat").classList.toggle("urgent", !!(ahead && P.bag.length) || (P.stun > 0 && P.bag.length > 0));
+
+  // zone changes: Mercy teaches what is around the Warriors
+  const zi = seg.zi;
+  if (zi !== R.zone) {
+    R.zone = zi; const Z = ZONES[zi];
+    if (Z.mercy[0]) mercySay(Z.mercy[0]);
+    if (Z.mercy[1]) setTimeout(() => R && R.zone === zi && mercySay(Z.mercy[1]), 14000);
+  }
+  // heart beats and lungs breathe
+  const zid = ZONES[zi].id;
+  if (zid === "heartR" || zid === "heartL") { R.beatT -= dt; if (R.beatT <= 0) { R.beatT = 0.85; sfx.beat(); R.pulse = 1; } }
+  if (zid === "lung") { R.breathT -= dt; if (R.breathT <= 0) { R.breathT = 3.6; sfx.breath(); } }
+  R.pulse = Math.max(0, (R.pulse || 0) - dt * 3);
+
+  // place callouts
+  R.posSaid -= dt;
+  if (R.posSaid <= 0 && R.t > 20) {
+    if (R.pos === 1) { mercySay("lead"); R.posSaid = 60; }
+    else if (R.pos >= 6) { mercySay("behind"); R.posSaid = 60; }
+    else R.posSaid = 8;
+  }
+  // AI passes the player: an occasional cheeky comment
+  for (const r of R.racers) {
+    if (!r.ai) continue;
+    const wasBehind = r.lastRel < 0, isAhead = r.z > P.z;
+    if (wasBehind && isAhead && Math.random() < 0.3) warriorSay(r.id, "pass");
+    r.lastRel = r.z - P.z;
+  }
+  if (P.z - prevZ > 0 && Math.random() < 0.002 && P.boost <= 0) { /* idle */ }
+
+  // finish line
+  for (const r of R.racers) if (r.finish == null && r.z >= TRACK_LEN) {
+    r.finish = R.t;
+    if (r === P) {
+      sfx.win(); warriorSay(P.id, "win", true);
+      const place = R.racers.filter((q) => q.finish != null).length;
+      mercySay(place === 1 ? "finish1" : "finish", true);
+      post({ type: "level" });
+      R.endT = 4.5;
+    }
+  }
+  if (P.finish != null) { R.endT -= dt; if (R.endT <= 0) showResults(); }
+
+  engineSet(Math.min(1.4, P.speed / MAXSPD), true);
+  R.shake = Math.max(0, R.shake - dt);
+  updateHud();
+}
+
+/* ================= rendering ================= */
+function project(p, camX, camY, camZ) {
+  const tx = p.x - camX, ty = p.y - camY, tz = p.z - camZ;
+  const sc = CAM_DEPTH / tz;
+  return { x: Math.round(W / 2 + sc * tx * W / 2), y: Math.round(H / 2 - sc * ty * H / 2), w: Math.round(sc * ROAD * W / 2), sc };
+}
+function poly(x1, y1, x2, y2, x3, y3, x4, y4, c) { ctx.fillStyle = c; ctx.beginPath(); ctx.moveTo(x1, y1); ctx.lineTo(x2, y2); ctx.lineTo(x3, y3); ctx.lineTo(x4, y4); ctx.closePath(); ctx.fill(); }
+
+function drawBackdrop(zi, blendNext) {
+  const draw = (Z, alpha) => {
+    const im = img(Z.bg); if (!ready(im)) return;
+    const h = H * 0.78, w = h * im.naturalWidth / im.naturalHeight;
+    const horizon = H * 0.48;
+    const y = horizon - h * 0.66 + (R ? R.pulse * 6 * DPR : 0);
+    let x = -((R ? R.bgX : 0) % (w * 2)); if (x > 0) x -= w * 2;
+    ctx.globalAlpha = alpha;
+    for (let k = 0; x + k * w < W; k++) {
+      const flip = ((k % 2) + 2) % 2 === 1;
+      if (flip) { ctx.save(); ctx.translate(x + (k + 1) * w, 0); ctx.scale(-1, 1); ctx.drawImage(im, 0, y, w, h); ctx.restore(); }
+      else ctx.drawImage(im, x + k * w, y, w, h);
+    }
+    ctx.globalAlpha = 1;
+  };
+  const Z = ZONES[zi];
+  ctx.fillStyle = Z.fog; ctx.fillRect(0, 0, W, H);
+  draw(Z, 1);
+  if (blendNext && blendNext.a > 0) draw(ZONES[blendNext.zi], blendNext.a);
+}
+
+function render() {
+  ctx.setTransform(1, 0, 0, 1, 0, 0);
+  if (!R) { ctx.fillStyle = "#12040e"; ctx.fillRect(0, 0, W, H); return; }
+  const P = R.P;
+  const base = segAt(P.z), basePct = (P.z % SEG) / SEG;
+  const camZ = P.z; // camera sits CAM_BACK behind the player
+  const playerY = lerp(base.p1.y, base.p2.y, basePct);
+  const camY = playerY + CAM_H;
+  // backdrop drifts with the curves
+  R.bgX += base.curve * (P.speed / MAXSPD) * 6 * DPR;
+  // blend into the next zone's backdrop near a boundary
+  const zi = base.zi, nextStart = ZONE_START[zi + 1];
+  let blend = null;
+  if (nextStart != null) { const d = nextStart - base.i; if (d < 60) blend = { zi: zi + 1, a: 1 - d / 60 }; }
+  if (R.shake > 0) ctx.translate((Math.random() - 0.5) * 12 * DPR * R.shake, (Math.random() - 0.5) * 8 * DPR * R.shake);
+  drawBackdrop(zi, blend);
+
+  let maxy = H, x = 0, dx = -(base.curve * basePct);
+  const lanesW = 0.03;
+  const drawn = [];
+  for (let n = 0; n < DRAW; n++) {
+    const s = SEGS[base.i + n];
+    if (!s) break;
+    const Z = ZONES[s.zi];
+    const camX = P.x * ROAD;
+    const p1 = project({ x: x, y: s.p1.y, z: s.p1.z }, camX, camY, camZ - CAM_BACK);
+    const p2 = project({ x: x + dx, y: s.p2.y, z: s.p2.z }, camX, camY, camZ - CAM_BACK);
+    s.clip = maxy; s.p1s = p1; s.p2s = p2;
+    x += dx; dx += s.curve;
+    if (p1.sc <= 0 || p2.y >= maxy || p2.y >= p1.y) continue;
+    const alt = Math.floor(s.i / 3) % 2;
+    const fog = Math.min(1, n / DRAW);
+    // vessel walls
+    ctx.fillStyle = Z.side[alt]; ctx.fillRect(0, p2.y, W, p1.y - p2.y);
+    // rumble strips and road
+    const r1 = p1.w / 6, r2 = p2.w / 6;
+    poly(p1.x - p1.w - r1, p1.y, p1.x - p1.w, p1.y, p2.x - p2.w, p2.y, p2.x - p2.w - r2, p2.y, Z.rumble[alt]);
+    poly(p1.x + p1.w + r1, p1.y, p1.x + p1.w, p1.y, p2.x + p2.w, p2.y, p2.x + p2.w + r2, p2.y, Z.rumble[alt]);
+    poly(p1.x - p1.w, p1.y, p1.x + p1.w, p1.y, p2.x + p2.w, p2.y, p2.x - p2.w, p2.y, Z.road[alt]);
+    if (alt) {
+      for (let l = 1; l < LANES; l++) {
+        const f = -1 + (2 * l) / LANES, lw1 = p1.w * lanesW, lw2 = p2.w * lanesW;
+        poly(p1.x + f * p1.w - lw1, p1.y, p1.x + f * p1.w + lw1, p1.y, p2.x + f * p2.w + lw2, p2.y, p2.x + f * p2.w - lw2, p2.y, Z.lane);
+      }
+    }
+    if (fog > 0.4) { ctx.globalAlpha = (fog - 0.4) / 0.6 * 0.85; ctx.fillStyle = Z.fog; ctx.fillRect(0, p2.y, W, p1.y - p2.y); ctx.globalAlpha = 1; }
+    maxy = p2.y;
+    drawn.push(s);
+  }
+  // sprites and racers, back to front
+  const racersBySeg = new Map();
+  for (const r of R.racers) { if (r === P) continue; const i = Math.floor(r.z / SEG); if (!racersBySeg.has(i)) racersBySeg.set(i, []); racersBySeg.get(i).push(r); }
+  for (let k = drawn.length - 1; k >= 0; k--) {
+    const s = drawn[k], p = s.p1s;
+    for (const d of s.sprites) drawDeco(d, s, p);
+    for (const o of s.objs) drawObj(o, s, p);
+    const rs = racersBySeg.get(s.i);
+    if (rs) for (const r of rs) drawRacer(r, s);
+  }
+  drawPlayer();
+  // speed lines while boosting
+  if (P.boost > 0) {
+    ctx.strokeStyle = "rgba(255,255,255,.35)"; ctx.lineWidth = 2 * DPR;
+    for (let i = 0; i < 14; i++) { const a = Math.random() * Math.PI * 2, r0 = H * 0.35, r1 = r0 + H * 0.4; ctx.beginPath(); ctx.moveTo(W / 2 + Math.cos(a) * r0, H * 0.48 + Math.sin(a) * r0); ctx.lineTo(W / 2 + Math.cos(a) * r1, H * 0.48 + Math.sin(a) * r1); ctx.stroke(); }
+  }
+  // vignette: we're inside a vessel
+  const g = ctx.createRadialGradient(W / 2, H * 0.55, H * 0.35, W / 2, H * 0.55, W * 0.75);
+  g.addColorStop(0, "rgba(0,0,0,0)"); g.addColorStop(1, ZONES[zi].id === "lung" ? "rgba(10,20,50,.45)" : "rgba(20,0,8,.6)");
+  ctx.fillStyle = g; ctx.fillRect(0, 0, W, H);
+}
+
+function spriteAt(im, s, xFrac, wFrac, yOff = 0, clip = true, alpha = 1, rot = 0) {
+  // place a sprite on segment s at road position xFrac (-1..1 is the road), width as a fraction of road width
+  const p = s.p1s; if (!p || p.sc <= 0) return null;
+  const w = p.w * wFrac, h = w * (im.height || im.naturalHeight) / (im.width || im.naturalWidth);
+  const x = p.x + p.w * xFrac - w / 2, y = p.y - h - yOff * p.sc * H / 2;
+  if (clip && y > s.clip) return null;
+  ctx.save();
+  if (clip) { ctx.beginPath(); ctx.rect(0, 0, W, s.clip); ctx.clip(); }
+  ctx.globalAlpha = alpha;
+  if (rot) { ctx.translate(x + w / 2, y + h / 2); ctx.rotate(rot); ctx.drawImage(im, -w / 2, -h / 2, w, h); }
+  else ctx.drawImage(im, x, y, w, h);
+  ctx.restore();
+  return { x, y, w, h };
+}
+function drawDeco(d, s) {
+  if (d.kind === "arch") { const im = img("img/obj/arch.webp"); if (ready(im)) spriteAt(im, s, 0, 2.6, 0); return; }
+  let kind = d.kind;
+  if (kind === "spleen" && (s.i % 5 === 0)) kind = "sickle";
+  const c = decoSprite(kind);
+  const rot = d.rot + (R ? R.t * d.spin : 0);
+  const pulse = kind === "beat" ? 1 + (R.pulse || 0) * 0.15 : 1;
+  spriteAt(c, s, d.x, 0.35 * d.s * pulse, d.y, true, kind === "bubble" ? 0.8 : 1, kind === "rbc" || kind === "sickle" ? rot : 0);
+}
+function drawObj(o, s) {
+  if (o.gone) {
+    if (o.burst != null && R.t - o.burst < 0.6) {
+      const k = (R.t - o.burst) / 0.6, c = decoSprite("rbc");
+      for (let i = 0; i < 6; i++) spriteAt(c, s, o.x + Math.cos(i) * k * 0.8, 0.12, 200 + Math.sin(i * 2) * k * 600, true, 1 - k, i);
+    }
+    return;
+  }
+  if (o.t === "crystal" && o.takenBy && o.takenBy.has(R.P.id)) return;
+  const name = { crystal: "crystal", boost: "boost", voc: "voc", drone: "drone", myth: "myth" }[o.t];
+  const im = img(`img/obj/${name}.webp`); if (!ready(im)) return;
+  const bob = o.t === "crystal" ? 120 + Math.sin(R.t * 4 + s.i) * 60 : o.t === "drone" ? 700 + Math.sin(R.t * 2 + s.i) * 80 : 0;
+  const w = { crystal: 0.22, boost: 0.42, voc: 0.5, drone: 0.4, myth: 0.3 }[o.t];
+  const rot = o.t === "myth" ? R.t * 3 : 0;
+  spriteAt(im, s, o.x, w, bob, true, 1, rot);
+  // Society drones show a target shadow on their lane
+  if (o.t === "drone") { const p = s.p1s; ctx.save(); ctx.beginPath(); ctx.rect(0, 0, W, s.clip); ctx.clip(); ctx.fillStyle = "rgba(176,76,255,.35)"; ctx.beginPath(); ctx.ellipse(p.x + p.w * o.x, p.y, p.w * 0.22, p.w * 0.05, 0, 0, 7); ctx.fill(); ctx.restore(); }
+}
+function kartAndDriver(r, cx, by, w, tilt = 0, alpha = 1) {
+  const K = KART[r.kart], kim = img(`img/karts/${r.kart}.webp`), dim = img(`img/drivers/${r.id}.webp`);
+  if (!ready(kim)) return;
+  const h = w * kim.naturalHeight / kim.naturalWidth, x = cx - w / 2, y = by - h;
+  ctx.save(); ctx.globalAlpha = alpha;
+  ctx.translate(cx, by); ctx.rotate(tilt); ctx.translate(-cx, -by);
+  // shadow
+  ctx.fillStyle = "rgba(0,0,0,.35)"; ctx.beginPath(); ctx.ellipse(cx, by - h * 0.04, w * 0.48, h * 0.08, 0, 0, 7); ctx.fill();
+  ctx.drawImage(kim, x, y, w, h);
+  if (ready(dim)) {
+    const dw = w * Math.max(K.seat[2], 0.28) * 1.05, dh = dw * dim.naturalHeight / dim.naturalWidth;
+    ctx.drawImage(dim, x + K.seat[0] * w - dw / 2, y + K.seat[1] * h + K.seat[2] * w * 0.25 - dh, dw, dh);
+  }
+  ctx.restore();
+}
+function drawRacer(r, s) {
+  const p = s.p1s; if (!p || p.sc <= 0) return;
+  const w = p.w * KART_W, cx = p.x + p.w * r.x, by = p.y;
+  if (by - w > s.clip) return;
+  ctx.save(); ctx.beginPath(); ctx.rect(0, 0, W, s.clip); ctx.clip();
+  kartAndDriver(r, cx, by, w, 0);
+  // name tag
+  if (w > 40 * DPR) {
+    ctx.font = `${Math.round(11 * DPR)}px "Lilita One",sans-serif`; ctx.textAlign = "center";
+    ctx.fillStyle = "rgba(0,0,0,.55)"; const tw = ctx.measureText(r.name).width + 10 * DPR;
+    ctx.fillRect(cx - tw / 2, by - w * 0.95 - 14 * DPR, tw, 15 * DPR);
+    ctx.fillStyle = r.color; ctx.fillText(r.name, cx, by - w * 0.95 - 3 * DPR);
+  }
+  if (r.seq > 0 || r.trapped > 0) { ctx.font = `${Math.round(18 * DPR)}px sans-serif`; ctx.fillText(r.seq > 0 ? "🌀" : "🕸️", cx, by - w * 1.05 - 16 * DPR); }
+  ctx.restore();
+}
+function drawPlayer() {
+  const P = R.P, roadW = (CAM_DEPTH / CAM_BACK) * ROAD * W / 2, w = Math.min(roadW * KART_W, H * 0.42), cx = W / 2, by = H * 0.985;
+  const bounce = Math.sin(R.t * 18) * (P.speed / MAXSPD) * 2 * DPR;
+  const tilt = R.steer * 0.06;
+  // boost flames
+  if (P.boost > 0) {
+    const g = ctx.createRadialGradient(cx, by - w * 0.05, 0, cx, by - w * 0.05, w * 0.45);
+    g.addColorStop(0, "rgba(255,255,200,.9)"); g.addColorStop(0.4, "rgba(93,255,160,.5)"); g.addColorStop(1, "rgba(93,255,160,0)");
+    ctx.fillStyle = g; ctx.fillRect(cx - w * 0.6, by - w * 0.5, w * 1.2, w * 0.6);
+  }
+  kartAndDriver(P, cx, by + bounce, w, tilt);
+  if (P.trapped > 0) { const im = img("img/obj/drone.webp"); if (ready(im)) { const dw = w * 0.9; ctx.globalAlpha = 0.85; ctx.drawImage(im, cx - dw / 2, by - w * 1.25, dw, dw * im.naturalHeight / im.naturalWidth); ctx.globalAlpha = 1; } }
+  if (P.stun > 0) { ctx.font = `${Math.round(28 * DPR)}px sans-serif`; ctx.textAlign = "center"; ctx.fillText("💥", cx + Math.sin(R.t * 20) * 10, by - w * 0.8); }
+}
+
+/* ================= loop ================= */
+let last = performance.now();
+function loop(now) {
+  const dt = Math.min(0.05, (now - last) / 1000); last = now;
+  if (state === "race" && R) update(dt);
+  else if (state === "count" && R) { R.t += 0; }
+  if (state === "race" || state === "count" || state === "card" || state === "pause") render();
+  else if (state === "results") render();
+  requestAnimationFrame(loop);
+}
+requestAnimationFrame(loop);
+
+/* ================= screens ================= */
+const SCREENS = ["title", "pick", "track", "film", "card", "pause", "results"];
+function show(id) {
+  SCREENS.forEach((s) => $(s).classList.toggle("hidden", s !== id));
+  $("hud").classList.toggle("hidden", !["race", "count", "card", "pause"].includes(id) && id !== "hud");
+}
+function go(id) {
+  sfx.tap();
+  if (id === "pick") buildPick();
+  if (id === "track") buildBoards();
+  state = id; show(id);
+  if (id === "title") showBest();
+}
+document.querySelectorAll("[data-go]").forEach((b) => b.addEventListener("click", () => go(b.dataset.go)));
+document.querySelectorAll("[data-exit]").forEach((b) => b.addEventListener("click", () => { music.pause(); post({ type: "exit" }); if (!EMBED) go("title"); }));
+$("playBtn").addEventListener("click", () => { audioInit(); go("pick"); });
+$("introBtn").addEventListener("click", () => { audioInit(); playFilm(() => go("title")); });
+
+function showBest() {
+  const b = store.get("wt-race-best", null);
+  $("best").textContent = b ? `Your best: ${ordinal(b.place)} place · ${b.impact} impact` : "";
+}
+const ordinal = (n) => n + (["th", "st", "nd", "rd"][(n % 100 > 10 && n % 100 < 14) ? 0 : n % 10] || "th");
+
+function buildPick() {
+  $("warriors").innerHTML = WARRIORS.map((w) => `<button class="w-chip${w.id === me.warrior ? " on" : ""}" data-w="${w.id}"><img src="img/faces/${w.id}.webp" alt=""><b>${w.name}</b></button>`).join("");
+  $("karts").innerHTML = KARTS.map((k) => `<button class="k-chip${k.id === me.kart ? " on" : ""}" data-k="${k.id}"><img src="img/karts/${k.id}.webp" alt=""><span>${k.name}</span><span class="tag">${k.tag}</span></button>`).join("");
+  $("warriors").querySelectorAll("[data-w]").forEach((b) => b.addEventListener("click", () => { me.warrior = b.dataset.w; store.set("wt-race-warrior", me.warrior); sfx.tap(); warriorSay(me.warrior, "go", true); buildPick(); }));
+  $("karts").querySelectorAll("[data-k]").forEach((b) => b.addEventListener("click", () => { me.kart = b.dataset.k; store.set("wt-race-kart", me.kart); sfx.tap(); buildPick(); }));
+  const K = KART[me.kart];
+  $("pvKart").src = `img/karts/${K.id}.webp`;
+  const dr = $("pvDriver"); dr.src = `img/drivers/${me.warrior}.webp`;
+  const stage = $("pvKart");
+  const place = () => {
+    if (!stage.naturalWidth) return;
+    const w = stage.clientWidth, h = w * stage.naturalHeight / stage.naturalWidth, box = stage.parentElement.clientHeight;
+    const dw = w * Math.max(K.seat[2], 0.28) * 1.05;
+    dr.style.width = dw + "px";
+    dr.style.left = (K.seat[0] * w) + "px";
+    dr.style.transform = "translateX(-50%)";
+    const dh = dr.naturalWidth ? dw * dr.naturalHeight / dr.naturalWidth : dw * 0.6;
+    dr.style.top = (box - h + K.seat[1] * h + K.seat[2] * w * 0.25 - dh) + "px";
+  };
+  stage.onload = place; dr.onload = place; setTimeout(place, 50);
+  $("pvName").textContent = `${WARRIORS.find((w) => w.id === me.warrior).name} · ${K.name}`;
+  $("pvFact").textContent = K.fact;
+  $("pvPerk").textContent = "★ " + K.perk;
+  $("pvStats").innerHTML = [["Speed", K.spd], ["Start", K.acc], ["Handling", K.hnd]].map(([l, v]) => `<span>${l}</span><div class="bar"><i style="width:${v * 20}%"></i></div>`).join("");
+}
+$("toTrack").addEventListener("click", () => go("track"));
+
+const BOARDS = [
+  { id: "b1", name: "Marrow to Marrow", desc: "Start where blood cells are born, race through the heart and lungs, survive the spleen, and make it home.", route: "Bone marrow → Bloodstream → Heart → Lungs → Heart → Spleen → Bone marrow", bg: "img/bg_marrow.webp", open: true },
+  { id: "b2", name: "Coming soon", desc: "A new world inside the body is on the way.", route: "", bg: "img/bg_lung.webp", open: false },
+  { id: "b3", name: "Coming soon", desc: "A new world inside the body is on the way.", route: "", bg: "img/bg_spleen.webp", open: false },
+];
+function buildBoards() {
+  $("boards").innerHTML = BOARDS.map((b) => `<button class="board${b.open ? "" : " locked"}" data-b="${b.id}" style="background-image:url(${b.bg})" ${b.open ? "" : "disabled"}>
+    ${b.open ? "" : '<span class="lock">🔒 Coming soon</span>'}<h3>${b.open ? "Board 1 · " : ""}${b.name}</h3><p>${b.desc}</p>${b.route ? `<div class="route">${b.route}</div>` : ""}</button>`).join("");
+  $("boards").querySelectorAll("[data-b]").forEach((b) => b.addEventListener("click", () => startRace()));
+}
+
+/* intro film: Dr. Amos shrinks the Warriors and introduces Mercy */
+function playFilm(done) {
+  const v = $("introVid");
+  state = "film"; show("film");
+  v.src = "vid/intro.mp4"; v.currentTime = 0;
+  music.pause();
+  const end = () => { v.onended = null; v.pause(); store.set("wt-race-film", true); done(); };
+  v.onended = end; v.onerror = end;
+  $("skipFilm").onclick = end;
+  v.play().catch(() => { v.muted = true; v.play().catch(end); });
+}
+
+function startRace() {
+  audioInit();
+  newRace();
+  const go_ = () => countdown();
+  if (!store.get("wt-race-film", false)) playFilm(go_); else go_();
+}
+function countdown() {
+  state = "count"; show("hud");
+  ["title", "pick", "track", "film", "results"].forEach((s) => $(s).classList.add("hidden"));
+  $("hud").classList.remove("hidden");
+  engineStart();
+  if (opts.music) { music.currentTime = 0; music.play().catch(() => {}); }
+  const el = $("count"); el.classList.remove("hidden");
+  mercySay("count", true);
+  let n = 3;
+  const tick = () => {
+    if (n > 0) { el.textContent = n; sfx.beep(); n--; setTimeout(tick, 900); }
+    else {
+      el.textContent = "GO!"; sfx.go(); state = "race"; last = performance.now();
+      warriorSay(R.P.id, "go", true);
+      R.racers.forEach((r) => { r.skill = r.ai ? 0.93 + Math.random() * 0.1 : 1; r.dodge = 0.5 + Math.random() * 0.35; r.lastRel = r.z - R.P.z; });
+      setTimeout(() => el.classList.add("hidden"), 700);
+    }
+  };
+  setTimeout(tick, 600);
+}
+
+function pause() {
+  if (state !== "race") return;
+  state = "pause"; $("pause").classList.remove("hidden");
+  $("optMusic").checked = opts.music; $("optSfx").checked = opts.sfx; $("optVoice").checked = opts.voice;
+  music.pause(); engineSet(0, false);
+}
+$("pauseBtn").addEventListener("click", pause);
+$("resume").addEventListener("click", () => { $("pause").classList.add("hidden"); state = "race"; last = performance.now(); if (opts.music) music.play().catch(() => {}); });
+$("restart").addEventListener("click", () => { $("pause").classList.add("hidden"); startRace(); });
+["Music", "Sfx", "Voice"].forEach((k) => $("opt" + k).addEventListener("change", (e) => { opts[k.toLowerCase()] = e.target.checked; saveOpts(); }));
+document.addEventListener("visibilitychange", () => { if (document.hidden) pause(); });
+
+function showResults() {
+  state = "results"; engineSet(0, false);
+  // racers still on the road finish at their current pace
+  for (const r of R.racers) if (r.finish == null) r.finish = R.t + (TRACK_LEN - r.z) / Math.max(MAXSPD * 0.6, r.speed);
+  const byPlace = [...R.racers].sort((a, b) => a.finish - b.finish);
+  const byImpact = [...R.racers].sort((a, b) => b.impact - a.impact);
+  const row = (r, i, val) => `<li class="${r.ai ? "" : "me"}"><span class="n">${i + 1}</span><img src="img/faces/${r.id}.webp" alt=""><span>${r.name}</span><b>${val}</b></li>`;
+  $("resPlace").innerHTML = byPlace.map((r, i) => row(r, i, fmtTime(r.finish))).join("");
+  $("resImpact").innerHTML = byImpact.map((r, i) => row(r, i, r.impact + " 💎")).join("");
+  const place = byPlace.indexOf(R.P) + 1, iplace = byImpact.indexOf(R.P) + 1;
+  $("resHead").textContent = place === 1 && iplace === 1 ? "Double champion! 🏆🏆" : place === 1 ? "You won the race! 🏁" : iplace === 1 ? "Most impact! 💎" : `${ordinal(place)} place!`;
+  $("resNote").textContent = iplace === 1
+    ? "Treating blockages and sharing crystals made you the biggest helper on the track."
+    : "Impact points come from treating blockages (+100), answering Warrior Cards (+75), sharing crystals (+50) and boosts (+10).";
+  const best = store.get("wt-race-best", null);
+  if (!best || place < best.place || (place === best.place && R.P.impact > best.impact)) store.set("wt-race-best", { place, impact: R.P.impact });
+  show("results");
+  music.pause();
+}
+const fmtTime = (s) => `${Math.floor(s / 60)}:${String(Math.floor(s % 60)).padStart(2, "0")}`;
+$("again").addEventListener("click", () => startRace());
+
+/* ================= boot ================= */
+["img/bg_marrow.webp", "img/bg_vessel.webp", "img/obj/voc.webp", "img/obj/crystal.webp", "img/obj/boost.webp", "img/obj/drone.webp", "img/obj/myth.webp", "img/obj/arch.webp"].forEach(img);
+KARTS.forEach((k) => img(`img/karts/${k.id}.webp`));
+WARRIORS.forEach((w) => img(`img/drivers/${w.id}.webp`));
+setTimeout(() => ZONES.forEach((z) => img(z.bg)), 1500);
+setTimeout(() => Object.keys(MERCY).forEach((k) => { const a = new Audio(); a.preload = "metadata"; a.src = `voice/mercy/${k}.mp3`; voiceCache[`voice/mercy/${k}.mp3`] = a; }), 2500);
+showBest();
+show("title");
+// dev handle for tests
+window.__race = { get R() { return R; }, get state() { return state; }, set state(v) { state = v; }, MERCY, ZONES, startRace, useCrystal,
+  // fast simulation for tests: an autopilot steers around trouble and uses crystals
+  sim(seconds, dt = 1 / 30) {
+    const log = { voc: 0, trap: 0, myth: 0, treat: 0, seq: 0, share: 0 };
+    for (let t = 0; t < seconds && state !== "results"; t += dt) {
+      if (state === "card") { const b = document.querySelector("#cardP .ans button"); if (b && !b.disabled) b.click(); R.P.seq = 0; state = "race"; $("card").classList.add("hidden"); log.seq++; }
+      if (state === "race" && R.P.seq > 50) { showCard(); continue; }
+      if (state !== "race") break;
+      const P = R.P, s0 = Math.floor(P.z / SEG); let danger = null;
+      for (let i = s0 + 1; i < s0 + 10; i++) for (const o of (SEGS[i] || { objs: [] }).objs) if (!o.gone && o.t !== "crystal" && o.t !== "boost" && Math.abs(o.x - P.x) < 0.45) danger = o;
+      keys.left = keys.right = false;
+      if (danger && danger.t !== "voc") { if (danger.x >= P.x) keys.left = P.x > -0.6; else keys.right = P.x < 0.6; if (!keys.left && !keys.right) keys.right = true; }
+      else if (Math.abs(P.x) > 0.7) { keys.left = P.x > 0; keys.right = P.x < 0; }
+      if ($("treat").classList.contains("urgent")) { useCrystal(); log.treat++; }
+      const before = { stun: P.stun, trapped: P.trapped, slow: P.slow };
+      update(dt);
+      if (P.stun > before.stun + 0.5) log.voc++;
+      if (P.trapped > before.trapped + 0.5) log.trap++;
+    }
+    keys.left = keys.right = false;
+    return { t: R.t, z: R.P.z, len: TRACK_LEN, pos: R.pos, impact: R.P.impact, state, log, ai: R.racers.filter(r => r.ai).map(r => [r.id, Math.round(r.z), r.impact]) };
+  } };

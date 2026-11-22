@@ -1,0 +1,2188 @@
+[
+{
+"id": "w01",
+"q": "Why is it important for people with sickle cell disease to stay hydrated?",
+"a": [
+"To lower blood pressure",
+"To prevent cells from sticking together",
+"To increase sugar levels",
+"To avoid fatigue"
+],
+"c": 1,
+"lvl": "kid"
+},
+{
+"id": "w03",
+"q": "Why is regular check-up important for sickle cell patients?",
+"a": [
+"To change their blood type",
+"To cure the disease",
+"To avoid taking medications",
+"To monitor and prevent complications"
+],
+"c": 3,
+"lvl": "kid"
+},
+{
+"id": "w04",
+"q": "Which doctor usually treats sickle cell disease?",
+"a": [
+"Cardiologist",
+"Neurologist",
+"Hematologist",
+"Dermatologist"
+],
+"c": 2,
+"lvl": "kid"
+},
+{
+"id": "w05",
+"q": "Why is folic acid recommended for sickle cell patients?",
+"a": [
+"To fight infections",
+"To make new red blood cells",
+"To reduce pain",
+"To lower blood pressure"
+],
+"c": 1,
+"lvl": "kid"
+},
+{
+"id": "w06",
+"q": "What is the purpose of blood transfusions in sickle cell disease?",
+"a": [
+"To add oxygen to the body",
+"To replace white blood cells",
+"To add healthy red blood cells",
+"To lower blood pressure"
+],
+"c": 2,
+"lvl": "kid"
+},
+{
+"id": "w07",
+"q": "How does a bone marrow transplant help in sickle cell disease?",
+"a": [
+"It replaces sickle cells with healthy cells",
+"It cures infections",
+"It prevents dehydration",
+"It stops all pain crises"
+],
+"c": 0,
+"lvl": "all"
+},
+{
+"id": "w08",
+"q": "Why do some people with sickle cell disease take hydroxyurea?",
+"a": [
+"To increase fetal hemoglobin and reduce sickling",
+"To cure the disease",
+"To decrease white blood cells",
+"To prevent dehydration"
+],
+"c": 0,
+"lvl": "all"
+},
+{
+"id": "w09",
+"q": "What lifestyle change can help reduce sickle cell complications?",
+"a": [
+"Eating more sugar",
+"Avoiding extreme temperatures",
+"Skipping doctor visits",
+"Exercising without rest"
+],
+"c": 1,
+"lvl": "kid"
+},
+{
+"id": "w10",
+"q": "What is a pain crisis, and how is it treated?",
+"a": [
+"A type of infection treated with antibiotics",
+"Intense pain from blood vessel blockages, treated with hydration and pain relievers",
+"A headache treated with rest",
+"Muscle cramps treated with stretching"
+],
+"c": 1,
+"lvl": "all"
+},
+{
+"id": "w11",
+"q": "Why might someone with sickle cell disease need oxygen therapy?",
+"a": [
+"To prevent dehydration",
+"To increase oxygen in the blood",
+"To reduce infections",
+"To lower blood sugar"
+],
+"c": 1,
+"lvl": "all"
+},
+{
+"id": "w12",
+"q": "What is acute chest syndrome, and why is it dangerous?",
+"a": [
+"A minor cold that resolves on its own",
+"A type of dehydration",
+"A severe lung problem requiring immediate treatment",
+"A type of stomach pain"
+],
+"c": 2,
+"lvl": "all"
+},
+{
+"id": "w13",
+"q": "How is acute chest syndrome treated?",
+"a": [
+"With rest and hydration",
+"With oxygen, antibiotics, and blood transfusions",
+"By drinking more water",
+"With over-the-counter medications"
+],
+"c": 1,
+"lvl": "all"
+},
+{
+"id": "w14",
+"q": "What is dactylitis, and how can it be managed?",
+"a": [
+"Swelling in the hands and feet; treated with pain relief and warm compresses",
+"A fever treated with antibiotics",
+"Stiff joints treated with exercise",
+"Muscle weakness treated with stretching"
+],
+"c": 0,
+"lvl": "all"
+},
+{
+"id": "w15",
+"q": "How is splenic sequestration treated?",
+"a": [
+"With pain relievers",
+"With hydration alone",
+"With exercise",
+"With blood transfusions or surgery"
+],
+"c": 3,
+"lvl": "all"
+},
+{
+"id": "w16",
+"q": "What should a sickle cell patient do if they feel a pain crisis starting?",
+"a": [
+"Drink water, rest, and take prescribed pain medicine",
+"Ignore the pain and keep moving",
+"Take antibiotics",
+"Exercise to reduce the pain"
+],
+"c": 0,
+"lvl": "kid"
+},
+{
+"id": "w17",
+"q": "Why are regular eye exams important for sickle cell patients?",
+"a": [
+"To improve vision",
+"To increase blood flow",
+"To reduce pain",
+"To check for blood vessel damage in the eyes"
+],
+"c": 3,
+"lvl": "all"
+},
+{
+"id": "w18",
+"q": "How is chronic pain managed in sickle cell disease?",
+"a": [
+"Through counseling and regular pain medications",
+"By avoiding doctor visits",
+"By eating more sugar",
+"By skipping exercise"
+],
+"c": 0,
+"lvl": "all"
+},
+{
+"id": "w19",
+"q": "Why might a person with sickle cell disease carry a medical ID?",
+"a": [
+"To show proof of age",
+"To inform healthcare providers during emergencies",
+"To avoid taking medication",
+"To track hydration levels"
+],
+"c": 1,
+"lvl": "kid"
+},
+{
+"id": "w20",
+"q": "What is the benefit of using a heating pad during a pain crisis?",
+"a": [
+"It helps reduce fever",
+"It cures infections",
+"It relaxes muscles and eases pain",
+"It increases blood sugar levels"
+],
+"c": 2,
+"lvl": "kid"
+},
+{
+"id": "w21",
+"q": "Why is sleep important for managing sickle cell disease?",
+"a": [
+"It reduces the need for medication",
+"It helps the body repair and cope with pain",
+"It increases sugar levels",
+"It lowers hydration needs"
+],
+"c": 1,
+"lvl": "kid"
+},
+{
+"id": "w22",
+"q": "How does journaling help sickle cell patients?",
+"a": [
+"By identifying pain triggers",
+"By curing the disease",
+"By reducing blood flow problems",
+"By increasing red blood cell count"
+],
+"c": 0,
+"lvl": "all"
+},
+{
+"id": "w23",
+"q": "What should sickle cell patients do before traveling?",
+"a": [
+"Drink lots of caffeine",
+"Check altitude, climate, and medications",
+"Avoid drinking water",
+"Stop taking hydroxyurea"
+],
+"c": 1,
+"lvl": "all"
+},
+{
+"id": "w24",
+"q": "Why are patient support groups important for people with sickle cell disease?",
+"a": [
+"To receive emotional support and resources",
+"To replace medical advice",
+"To cure the disease",
+"To prevent pain crises"
+],
+"c": 0,
+"lvl": "kid"
+},
+{
+"id": "w25",
+"q": "What is the role of iron chelation therapy for sickle cell patients?",
+"a": [
+"It increases oxygen levels in the blood",
+"It prevents dehydration",
+"It reduces the need for medications",
+"It removes excess iron from frequent blood transfusions"
+],
+"c": 3,
+"lvl": "all"
+},
+{
+"id": "w26",
+"q": "How is stroke risk managed in sickle cell disease?",
+"a": [
+"Regular blood transfusions and check-ups",
+"Taking pain relievers",
+"Avoiding physical activity",
+"Skipping doctor visits"
+],
+"c": 0,
+"lvl": "all"
+},
+{
+"id": "w27",
+"q": "What is priapism, and how is it managed in sickle cell patients?",
+"a": [
+"A prolonged erection managed with medications or surgery",
+"A headache treated with hydration",
+"A type of chest pain treated with oxygen",
+"A fever managed with antibiotics"
+],
+"c": 0,
+"lvl": "teen"
+},
+{
+"id": "w28",
+"q": "Why do sickle cell patients sometimes need antibiotics?",
+"a": [
+"To reduce blood sugar levels",
+"To cure pain crises",
+"To prevent and treat infections",
+"To increase hydration"
+],
+"c": 2,
+"lvl": "kid"
+},
+{
+"id": "w29",
+"q": "What is leg ulcer, and how can it be treated?",
+"a": [
+"A sore on the leg treated with wound care and antibiotics",
+"A type of rash treated with hydration",
+"A fever treated with over-the-counter medication",
+"A muscle pain treated with stretching"
+],
+"c": 0,
+"lvl": "all"
+},
+{
+"id": "w30",
+"q": "Why might someone with sickle cell disease need kidney monitoring?",
+"a": [
+"To prevent blood clots",
+"To improve hydration levels",
+"To check for infections",
+"Sickle cell disease can damage the kidneys over time"
+],
+"c": 3,
+"lvl": "all"
+},
+{
+"id": "w31",
+"q": "Why is staying hydrated important during a pain crisis?",
+"a": [
+"To help reduce clumping of red blood cells",
+"To increase white blood cells",
+"To lower sugar levels",
+"To prevent fever"
+],
+"c": 0,
+"lvl": "all"
+},
+{
+"id": "w32",
+"q": "What are some common symptoms of a sickle cell crisis?",
+"a": [
+"Stomach ache and nausea",
+"Fever and coughing",
+"Sudden pain in the chest, back, arms, or legs",
+"Blurred vision and headache"
+],
+"c": 2,
+"lvl": "all"
+},
+{
+"id": "w33",
+"q": "How is chronic pain in sickle cell disease managed?",
+"a": [
+"With regular pain medications, counseling, and physical therapy",
+"With antibiotics and wound care",
+"By avoiding all physical activity",
+"By using only over-the-counter medications"
+],
+"c": 0,
+"lvl": "all"
+},
+{
+"id": "w34",
+"q": "Why should sickle cell patients avoid extreme temperatures?",
+"a": [
+"To prevent muscle fatigue",
+"To avoid catching a cold",
+"To increase red blood cell production",
+"To prevent dehydration and pain crises"
+],
+"c": 3,
+"lvl": "kid"
+},
+{
+"id": "w35",
+"q": "How can breathing exercises help during a pain crisis?",
+"a": [
+"By calming the body and reducing pain levels",
+"By increasing blood sugar",
+"By lowering blood pressure",
+"By reducing fever"
+],
+"c": 0,
+"lvl": "all"
+},
+{
+"id": "w36",
+"q": "Why are support groups helpful for people with sickle cell disease?",
+"a": [
+"They replace medical treatment",
+"They provide emotional support and shared experiences",
+"They cure the disease",
+"They help reduce dehydration"
+],
+"c": 1,
+"lvl": "all"
+},
+{
+"id": "w37",
+"q": "What is the benefit of setting goals for managing sickle cell disease?",
+"a": [
+"It helps improve treatment adherence and lifestyle choices",
+"It eliminates the need for doctor visits",
+"It reduces the need for medications",
+"It cures the disease"
+],
+"c": 0,
+"lvl": "all"
+},
+{
+"id": "w38",
+"q": "What is the purpose of transcranial Doppler (TCD) scans for children with sickle cell disease?",
+"a": [
+"To measure hydration levels",
+"To check lung function",
+"To measure blood flow in the brain and assess stroke risk",
+"To monitor oxygen levels"
+],
+"c": 2,
+"lvl": "all"
+},
+{
+"id": "w39",
+"q": "What should sickle cell patients do before taking long trips?",
+"a": [
+"Stop taking pain relievers",
+"Bring all medications and check with their doctor",
+"Avoid eating snacks",
+"Increase physical activity"
+],
+"c": 1,
+"lvl": "all"
+},
+{
+"id": "w40",
+"q": "How does hydroxyurea help sickle cell patients?",
+"a": [
+"By increasing fetal hemoglobin and reducing sickling",
+"By curing the disease",
+"By preventing infections",
+"By replacing pain relievers"
+],
+"c": 0,
+"lvl": "all"
+},
+{
+"id": "w41",
+"q": "Why is it important for sickle cell patients to have a pain management plan?",
+"a": [
+"To increase oxygen levels in the blood",
+"To avoid taking medications",
+"To cure the disease",
+"To handle pain crises effectively without panic"
+],
+"c": 3,
+"lvl": "all"
+},
+{
+"id": "w42",
+"q": "What kind of exercise is best for sickle cell patients?",
+"a": [
+"Light to moderate exercise with plenty of hydration",
+"Intense exercise to increase energy levels",
+"No exercise at all",
+"Only weightlifting"
+],
+"c": 0,
+"lvl": "kid"
+},
+{
+"id": "w43",
+"q": "How can journaling benefit sickle cell patients?",
+"a": [
+"By tracking symptoms and identifying pain triggers",
+"By curing the disease",
+"By preventing dehydration",
+"By reducing oxygen needs"
+],
+"c": 0,
+"lvl": "all"
+},
+{
+"id": "w44",
+"q": "Why should sickle cell patients avoid high altitudes?",
+"a": [
+"It causes vision problems",
+"It increases the risk of dehydration",
+"Low oxygen levels can trigger sickling of red blood cells",
+"It increases blood pressure"
+],
+"c": 2,
+"lvl": "all"
+},
+{
+"id": "w45",
+"q": "Why is infection prevention crucial for people with sickle cell disease?",
+"a": [
+"Infections can trigger pain crises and other complications",
+"Infections increase hydration needs",
+"Infections lower red blood cell counts",
+"Infections cure the disease"
+],
+"c": 0,
+"lvl": "all"
+},
+{
+"id": "w46",
+"q": "Why should sickle cell patients receive flu and pneumonia vaccines?",
+"a": [
+"To lower blood pressure",
+"To prevent life-threatening infections",
+"To reduce pain crises",
+"To increase red blood cells"
+],
+"c": 1,
+"lvl": "kid"
+},
+{
+"id": "w47",
+"q": "What is the purpose of warm compresses during a pain crisis?",
+"a": [
+"To relax muscles and improve blood flow",
+"To lower blood sugar",
+"To cure infections",
+"To increase hydration levels"
+],
+"c": 0,
+"lvl": "kid"
+},
+{
+"id": "w49",
+"q": "Why should sickle cell patients prioritize rest during a pain crisis?",
+"a": [
+"Rest replaces medications",
+"Rest increases red blood cell production",
+"Rest lowers hydration needs",
+"Rest conserves energy and helps the body heal"
+],
+"c": 3,
+"lvl": "kid"
+},
+{
+"id": "w50",
+"q": "What is sickle cell disease?",
+"a": [
+"A type of infection",
+"A condition where red blood cells are shaped like crescents",
+"A disease of the heart",
+"A problem with white blood cells"
+],
+"c": 1,
+"lvl": "kid"
+},
+{
+"id": "w51",
+"q": "What shape are healthy red blood cells?",
+"a": [
+"Round and donut-shaped",
+"Square",
+"Star-shaped",
+"Oval"
+],
+"c": 0,
+"lvl": "kid"
+},
+{
+"id": "w52",
+"q": "Why are red blood cells important?",
+"a": [
+"They carry oxygen around the body",
+"They fight infections",
+"They make your heart beat",
+"They give you energy"
+],
+"c": 0,
+"lvl": "kid"
+},
+{
+"id": "w53",
+"q": "What happens when red blood cells sickle?",
+"a": [
+"They carry more oxygen",
+"They become stiff and clog blood vessels",
+"They multiply faster",
+"They disappear"
+],
+"c": 1,
+"lvl": "kid"
+},
+{
+"id": "w54",
+"q": "How does someone get sickle cell disease?",
+"a": [
+"By eating unhealthy food",
+"Through a virus",
+"It is inherited from parents",
+"By not drinking enough water"
+],
+"c": 2,
+"lvl": "kid"
+},
+{
+"id": "w55",
+"q": "What is sickle cell trait?",
+"a": [
+"Having one sickle cell gene and one normal gene",
+"A type of blood test",
+"A type of infection",
+"A treatment for sickle cell disease"
+],
+"c": 0,
+"lvl": "all"
+},
+{
+"id": "w56",
+"q": "Who is most likely to have sickle cell disease?",
+"a": [
+"People of African, Mediterranean, Middle Eastern, or South Asian descent",
+"People who eat lots of salt",
+"People who drink sugary drinks",
+"People who live in cold climates"
+],
+"c": 0,
+"lvl": "all"
+},
+{
+"id": "w57",
+"q": "Why does sickle cell disease cause pain?",
+"a": [
+"It causes headaches",
+"Red blood cells carry too much oxygen",
+"The body doesn't make enough blood",
+"Red blood cells clump together and block blood flow"
+],
+"c": 3,
+"lvl": "kid"
+},
+{
+"id": "w58",
+"q": "What is a pain crisis?",
+"a": [
+"A headache caused by dehydration",
+"Severe pain due to sickled cells blocking blood vessels",
+"A fever caused by infections",
+"A sharp pain from a muscle injury"
+],
+"c": 1,
+"lvl": "kid"
+},
+{
+"id": "w59",
+"q": "Can sickle cell disease be cured?",
+"a": [
+"No, it cannot be cured",
+"Yes, with a bone marrow transplant in some cases",
+"Yes, by drinking lots of water",
+"No, it only gets worse over time"
+],
+"c": 1,
+"lvl": "all"
+},
+{
+"id": "w60",
+"q": "What is a common symptom of sickle cell disease?",
+"a": [
+"High energy levels",
+"Fatigue and pain",
+"Weight gain",
+"Faster breathing"
+],
+"c": 1,
+"lvl": "kid"
+},
+{
+"id": "w61",
+"q": "Why are sickle cell patients more likely to get infections?",
+"a": [
+"Their white blood cells can't fight infections well",
+"Their spleen may not work properly",
+"They take too many medications",
+"They don't exercise enough"
+],
+"c": 1,
+"lvl": "all"
+},
+{
+"id": "w62",
+"q": "What is jaundice, a possible symptom of sickle cell disease?",
+"a": [
+"Yellowing of the skin and eyes",
+"Pain in the hands and feet",
+"Difficulty breathing",
+"A type of fever"
+],
+"c": 0,
+"lvl": "all"
+},
+{
+"id": "w63",
+"q": "What is dactylitis?",
+"a": [
+"Swelling in the hands and feet",
+"A type of infection",
+"A headache",
+"Loss of appetite"
+],
+"c": 0,
+"lvl": "kid"
+},
+{
+"id": "w64",
+"q": "What is acute chest syndrome?",
+"a": [
+"A lung problem causing chest pain and breathing difficulty",
+"A common cold",
+"A heart condition",
+"A muscle cramp"
+],
+"c": 0,
+"lvl": "all"
+},
+{
+"id": "w65",
+"q": "What is splenic sequestration?",
+"a": [
+"A condition where sickled cells get trapped in the spleen",
+"A fever caused by infection",
+"A lack of oxygen in the lungs",
+"A broken bone"
+],
+"c": 0,
+"lvl": "all"
+},
+{
+"id": "w66",
+"q": "How does sickle cell disease affect energy levels?",
+"a": [
+"It increases energy",
+"It decreases energy due to anemia",
+"It has no effect on energy",
+"It only affects energy during exercise"
+],
+"c": 1,
+"lvl": "kid"
+},
+{
+"id": "w67",
+"q": "Why do sickle cell patients experience joint pain?",
+"a": [
+"Sickled cells block blood flow to the joints",
+"They don't drink enough water",
+"Their bones are weak",
+"They don't exercise"
+],
+"c": 0,
+"lvl": "all"
+},
+{
+"id": "w68",
+"q": "Which organ is often damaged in sickle cell disease?",
+"a": [
+"Lungs",
+"Heart",
+"Spleen",
+"Kidneys",
+"Brain",
+"All of the above"
+],
+"c": 5,
+"lvl": "all"
+},
+{
+"id": "w69",
+"q": "What is a common long-term complication of sickle cell disease?",
+"a": [
+"Skin rashes",
+"Broken bones",
+"Organ damage",
+"Hair loss"
+],
+"c": 2,
+"lvl": "all"
+},
+{
+"id": "w70",
+"q": "What should sickle cell patients do to stay healthy?",
+"a": [
+"Avoid drinking water",
+"Eat healthy, stay hydrated, and avoid stress",
+"Avoid vaccines",
+"Stop all physical activity"
+],
+"c": 1,
+"lvl": "kid"
+},
+{
+"id": "w71",
+"q": "Why is drinking water important for sickle cell patients?",
+"a": [
+"It cures infections",
+"It increases energy",
+"It prevents clumping of red blood cells",
+"It lowers blood pressure"
+],
+"c": 2,
+"lvl": "kid"
+},
+{
+"id": "w72",
+"q": "Why should sickle cell patients avoid extreme heat or cold?",
+"a": [
+"It lowers blood sugar",
+"It causes dehydration",
+"It can trigger pain crises",
+"It increases oxygen levels"
+],
+"c": 2,
+"lvl": "kid"
+},
+{
+"id": "w73",
+"q": "What is hydroxyurea?",
+"a": [
+"A medicine that increases fetal hemoglobin to reduce sickling",
+"A type of vaccine",
+"A painkiller",
+"A type of infection"
+],
+"c": 0,
+"lvl": "all"
+},
+{
+"id": "w74",
+"q": "Why are vaccinations important for sickle cell patients?",
+"a": [
+"To cure pain crises",
+"To improve energy levels",
+"To lower blood pressure",
+"To prevent infections"
+],
+"c": 3,
+"lvl": "kid"
+},
+{
+"id": "w75",
+"q": "How can schools support children with sickle cell disease?",
+"a": [
+"By ignoring their condition",
+"By providing flexible schedules and allowing rest breaks",
+"By limiting activities",
+"By making them skip meals"
+],
+"c": 1,
+"lvl": "all"
+},
+{
+"id": "w76",
+"q": "How can friends support someone with sickle cell disease?",
+"a": [
+"By helping them stay calm and hydrated",
+"By ignoring their symptoms",
+"By avoiding them during pain crises",
+"By making them exercise"
+],
+"c": 0,
+"lvl": "kid"
+},
+{
+"id": "w77",
+"q": "Why is awareness about sickle cell disease important?",
+"a": [
+"To reduce stigma and improve care",
+"To raise money for other diseases",
+"To make the disease go away",
+"To stop people from exercising"
+],
+"c": 0,
+"lvl": "kid"
+},
+{
+"id": "w78",
+"q": "What can communities do to support sickle cell patients?",
+"a": [
+"Organize awareness campaigns",
+"Provide healthcare resources",
+"Educate others about the disease",
+"All of the above"
+],
+"c": 3,
+"lvl": "all"
+},
+{
+"id": "w80",
+"q": "What is the purpose of World Sickle Cell Day?",
+"a": [
+"To celebrate sickle cell patients",
+"To spread awareness and encourage support for research and care",
+"To raise money for sports teams",
+"To cure the disease overnight"
+],
+"c": 1,
+"lvl": "kid"
+},
+{
+"id": "w81",
+"q": "How is sickle cell disease diagnosed?",
+"a": [
+"By checking blood pressure",
+"With a blood test called hemoglobin electrophoresis",
+"By taking an X-ray",
+"By checking body temperature"
+],
+"c": 1,
+"lvl": "all"
+},
+{
+"id": "w82",
+"q": "What symptom is common in young children with sickle cell disease?",
+"a": [
+"Swelling in the hands and feet (dactylitis)",
+"Increased appetite",
+"High energy levels",
+"Sudden hair growth"
+],
+"c": 0,
+"lvl": "all"
+},
+{
+"id": "w83",
+"q": "What is the average lifespan of a sickled red blood cell?",
+"a": [
+"120 days",
+"60 days",
+"10-20 days",
+"200 days"
+],
+"c": 2,
+"lvl": "all"
+},
+{
+"id": "w84",
+"q": "What is the function of the spleen, which is often damaged in sickle cell patients?",
+"a": [
+"To produce red blood cells",
+"To filter blood and fight infections",
+"To store oxygen",
+"To help with digestion"
+],
+"c": 1,
+"lvl": "all"
+},
+{
+"id": "w85",
+"q": "What is a sign that someone with sickle cell disease may be experiencing a stroke?",
+"a": [
+"Slurred speech or weakness on one side of the body",
+"Increased hunger",
+"Sweating and chills",
+"Itchy skin"
+],
+"c": 0,
+"lvl": "all"
+},
+{
+"id": "w86",
+"q": "What complication occurs when sickled cells block blood flow to the brain?",
+"a": [
+"Stroke",
+"Heart attack",
+"Fever",
+"Muscle spasm"
+],
+"c": 0,
+"lvl": "all"
+},
+{
+"id": "w87",
+"q": "What is a common reason sickle cell patients need blood transfusions?",
+"a": [
+"To cure pain crises",
+"To replace sickled red blood cells with healthy ones",
+"To reduce white blood cells",
+"To increase platelets"
+],
+"c": 1,
+"lvl": "all"
+},
+{
+"id": "w88",
+"q": "What is iron overload, a possible complication of frequent blood transfusions?",
+"a": [
+"Too much iron in the blood, which can damage organs",
+"Increased red blood cells",
+"Decreased oxygen levels",
+"Too much sugar in the body"
+],
+"c": 0,
+"lvl": "all"
+},
+{
+"id": "w89",
+"q": "How can iron overload be managed?",
+"a": [
+"With special diets",
+"With chelation therapy to remove excess iron",
+"By avoiding pain medications",
+"By drinking more water"
+],
+"c": 1,
+"lvl": "all"
+},
+{
+"id": "w90",
+"q": "What is the goal of gene therapy for sickle cell disease?",
+"a": [
+"To improve energy levels",
+"To reduce pain",
+"To cure infections",
+"To replace the faulty gene with a healthy one"
+],
+"c": 3,
+"lvl": "all"
+},
+{
+"id": "w91",
+"q": "What is a key benefit of bone marrow transplants for sickle cell patients?",
+"a": [
+"They increase sickling of cells",
+"They eliminate the need for vaccines",
+"They can cure the disease in some cases",
+"They stop dehydration"
+],
+"c": 2,
+"lvl": "all"
+},
+{
+"id": "w92",
+"q": "Why might someone with sickle cell disease take folic acid supplements?",
+"a": [
+"To help the body make more red blood cells",
+"To reduce infections",
+"To increase white blood cells",
+"To improve energy"
+],
+"c": 0,
+"lvl": "kid"
+},
+{
+"id": "w93",
+"q": "How can employers support employees with sickle cell disease?",
+"a": [
+"By offering flexible schedules and understanding their medical needs",
+"By requiring more hours",
+"By avoiding accommodations",
+"By reducing their pay"
+],
+"c": 0,
+"lvl": "all"
+},
+{
+"id": "w94",
+"q": "What is the goal of sickle cell awareness campaigns?",
+"a": [
+"To stop medical research",
+"To limit healthcare options",
+"To make the disease worse",
+"To educate the public and reduce stigma"
+],
+"c": 3,
+"lvl": "all"
+},
+{
+"id": "w95",
+"q": "Is sickle cell disease contagious?",
+"a": [
+"Yes, through close contact",
+"No, it is inherited and not contagious",
+"Yes, through sharing food",
+"Yes, through breathing the same air"
+],
+"c": 1,
+"lvl": "kid"
+},
+{
+"id": "w96",
+"q": "Does sickle cell disease only affect African Americans?",
+"a": [
+"Yes, only African Americans are affected",
+"No, it affects people from various ethnic backgrounds",
+"Yes, but only in certain regions",
+"Yes, if both parents have the gene"
+],
+"c": 1,
+"lvl": "all"
+},
+{
+"id": "w97",
+"q": "Does every person with sickle cell trait have sickle cell disease?",
+"a": [
+"Yes, they will all develop the disease",
+"No.",
+"Yes, but only after age 20",
+"Yes, but only during exercise"
+],
+"c": 1,
+"lvl": "kid"
+},
+{
+"id": "w98",
+"q": "How is newborn screening helpful for sickle cell disease?",
+"a": [
+"It identifies the condition early for better care",
+"It prevents the disease",
+"It delays symptoms until adulthood",
+"It stops all pain crises"
+],
+"c": 0,
+"lvl": "kid"
+},
+{
+"id": "w99",
+"q": "What kind of genetic counseling is recommended for couples at risk of having a child with sickle cell disease?",
+"a": [
+"Counseling to avoid all children",
+"Counseling to avoid vaccinations",
+"Counseling to reduce exercise",
+"Counseling to understand inheritance and options"
+],
+"c": 3,
+"lvl": "all"
+},
+{
+"id": "w100",
+"q": "Why are regular check-ups important for sickle cell patients?",
+"a": [
+"To monitor their condition and prevent complications",
+"To avoid taking medications",
+"To stop hydration needs",
+"To increase sickling"
+],
+"c": 0,
+"lvl": "kid"
+},
+{
+"id": "w101",
+"q": "What should patients with sickle cell carry during travel?",
+"a": [
+"Their medications, water, and a medical identification card",
+"Only snacks",
+"Exercise equipment",
+"Their birth certificate"
+],
+"c": 0,
+"lvl": "kid"
+},
+{
+"id": "w102",
+"q": "Why is it important to avoid smoking with sickle cell disease?",
+"a": [
+"Smoking cures sickling",
+"Smoking increases hydration",
+"Smoking reduces oxygen in the blood",
+"Smoking stops pain"
+],
+"c": 2,
+"lvl": "all"
+},
+{
+"id": "w103",
+"q": "What gene is mutated in sickle cell disease?",
+"a": [
+"HBB",
+"HBA",
+"HBC",
+"ABO"
+],
+"c": 0,
+"lvl": "all"
+},
+{
+"id": "w104",
+"q": "What does the HBB gene encode?",
+"a": [
+"Alpha-globin",
+"Beta-globin",
+"Gamma-globin",
+"Delta-globin"
+],
+"c": 1,
+"lvl": "all"
+},
+{
+"id": "w105",
+"q": "What is the specific mutation in the HBB gene that causes sickle cell disease?",
+"a": [
+"A deletion mutation",
+"A substitution of valine for glutamic acid",
+"A substitution of leucine for serine",
+"An insertion mutation"
+],
+"c": 1,
+"lvl": "all"
+},
+{
+"id": "w106",
+"q": "What type of mutation causes sickle cell disease?",
+"a": [
+"Point mutation",
+"Deletion",
+"Duplication",
+"Frameshift"
+],
+"c": 0,
+"lvl": "all"
+},
+{
+"id": "w107",
+"q": "Why is the sickle cell mutation common in malaria-endemic regions?",
+"a": [
+"It provides resistance to malaria for carriers",
+"It increases immunity to infections",
+"It improves red blood cell function",
+"It reduces anemia"
+],
+"c": 0,
+"lvl": "all"
+},
+{
+"id": "w108",
+"q": "What is the term for people with only one sickle cell gene?",
+"a": [
+"Homozygous for sickle cell",
+"Sickle cell carriers",
+"Sickle cell patients",
+"Sickle cell resistant"
+],
+"c": 1,
+"lvl": "all"
+},
+{
+"id": "w109",
+"q": "What does fetal hemoglobin (HbF) do in relation to sickle cell disease?",
+"a": [
+"Increases sickling of red blood cells",
+"Reduces sickling of red blood cells",
+"Prevents anemia",
+"Cures the disease"
+],
+"c": 1,
+"lvl": "all"
+},
+{
+"id": "w110",
+"q": "What research area focuses on editing the HBB gene to correct the mutation?",
+"a": [
+"Chemotherapy",
+"Immunotherapy",
+"Gene therapy",
+"Antibiotic therapy"
+],
+"c": 2,
+"lvl": "all"
+},
+{
+"id": "w111",
+"q": "What technique is being studied to directly repair the sickle cell mutation?",
+"a": [
+"Radiation",
+"X-ray therapy",
+"CRISPR/Cas9",
+"Magnetic resonance imaging (MRI)"
+],
+"c": 2,
+"lvl": "all"
+},
+{
+"id": "w112",
+"q": "Which protein polymerizes (becomes chained together) in red blood cells during sickling?",
+"a": [
+"Hemoglobin S",
+"Hemoglobin A",
+"Hemoglobin F",
+"Hemoglobin C"
+],
+"c": 0,
+"lvl": "all"
+},
+{
+"id": "w114",
+"q": "What is a major risk of frequent blood transfusions?",
+"a": [
+"Low platelet count",
+"Dehydration",
+"High oxygen levels",
+"Iron overload"
+],
+"c": 3,
+"lvl": "all"
+},
+{
+"id": "w115",
+"q": "What type of transplant can potentially cure sickle cell disease?",
+"a": [
+"Bone marrow transplant",
+"Kidney transplant",
+"Lung transplant",
+"Heart transplant"
+],
+"c": 0,
+"lvl": "all"
+},
+{
+"id": "w116",
+"q": "Why are scientists exploring gene therapy for sickle cell disease?",
+"a": [
+"To improve hydration",
+"To increase white blood cells",
+"To stop all pain crises",
+"To replace or repair the defective HBB gene"
+],
+"c": 3,
+"lvl": "all"
+},
+{
+"id": "w117",
+"q": "What new class of drugs is being developed to reduce sickling?",
+"a": [
+"Hemoglobin polymerization inhibitors",
+"Antiviral medications",
+"Chemotherapy drugs",
+"Antibacterial agents"
+],
+"c": 0,
+"lvl": "all"
+},
+{
+"id": "w119",
+"q": "How does L-glutamine (Endari) help in sickle cell disease?",
+"a": [
+"Reduces oxidative stress in red blood cells",
+"Increases iron levels",
+"Decreases white blood cells",
+"Improves hydration"
+],
+"c": 0,
+"lvl": "all"
+},
+{
+"id": "w120",
+"q": "What is the purpose of clinical trials in sickle cell research?",
+"a": [
+"To test new treatments and therapies",
+"To diagnose the disease",
+"To reduce exercise",
+"To prevent hydration"
+],
+"c": 0,
+"lvl": "all"
+},
+{
+"id": "w121",
+"q": "What phase of a clinical trial tests the safety of a new treatment?",
+"a": [
+"Phase 1",
+"Phase 2",
+"Phase 3",
+"Phase 4"
+],
+"c": 0,
+"lvl": "all"
+},
+{
+"id": "w122",
+"q": "What phase of a clinical trial determines the effectiveness of a treatment?",
+"a": [
+"Phase 1",
+"Phase 2",
+"Phase 3",
+"Phase 4"
+],
+"c": 1,
+"lvl": "all"
+},
+{
+"id": "w123",
+"q": "Why is patient diversity important in clinical trials for sickle cell disease?",
+"a": [
+"To ensure treatments work across different populations",
+"To limit access to healthcare",
+"To reduce side effects",
+"To cure all diseases"
+],
+"c": 0,
+"lvl": "all"
+},
+{
+"id": "w124",
+"q": "What role do patient registries play in sickle cell research?",
+"a": [
+"Stop the need for genetic counseling",
+"Reduce the need for treatments",
+"Replace clinical trials",
+"Collect data on patients for better research outcomes"
+],
+"c": 3,
+"lvl": "all"
+},
+{
+"id": "w125",
+"q": "Why is research funding essential for sickle cell disease?",
+"a": [
+"To stop vaccinations",
+"To develop new treatments and improve patient care",
+"To reduce awareness campaigns",
+"To lower red blood cell counts"
+],
+"c": 1,
+"lvl": "all"
+},
+{
+"id": "w126",
+"q": "How does public awareness support sickle cell research?",
+"a": [
+"Increases funding and advocacy for patients",
+"Reduces the need for research",
+"Stops clinical trials",
+"Limits patient care"
+],
+"c": 0,
+"lvl": "all"
+},
+{
+"id": "w127",
+"q": "How can schools contribute to sickle cell awareness?",
+"a": [
+"By organizing educational events about the disease",
+"By ignoring the topic",
+"By limiting medical discussions",
+"By discouraging healthcare access"
+],
+"c": 0,
+"lvl": "all"
+},
+{
+"id": "w128",
+"q": "What is the main goal of gene therapy in sickle cell disease?",
+"a": [
+"To reduce hydration needs",
+"To increase red blood cell count",
+"To repair or replace the mutated HBB gene",
+"To prevent infections"
+],
+"c": 2,
+"lvl": "all"
+},
+{
+"id": "w129",
+"q": "What is CRISPR/Cas9?",
+"a": [
+"A blood test",
+"A type of medication",
+"A tool for editing genes",
+"A pain management therapy"
+],
+"c": 2,
+"lvl": "all"
+},
+{
+"id": "w130",
+"q": "How does CRISPR/Cas9 work in sickle cell research?",
+"a": [
+"By cutting out the faulty gene and replacing it with a healthy version",
+"By increasing the number of white blood cells",
+"By decreasing iron levels in the blood",
+"By preventing pain crises"
+],
+"c": 0,
+"lvl": "all"
+},
+{
+"id": "w131",
+"q": "What is a potential challenge of using gene therapy for sickle cell disease?",
+"a": [
+"High cost and low accessibility",
+"Reduced red blood cell production",
+"Decreased risk of infections",
+"Lower oxygen levels"
+],
+"c": 0,
+"lvl": "all"
+},
+{
+"id": "w132",
+"q": "What is the goal of lentiviral vector-based gene therapy?",
+"a": [
+"To introduce a healthy copy of the HBB gene into patient cells",
+"To increase platelet count",
+"To remove all sickled cells",
+"To reduce hydration needs"
+],
+"c": 0,
+"lvl": "all"
+},
+{
+"id": "w133",
+"q": "Which cells are typically targeted in gene therapy for sickle cell disease?",
+"a": [
+"Hematopoietic stem cells",
+"Muscle cells",
+"Skin cells",
+"Nerve cells"
+],
+"c": 0,
+"lvl": "all"
+},
+{
+"id": "w134",
+"q": "What is a key purpose of a Phase 3 clinical trial?",
+"a": [
+"To test the effectiveness of a new treatment on a larger scale",
+"To determine if the treatment is safe",
+"To find out how a drug interacts with food",
+"To develop new diagnostic tests"
+],
+"c": 0,
+"lvl": "all"
+},
+{
+"id": "w135",
+"q": "Why do clinical trials require informed consent?",
+"a": [
+"To increase placebo use",
+"To reduce trial costs",
+"To limit patient care",
+"To ensure participants understand the risks and benefits"
+],
+"c": 3,
+"lvl": "all"
+},
+{
+"id": "w136",
+"q": "Why is randomization used in clinical trials?",
+"a": [
+"To reduce bias and ensure fair comparison between groups",
+"To increase the number of participants",
+"To select only the healthiest participants",
+"To avoid using new treatments"
+],
+"c": 0,
+"lvl": "all"
+},
+{
+"id": "w138",
+"q": "What does \"double-blind\" mean in a clinical trial?",
+"a": [
+"Neither the participants nor the researchers know who receives the treatment or placebo",
+"Only the researchers know who gets the treatment",
+"The participants are blinded to side effects",
+"Two groups are tested at the same time"
+],
+"c": 0,
+"lvl": "all"
+},
+{
+"id": "w139",
+"q": "What is the role of institutional review boards (IRB) in clinical trials?",
+"a": [
+"To ensure ethical and safe conduct of the trials",
+"To limit the number of participants",
+"To increase funding",
+"To prevent drug testing"
+],
+"c": 0,
+"lvl": "all"
+},
+{
+"id": "w140",
+"q": "What does it mean if a trial is \"FDA-approved\"?",
+"a": [
+"The trial has been completed without success.",
+"The trial is in its early stages",
+"The treatment has not been tested",
+"The treatment has been deemed safe and effective by the FDA"
+],
+"c": 3,
+"lvl": "all"
+},
+{
+"id": "w142",
+"q": "What type of pain medication is often used for severe pain crises?",
+"a": [
+"Antibiotics",
+"Antiviral drugs",
+"Opioids like morphine",
+"Antihistamines"
+],
+"c": 2,
+"lvl": "teen"
+},
+{
+"id": "w143",
+"q": "What is splenic sequestration in sickle cell disease?",
+"a": [
+"Sickled cells get trapped in the spleen, causing it to enlarge",
+"Dehydration due to lack of water intake",
+"Increased oxygen levels in the blood",
+"A fever caused by infections"
+],
+"c": 0,
+"lvl": "all"
+},
+{
+"id": "w144",
+"q": "What are symptoms of splenic sequestration?",
+"a": [
+"Rapid heartbeat, pale skin, and abdominal pain",
+"High fever and chills",
+"Muscle cramps and nausea",
+"Fatigue and headaches"
+],
+"c": 0,
+"lvl": "all"
+},
+{
+"id": "w145",
+"q": "How is splenic sequestration treated?",
+"a": [
+"By exercising",
+"With antibiotics only",
+"By drinking more water",
+"With blood transfusions or surgery in severe cases"
+],
+"c": 3,
+"lvl": "all"
+},
+{
+"id": "w146",
+"q": "Why is splenic sequestration considered a medical emergency?",
+"a": [
+"It increases iron levels",
+"It causes dehydration",
+"It can lead to severe anemia and shock",
+"It reduces pain"
+],
+"c": 2,
+"lvl": "all"
+},
+{
+"id": "w147",
+"q": "What long-term complication can result from repeated splenic sequestration crises?",
+"a": [
+"Loss of spleen function",
+"Chronic pain",
+"Increased white blood cells",
+"Improved oxygen levels"
+],
+"c": 0,
+"lvl": "all"
+},
+{
+"id": "w148",
+"q": "What treatment is used for priapism in male sickle cell patients?",
+"a": [
+"Pain medicine only",
+"Medications or surgical intervention to reduce blood flow",
+"Antibiotics",
+"Hydration alone"
+],
+"c": 1,
+"lvl": "teen"
+},
+{
+"id": "w149",
+"q": "What is the main goal of managing leg ulcers in sickle cell disease?",
+"a": [
+"Promoting healing and preventing infection",
+"Reducing red blood cell count",
+"Increasing hydration",
+"Improving joint movement"
+],
+"c": 0,
+"lvl": "all"
+},
+{
+"id": "w150",
+"q": "What is the main goal of managing sickle cell disease?",
+"a": [
+"Cure the disease",
+"Prevent complications and manage pain",
+"Increase white blood cell count",
+"Stop all medication"
+],
+"c": 1,
+"lvl": "all"
+},
+{
+"id": "acs01",
+"q": "What is acute chest syndrome (ACS)?",
+"a": [
+"A sore muscle from exercise",
+"A bad cold that goes away by itself",
+"A serious lung problem in sickle cell",
+"A kind of heartburn"
+],
+"c": 2,
+"lvl": "all",
+"topic": "acs"
+},
+{
+"id": "acs02",
+"q": "Which of these can be a sign of acute chest syndrome?",
+"a": [
+"A runny nose only",
+"Itchy eyes",
+"Feeling hungry",
+"Chest pain, fever, cough or trouble breathing"
+],
+"c": 3,
+"lvl": "all",
+"topic": "acs"
+},
+{
+"id": "acs03",
+"q": "You have sickle cell and get chest pain with a fever. What should you do?",
+"a": [
+"Sleep it off at home",
+"Get care right away at the ER or call your care team",
+"Drink soda and rest",
+"Wait a few days"
+],
+"c": 1,
+"lvl": "all",
+"topic": "acs"
+},
+{
+"id": "acs04",
+"q": "What does an incentive spirometer help you do?",
+"a": [
+"Count your heartbeats",
+"Measure your height",
+"Take deep breaths to keep your lungs open",
+"Check your temperature"
+],
+"c": 2,
+"lvl": "all",
+"topic": "acs"
+},
+{
+"id": "acs05",
+"q": "In the hospital, how often should you use your incentive spirometer?",
+"a": [
+"Only when the doctor is watching",
+"About every hour while you're awake",
+"Once a week",
+"Never, it's just a toy"
+],
+"c": 1,
+"lvl": "all",
+"topic": "acs"
+},
+{
+"id": "acs06",
+"q": "Why do warriors with acute chest syndrome get antibiotics?",
+"a": [
+"To help them sleep",
+"Antibiotics fix sickle cells",
+"Germs like bacteria can cause or worsen ACS",
+"To make their blood sweeter"
+],
+"c": 2,
+"lvl": "all",
+"topic": "acs"
+},
+{
+"id": "acs07",
+"q": "Which antibiotic is often added to fight 'atypical' germs like mycoplasma in ACS?",
+"a": [
+"Vitamin C",
+"Folic acid",
+"Ibuprofen",
+"Azithromycin"
+],
+"c": 3,
+"lvl": "all",
+"topic": "acs"
+},
+{
+"id": "acs08",
+"q": "Amoxicillin-clavulanate (Augmentin) is what kind of medicine?",
+"a": [
+"A vaccine",
+"An antibiotic",
+"A vitamin",
+"A pain reliever"
+],
+"c": 1,
+"lvl": "all",
+"topic": "acs"
+},
+{
+"id": "acs09",
+"q": "Why should you finish every dose of your antibiotic?",
+"a": [
+"So you don't waste the bottle",
+"It doesn't matter",
+"To fully clear the infection, even if you feel better",
+"To make the medicine taste better"
+],
+"c": 2,
+"lvl": "all",
+"topic": "acs"
+},
+{
+"id": "acs10",
+"q": "Why is good pain control important during acute chest syndrome?",
+"a": [
+"So you can skip your medicines",
+"So you sleep all day",
+"It isn't important",
+"So you can take deep breaths and use your spirometer"
+],
+"c": 3,
+"lvl": "all",
+"topic": "acs"
+},
+{
+"id": "acs11",
+"q": "How can a blood transfusion help in acute chest syndrome?",
+"a": [
+"It is a kind of antibiotic",
+"It adds healthy red blood cells that carry oxygen",
+"It removes all your blood",
+"It cures sickle cell forever"
+],
+"c": 1,
+"lvl": "all",
+"topic": "acs"
+},
+{
+"id": "acs12",
+"q": "What test helps doctors see acute chest syndrome in the lungs?",
+"a": [
+"A knee X-ray",
+"An eye exam",
+"A hearing test",
+"A chest X-ray"
+],
+"c": 3,
+"lvl": "all",
+"topic": "acs"
+},
+{
+"id": "acs13",
+"q": "What does a pulse oximeter on your finger measure?",
+"a": [
+"How tall you are",
+"Your temperature",
+"How much oxygen is in your blood",
+"Your blood sugar"
+],
+"c": 2,
+"lvl": "all",
+"topic": "acs"
+},
+{
+"id": "acs14",
+"q": "Which daily medicine can help prevent acute chest syndrome from coming back?",
+"a": [
+"Cough drops",
+"Antacids",
+"Hydroxyurea",
+"Allergy pills"
+],
+"c": 2,
+"lvl": "all",
+"topic": "acs"
+},
+{
+"id": "acs15",
+"q": "Why do care teams encourage warriors with ACS to sit up and walk when they can?",
+"a": [
+"It makes the IV go faster",
+"It isn't helpful",
+"It's only for exercise points",
+"Moving helps the lungs open up"
+],
+"c": 3,
+"lvl": "all",
+"topic": "acs"
+},
+{
+"id": "acs16",
+"q": "When can acute chest syndrome start?",
+"a": [
+"It can start during or after a pain crisis, even in the hospital",
+"Only on someone's birthday",
+"Only in summer",
+"Only in adults"
+],
+"c": 0,
+"lvl": "all",
+"topic": "acs"
+},
+{
+"id": "acs17",
+"q": "Why should warriors stay away from smoke and vaping?",
+"a": [
+"They irritate the lungs and raise the risk of lung problems",
+"They are a kind of medicine",
+"They help you breathe",
+"They prevent fevers"
+],
+"c": 0,
+"lvl": "all",
+"topic": "acs"
+},
+{
+"id": "acs18",
+"q": "Which of these is an IV antibiotic often used in the hospital for acute chest syndrome?",
+"a": [
+"Ceftriaxone",
+"Ibuprofen",
+"Folic acid",
+"Hydroxyurea"
+],
+"c": 0,
+"lvl": "all",
+"topic": "acs"
+},
+{
+"id": "acs19",
+"q": "Ampicillin-sulbactam is given through an IV to do what?",
+"a": [
+"Lower a fever only",
+"Fight bacteria that can cause infections like acute chest",
+"Help you sleep",
+"Make more red blood cells"
+],
+"c": 1,
+"lvl": "all",
+"topic": "acs"
+},
+{
+"id": "stk01",
+"q": "What is a stroke?",
+"a": [
+"A very bad cold",
+"When your heart beats too fast",
+"When blood flow to part of the brain is blocked",
+"A muscle cramp in your leg"
+],
+"c": 2,
+"lvl": "all",
+"topic": "stroke"
+},
+{
+"id": "stk02",
+"q": "What is a silent stroke?",
+"a": [
+"A stroke with no obvious signs that can be found on a brain MRI",
+"A stroke that can't hurt the brain",
+"A stroke that only happens at night",
+"A loud headache"
+],
+"c": 0,
+"lvl": "all",
+"topic": "stroke"
+},
+{
+"id": "stk03",
+"q": "Which test can find a silent stroke?",
+"a": [
+"A hearing test",
+"A blood sugar test",
+"A brain MRI",
+"A chest X-ray"
+],
+"c": 2,
+"lvl": "all",
+"topic": "stroke"
+},
+{
+"id": "stk04",
+"q": "What does a TCD ultrasound measure?",
+"a": [
+"How well you can see",
+"How fast blood flows in the brain's arteries",
+"How strong your bones are",
+"Your blood type"
+],
+"c": 1,
+"lvl": "all",
+"topic": "stroke"
+},
+{
+"id": "stk05",
+"q": "Kids with sickle cell anemia should get a TCD screening how often?",
+"a": [
+"Every year, from about age 2 to 16",
+"Every 10 years",
+"Only if they have a headache",
+"Only once, at birth"
+],
+"c": 0,
+"lvl": "all",
+"topic": "stroke"
+},
+{
+"id": "stk06",
+"q": "Does a TCD screening hurt?",
+"a": [
+"Yes, it needs a big needle",
+"Yes, it uses an electric shock",
+"It requires surgery",
+"No, it's a gentle ultrasound with warm gel on the head"
+],
+"c": 3,
+"lvl": "all",
+"topic": "stroke"
+},
+{
+"id": "stk07",
+"q": "What can a high (abnormal) TCD result mean?",
+"a": [
+"That you need glasses",
+"Higher stroke risk, so the care team may start regular transfusions",
+"Nothing at all",
+"That you have a cold"
+],
+"c": 1,
+"lvl": "all",
+"topic": "stroke"
+},
+{
+"id": "stk08",
+"q": "How do regular (chronic) blood transfusions help prevent stroke?",
+"a": [
+"They stop all headaches",
+"They lower the amount of sickle cells in the blood",
+"They make the brain bigger",
+"They are a kind of vaccine"
+],
+"c": 1,
+"lvl": "all",
+"topic": "stroke"
+},
+{
+"id": "stk09",
+"q": "Chronic transfusions for stroke prevention are usually given about how often?",
+"a": [
+"Every day",
+"Only during a fever",
+"Every 3 to 4 weeks",
+"Once a year"
+],
+"c": 2,
+"lvl": "all",
+"topic": "stroke"
+},
+{
+"id": "stk10",
+"q": "Which of these is a stroke warning sign?",
+"a": [
+"Sneezing",
+"One side of the face drooping",
+"Feeling hungry",
+"A runny nose"
+],
+"c": 1,
+"lvl": "all",
+"topic": "stroke"
+},
+{
+"id": "stk11",
+"q": "You see stroke warning signs in someone with sickle cell. What should you do?",
+"a": [
+"Call 911 right away",
+"Wait to see if it goes away",
+"Tell them to take a nap",
+"Give them a snack"
+],
+"c": 0,
+"lvl": "all",
+"topic": "stroke"
+},
+{
+"id": "stk12",
+"q": "What does a brain MRA show?",
+"a": [
+"The blood vessels in the brain",
+"The bones in your arm",
+"Your lungs",
+"Your heartbeat"
+],
+"c": 0,
+"lvl": "all",
+"topic": "stroke"
+},
+{
+"id": "stk13",
+"q": "How can a silent stroke affect a child?",
+"a": [
+"It has no effect ever",
+"It only affects their hair",
+"It makes them taller",
+"It can make memory, attention and learning harder"
+],
+"c": 3,
+"lvl": "all",
+"topic": "stroke"
+},
+{
+"id": "stk14",
+"q": "What is a neurocognitive (thinking and memory) test for?",
+"a": [
+"Finding learning challenges so kids can get school support",
+"Checking eyesight only",
+"Measuring blood pressure",
+"Testing how fast you run"
+],
+"c": 0,
+"lvl": "all",
+"topic": "stroke"
+},
+{
+"id": "stk15",
+"q": "What do the letters in BE FAST help you remember?",
+"a": [
+"Ways to make friends",
+"How to cook rice",
+"The warning signs of a stroke",
+"The rules of a game"
+],
+"c": 2,
+"lvl": "all",
+"topic": "stroke"
+},
+{
+"id": "stk16",
+"q": "Why is it important to keep every transfusion appointment?",
+"a": [
+"It isn't important",
+"It keeps sickle cells low to help protect the brain",
+"So you can skip school",
+"To get a free snack"
+],
+"c": 1,
+"lvl": "all",
+"topic": "stroke"
+},
+{
+"id": "stk17",
+"q": "Regular transfusions can build up extra iron in the body. What helps remove it?",
+"a": [
+"Drinking soda",
+"More iron pills",
+"Skipping meals",
+"Iron chelation medicine"
+],
+"c": 3,
+"lvl": "all",
+"topic": "stroke"
+}
+]
