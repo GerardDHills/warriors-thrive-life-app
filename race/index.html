@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<meta name="theme-color" content="#12040e">
+<title>Bloodstream Rush · Warriors Thrive</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lilita+One&family=Atkinson+Hyperlegible:wght@400;700&display=swap">
+<link rel="stylesheet" href="race.css?v=1">
+</head>
+<body>
+<canvas id="cv"></canvas>
+
+<!-- heads-up display while racing -->
+<div id="hud" class="hidden">
+  <div class="hud-top">
+    <div id="mercy" class="mercy">
+      <img src="img/mercy_face.webp" alt="Mercy">
+      <div id="mercyTxt" class="mercy-txt hidden"></div>
+    </div>
+    <div class="hud-mid">
+      <div class="pos"><b id="pos">4</b><span id="posOf">/7</span></div>
+      <div id="prog" class="prog"></div>
+      <div id="zoneName" class="zone-name">Bone Marrow</div>
+    </div>
+    <div class="hud-right">
+      <div class="impact" title="Treatment impact"><span>💎</span><b id="impact">0</b></div>
+      <button id="pauseBtn" class="icon-btn" aria-label="Pause">❚❚</button>
+    </div>
+  </div>
+  <div id="toast" class="toast hidden"></div>
+  <div id="myth" class="myth hidden"></div>
+  <div class="controls">
+    <div class="steer">
+      <button id="left" class="pad" aria-label="Steer left">◀</button>
+      <button id="right" class="pad" aria-label="Steer right">▶</button>
+    </div>
+    <div class="act">
+      <div id="bag" class="bag"></div>
+      <button id="treat" class="treat" aria-label="Use crystal"><span id="treatIcon">💎</span><small id="treatLbl">Crystal</small></button>
+    </div>
+  </div>
+  <div id="count" class="count hidden"></div>
+  <div id="flash" class="flash"></div>
+</div>
+
+<!-- title -->
+<section id="title" class="screen">
+  <div class="title-art"><img src="img/mercy.webp" alt="" class="title-mercy"></div>
+  <div class="title-box">
+    <p class="kicker">Warriors Thrive</p>
+    <h1 class="logo">Bloodstream <span>Rush</span></h1>
+    <p class="lede">Race through the body as a blood cell or a medicine. Treat blockages, dodge The Society, help your fellow Warriors, and make it back to the bone marrow.</p>
+    <div class="row">
+      <button id="playBtn" class="btn big">Let's race</button>
+      <button id="introBtn" class="btn ghost">▶ Watch intro</button>
+    </div>
+    <div id="best" class="best"></div>
+  </div>
+  <button class="exit" data-exit aria-label="Exit">✕</button>
+</section>
+
+<!-- choose Warrior + vehicle -->
+<section id="pick" class="screen hidden">
+  <header class="pick-head">
+    <button class="back" data-go="title" aria-label="Back">‹</button>
+    <h2>Choose your Warrior and ride</h2>
+    <button id="toTrack" class="btn">Next ›</button>
+  </header>
+  <div class="pick-body">
+    <div id="warriors" class="warriors"></div>
+    <div class="preview">
+      <div class="preview-stage"><img id="pvDriver" alt=""><img id="pvKart" alt=""></div>
+      <h3 id="pvName"></h3>
+      <p id="pvFact" class="fact"></p>
+      <div id="pvStats" class="stats"></div>
+      <p id="pvPerk" class="perk"></p>
+    </div>
+    <div id="karts" class="karts"></div>
+  </div>
+</section>
+
+<!-- choose board -->
+<section id="track" class="screen hidden">
+  <header class="pick-head">
+    <button class="back" data-go="pick" aria-label="Back">‹</button>
+    <h2>Choose your race</h2>
+    <span></span>
+  </header>
+  <div id="boards" class="boards"></div>
+</section>
+
+<!-- intro film -->
+<section id="film" class="screen hidden">
+  <video id="introVid" playsinline preload="none"></video>
+  <button id="skipFilm" class="btn ghost skip">Skip ›</button>
+</section>
+
+<!-- Warrior Card (spleen) -->
+<section id="card" class="screen dim hidden">
+  <div class="panel" id="cardP"></div>
+</section>
+
+<!-- pause -->
+<section id="pause" class="screen dim hidden">
+  <div class="panel narrow">
+    <h2>Paused</h2>
+    <button id="resume" class="btn big">Resume</button>
+    <div class="toggles">
+      <label><input type="checkbox" id="optMusic"> Music</label>
+      <label><input type="checkbox" id="optSfx"> Sounds</label>
+      <label><input type="checkbox" id="optVoice"> Voices</label>
+    </div>
+    <button id="restart" class="btn ghost">Restart race</button>
+    <button class="btn ghost" data-exit>Exit to app</button>
+  </div>
+</section>
+
+<!-- results -->
+<section id="results" class="screen hidden">
+  <div class="res-wrap">
+    <h2 id="resHead">Race complete!</h2>
+    <div class="res-cols">
+      <div class="res-col"><h3>🏁 Finish line</h3><ol id="resPlace"></ol></div>
+      <div class="res-col"><h3>💎 Most impact</h3><ol id="resImpact"></ol></div>
+    </div>
+    <p id="resNote" class="fact"></p>
+    <div class="row">
+      <button id="again" class="btn big">Race again</button>
+      <button class="btn ghost" data-go="pick">Change ride</button>
+      <button class="btn ghost" data-exit>Exit</button>
+    </div>
+  </div>
+</section>
+
+<!-- turn the phone -->
+<div id="rotate" class="rotate"><div><span>📱↻</span><p>Turn your phone sideways to race</p></div></div>
+
+<audio id="music" src="music.mp3" loop preload="none"></audio>
+<script src="race.js?v=1"></script>
+</body>
+</html>
