@@ -72,16 +72,31 @@ const KARTS = [
   { id: "glutamine", name: "L-Glutamine", tag: "Medicine", spd: 3, acc: 4, hnd: 3, seat: [0.497, 0.147, 0.217],
     fact: "L-glutamine is a powder medicine that helps protect red cells from stress and can lower pain crises.",
     perk: "Recovers faster after a blockage." },
+  { id: "gene", name: "Gene-Edited Stem Cell", tag: "Gene therapy", spd: 4, acc: 4, hnd: 3, seat: [0.5, 0.2, 0.3],
+    fact: "Gene therapy changes a Warrior's own blood stem cells so their red cells make healthy hemoglobin. The FDA approved two for sickle cell in 2023, for ages 12 and up.",
+    perk: "Edited cells don't sickle: blockages barely slow you, and you start with an Oxygen crystal." },
 ];
 const KART = Object.fromEntries(KARTS.map((k) => [k.id, k]));
 
 const CRYSTALS = [
-  { id: "water", icon: "💧", name: "Hydration", verb: "Fluids washed the blockage away" },
-  { id: "pain", icon: "💊", name: "Pain Plan", verb: "Pain treatment eased the crisis" },
-  { id: "hu", icon: "🟣", name: "Hydroxyurea", verb: "Hydroxyurea kept the cells from sickling" },
-  { id: "warm", icon: "🧣", name: "Stay Warm", verb: "Warmth got the blood flowing" },
-  { id: "o2", icon: "🫧", name: "Oxygen", verb: "Oxygen helped the red cells unsickle" },
+  { id: "water", icon: "💧", name: "Hydration", verb: "Fluids washed the blockage away", fact: "Drinking plenty of water keeps blood thinner so sickled cells are less likely to jam." },
+  { id: "pain", icon: "💊", name: "Pain Plan", verb: "Pain treatment eased the crisis", fact: "A pain plan made with your care team tells you what to take and when to get help." },
+  { id: "hu", icon: "🟣", name: "Hydroxyurea", verb: "Hydroxyurea kept the cells from sickling", fact: "Taken every day, hydroxyurea raises fetal hemoglobin so red cells sickle less." },
+  { id: "warm", icon: "🧣", name: "Stay Warm", verb: "Warmth got the blood flowing", fact: "Cold makes blood vessels narrow. Staying warm helps blood keep moving." },
+  { id: "o2", icon: "🫧", name: "Oxygen", verb: "Oxygen helped the red cells unsickle", fact: "Red cells sickle more when oxygen is low. The lungs load oxygen onto red cells." },
 ];
+
+// The cells floating in each part of the body, with what each one does
+const CELLS = {
+  rbc: ["Red blood cell", "A soft, round disc that carries oxygen to the whole body."],
+  sickle: ["Sickled red cell", "Stiff and curved like a crescent, it can get stuck and block blood flow."],
+  neutrophil: ["Neutrophil", "A white blood cell with a lobed nucleus. First to rush in and fight germs."],
+  lymph: ["Lymphocyte", "A white blood cell (T-cell or B-cell) that learns and remembers germs."],
+  platelet: ["Platelets", "Tiny cell pieces that stick together to plug leaks and help blood clot."],
+  stem: ["Blood stem cell", "Lives in the bone marrow and can become any kind of blood cell."],
+  o2: ["Oxygen", "Breathed in by the lungs and carried by red blood cells."],
+  macro: ["Macrophage", "A big white cell that eats germs and old or damaged red cells."],
+};
 
 const MYTHS = [
   ["Sickle cell is contagious.", "Sickle cell disease is inherited from parents. You can't catch it."],
@@ -97,25 +112,25 @@ const MYTHS = [
 const ZONES = [
   { id: "marrow", name: "Bone Marrow", bg: "img/bg_marrow.webp", len: 700,
     road: ["#d9b98c", "#cfae80"], side: ["#6b3b22", "#5c321d"], rumble: ["#fff1d6", "#ff9b6a"], lane: "rgba(255,240,210,.55)", fog: "#2b1410",
-    deco: "stem", mercy: ["marrow", "marrow2"] },
+    deco: ["stem", "stem", "rbc", "neutrophil", "lymph", "platelet", "macro"], mercy: ["marrow", "marrow2"] },
   { id: "vessel", name: "Bloodstream", bg: "img/bg_vessel.webp", len: 1300,
     road: ["#8c1d2c", "#801a28"], side: ["#3d0710", "#33060d"], rumble: ["#ff8ba0", "#c0283f"], lane: "rgba(255,200,210,.5)", fog: "#260308",
-    deco: "rbc", mercy: ["vessel", "vocfact"] },
+    deco: ["rbc", "rbc", "rbc", "sickle", "platelet", "neutrophil", "lymph"], mercy: ["vessel", "vocfact"] },
   { id: "heartR", name: "Heart · right side", bg: "img/bg_heart.webp", len: 650,
     road: ["#5a1530", "#4f1229"], side: ["#1a0a2a", "#160823"], rumble: ["#4c8dff", "#c0283f"], lane: "rgba(150,190,255,.55)", fog: "#120618",
-    deco: "beat", mercy: ["heart1"] },
+    deco: ["rbc", "rbc", "platelet", "neutrophil"], beat: true, mercy: ["heart1"] },
   { id: "lung", name: "Lungs", bg: "img/bg_lung.webp", len: 1150,
     road: ["#3d6fae", "#3766a1"], side: ["#1a2f5c", "#162951"], rumble: ["#ffffff", "#ff9cc8"], lane: "rgba(255,255,255,.6)", fog: "#0e1f3d",
-    deco: "bubble", mercy: ["lung", "lung2"] },
-  { id: "heartL", name: "Heart · left side", bg: "img/bg_heart.webp", len: 650,
+    deco: ["o2", "o2", "rbc", "rbc", "macro"], mercy: ["lung", "lung2"] },
+  { id: "heartL", name: "Heart · left side", bg: "img/bg_heartL.webp", noFlip: true, len: 650,
     road: ["#7a1626", "#6d1322"], side: ["#2a0612", "#23050f"], rumble: ["#ff4361", "#ffd0d8"], lane: "rgba(255,190,200,.55)", fog: "#1a0309",
-    deco: "beat", mercy: ["heart2"] },
+    deco: ["rbc", "rbc", "rbc", "platelet"], beat: true, mercy: ["heart2"] },
   { id: "spleen", name: "Spleen", bg: "img/bg_spleen.webp", len: 1250,
     road: ["#4a1a4a", "#421742"], side: ["#1d0920", "#18071b"], rumble: ["#b04cff", "#5ee7ff"], lane: "rgba(210,160,255,.5)", fog: "#120614",
-    deco: "spleen", mercy: ["spleen", "spleen2"] },
+    deco: ["macro", "macro", "lymph", "sickle", "rbc", "sickle"], mercy: ["spleen", "spleen2"] },
   { id: "home", name: "Back to the marrow", bg: "img/bg_marrow.webp", len: 800,
     road: ["#c9a06e", "#be9663"], side: ["#5a2e18", "#4d2714"], rumble: ["#fff1d6", "#ffc23d"], lane: "rgba(255,240,210,.6)", fog: "#2b1410",
-    deco: "stem", mercy: ["final"] },
+    deco: ["stem", "rbc", "neutrophil", "platelet", "lymph"], mercy: ["final"] },
 ];
 
 // What Mercy says, keyed to her recordings in voice/mercy/<key>.mp3
@@ -144,24 +159,55 @@ const MERCY = {
 };
 
 /* ================= settings ================= */
-const opts = Object.assign({ music: true, sfx: true, voice: true }, store.get("wt-race-opts", {}));
+const opts = Object.assign({ music: true, sfx: true, voice: true, track: "race" }, store.get("wt-race-opts", {}));
 const saveOpts = () => store.set("wt-race-opts", opts);
 
 /* ================= audio ================= */
-let AC = null, master = null, engine = null;
+// Music and Warrior voices run through WebAudio gain nodes: iPhones ignore
+// <audio>.volume, so this is the only way to turn them down under Mercy.
+let AC = null, master = null, engine = null, musicGain = null, warGain = null;
 const music = $("music");
-music.volume = 0.32;
+const MUSIC_V = 0.32, MUSIC_DUCK = 0.06, WAR_DUCK = 0.22;
+const TRACKS = { race: "music.mp3", theme: "../runner/theme.mp3" };
+const TRACK_NAME = { race: "Race mix", theme: "Warriors Thrive theme" };
+let mercyTalking = false;
+music.volume = MUSIC_V;
 function audioInit() {
   if (!AC) {
     try {
       AC = new (window.AudioContext || window.webkitAudioContext)();
       master = AC.createGain(); master.gain.value = 0.9; master.connect(AC.destination);
-    } catch {}
+      musicGain = AC.createGain(); musicGain.gain.value = MUSIC_V; musicGain.connect(master);
+      warGain = AC.createGain(); warGain.gain.value = 1; warGain.connect(master);
+      AC.createMediaElementSource(music).connect(musicGain);
+      music.volume = 1;
+    } catch { musicGain = null; }
   }
   if (AC && AC.state === "suspended") AC.resume();
 }
+function setTrack(t) {
+  if (!TRACKS[t]) t = "race";
+  const changed = opts.track !== t || !music.src.endsWith(TRACKS[t].replace("../", ""));
+  opts.track = t; saveOpts();
+  if (changed) { const was = !music.paused; music.src = TRACKS[t]; if (was) music.play().catch(() => {}); }
+  $("trackLbl").textContent = TRACK_NAME[t];
+  document.querySelectorAll("[data-track]").forEach((b) => b.classList.toggle("on", b.dataset.track === t));
+}
+// Mercy has the floor: music, Warrior chatter and the engine all drop while she talks
+function setDuck(on) {
+  mercyTalking = on;
+  if (AC && musicGain) {
+    const t = AC.currentTime;
+    musicGain.gain.setTargetAtTime(on ? MUSIC_DUCK : MUSIC_V, t, on ? 0.06 : 0.35);
+    warGain.gain.setTargetAtTime(on ? WAR_DUCK : 1, t, 0.06);
+  } else {
+    music.volume = on ? MUSIC_DUCK : MUSIC_V;
+    if (warriorAudio) warriorAudio.volume = on ? WAR_DUCK : 0.95;
+  }
+}
 function tone(f, d = 0.08, type = "sine", v = 0.12, slide = 0, delay = 0) {
   if (!AC || !opts.sfx) return;
+  if (mercyTalking) v *= 0.45;
   const t = AC.currentTime + delay, o = AC.createOscillator(), g = AC.createGain();
   o.type = type; o.frequency.setValueAtTime(f, t);
   if (slide) o.frequency.exponentialRampToValueAtTime(Math.max(20, f * slide), t + d);
@@ -171,6 +217,7 @@ function tone(f, d = 0.08, type = "sine", v = 0.12, slide = 0, delay = 0) {
 let noiseBuf = null;
 function noise(d = 0.3, v = 0.15, freq = 1200, q = 0.7, delay = 0, type = "bandpass") {
   if (!AC || !opts.sfx) return;
+  if (mercyTalking) v *= 0.45;
   if (!noiseBuf) { noiseBuf = AC.createBuffer(1, AC.sampleRate, AC.sampleRate); const a = noiseBuf.getChannelData(0); for (let i = 0; i < a.length; i++) a[i] = Math.random() * 2 - 1; }
   const t = AC.currentTime + delay, s = AC.createBufferSource(), f = AC.createBiquadFilter(), g = AC.createGain();
   s.buffer = noiseBuf; s.loop = true; f.type = type; f.frequency.value = freq; f.Q.value = q;
@@ -183,7 +230,7 @@ const sfx = {
   boost() { noise(0.7, 0.22, 900, 0.6); tone(220, 0.6, "sawtooth", 0.06, 3); },
   treat() { [523, 659, 784, 1046, 1318].forEach((f, i) => tone(f, 0.2, "triangle", 0.1, 0, i * 0.05)); noise(0.5, 0.12, 3000, 0.5); },
   hit() { tone(110, 0.4, "sawtooth", 0.18, 0.4); noise(0.35, 0.25, 400, 0.8); },
-  trap() { tone(300, 0.5, "square", 0.08, 0.3); noise(0.6, 0.12, 2500, 3); },
+  trap() { tone(1400, 0.6, "sawtooth", 0.05, 0.25); tone(900, 0.5, "square", 0.04, 0.5, 0.05); noise(0.6, 0.1, 5000, 4); },
   bump() { tone(180, 0.12, "square", 0.08, 0.6); },
   share() { [784, 988, 1175].forEach((f, i) => tone(f, 0.22, "sine", 0.1, 0, i * 0.09)); },
   beep() { tone(880, 0.18, "square", 0.08); },
@@ -193,6 +240,7 @@ const sfx = {
   win() { [523, 659, 784, 1046, 784, 1046, 1318].forEach((f, i) => tone(f, 0.25, "triangle", 0.12, 0, i * 0.12)); },
   beat() { tone(62, 0.16, "sine", 0.35, 0.6); tone(58, 0.14, "sine", 0.28, 0.6, 0.22); },
   breath() { noise(2.2, 0.07, 700, 0.4, 0, "lowpass"); },
+  learn() { tone(1046, 0.12, "sine", 0.05); tone(1568, 0.18, "sine", 0.04, 0, 0.08); },
 };
 function engineStart() {
   if (!AC || engine) return;
@@ -207,17 +255,18 @@ function engineSet(speedFrac, on) {
   engine.o.frequency.setTargetAtTime(f, t, 0.08);
   engine.o2.frequency.setTargetAtTime(f * 0.5, t, 0.08);
   engine.f.frequency.setTargetAtTime(300 + speedFrac * 900, t, 0.1);
-  engine.g.gain.setTargetAtTime(on && opts.sfx ? 0.035 + speedFrac * 0.03 : 0, t, 0.1);
+  engine.g.gain.setTargetAtTime(on && opts.sfx ? (0.035 + speedFrac * 0.03) * (mercyTalking ? 0.3 : 1) : 0, t, 0.1);
 }
 
 /* voices: one clip at a time per speaker group */
 const voiceCache = {};
-let mercyAudio = null, warriorAudio = null, mercyBusyUntil = 0;
+let mercyAudio = null, warriorAudio = null, mercyBusyUntil = 0, unduckT = 0;
 function playClip(src, kind) {
   if (!opts.voice) return null;
   const a = voiceCache[src] || (voiceCache[src] = new Audio(src));
+  if (kind === "warrior" && AC && warGain && !a._wired) { try { AC.createMediaElementSource(a).connect(warGain); a._wired = true; } catch {} }
   try { a.currentTime = 0; } catch {}
-  a.volume = kind === "mercy" ? 1 : 0.95;
+  a.volume = kind === "mercy" ? 1 : a._wired ? 1 : mercyTalking ? WAR_DUCK : 0.95;
   a.play().catch(() => {});
   return a;
 }
@@ -226,7 +275,7 @@ let mercyHideT = 0;
 function mercySay(key, force = false) {
   if (!MERCY[key]) return;
   if (!force && R && R.mercySaid.has(key) && !["voc", "society", "seq", "lead", "behind"].includes(key)) return;
-  if (R) R.mercySaid.add(key);
+  if (R) { R.mercySaid.add(key); R.heard.add(key); }
   if (performance.now() < mercyBusyUntil && !force) { if (mercyQueue.length < 3 && !mercyQueue.includes(key)) mercyQueue.push(key); return; }
   mercyShow(key);
 }
@@ -236,11 +285,15 @@ function mercyShow(key) {
   el.innerHTML = `<b>Mercy</b>${text}`;
   el.classList.remove("hidden"); box.classList.add("talk");
   if (mercyAudio) try { mercyAudio.pause(); } catch {}
+  // a Warrior mid-sentence stops so Mercy is heard
+  if (warriorAudio && !warriorAudio.paused) try { warriorAudio.pause(); } catch {}
   mercyAudio = playClip(`voice/mercy/${key}.mp3`, "mercy");
-  const dur = mercyAudio && isFinite(mercyAudio.duration) && mercyAudio.duration > 0 ? mercyAudio.duration * 1000 + 500 : 0;
-  const ms = Math.max(2600, text.length * 66, dur);
-  // duck the music while Mercy talks
-  if (opts.music) { music.volume = 0.14; clearTimeout(mercyAudio && mercyAudio._duck); setTimeout(() => (music.volume = 0.32), ms); }
+  const dur = mercyAudio && isFinite(mercyAudio.duration) && mercyAudio.duration > 0 ? mercyAudio.duration * 1000 + 400 : 0;
+  const ms = Math.max(2600, dur || text.length * 66);
+  setDuck(true);
+  clearTimeout(unduckT);
+  if (mercyAudio) mercyAudio.onended = () => { if (!mercyQueue.length) { clearTimeout(unduckT); unduckT = setTimeout(() => setDuck(false), 250); } };
+  unduckT = setTimeout(() => setDuck(false), ms + 300);
   mercyBusyUntil = performance.now() + ms;
   clearTimeout(mercyHideT);
   mercyHideT = setTimeout(() => {
@@ -252,6 +305,8 @@ function mercyShow(key) {
 let warriorNext = 0;
 function warriorSay(id, key, force = false) {
   const now = performance.now();
+  // Warriors don't talk over Mercy unless it's a key moment, and then quietly
+  if (now < mercyBusyUntil && !force) return;
   if (!force && now < warriorNext) return;
   warriorNext = now + 3500;
   if (warriorAudio) try { warriorAudio.pause(); } catch {}
@@ -328,8 +383,12 @@ function buildTrack() {
       const L = Math.min(left, 60 + Math.floor(r() * 90));
       const e = Math.floor(L * 0.25), l = Math.floor(L * 0.25), h = L - e - l;
       let curve = (r() < 0.25 ? 0 : (r() < 0.5 ? -1 : 1) * (1 + r() * 3.5));
-      let hill = (r() - 0.5) * 50;
-      if (Z.id === "lung") hill = (r() - 0.5) * 90;          // airy rolling hills
+      // big climbs and drops keep the ride interesting; each zone has its own feel
+      const HILL = { marrow: 70, vessel: 120, heartR: 160, lung: 190, heartL: 160, spleen: 110, home: 120 }[Z.id] || 100;
+      let hill = (r() - 0.5) * 2 * HILL;
+      // alternate up and down so the road never drifts too far from the backdrop
+      const y = lastY();
+      if (y > 9000 && hill > 0) hill = -hill; else if (y < -9000 && hill < 0) hill = -hill;
       if (Z.id === "marrow" && SEGS.length < 80) { curve = 0; hill = 0; }
       if (Z.id === "spleen") curve *= 1.3;                    // twisty filter maze
       road(e, h, l, curve, hill, zi);
@@ -348,10 +407,16 @@ function decorate(r) {
   const START = 40, ENDSEG = ZONE_START[ZONES.length - 1] + ZONES[ZONES.length - 1].len;
   for (let i = 0; i < SEGS.length; i++) {
     const s = SEGS[i], Z = ZONES[s.zi];
-    // floating cells and scenery beside the road
-    if (i % 3 === 0 && r() < 0.75) {
+    // real cells floating beside and above the road; some carry a name label
+    if (i % 3 === 0 && r() < 0.8) {
       const side = r() < 0.5 ? -1 : 1;
-      s.sprites.push({ kind: Z.deco, x: side * (1.35 + r() * 2.2), y: r() * 1200, s: 0.6 + r() * 0.9, rot: r() * 6.28, spin: (r() - 0.5) * 2 });
+      const kind = Z.deco[Math.floor(r() * Z.deco.length)];
+      s.sprites.push({ kind, x: side * (1.3 + r() * 2.4), y: r() * 1400, s: 0.55 + r() * 0.8, rot: r() * 6.28, spin: (r() - 0.5) * 1.4, label: r() < 0.22 });
+    }
+    if (i % 11 === 0 && r() < 0.5) {
+      // a few drift high over the road for depth
+      const kind = Z.deco[Math.floor(r() * Z.deco.length)];
+      s.sprites.push({ kind, x: (r() - 0.5) * 2.2, y: 2400 + r() * 2200, s: 0.4 + r() * 0.5, rot: r() * 6.28, spin: (r() - 0.5), label: false });
     }
   }
   SEGS[START].sprites.push({ kind: "arch", x: 0, y: 0, s: 1 });
@@ -382,23 +447,8 @@ function decorate(r) {
   }
 }
 
-/* procedural decoration sprites, drawn once into small canvases */
-const decoCache = {};
-function decoSprite(kind) {
-  if (decoCache[kind]) return decoCache[kind];
-  const c = document.createElement("canvas"); c.width = c.height = 128; const g = c.getContext("2d");
-  const disc = (inner, outer, rim) => {
-    const gr = g.createRadialGradient(64, 64, 8, 64, 64, 58); gr.addColorStop(0, inner); gr.addColorStop(0.55, outer); gr.addColorStop(0.85, rim); gr.addColorStop(1, "rgba(0,0,0,0)");
-    g.fillStyle = gr; g.beginPath(); g.ellipse(64, 64, 58, 50, 0, 0, 7); g.fill();
-  };
-  if (kind === "rbc") disc("#8a0f1e", "#e0243a", "#ff6b7d");
-  else if (kind === "stem") { disc("#fff4e6", "#ffd1b8", "#ffb08a"); g.fillStyle = "rgba(180,120,255,.45)"; g.beginPath(); g.arc(58, 58, 18, 0, 7); g.fill(); }
-  else if (kind === "bubble") { const gr = g.createRadialGradient(48, 44, 4, 64, 64, 60); gr.addColorStop(0, "rgba(255,255,255,.9)"); gr.addColorStop(0.3, "rgba(170,220,255,.35)"); gr.addColorStop(0.9, "rgba(255,160,210,.35)"); gr.addColorStop(1, "rgba(255,255,255,0)"); g.fillStyle = gr; g.beginPath(); g.arc(64, 64, 60, 0, 7); g.fill(); }
-  else if (kind === "spleen") { disc("#2a0a30", "#6a1e70", "#b04cff"); }
-  else if (kind === "sickle") { g.fillStyle = "#c0283f"; g.beginPath(); g.arc(64, 64, 52, 0.4, Math.PI - 0.4); g.arc(64, 30, 46, Math.PI - 0.55, 0.55, true); g.fill(); }
-  else if (kind === "beat") { disc("#ff9db0", "#c0283f", "#5a0b1c"); }
-  decoCache[kind] = c; return c;
-}
+/* cell sprites (painted, medically accurate) */
+const cellImg = (kind) => img(`img/cells/${kind}.webp`);
 
 /* ================= race state ================= */
 let R = null;            // the current race
@@ -430,41 +480,80 @@ function newRace() {
   });
   const P = grid.find((r) => !r.ai);
   if (me.kart === "stem") P.bag.push(pick(["water", "pain"]), pick(["hu", "warm"]));
+  if (me.kart === "gene") P.bag.push("o2");
   R = { racers: grid, P, t: 0, zone: -1, mercySaid: new Set(), shareCool: 6, posSaid: 0, finished: false,
         cleared: new Set(), taken: new Set(), beatT: 0, breathT: 0, steer: 0, camX: 0, bgX: 0, shake: 0, endT: 0,
-        firstVoc: true, firstDrone: true, firstCrystal: true, correct: 0 };
+        firstVoc: true, firstDrone: true, firstCrystal: true, correct: 0,
+        heard: new Set(), spotted: [], myths: new Set(), used: new Set(), laneT: 1, pressX: 0, steerDir: 0 };
   R.racers.forEach((r) => { if (r.ai) r.bag.push(pick(["water", "pain", "hu"])); });
   updateBag(); $("impact").textContent = "0";
   buildProgress();
 }
 
 /* ================= input ================= */
+// Hold an arrow to steer; tap it to hop one lane. When you let go the kart
+// glides into the middle of the nearest lane, so it always ends up somewhere sensible.
 const keys = { left: false, right: false };
+const nearestLane = (x) => clamp(Math.round((x / (2 / LANES)) + (LANES - 1) / 2), 0, LANES - 1);
+function steerStart(dir) {
+  if (!R) return;
+  R.pressX = R.P.x; R.pressT = performance.now(); R.steerDir = dir; R.laneT = null;
+}
+function steerEnd(dir) {
+  if (!R) return;
+  const moved = Math.abs(R.P.x - R.pressX), quick = performance.now() - (R.pressT || 0) < 220;
+  R.laneT = moved < 0.3 && quick ? clamp(nearestLane(R.pressX) + dir, 0, LANES - 1) : nearestLane(R.P.x + dir * 0.12);
+}
 function bindPad(id, k) {
-  const el = $(id);
-  const on = (e) => { e.preventDefault(); keys[k] = true; el.classList.add("on"); audioInit(); };
-  const off = (e) => { e && e.preventDefault(); keys[k] = false; el.classList.remove("on"); };
+  const el = $(id), dir = k === "right" ? 1 : -1;
+  const on = (e) => { e.preventDefault(); if (keys[k]) return; keys[k] = true; el.classList.add("on"); audioInit(); steerStart(dir); };
+  const off = (e) => { e && e.preventDefault(); if (!keys[k]) return; keys[k] = false; el.classList.remove("on"); steerEnd(dir); };
   el.addEventListener("pointerdown", on); el.addEventListener("pointerup", off);
   el.addEventListener("pointercancel", off); el.addEventListener("pointerleave", off);
 }
 bindPad("left", "left"); bindPad("right", "right");
 $("treat").addEventListener("pointerdown", (e) => { e.preventDefault(); useCrystal(); });
 addEventListener("keydown", (e) => {
-  if (e.key === "ArrowLeft" || e.key === "a") keys.left = true;
-  if (e.key === "ArrowRight" || e.key === "d") keys.right = true;
+  if (e.repeat) return;
+  if (e.key === "ArrowLeft" || e.key === "a") { keys.left = true; steerStart(-1); }
+  if (e.key === "ArrowRight" || e.key === "d") { keys.right = true; steerStart(1); }
   if (e.key === " " || e.key === "ArrowUp") { e.preventDefault(); useCrystal(); }
   if (e.key === "Escape" && state === "race") pause();
 });
 addEventListener("keyup", (e) => {
-  if (e.key === "ArrowLeft" || e.key === "a") keys.left = false;
-  if (e.key === "ArrowRight" || e.key === "d") keys.right = false;
+  if (e.key === "ArrowLeft" || e.key === "a") { keys.left = false; steerEnd(-1); }
+  if (e.key === "ArrowRight" || e.key === "d") { keys.right = false; steerEnd(1); }
 });
-// tilt-free drag steering: drag anywhere on the left half of the road
+// swipe on the road to change lanes too
 let drag = null;
-cv.addEventListener("pointerdown", (e) => { if (state === "race") drag = { x0: e.clientX, id: e.pointerId }; });
-cv.addEventListener("pointermove", (e) => { if (drag && e.pointerId === drag.id) { const d = (e.clientX - drag.x0) / 60; keys.left = d < -0.3; keys.right = d > 0.3; } });
-const endDrag = (e) => { if (drag && e.pointerId === drag.id) { drag = null; keys.left = keys.right = false; } };
+cv.addEventListener("pointerdown", (e) => { if (state === "race") drag = { x0: e.clientX, id: e.pointerId, done: false }; });
+cv.addEventListener("pointermove", (e) => {
+  if (!drag || e.pointerId !== drag.id || drag.done || !R) return;
+  const d = e.clientX - drag.x0;
+  if (Math.abs(d) > 40) { drag.done = true; R.laneT = clamp(nearestLane(R.P.x) + Math.sign(d), 0, LANES - 1); sfx.tap(); }
+});
+const endDrag = (e) => { if (drag && e.pointerId === drag.id) drag = null; };
 cv.addEventListener("pointerup", endDrag); cv.addEventListener("pointercancel", endDrag);
+
+/* ================= learning ================= */
+// A small card that names what you just met, collected for the end-of-race recap
+let learnT = 0;
+let learnWait = 0;
+function learnCard(icon, title, text) {
+  // Mercy has the floor: hold the card until she has finished
+  if (performance.now() < mercyBusyUntil) { clearTimeout(learnWait); learnWait = setTimeout(() => state === "race" && learnCard(icon, title, text), mercyBusyUntil - performance.now() + 400); return; }
+  const el = $("learn");
+  el.innerHTML = `<div class="l-icon">${icon}</div><div><b>${title}</b><span>${text}</span></div>`;
+  el.classList.remove("hidden"); el.style.animation = "none"; void el.offsetWidth; el.style.animation = "";
+  sfx.learn();
+  clearTimeout(learnT); learnT = setTimeout(() => el.classList.add("hidden"), 4200);
+}
+function spotCell(kind) {
+  if (!R || R.spotted.includes(kind) || state !== "race" || R.t - (R.lastSpot || -99) < 7) return;
+  R.spotted.push(kind); R.lastSpot = R.t;
+  const [name, what] = CELLS[kind];
+  learnCard(`<img src="img/cells/${kind}.webp" alt="">`, `Spotted: ${name}`, what);
+}
 
 /* ================= crystals ================= */
 function updateBag() {
@@ -506,6 +595,7 @@ function useCrystal() {
     warriorSay(P.id, "boost");
   }
   $("treat").classList.remove("urgent");
+  if (!R.used.has(type)) { R.used.add(type); setTimeout(() => learnCard(C.icon, C.name, C.fact), 900); }
   updateBag();
 }
 function impactPop(n) { $("impact").textContent = R.P.impact; }
@@ -595,26 +685,27 @@ function onHit(r, o, s) {
       if (r.bag.length && Math.random() < 0.55) { r.bag.shift(); r.impact += 100; o.gone = true; o.burst = R.t; return; }
       r.stun = 0.9; r.speed *= 0.3; return;
     }
-    const k = r.kart === "hydroxyurea" ? 0.5 : r.kart === "glutamine" ? 0.7 : 1;
+    const k = r.kart === "gene" ? 0.3 : r.kart === "hydroxyurea" ? 0.5 : r.kart === "glutamine" ? 0.7 : 1;
     r.stun = 1.3 * k; r.speed *= 0.25 + (1 - k) * 0.5; r.slow = 1.2 * k;
     R.shake = 0.5; sfx.hit(); flash("rgba(255,40,70,.45)");
-    toast("Vaso-occlusion! Use a crystal!", 1500);
+    toast(r.kart === "gene" ? "Edited cells don't sickle! 🧬" : "Vaso-occlusion! Use a crystal!", 1500);
     warriorSay(r.id, "voc", true);
     if (R.firstVoc) { R.firstVoc = false; mercySay("voc", true); }
     if (navigator.vibrate) navigator.vibrate(60);
   } else if (o.t === "drone") {
     if (o.hitBy && o.hitBy.has(r.id)) return; (o.hitBy || (o.hitBy = new Set())).add(r.id);
     const t = r.kart === "macrophage" ? 0.7 : r.kart === "tcell" ? 1.0 : 1.4;
-    r.trapped = t; r.speed *= 0.2;
+    r.trapped = t; r.trapT = t; r.speed *= 0.2;
     if (me_) {
-      sfx.trap(); flash("rgba(176,76,255,.4)"); showMyth(o.myth); warriorSay(r.id, "trap", true);
+      R.myths.add(o.myth);
+      sfx.trap(); flash("rgba(255,30,50,.35)"); showMyth(o.myth); warriorSay(r.id, "trap", true);
       if (R.firstDrone) { R.firstDrone = false; mercySay("society", true); }
     }
   } else if (o.t === "myth") {
     if (o.hitBy && o.hitBy.has(r.id)) return; (o.hitBy || (o.hitBy = new Set())).add(r.id);
     if (r.kart === "bcell") { if (me_) toast("B-Cell antibodies! Myth blocked 🛡️", 1300); return; }
     r.slow = 0.9; r.speed *= 0.6;
-    if (me_) { sfx.bump(); showMyth(o.myth); }
+    if (me_) { sfx.bump(); showMyth(o.myth); R.myths.add(o.myth); }
   }
 }
 
@@ -722,7 +813,11 @@ function update(dt) {
   const steer = (keys.right ? 1 : 0) - (keys.left ? 1 : 0);
   R.steer = lerp(R.steer, steer, Math.min(1, dt * 10));
   const sf = P.speed / MAXSPD;
-  if (P.seq <= 0 && P.trapped <= 0) P.x += R.steer * dt * 2.1 * st.hnd * (0.35 + sf * 0.65);
+  if (P.seq <= 0 && P.trapped <= 0) {
+    P.x += R.steer * dt * 2.1 * st.hnd * (0.35 + sf * 0.65);
+    // let go and the kart glides into the centre of a lane
+    if (!steer && R.laneT != null) P.x = lerp(P.x, laneX(R.laneT), Math.min(1, dt * (3 + st.hnd)));
+  }
   // curves push the kart outward
   const seg = segAt(P.z);
   P.x -= dt * sf * seg.curve * 0.32;
@@ -805,13 +900,13 @@ function poly(x1, y1, x2, y2, x3, y3, x4, y4, c) { ctx.fillStyle = c; ctx.beginP
 function drawBackdrop(zi, blendNext) {
   const draw = (Z, alpha) => {
     const im = img(Z.bg); if (!ready(im)) return;
-    const h = H * 0.78, w = h * im.naturalWidth / im.naturalHeight;
+    const h = H * 0.86, w = h * im.naturalWidth / im.naturalHeight;
     const horizon = H * 0.48;
-    const y = horizon - h * 0.66 + (R ? R.pulse * 6 * DPR : 0);
+    const y = horizon - h * 0.62 + (R ? R.pulse * 6 * DPR : 0);
     let x = -((R ? R.bgX : 0) % (w * 2)); if (x > 0) x -= w * 2;
     ctx.globalAlpha = alpha;
     for (let k = 0; x + k * w < W; k++) {
-      const flip = ((k % 2) + 2) % 2 === 1;
+      const flip = !Z.noFlip && ((k % 2) + 2) % 2 === 1;
       if (flip) { ctx.save(); ctx.translate(x + (k + 1) * w, 0); ctx.scale(-1, 1); ctx.drawImage(im, 0, y, w, h); ctx.restore(); }
       else ctx.drawImage(im, x + k * w, y, w, h);
     }
@@ -910,30 +1005,79 @@ function spriteAt(im, s, xFrac, wFrac, yOff = 0, clip = true, alpha = 1, rot = 0
 }
 function drawDeco(d, s) {
   if (d.kind === "arch") { const im = img("img/obj/arch.webp"); if (ready(im)) spriteAt(im, s, 0, 2.6, 0); return; }
-  let kind = d.kind;
-  if (kind === "spleen" && (s.i % 5 === 0)) kind = "sickle";
-  const c = decoSprite(kind);
-  const rot = d.rot + (R ? R.t * d.spin : 0);
-  const pulse = kind === "beat" ? 1 + (R.pulse || 0) * 0.15 : 1;
-  spriteAt(c, s, d.x, 0.35 * d.s * pulse, d.y, true, kind === "bubble" ? 0.8 : 1, kind === "rbc" || kind === "sickle" ? rot : 0);
+  const im = cellImg(d.kind); if (!ready(im)) return;
+  const Z = ZONES[s.zi];
+  const spinning = d.kind !== "o2" && d.kind !== "macro";
+  const rot = spinning ? d.rot + (R ? R.t * d.spin : 0) : Math.sin((R ? R.t : 0) * 1.5 + d.rot) * 0.15;
+  const pulse = Z.beat ? 1 + (R.pulse || 0) * 0.12 : 1;
+  const bob = Math.sin((R ? R.t : 0) * 1.2 + d.rot * 3) * 80;
+  const box = spriteAt(im, s, d.x, 0.32 * d.s * pulse, d.y + bob, true, 1, rot);
+  if (!box) return;
+  // learning: big nearby cells get a name tag, and the first of each kind is introduced
+  if (box.w > 70 * DPR && box.y + box.h < s.clip && box.x > 0 && box.x + box.w < W) {
+    if (d.label) {
+      const name = CELLS[d.kind][0];
+      ctx.font = `${Math.round(12 * DPR)}px "Atkinson Hyperlegible",sans-serif`; ctx.textAlign = "center";
+      const tw = ctx.measureText(name).width + 12 * DPR, cx = box.x + box.w / 2, ty = box.y + box.h + 4 * DPR;
+      ctx.fillStyle = "rgba(8,20,34,.78)"; ctx.fillRect(cx - tw / 2, ty, tw, 17 * DPR);
+      ctx.fillStyle = "#bff6ff"; ctx.fillText(name, cx, ty + 12.5 * DPR);
+    }
+    if (box.w > 110 * DPR) spotCell(d.kind);
+  }
 }
 function drawObj(o, s) {
   if (o.gone) {
     if (o.burst != null && R.t - o.burst < 0.6) {
-      const k = (R.t - o.burst) / 0.6, c = decoSprite("rbc");
-      for (let i = 0; i < 6; i++) spriteAt(c, s, o.x + Math.cos(i) * k * 0.8, 0.12, 200 + Math.sin(i * 2) * k * 600, true, 1 - k, i);
+      // the jam breaks up into healthy round cells
+      const k = (R.t - o.burst) / 0.6, c = cellImg("rbc");
+      if (ready(c)) for (let i = 0; i < 6; i++) spriteAt(c, s, o.x + Math.cos(i) * k * 0.8, 0.14, 200 + Math.sin(i * 2) * k * 600, true, 1 - k, i);
     }
     return;
   }
   if (o.t === "crystal" && o.takenBy && o.takenBy.has(R.P.id)) return;
   const name = { crystal: "crystal", boost: "boost", voc: "voc", drone: "drone", myth: "myth" }[o.t];
   const im = img(`img/obj/${name}.webp`); if (!ready(im)) return;
-  const bob = o.t === "crystal" ? 120 + Math.sin(R.t * 4 + s.i) * 60 : o.t === "drone" ? 700 + Math.sin(R.t * 2 + s.i) * 80 : 0;
-  const w = { crystal: 0.22, boost: 0.42, voc: 0.5, drone: 0.4, myth: 0.3 }[o.t];
-  const rot = o.t === "myth" ? R.t * 3 : 0;
+  const bob = o.t === "crystal" ? 120 + Math.sin(R.t * 4 + s.i) * 60 : o.t === "drone" ? 650 + Math.sin(R.t * 2 + s.i) * 90 : 0;
+  const w = { crystal: 0.22, boost: 0.42, voc: 0.5, drone: 0.62, myth: 0.3 }[o.t];
+  const rot = o.t === "myth" ? R.t * 3 : o.t === "drone" ? Math.sin(R.t * 2.3 + s.i) * 0.06 : 0;
+  // Society drones paint a red target on their lane
+  if (o.t === "drone") {
+    const p = s.p1s; ctx.save(); ctx.beginPath(); ctx.rect(0, 0, W, s.clip); ctx.clip();
+    const cx = p.x + p.w * o.x, rx = p.w * 0.24, ry = p.w * 0.055, blink = 0.35 + 0.25 * Math.sin(R.t * 10);
+    ctx.strokeStyle = `rgba(255,40,60,${blink + 0.2})`; ctx.lineWidth = Math.max(1, p.w * 0.008);
+    ctx.fillStyle = `rgba(255,20,40,${blink * 0.4})`;
+    ctx.beginPath(); ctx.ellipse(cx, p.y, rx, ry, 0, 0, 7); ctx.fill(); ctx.stroke();
+    ctx.beginPath(); ctx.ellipse(cx, p.y, rx * 0.5, ry * 0.5, 0, 0, 7); ctx.stroke();
+    ctx.restore();
+  }
   spriteAt(im, s, o.x, w, bob, true, 1, rot);
-  // Society drones show a target shadow on their lane
-  if (o.t === "drone") { const p = s.p1s; ctx.save(); ctx.beginPath(); ctx.rect(0, 0, W, s.clip); ctx.clip(); ctx.fillStyle = "rgba(176,76,255,.35)"; ctx.beginPath(); ctx.ellipse(p.x + p.w * o.x, p.y, p.w * 0.22, p.w * 0.05, 0, 0, 7); ctx.fill(); ctx.restore(); }
+}
+// The Society's red laser net: beams fan down from the drone and a glowing mesh closes over the kart
+function laserNet(cx, by, w, k, droneY) {
+  const t = R.t, top = droneY, domeH = w * 0.85, x0 = cx - w * 0.58, x1 = cx + w * 0.58, baseY = by - w * 0.02;
+  ctx.save();
+  ctx.globalCompositeOperation = "lighter";
+  const flick = 0.75 + Math.random() * 0.25;
+  const line = (ax, ay, bx, by_, lw, a) => { ctx.strokeStyle = `rgba(255,40,60,${a * flick})`; ctx.lineWidth = lw; ctx.beginPath(); ctx.moveTo(ax, ay); ctx.lineTo(bx, by_); ctx.stroke(); };
+  // beams from the emitter to the net's corners
+  for (const [bx, a] of [[x0, 0.5], [x1, 0.5], [cx, 0.35]]) { line(cx, top, bx, baseY, 6 * DPR, a * 0.35); line(cx, top, bx, baseY, 2 * DPR, a); }
+  // the dome mesh
+  const rows = 5, cols = 9;
+  ctx.shadowColor = "#ff2040"; ctx.shadowBlur = 10 * DPR;
+  for (let r = 0; r <= rows; r++) {
+    const sc = r / rows; ctx.strokeStyle = `rgba(255,${60 + 80 * Math.sin(t * 12 + r)},80,${0.75 * flick * k})`; ctx.lineWidth = 2 * DPR;
+    ctx.beginPath(); ctx.ellipse(cx, baseY, w * 0.58 * Math.cos(sc * Math.PI / 2) + 1, domeH * Math.cos(sc * Math.PI / 2) * 0.15 + 1, 0, Math.PI, 0); ctx.stroke();
+  }
+  for (let c = 0; c <= cols; c++) {
+    const u = c / cols, ang = Math.PI * (1 - u), ex = cx + Math.cos(ang) * w * 0.58;
+    ctx.strokeStyle = `rgba(255,50,70,${0.8 * flick * k})`; ctx.lineWidth = 2 * DPR;
+    ctx.beginPath(); ctx.moveTo(ex, baseY); ctx.quadraticCurveTo(ex, baseY - domeH * 0.9, cx, baseY - domeH); ctx.stroke();
+  }
+  // scanning ring
+  const sy = baseY - domeH * (0.5 + 0.5 * Math.sin(t * 5));
+  ctx.strokeStyle = `rgba(255,200,210,${0.6 * k})`; ctx.lineWidth = 1.5 * DPR;
+  ctx.beginPath(); ctx.ellipse(cx, sy, w * 0.4, w * 0.05, 0, 0, 7); ctx.stroke();
+  ctx.restore();
 }
 function kartAndDriver(r, cx, by, w, tilt = 0, alpha = 1) {
   const K = KART[r.kart], kim = img(`img/karts/${r.kart}.webp`), dim = img(`img/drivers/${r.id}.webp`);
@@ -963,7 +1107,8 @@ function drawRacer(r, s) {
     ctx.fillRect(cx - tw / 2, by - w * 0.95 - 14 * DPR, tw, 15 * DPR);
     ctx.fillStyle = r.color; ctx.fillText(r.name, cx, by - w * 0.95 - 3 * DPR);
   }
-  if (r.seq > 0 || r.trapped > 0) { ctx.font = `${Math.round(18 * DPR)}px sans-serif`; ctx.fillText(r.seq > 0 ? "🌀" : "🕸️", cx, by - w * 1.05 - 16 * DPR); }
+  if (r.trapped > 0) laserNet(cx, by, w, Math.min(1, r.trapped * 3), by - w * 1.6);
+  if (r.seq > 0) { ctx.font = `${Math.round(18 * DPR)}px sans-serif`; ctx.fillText("🌀", cx, by - w * 1.05 - 16 * DPR); }
   ctx.restore();
 }
 function drawPlayer() {
@@ -977,7 +1122,14 @@ function drawPlayer() {
     ctx.fillStyle = g; ctx.fillRect(cx - w * 0.6, by - w * 0.5, w * 1.2, w * 0.6);
   }
   kartAndDriver(P, cx, by + bounce, w, tilt);
-  if (P.trapped > 0) { const im = img("img/obj/drone.webp"); if (ready(im)) { const dw = w * 0.9; ctx.globalAlpha = 0.85; ctx.drawImage(im, cx - dw / 2, by - w * 1.25, dw, dw * im.naturalHeight / im.naturalWidth); ctx.globalAlpha = 1; } }
+  if (P.trapped > 0) {
+    // the drone hovers over you while its laser net holds you
+    const im = img("img/obj/drone.webp"), k = Math.min(1, P.trapped * 3);
+    const dw = w * 0.95, dh = ready(im) ? dw * im.naturalHeight / im.naturalWidth : dw * 0.75;
+    const dy = Math.max(4 * DPR, by - w * 1.05 - dh) + Math.sin(R.t * 3) * 4 * DPR;
+    if (ready(im)) { ctx.globalAlpha = k; ctx.drawImage(im, cx - dw / 2, dy, dw, dh); ctx.globalAlpha = 1; }
+    laserNet(cx, by, w, k, dy + dh * 0.93);
+  }
   if (P.stun > 0) { ctx.font = `${Math.round(28 * DPR)}px sans-serif`; ctx.textAlign = "center"; ctx.fillText("💥", cx + Math.sin(R.t * 20) * 10, by - w * 0.8); }
 }
 
@@ -994,22 +1146,25 @@ function loop(now) {
 requestAnimationFrame(loop);
 
 /* ================= screens ================= */
-const SCREENS = ["title", "pick", "track", "film", "card", "pause", "results"];
+// Title → Warrior → ride → intro film (skippable) → countdown → race
+const SCREENS = ["title", "pickW", "pickK", "film", "card", "pause", "results"];
 function show(id) {
   SCREENS.forEach((s) => $(s).classList.toggle("hidden", s !== id));
   $("hud").classList.toggle("hidden", !["race", "count", "card", "pause"].includes(id) && id !== "hud");
 }
 function go(id) {
   sfx.tap();
-  if (id === "pick") buildPick();
-  if (id === "track") buildBoards();
+  if (id === "pickW") buildWarriors();
+  if (id === "pickK") buildKarts();
   state = id; show(id);
   if (id === "title") showBest();
 }
 document.querySelectorAll("[data-go]").forEach((b) => b.addEventListener("click", () => go(b.dataset.go)));
 document.querySelectorAll("[data-exit]").forEach((b) => b.addEventListener("click", () => { music.pause(); post({ type: "exit" }); if (!EMBED) go("title"); }));
-$("playBtn").addEventListener("click", () => { audioInit(); go("pick"); });
+$("playBtn").addEventListener("click", () => { audioInit(); go("pickW"); });
 $("introBtn").addEventListener("click", () => { audioInit(); playFilm(() => go("title")); });
+$("trackBtn").addEventListener("click", () => { sfx.tap(); setTrack(opts.track === "theme" ? "race" : "theme"); });
+document.querySelectorAll("[data-track]").forEach((b) => b.addEventListener("click", () => { sfx.tap(); setTrack(b.dataset.track); }));
 
 function showBest() {
   const b = store.get("wt-race-best", null);
@@ -1017,11 +1172,23 @@ function showBest() {
 }
 const ordinal = (n) => n + (["th", "st", "nd", "rd"][(n % 100 > 10 && n % 100 < 14) ? 0 : n % 10] || "th");
 
-function buildPick() {
-  $("warriors").innerHTML = WARRIORS.map((w) => `<button class="w-chip${w.id === me.warrior ? " on" : ""}" data-w="${w.id}"><img src="img/faces/${w.id}.webp" alt=""><b>${w.name}</b></button>`).join("");
-  $("karts").innerHTML = KARTS.map((k) => `<button class="k-chip${k.id === me.kart ? " on" : ""}" data-k="${k.id}"><img src="img/karts/${k.id}.webp" alt=""><span>${k.name}</span><span class="tag">${k.tag}</span></button>`).join("");
-  $("warriors").querySelectorAll("[data-w]").forEach((b) => b.addEventListener("click", () => { me.warrior = b.dataset.w; store.set("wt-race-warrior", me.warrior); sfx.tap(); warriorSay(me.warrior, "go", true); buildPick(); }));
-  $("karts").querySelectorAll("[data-k]").forEach((b) => b.addEventListener("click", () => { me.kart = b.dataset.k; store.set("wt-race-kart", me.kart); sfx.tap(); buildPick(); }));
+// step 1: the Warrior
+function buildWarriors() {
+  $("warriors").innerHTML = WARRIORS.map((w) => `<button class="w-card${w.id === me.warrior ? " on" : ""}" data-w="${w.id}" style="--wc:${w.color}"><img src="img/faces/${w.id}.webp" alt=""><b>${w.name}</b></button>`).join("");
+  $("warriors").querySelectorAll("[data-w]").forEach((b) => b.addEventListener("click", () => {
+    me.warrior = b.dataset.w; store.set("wt-race-warrior", me.warrior); sfx.tap(); warriorSay(me.warrior, "go", true); buildWarriors();
+  }));
+  const W_ = WARRIORS.find((w) => w.id === me.warrior);
+  $("pwFace").src = `img/faces/${W_.id}.webp`;
+  $("pwFace").parentElement.style.setProperty("--wc", W_.color);
+  $("pwName").textContent = W_.name;
+}
+$("toKart").addEventListener("click", () => go("pickK"));
+
+// step 2: the ride
+function buildKarts() {
+  $("karts").innerHTML = KARTS.map((k) => `<button class="k-chip${k.id === me.kart ? " on" : ""}${k.id === "gene" ? " gene" : ""}" data-k="${k.id}"><img src="img/karts/${k.id}.webp" alt=""><span>${k.name}</span><span class="tag">${k.tag}</span></button>`).join("");
+  $("karts").querySelectorAll("[data-k]").forEach((b) => b.addEventListener("click", () => { me.kart = b.dataset.k; store.set("wt-race-kart", me.kart); sfx.tap(); buildKarts(); }));
   const K = KART[me.kart];
   $("pvKart").src = `img/karts/${K.id}.webp`;
   const dr = $("pvDriver"); dr.src = `img/drivers/${me.warrior}.webp`;
@@ -1037,47 +1204,40 @@ function buildPick() {
     dr.style.top = (box - h + K.seat[1] * h + K.seat[2] * w * 0.25 - dh) + "px";
   };
   stage.onload = place; dr.onload = place; setTimeout(place, 50);
-  $("pvName").textContent = `${WARRIORS.find((w) => w.id === me.warrior).name} · ${K.name}`;
+  $("pvName").textContent = K.name;
+  $("pvTag").textContent = K.tag;
   $("pvFact").textContent = K.fact;
   $("pvPerk").textContent = "★ " + K.perk;
   $("pvStats").innerHTML = [["Speed", K.spd], ["Start", K.acc], ["Handling", K.hnd]].map(([l, v]) => `<span>${l}</span><div class="bar"><i style="width:${v * 20}%"></i></div>`).join("");
 }
-$("toTrack").addEventListener("click", () => go("track"));
-
-const BOARDS = [
-  { id: "b1", name: "Marrow to Marrow", desc: "Start where blood cells are born, race through the heart and lungs, survive the spleen, and make it home.", route: "Bone marrow → Bloodstream → Heart → Lungs → Heart → Spleen → Bone marrow", bg: "img/bg_marrow.webp", open: true },
-  { id: "b2", name: "Coming soon", desc: "A new world inside the body is on the way.", route: "", bg: "img/bg_lung.webp", open: false },
-  { id: "b3", name: "Coming soon", desc: "A new world inside the body is on the way.", route: "", bg: "img/bg_spleen.webp", open: false },
-];
-function buildBoards() {
-  $("boards").innerHTML = BOARDS.map((b) => `<button class="board${b.open ? "" : " locked"}" data-b="${b.id}" style="background-image:url(${b.bg})" ${b.open ? "" : "disabled"}>
-    ${b.open ? "" : '<span class="lock">🔒 Coming soon</span>'}<h3>${b.open ? "Board 1 · " : ""}${b.name}</h3><p>${b.desc}</p>${b.route ? `<div class="route">${b.route}</div>` : ""}</button>`).join("");
-  $("boards").querySelectorAll("[data-b]").forEach((b) => b.addEventListener("click", () => startRace()));
-}
+$("toRace").addEventListener("click", () => startRace(true));
 
 /* intro film: Dr. Amos shrinks the Warriors and introduces Mercy */
 function playFilm(done) {
   const v = $("introVid");
   state = "film"; show("film");
-  v.src = "vid/intro.mp4"; v.currentTime = 0;
+  v.src = "vid/intro.mp4"; v.currentTime = 0; v.muted = false;
   music.pause();
-  const end = () => { v.onended = null; v.pause(); store.set("wt-race-film", true); done(); };
+  let ended = false;
+  const end = () => { if (ended) return; ended = true; v.onended = null; v.pause(); store.set("wt-race-film", true); done(); };
   v.onended = end; v.onerror = end;
   $("skipFilm").onclick = end;
   v.play().catch(() => { v.muted = true; v.play().catch(end); });
 }
 
-function startRace() {
+// The intro plays every time you head out from the garage; it's skippable.
+// "Race again" and "Restart" go straight to the grid.
+function startRace(withFilm = false) {
   audioInit();
   newRace();
-  const go_ = () => countdown();
-  if (!store.get("wt-race-film", false)) playFilm(go_); else go_();
+  if (withFilm) playFilm(countdown); else countdown();
 }
 function countdown() {
   state = "count"; show("hud");
-  ["title", "pick", "track", "film", "results"].forEach((s) => $(s).classList.add("hidden"));
+  ["title", "pickW", "pickK", "film", "results"].forEach((s) => $(s).classList.add("hidden"));
   $("hud").classList.remove("hidden");
   engineStart();
+  setTrack(opts.track); setDuck(false);
   if (opts.music) { music.currentTime = 0; music.play().catch(() => {}); }
   const el = $("count"); el.classList.remove("hidden");
   mercySay("count", true);
@@ -1098,12 +1258,13 @@ function pause() {
   if (state !== "race") return;
   state = "pause"; $("pause").classList.remove("hidden");
   $("optMusic").checked = opts.music; $("optSfx").checked = opts.sfx; $("optVoice").checked = opts.voice;
+  setTrack(opts.track);
   music.pause(); engineSet(0, false);
 }
 $("pauseBtn").addEventListener("click", pause);
 $("resume").addEventListener("click", () => { $("pause").classList.add("hidden"); state = "race"; last = performance.now(); if (opts.music) music.play().catch(() => {}); });
-$("restart").addEventListener("click", () => { $("pause").classList.add("hidden"); startRace(); });
-["Music", "Sfx", "Voice"].forEach((k) => $("opt" + k).addEventListener("change", (e) => { opts[k.toLowerCase()] = e.target.checked; saveOpts(); }));
+$("restart").addEventListener("click", () => { $("pause").classList.add("hidden"); startRace(false); });
+["Music", "Sfx", "Voice"].forEach((k) => $("opt" + k).addEventListener("change", (e) => { opts[k.toLowerCase()] = e.target.checked; saveOpts(); if (k === "Music" && !opts.music) music.pause(); }));
 document.addEventListener("visibilitychange", () => { if (document.hidden) pause(); });
 
 function showResults() {
@@ -1120,19 +1281,27 @@ function showResults() {
   $("resNote").textContent = iplace === 1
     ? "Treating blockages and sharing crystals made you the biggest helper on the track."
     : "Impact points come from treating blockages (+100), answering Warrior Cards (+75), sharing crystals (+50) and boosts (+10).";
+  // what you learned this race
+  const facts = ["marrow2", "vocfact", "lung2", "spleen2"].filter((k) => R.heard.has(k)).map((k) => MERCY[k]);
+  const cells = R.spotted.map((k) => `<span class="cell-chip"><img src="img/cells/${k}.webp" alt="">${CELLS[k][0]}</span>`).join("");
+  const crys = [...R.used].map((t) => CRYSTALS.find((c) => c.id === t)).map((c) => `<li>${c.icon} <b>${c.name}:</b> ${c.fact}</li>`).join("");
+  const myths = [...R.myths].slice(0, 2).map((i) => `<li>🛡️ <b>Myth busted:</b> ${MYTHS[i][1]}</li>`).join("");
+  $("resLearn").innerHTML = `<h3>📘 What you learned</h3>${cells ? `<div class="cells">${cells}</div>` : ""}<ul>${crys}${myths}${facts.slice(0, 2).map((f) => `<li>🩸 ${f}</li>`).join("")}</ul>`;
   const best = store.get("wt-race-best", null);
   if (!best || place < best.place || (place === best.place && R.P.impact > best.impact)) store.set("wt-race-best", { place, impact: R.P.impact });
   show("results");
   music.pause();
 }
 const fmtTime = (s) => `${Math.floor(s / 60)}:${String(Math.floor(s % 60)).padStart(2, "0")}`;
-$("again").addEventListener("click", () => startRace());
+$("again").addEventListener("click", () => startRace(false));
 
 /* ================= boot ================= */
 ["img/bg_marrow.webp", "img/bg_vessel.webp", "img/obj/voc.webp", "img/obj/crystal.webp", "img/obj/boost.webp", "img/obj/drone.webp", "img/obj/myth.webp", "img/obj/arch.webp"].forEach(img);
 KARTS.forEach((k) => img(`img/karts/${k.id}.webp`));
+Object.keys(CELLS).forEach((k) => cellImg(k));
+setTrack(opts.track);
 WARRIORS.forEach((w) => img(`img/drivers/${w.id}.webp`));
-setTimeout(() => ZONES.forEach((z) => img(z.bg)), 1500);
+setTimeout(() => ZONES.forEach((z) => img(z.bg)), 800);
 setTimeout(() => Object.keys(MERCY).forEach((k) => { const a = new Audio(); a.preload = "metadata"; a.src = `voice/mercy/${k}.mp3`; voiceCache[`voice/mercy/${k}.mp3`] = a; }), 2500);
 showBest();
 show("title");
@@ -1151,6 +1320,7 @@ window.__race = { get R() { return R; }, get state() { return state; }, set stat
       if (danger && danger.t !== "voc") { if (danger.x >= P.x) keys.left = P.x > -0.6; else keys.right = P.x < 0.6; if (!keys.left && !keys.right) keys.right = true; }
       else if (Math.abs(P.x) > 0.7) { keys.left = P.x > 0; keys.right = P.x < 0; }
       if ($("treat").classList.contains("urgent")) { useCrystal(); log.treat++; }
+      R.laneT = keys.left || keys.right ? null : nearestLane(P.x);
       const before = { stun: P.stun, trapped: P.trapped, slow: P.slow };
       update(dt);
       if (P.stun > before.stun + 0.5) log.voc++;
