@@ -110,26 +110,26 @@ const MYTHS = [
 
 // The route. len is in road segments; road has curves (c) and hills (h).
 const ZONES = [
-  { id: "marrow", name: "Bone Marrow", bg: "img/bg_marrow.webp", len: 700,
-    road: ["#d9b98c", "#cfae80"], side: ["#6b3b22", "#5c321d"], rumble: ["#fff1d6", "#ff9b6a"], lane: "rgba(255,240,210,.55)", fog: "#2b1410",
+  { id: "marrow", vp: 0.6, ground: "img/ground/marrow.webp", name: "Bone Marrow", bg: "img/bg_marrow.webp", len: 700,
+    road: ["#8a2e2a", "#7e2a26"], side: ["#6b3b22", "#5c321d"], rumble: ["#f3d9b8", "#c97a5a"], lane: "rgba(255,230,200,.5)", fog: "#763133",
     deco: ["stem", "stem", "rbc", "neutrophil", "lymph", "platelet", "macro"], mercy: ["marrow", "marrow2"] },
-  { id: "vessel", name: "Bloodstream", bg: "img/bg_vessel.webp", len: 1300,
-    road: ["#8c1d2c", "#801a28"], side: ["#3d0710", "#33060d"], rumble: ["#ff8ba0", "#c0283f"], lane: "rgba(255,200,210,.5)", fog: "#260308",
+  { id: "vessel", vp: 0.47, ground: "img/ground/vessel.webp", name: "Bloodstream", bg: "img/bg_vessel.webp", len: 1300,
+    road: ["#8c1d2c", "#801a28"], side: ["#3d0710", "#33060d"], rumble: ["#ff8ba0", "#c0283f"], lane: "rgba(255,200,210,.5)", fog: "#601a1a",
     deco: ["rbc", "rbc", "rbc", "sickle", "platelet", "neutrophil", "lymph"], mercy: ["vessel", "vocfact"] },
-  { id: "heartR", name: "Heart · right side", bg: "img/bg_heart.webp", len: 650,
-    road: ["#5a1530", "#4f1229"], side: ["#1a0a2a", "#160823"], rumble: ["#4c8dff", "#c0283f"], lane: "rgba(150,190,255,.55)", fog: "#120618",
+  { id: "heartR", vp: 0.56, ground: "img/ground/heart.webp", name: "Heart · right side", bg: "img/bg_heart.webp", len: 650,
+    road: ["#5c1424", "#52111f"], side: ["#1a0a2a", "#160823"], rumble: ["#a8324a", "#6e1626"], lane: "rgba(255,170,185,.45)", fog: "#4b0b0d",
     deco: ["rbc", "rbc", "platelet", "neutrophil"], beat: true, mercy: ["heart1"] },
-  { id: "lung", name: "Lungs", bg: "img/bg_lung.webp", len: 1150,
-    road: ["#3d6fae", "#3766a1"], side: ["#1a2f5c", "#162951"], rumble: ["#ffffff", "#ff9cc8"], lane: "rgba(255,255,255,.6)", fog: "#0e1f3d",
+  { id: "lung", vp: 0.6, ground: "img/ground/lung.webp", name: "Lungs", bg: "img/bg_lung.webp", len: 1150,
+    road: ["#8a2a40", "#7e263a"], side: ["#1a2f5c", "#162951"], rumble: ["#ffd6e6", "#c97a90"], lane: "rgba(255,255,255,.55)", fog: "#8a5a70",
     deco: ["o2", "o2", "rbc", "rbc", "macro"], mercy: ["lung", "lung2"] },
-  { id: "heartL", name: "Heart · left side", bg: "img/bg_heartL.webp", noFlip: true, len: 650,
-    road: ["#7a1626", "#6d1322"], side: ["#2a0612", "#23050f"], rumble: ["#ff4361", "#ffd0d8"], lane: "rgba(255,190,200,.55)", fog: "#1a0309",
+  { id: "heartL", vp: 0.52, ground: "img/ground/heart.webp", name: "Heart · left side", bg: "img/bg_heartL.webp", noFlip: true, len: 650,
+    road: ["#a01c2c", "#931928"], side: ["#2a0612", "#23050f"], rumble: ["#ff4361", "#ffd0d8"], lane: "rgba(255,190,200,.55)", fog: "#5a1620",
     deco: ["rbc", "rbc", "rbc", "platelet"], beat: true, mercy: ["heart2"] },
-  { id: "spleen", name: "Spleen", bg: "img/bg_spleen.webp", len: 1250,
-    road: ["#4a1a4a", "#421742"], side: ["#1d0920", "#18071b"], rumble: ["#b04cff", "#5ee7ff"], lane: "rgba(210,160,255,.5)", fog: "#120614",
+  { id: "spleen", vp: 0.6, ground: "img/ground/spleen.webp", name: "Spleen", bg: "img/bg_spleen.webp", len: 1250,
+    road: ["#5a1a3a", "#511734"], side: ["#1d0920", "#18071b"], rumble: ["#8a3a6a", "#b04cff"], lane: "rgba(210,160,255,.5)", fog: "#67131c",
     deco: ["macro", "macro", "lymph", "sickle", "rbc", "sickle"], mercy: ["spleen", "spleen2"] },
-  { id: "home", name: "Back to the marrow", bg: "img/bg_marrow.webp", len: 800,
-    road: ["#c9a06e", "#be9663"], side: ["#5a2e18", "#4d2714"], rumble: ["#fff1d6", "#ffc23d"], lane: "rgba(255,240,210,.6)", fog: "#2b1410",
+  { id: "home", vp: 0.6, ground: "img/ground/marrow.webp", name: "Back to the marrow", bg: "img/bg_marrow.webp", len: 800,
+    road: ["#8a2e2a", "#7e2a26"], side: ["#5a2e18", "#4d2714"], rumble: ["#f3d9b8", "#ffc23d"], lane: "rgba(255,230,200,.55)", fog: "#763133",
     deco: ["stem", "rbc", "neutrophil", "platelet", "lymph"], mercy: ["final"] },
 ];
 
@@ -248,6 +248,12 @@ function engineStart() {
   o.type = "sawtooth"; o2.type = "square"; f.type = "lowpass"; f.frequency.value = 500; g.gain.value = 0;
   o.connect(f); o2.connect(f); f.connect(g).connect(master); o.start(); o2.start();
   engine = { o, o2, f, g };
+}
+// stop the engine completely (not just quiet) whenever the player isn't driving
+function engineStop() {
+  if (!engine) return;
+  const e = engine; engine = null;
+  try { const t = AC.currentTime; e.g.gain.cancelScheduledValues(t); e.g.gain.setValueAtTime(e.g.gain.value, t); e.g.gain.linearRampToValueAtTime(0, t + 0.25); e.o.stop(t + 0.3); e.o2.stop(t + 0.3); } catch {}
 }
 function engineSet(speedFrac, on) {
   if (!engine) return;
@@ -884,7 +890,8 @@ function update(dt) {
   }
   if (P.finish != null) { R.endT -= dt; if (R.endT <= 0) showResults(); }
 
-  engineSet(Math.min(1.4, P.speed / MAXSPD), true);
+  if (P.finish == null) engineSet(Math.min(1.4, P.speed / MAXSPD), true);
+  else engineSet(0.2, R.endT > 2.5);
   R.shake = Math.max(0, R.shake - dt);
   updateHud();
 }
@@ -897,25 +904,60 @@ function project(p, camX, camY, camZ) {
 }
 function poly(x1, y1, x2, y2, x3, y3, x4, y4, c) { ctx.fillStyle = c; ctx.beginPath(); ctx.moveTo(x1, y1); ctx.lineTo(x2, y2); ctx.lineTo(x3, y3); ctx.lineTo(x4, y4); ctx.closePath(); ctx.fill(); }
 
+// One complete panoramic scene per organ (never tiled). It drifts a little as the
+// road curves, like turning your head, and settles back toward the centre.
 function drawBackdrop(zi, blendNext) {
+  const horizon = H * 0.48;
   const draw = (Z, alpha) => {
     const im = img(Z.bg); if (!ready(im)) return;
-    const h = H * 0.86, w = h * im.naturalWidth / im.naturalHeight;
-    const horizon = H * 0.48;
-    const y = horizon - h * 0.62 + (R ? R.pulse * 6 * DPR : 0);
-    let x = -((R ? R.bgX : 0) % (w * 2)); if (x > 0) x -= w * 2;
-    ctx.globalAlpha = alpha;
-    for (let k = 0; x + k * w < W; k++) {
-      const flip = !Z.noFlip && ((k % 2) + 2) % 2 === 1;
-      if (flip) { ctx.save(); ctx.translate(x + (k + 1) * w, 0); ctx.scale(-1, 1); ctx.drawImage(im, 0, y, w, h); ctx.restore(); }
-      else ctx.drawImage(im, x + k * w, y, w, h);
-    }
-    ctx.globalAlpha = 1;
+    const asp = im.naturalWidth / im.naturalHeight;
+    let w = W * 1.35, h = w / asp;
+    const vp = Z.vp || 0.55;
+    if (h * vp < horizon + 10) { h = (horizon + 10) / vp; w = h * asp; }
+    const slack = (w - W) / 2;
+    const off = R ? clamp(R.bgX, -slack, slack) : 0;
+    const x = (W - w) / 2 - off, y = horizon - h * vp + (R ? R.pulse * 6 * DPR : 0);
+    ctx.globalAlpha = alpha; ctx.drawImage(im, x, y, w, h); ctx.globalAlpha = 1;
   };
   const Z = ZONES[zi];
   ctx.fillStyle = Z.fog; ctx.fillRect(0, 0, W, H);
   draw(Z, 1);
   if (blendNext && blendNext.a > 0) draw(ZONES[blendNext.zi], blendNext.a);
+}
+
+/* textured ground and road: each strip is drawn in thin bands, each band maps
+   the organ texture with perspective-correct depth so the floor feels solid */
+const patCache = {};
+function pat(src) {
+  if (window.__noTex) return null;
+  const im = img(src); if (!ready(im)) return null;
+  return patCache[src] || (patCache[src] = { p: ctx.createPattern(im, "repeat"), w: im.naturalWidth, h: im.naturalHeight });
+}
+const GROUND_Z = ROAD * 1.3, ROAD_Z = ROAD * 1.4, BAND = 4;
+const _m = typeof DOMMatrix !== "undefined" ? new DOMMatrix() : null;
+function setPat(P, kx, ky, e, f) { _m.a = kx; _m.b = 0; _m.c = 0; _m.d = ky; _m.e = e; _m.f = f; P.p.setTransform(_m); ctx.fillStyle = P.p; }
+function texStrip(s, p1, p2, z1, z2, top, bottom, Z) {
+  const G = _m && pat(Z.ground), RD = _m && pat("img/ground/road.webp");
+  if (!G || !RD) return false;
+  const y1 = p1.y, y2 = p2.y, span = y1 - y2;
+  const n = Math.max(1, Math.ceil((bottom - top) / (BAND * DPR)));
+  const gv = G.h / GROUND_Z, rv = RD.h / ROAD_Z;
+  const gBase = Math.floor(z1 * gv / G.h) * G.h, rBase = Math.floor(z1 * rv / RD.h) * RD.h;
+  for (let k = 0; k < n; k++) {
+    const ya = top + (bottom - top) * k / n, yb = top + (bottom - top) * (k + 1) / n;
+    const ta = (ya - y2) / span, tb = (yb - y2) / span, tm = (ta + tb) / 2;
+    // perspective-correct depth at the band's top and bottom
+    const za = lerp(z2 * p2.sc, z1 * p1.sc, ta) / lerp(p2.sc, p1.sc, ta);
+    const zb = lerp(z2 * p2.sc, z1 * p1.sc, tb) / lerp(p2.sc, p1.sc, tb);
+    const xc = lerp(p2.x, p1.x, tm), w = lerp(p2.w, p1.w, tm), hb = yb - ya + 0.6;
+    // organ tissue all the way to the edges of the screen
+    let va = za * gv - gBase, vb = zb * gv - gBase, ky = (yb - ya) / (vb - va || 1e-3), kx = 2.6 * w / G.w;
+    setPat(G, kx, ky, xc - 1.3 * w, ya - ky * va); ctx.fillRect(0, ya, W, hb);
+    // the road: the glossy floor of a blood vessel
+    va = za * rv - rBase; vb = zb * rv - rBase; ky = (yb - ya) / (vb - va || 1e-3); kx = 2 * w / RD.w;
+    setPat(RD, kx, ky, xc - w, ya - ky * va); ctx.globalAlpha = 0.55; ctx.fillRect(xc - w, ya, 2 * w, hb); ctx.globalAlpha = 1;
+  }
+  return true;
 }
 
 function render() {
@@ -927,7 +969,7 @@ function render() {
   const playerY = lerp(base.p1.y, base.p2.y, basePct);
   const camY = playerY + CAM_H;
   // backdrop drifts with the curves
-  R.bgX += base.curve * (P.speed / MAXSPD) * 6 * DPR;
+  R.bgX = R.bgX * 0.985 + base.curve * (P.speed / MAXSPD) * 6 * DPR;
   // blend into the next zone's backdrop near a boundary
   const zi = base.zi, nextStart = ZONE_START[zi + 1];
   let blend = null;
@@ -950,22 +992,40 @@ function render() {
     if (p1.sc <= 0 || p2.y >= maxy || p2.y >= p1.y) continue;
     const alt = Math.floor(s.i / 3) % 2;
     const fog = Math.min(1, n / DRAW);
-    // vessel walls
-    ctx.fillStyle = Z.side[alt]; ctx.fillRect(0, p2.y, W, p1.y - p2.y);
-    // rumble strips and road
-    const r1 = p1.w / 6, r2 = p2.w / 6;
+    const bottom = Math.min(p1.y, maxy), top = p2.y;
+    const textured = texStrip(s, p1, p2, s.p1.z, s.p2.z, top, bottom, Z);
+    const r1 = p1.w / 7, r2 = p2.w / 7;
+    if (!textured) {
+      ctx.fillStyle = Z.side[alt]; ctx.fillRect(0, p2.y, W, p1.y - p2.y);
+      poly(p1.x - p1.w, p1.y, p1.x + p1.w, p1.y, p2.x + p2.w, p2.y, p2.x - p2.w, p2.y, Z.road[alt]);
+    } else {
+      // a light zone tint on the road and alternating shade for a sense of speed
+      ctx.globalAlpha = 0.3; poly(p1.x - p1.w, p1.y, p1.x + p1.w, p1.y, p2.x + p2.w, p2.y, p2.x - p2.w, p2.y, Z.road[alt]);
+      if (alt) { ctx.globalAlpha = 0.07; ctx.fillStyle = "#000"; ctx.fillRect(0, top, W, bottom - top); }
+      ctx.globalAlpha = 1;
+    }
+    // the vessel wall: a raised glossy edge on both sides of the road
+    ctx.globalAlpha = textured ? 0.55 : 1;
     poly(p1.x - p1.w - r1, p1.y, p1.x - p1.w, p1.y, p2.x - p2.w, p2.y, p2.x - p2.w - r2, p2.y, Z.rumble[alt]);
     poly(p1.x + p1.w + r1, p1.y, p1.x + p1.w, p1.y, p2.x + p2.w, p2.y, p2.x + p2.w + r2, p2.y, Z.rumble[alt]);
-    poly(p1.x - p1.w, p1.y, p1.x + p1.w, p1.y, p2.x + p2.w, p2.y, p2.x - p2.w, p2.y, Z.road[alt]);
+    ctx.globalAlpha = 1;
     if (alt) {
+      ctx.globalAlpha = textured ? 0.4 : 1;
       for (let l = 1; l < LANES; l++) {
         const f = -1 + (2 * l) / LANES, lw1 = p1.w * lanesW, lw2 = p2.w * lanesW;
         poly(p1.x + f * p1.w - lw1, p1.y, p1.x + f * p1.w + lw1, p1.y, p2.x + f * p2.w + lw2, p2.y, p2.x + f * p2.w - lw2, p2.y, Z.lane);
       }
+      ctx.globalAlpha = 1;
     }
-    if (fog > 0.4) { ctx.globalAlpha = (fog - 0.4) / 0.6 * 0.85; ctx.fillStyle = Z.fog; ctx.fillRect(0, p2.y, W, p1.y - p2.y); ctx.globalAlpha = 1; }
+    if (fog > 0.45) { ctx.globalAlpha = (fog - 0.45) / 0.55 * 0.7; ctx.fillStyle = Z.fog; ctx.fillRect(0, p2.y, W, p1.y - p2.y); ctx.globalAlpha = 1; }
     maxy = p2.y;
     drawn.push(s);
+  }
+  // a soft haze where the floor meets the scene, so there is no hard line
+  if (maxy < H) {
+    const hz = 26 * DPR, g = ctx.createLinearGradient(0, maxy - hz, 0, maxy + hz), fc = ZONES[zi].fog;
+    g.addColorStop(0, "rgba(0,0,0,0)"); g.addColorStop(0.5, fc); g.addColorStop(1, "rgba(0,0,0,0)");
+    ctx.globalAlpha = 0.75; ctx.fillStyle = g; ctx.fillRect(0, maxy - hz, W, hz * 2); ctx.globalAlpha = 1;
   }
   // sprites and racers, back to front
   const racersBySeg = new Map();
@@ -1156,11 +1216,11 @@ function go(id) {
   sfx.tap();
   if (id === "pickW") buildWarriors();
   if (id === "pickK") buildKarts();
-  state = id; show(id);
+  state = id; show(id); engineStop();
   if (id === "title") showBest();
 }
 document.querySelectorAll("[data-go]").forEach((b) => b.addEventListener("click", () => go(b.dataset.go)));
-document.querySelectorAll("[data-exit]").forEach((b) => b.addEventListener("click", () => { music.pause(); post({ type: "exit" }); if (!EMBED) go("title"); }));
+document.querySelectorAll("[data-exit]").forEach((b) => b.addEventListener("click", () => { music.pause(); engineStop(); post({ type: "exit" }); if (!EMBED) go("title"); }));
 $("playBtn").addEventListener("click", () => { audioInit(); go("pickW"); });
 $("introBtn").addEventListener("click", () => { audioInit(); playFilm(() => go("title")); });
 $("trackBtn").addEventListener("click", () => { sfx.tap(); setTrack(opts.track === "theme" ? "race" : "theme"); });
@@ -1195,13 +1255,18 @@ function buildKarts() {
   const stage = $("pvKart");
   const place = () => {
     if (!stage.naturalWidth) return;
-    const w = stage.clientWidth, h = w * stage.naturalHeight / stage.naturalWidth, box = stage.parentElement.clientHeight;
-    const dw = w * Math.max(K.seat[2], 0.28) * 1.05;
+    const box = stage.parentElement, bw = box.clientWidth, bh = box.clientHeight;
+    const dw0 = Math.max(K.seat[2], 0.28) * 1.05, dAsp = dr.naturalWidth ? dr.naturalHeight / dr.naturalWidth : 0.8;
+    const kAsp = stage.naturalHeight / stage.naturalWidth;
+    // size the kart so kart + driver's head both fit in the stage
+    const need = (w) => w * kAsp - K.seat[1] * w * kAsp - K.seat[2] * w * 0.25 + dw0 * w * dAsp;
+    let kw = bw * 0.9; while (kw > 40 && (kw * kAsp > bh || need(kw) + kw * 0 > bh - 4)) kw -= 4;
+    const kh = kw * kAsp, left = (bw - kw) / 2, dw = kw * dw0, dh = dw * dAsp;
+    stage.style.width = kw + "px";
     dr.style.width = dw + "px";
-    dr.style.left = (K.seat[0] * w) + "px";
+    dr.style.left = (left + K.seat[0] * kw) + "px";
     dr.style.transform = "translateX(-50%)";
-    const dh = dr.naturalWidth ? dw * dr.naturalHeight / dr.naturalWidth : dw * 0.6;
-    dr.style.top = (box - h + K.seat[1] * h + K.seat[2] * w * 0.25 - dh) + "px";
+    dr.style.top = Math.max(0, bh - kh + K.seat[1] * kh + K.seat[2] * kw * 0.25 - dh) + "px";
   };
   stage.onload = place; dr.onload = place; setTimeout(place, 50);
   $("pvName").textContent = K.name;
@@ -1259,16 +1324,16 @@ function pause() {
   state = "pause"; $("pause").classList.remove("hidden");
   $("optMusic").checked = opts.music; $("optSfx").checked = opts.sfx; $("optVoice").checked = opts.voice;
   setTrack(opts.track);
-  music.pause(); engineSet(0, false);
+  music.pause(); engineStop();
 }
 $("pauseBtn").addEventListener("click", pause);
-$("resume").addEventListener("click", () => { $("pause").classList.add("hidden"); state = "race"; last = performance.now(); if (opts.music) music.play().catch(() => {}); });
+$("resume").addEventListener("click", () => { $("pause").classList.add("hidden"); state = "race"; last = performance.now(); engineStart(); if (opts.music) music.play().catch(() => {}); });
 $("restart").addEventListener("click", () => { $("pause").classList.add("hidden"); startRace(false); });
 ["Music", "Sfx", "Voice"].forEach((k) => $("opt" + k).addEventListener("change", (e) => { opts[k.toLowerCase()] = e.target.checked; saveOpts(); if (k === "Music" && !opts.music) music.pause(); }));
 document.addEventListener("visibilitychange", () => { if (document.hidden) pause(); });
 
 function showResults() {
-  state = "results"; engineSet(0, false);
+  state = "results"; engineStop();
   // racers still on the road finish at their current pace
   for (const r of R.racers) if (r.finish == null) r.finish = R.t + (TRACK_LEN - r.z) / Math.max(MAXSPD * 0.6, r.speed);
   const byPlace = [...R.racers].sort((a, b) => a.finish - b.finish);
@@ -1301,7 +1366,7 @@ KARTS.forEach((k) => img(`img/karts/${k.id}.webp`));
 Object.keys(CELLS).forEach((k) => cellImg(k));
 setTrack(opts.track);
 WARRIORS.forEach((w) => img(`img/drivers/${w.id}.webp`));
-setTimeout(() => ZONES.forEach((z) => img(z.bg)), 800);
+setTimeout(() => { ZONES.forEach((z) => { img(z.bg); img(z.ground); }); img("img/ground/road.webp"); }, 300);
 setTimeout(() => Object.keys(MERCY).forEach((k) => { const a = new Audio(); a.preload = "metadata"; a.src = `voice/mercy/${k}.mp3`; voiceCache[`voice/mercy/${k}.mp3`] = a; }), 2500);
 showBest();
 show("title");
