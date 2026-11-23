@@ -111,25 +111,25 @@ const MYTHS = [
 // The route. len is in road segments; road has curves (c) and hills (h).
 const ZONES = [
   { id: "marrow", vp: 0.6, ground: "img/ground/marrow.webp", name: "Bone Marrow", bg: "img/bg_marrow.webp", len: 700,
-    road: ["#8a2e2a", "#7e2a26"], side: ["#6b3b22", "#5c321d"], rumble: ["#f3d9b8", "#c97a5a"], lane: "rgba(255,230,200,.5)", fog: "#763133",
+    road: ["#0e0508", "#170a0e"], side: ["#6b3b22", "#5c321d"], rumble: ["#f3d9b8", "#c97a5a"], lane: "rgba(255,230,200,.5)", fog: "#763133",
     deco: ["stem", "stem", "rbc", "neutrophil", "lymph", "platelet", "macro"], mercy: ["marrow", "marrow2"] },
   { id: "vessel", vp: 0.47, ground: "img/ground/vessel.webp", name: "Bloodstream", bg: "img/bg_vessel.webp", len: 1300,
-    road: ["#8c1d2c", "#801a28"], side: ["#3d0710", "#33060d"], rumble: ["#ff8ba0", "#c0283f"], lane: "rgba(255,200,210,.5)", fog: "#601a1a",
+    road: ["#0e0508", "#170a0e"], side: ["#3d0710", "#33060d"], rumble: ["#ff8ba0", "#c0283f"], lane: "rgba(255,200,210,.5)", fog: "#601a1a",
     deco: ["rbc", "rbc", "rbc", "sickle", "platelet", "neutrophil", "lymph"], mercy: ["vessel", "vocfact"] },
   { id: "heartR", vp: 0.56, ground: "img/ground/heart.webp", name: "Heart · right side", bg: "img/bg_heart.webp", len: 650,
-    road: ["#5c1424", "#52111f"], side: ["#1a0a2a", "#160823"], rumble: ["#a8324a", "#6e1626"], lane: "rgba(255,170,185,.45)", fog: "#4b0b0d",
+    road: ["#0e0508", "#170a0e"], side: ["#1a0a2a", "#160823"], rumble: ["#a8324a", "#6e1626"], lane: "rgba(255,170,185,.45)", fog: "#4b0b0d",
     deco: ["rbc", "rbc", "platelet", "neutrophil"], beat: true, mercy: ["heart1"] },
   { id: "lung", vp: 0.6, ground: "img/ground/lung.webp", name: "Lungs", bg: "img/bg_lung.webp", len: 1150,
-    road: ["#8a2a40", "#7e263a"], side: ["#1a2f5c", "#162951"], rumble: ["#ffd6e6", "#c97a90"], lane: "rgba(255,255,255,.55)", fog: "#8a5a70",
+    road: ["#0e0508", "#170a0e"], side: ["#1a2f5c", "#162951"], rumble: ["#ffd6e6", "#c97a90"], lane: "rgba(255,255,255,.55)", fog: "#8a5a70",
     deco: ["o2", "o2", "rbc", "rbc", "macro"], mercy: ["lung", "lung2"] },
   { id: "heartL", vp: 0.52, ground: "img/ground/heart.webp", name: "Heart · left side", bg: "img/bg_heartL.webp", noFlip: true, len: 650,
-    road: ["#a01c2c", "#931928"], side: ["#2a0612", "#23050f"], rumble: ["#ff4361", "#ffd0d8"], lane: "rgba(255,190,200,.55)", fog: "#5a1620",
+    road: ["#0e0508", "#170a0e"], side: ["#2a0612", "#23050f"], rumble: ["#ff4361", "#ffd0d8"], lane: "rgba(255,190,200,.55)", fog: "#5a1620",
     deco: ["rbc", "rbc", "rbc", "platelet"], beat: true, mercy: ["heart2"] },
   { id: "spleen", vp: 0.6, ground: "img/ground/spleen.webp", name: "Spleen", bg: "img/bg_spleen.webp", len: 1250,
-    road: ["#5a1a3a", "#511734"], side: ["#1d0920", "#18071b"], rumble: ["#8a3a6a", "#b04cff"], lane: "rgba(210,160,255,.5)", fog: "#67131c",
+    road: ["#0e0508", "#170a0e"], side: ["#1d0920", "#18071b"], rumble: ["#8a3a6a", "#b04cff"], lane: "rgba(210,160,255,.5)", fog: "#67131c",
     deco: ["macro", "macro", "lymph", "sickle", "rbc", "sickle"], mercy: ["spleen", "spleen2"] },
   { id: "home", vp: 0.6, ground: "img/ground/marrow.webp", name: "Back to the marrow", bg: "img/bg_marrow.webp", len: 800,
-    road: ["#8a2e2a", "#7e2a26"], side: ["#5a2e18", "#4d2714"], rumble: ["#f3d9b8", "#ffc23d"], lane: "rgba(255,230,200,.55)", fog: "#763133",
+    road: ["#0e0508", "#170a0e"], side: ["#5a2e18", "#4d2714"], rumble: ["#f3d9b8", "#ffc23d"], lane: "rgba(255,230,200,.55)", fog: "#763133",
     deco: ["stem", "rbc", "neutrophil", "platelet", "lymph"], mercy: ["final"] },
 ];
 
@@ -240,6 +240,9 @@ const sfx = {
   win() { [523, 659, 784, 1046, 784, 1046, 1318].forEach((f, i) => tone(f, 0.25, "triangle", 0.12, 0, i * 0.12)); },
   beat() { tone(62, 0.16, "sine", 0.35, 0.6); tone(58, 0.14, "sine", 0.28, 0.6, 0.22); },
   breath() { noise(2.2, 0.07, 700, 0.4, 0, "lowpass"); },
+  blast() { noise(0.25, 0.2, 1800, 1.2); tone(520, 0.18, "triangle", 0.08, 2.2); },
+  zap() { tone(1400, 0.12, "square", 0.06, 0.3); noise(0.2, 0.15, 3000, 2); },
+  power() { [392, 523, 659, 784, 1046].forEach((f, i) => tone(f, 0.25, "sawtooth", 0.05, 0, i * 0.05)); noise(0.6, 0.12, 1200, 0.5); },
   learn() { tone(1046, 0.12, "sine", 0.05); tone(1568, 0.18, "sine", 0.04, 0, 0.08); },
 };
 function engineStart() {
@@ -390,11 +393,12 @@ function buildTrack() {
       const e = Math.floor(L * 0.25), l = Math.floor(L * 0.25), h = L - e - l;
       let curve = (r() < 0.25 ? 0 : (r() < 0.5 ? -1 : 1) * (1 + r() * 3.5));
       // big climbs and drops keep the ride interesting; each zone has its own feel
-      const HILL = { marrow: 70, vessel: 120, heartR: 160, lung: 190, heartL: 160, spleen: 110, home: 120 }[Z.id] || 100;
-      let hill = (r() - 0.5) * 2 * HILL;
+      // grade = rise per unit forward; capped so a climb never becomes a wall
+      const GRADE = { marrow: 0.1, vessel: 0.16, heartR: 0.19, lung: 0.21, heartL: 0.19, spleen: 0.14, home: 0.14 }[Z.id] || 0.15;
+      let hill = (0.45 + r() * 0.55) * GRADE * L * (r() < 0.5 ? -1 : 1);
       // alternate up and down so the road never drifts too far from the backdrop
       const y = lastY();
-      if (y > 9000 && hill > 0) hill = -hill; else if (y < -9000 && hill < 0) hill = -hill;
+      if (y > 4000 && hill > 0) hill = -hill; else if (y < -4000 && hill < 0) hill = -hill;
       if (Z.id === "marrow" && SEGS.length < 80) { curve = 0; hill = 0; }
       if (Z.id === "spleen") curve *= 1.3;                    // twisty filter maze
       road(e, h, l, curve, hill, zi);
@@ -469,7 +473,7 @@ function statMul(k) {
 function makeRacer(w, kart, ai, z, x) {
   return { id: w.id, name: w.name, color: w.color, kart, ai, z, x, speed: 0, lane: x,
     stun: 0, slow: 0, boost: 0, trapped: 0, seq: 0, bag: [], impact: 0, finish: null,
-    nearT: 0, seqDone: false, think: 0, stuckNoted: false };
+    nearT: 0, seqDone: false, think: 0, stuckNoted: false, skill: ai ? 0.9 : 1, dodge: 0.6 };
 }
 function newRace() {
   buildTrack();
@@ -490,9 +494,10 @@ function newRace() {
   R = { racers: grid, P, t: 0, zone: -1, mercySaid: new Set(), shareCool: 6, posSaid: 0, finished: false,
         cleared: new Set(), taken: new Set(), beatT: 0, breathT: 0, steer: 0, camX: 0, bgX: 0, shake: 0, endT: 0,
         firstVoc: true, firstDrone: true, firstCrystal: true, correct: 0,
-        heard: new Set(), spotted: [], myths: new Set(), used: new Set(), laneT: 1, pressX: 0, steerDir: 0 };
+        heard: new Set(), spotted: [], myths: new Set(), used: new Set(), laneT: 1, pressX: 0, steerDir: 0, shots: [], wave: 0, blink: 0 };
+  Object.assign(P, { ammo: BLAST_MAX, ammoT: 0, powers: 2, bust: 0, shield: 0, autoClear: 0 });
   R.racers.forEach((r) => { if (r.ai) r.bag.push(pick(["water", "pain", "hu"])); });
-  updateBag(); $("impact").textContent = "0";
+  updateBag(); updateBlast(); updatePower(); $("impact").textContent = "0";
   buildProgress();
 }
 
@@ -519,11 +524,15 @@ function bindPad(id, k) {
 }
 bindPad("left", "left"); bindPad("right", "right");
 $("treat").addEventListener("pointerdown", (e) => { e.preventDefault(); useCrystal(); });
+$("blast").addEventListener("pointerdown", (e) => { e.preventDefault(); fireBlast(); });
+$("power").addEventListener("pointerdown", (e) => { e.preventDefault(); usePower(); });
 addEventListener("keydown", (e) => {
   if (e.repeat) return;
   if (e.key === "ArrowLeft" || e.key === "a") { keys.left = true; steerStart(-1); }
   if (e.key === "ArrowRight" || e.key === "d") { keys.right = true; steerStart(1); }
   if (e.key === " " || e.key === "ArrowUp") { e.preventDefault(); useCrystal(); }
+  if (e.key === "x" || e.key === "Shift") fireBlast();
+  if (e.key === "p" || e.key === "e") usePower();
   if (e.key === "Escape" && state === "race") pause();
 });
 addEventListener("keyup", (e) => {
@@ -606,6 +615,90 @@ function useCrystal() {
 }
 function impactPop(n) { $("impact").textContent = R.P.impact; }
 
+/* ================= Flow Blaster ================= */
+// Shoots a burst of fluid out of the front of the kart. It breaks up sickled-cell
+// clumps (and knocks out Society drones) in your lane. Three shots that recharge.
+const BLAST_MAX = 3, BLAST_RECHARGE = 3.2;
+function fireBlast() {
+  if (state !== "race" || !R || R.P.finish != null) return;
+  const P = R.P;
+  if (P.ammo < 1 || P.trapped > 0 || P.seq > 0) { sfx.bad(); return; }
+  P.ammo -= 1; updateBlast();
+  R.shots.push({ z: P.z + 120, x: P.x, t: 0, y0: segAt(P.z).p1.y });
+  sfx.blast();
+}
+function stepShots(dt) {
+  const P = R.P;
+  if (P.ammo < BLAST_MAX) { P.ammoT += dt; if (P.ammoT >= BLAST_RECHARGE) { P.ammoT = 0; P.ammo++; updateBlast(); } } else P.ammoT = 0;
+  for (const sh of R.shots) {
+    const z0 = sh.z; sh.z += MAXSPD * 2.6 * dt; sh.t += dt;
+    const s0 = Math.floor(z0 / SEG), s1 = Math.floor(sh.z / SEG);
+    for (let i = s0; i <= s1 && !sh.done; i++) {
+      const sg = SEGS[i]; if (!sg) continue;
+      for (const o of sg.objs) {
+        if (o.gone || !(o.t === "voc" || o.t === "drone" || o.t === "myth")) continue;
+        if (Math.abs(o.x - sh.x) > (o.w + 0.34) / 2) continue;
+        o.gone = true; o.burst = R.t; sh.done = true; sh.hitT = R.t;
+        if (o.t === "voc") { P.impact += 25; impactPop(); toast("💦 Clump broken up! +25", 1100); sfx.treat(); if (!R.mercySaid.has("blast")) { R.mercySaid.add("blast"); learnCard("💦", "Flow Blast", "Good blood flow and fluids help keep sickled cells from clumping and blocking vessels."); } }
+        else if (o.t === "drone") { P.impact += 25; impactPop(); toast("⚡ Society drone zapped! +25", 1100); sfx.zap(); R.myths.add(o.myth); }
+        else { toast("Myth popped!", 900); sfx.zap(); }
+        break;
+      }
+    }
+  }
+  R.shots = R.shots.filter((sh) => !sh.done && sh.t < 1.3);
+}
+function updateBlast() {
+  const P = R.P, b = $("blast");
+  b.querySelector("small").textContent = `${P.ammo}/${BLAST_MAX}`;
+  b.classList.toggle("empty", P.ammo < 1);
+}
+
+/* ================= Warrior powers (two per race, from the board game) ================= */
+const POWERS = {
+  theo:     { icon: "🔓", name: "Barrier Buster", text: "For 5 seconds you smash straight through blockages, drones and myths without slowing down." },
+  luciana:  { icon: "💥", name: "Break Every Barrier", text: "Clears every blockage, drone and myth on the road ahead of you." },
+  ritika:   { icon: "💎", name: "Crystal Shower", text: "Fills your crystal bag and gives a crystal to every Warrior near you." },
+  malcolm:  { icon: "💚", name: "Team Heal", text: "You and every Warrior near you break free and get a burst of speed." },
+  tasha:    { icon: "✨", name: "Double Clear", text: "The next two blockages you reach are cleared automatically." },
+  krystal:  { icon: "🌀", name: "Teleport", text: "Blink forward a short distance, past anything in your way." },
+  dr_kim:   { icon: "🛡️", name: "Crisis Shield", text: "A shield blocks the next blockage, drone or myth that hits you." },
+};
+function usePower() {
+  if (state !== "race" || !R || R.P.finish != null) return;
+  const P = R.P, W_ = POWERS[P.id];
+  if (!W_ || P.powers < 1) { sfx.bad(); return; }
+  P.powers -= 1; updatePower();
+  const near = R.racers.filter((r) => r.ai && Math.abs(r.z - P.z) < 3500);
+  if (P.id === "theo") { P.bust = 5; }
+  else if (P.id === "luciana") {
+    const s0 = Math.floor(P.z / SEG);
+    for (let i = s0; i < s0 + 70; i++) SEGS[i] && SEGS[i].objs.forEach((o) => { if (!o.gone && (o.t === "voc" || o.t === "drone" || o.t === "myth")) { o.gone = true; o.burst = R.t; } });
+    R.wave = 1; P.impact += 75;
+  } else if (P.id === "ritika") {
+    while (P.bag.length < 3) P.bag.push(pick(["water", "pain", "hu", "warm", "o2"]));
+    near.forEach((r) => { if (r.bag.length < 3) { r.bag.push(pick(["water", "pain", "hu"])); P.impact += 50; } });
+    updateBag(); sfx.crystal();
+  } else if (P.id === "malcolm") {
+    for (const r of [P, ...near]) { r.stun = 0; r.trapped = 0; r.slow = 0; if (r.ai) r.seq = 0; r.boost = Math.max(r.boost, 2); }
+    if (P.seq > 0 && state === "race") { /* the spleen card still teaches; Team Heal can't skip it */ }
+    P.impact += 50 * near.length;
+  } else if (P.id === "tasha") { P.autoClear = 2; }
+  else if (P.id === "krystal") {
+    P.z = Math.min(TRACK_LEN - SEG, P.z + 15 * SEG); P.stun = 0; P.trapped = 0; R.blink = 1;
+  } else if (P.id === "dr_kim") { P.shield = 1; }
+  impactPop(); flash("rgba(255,194,61,.35)"); sfx.power();
+  toast(`${W_.icon} ${W_.name}!`, 1500);
+  warriorSay(P.id, "boost", true);
+}
+function updatePower() {
+  const P = R.P, W_ = POWERS[P.id], b = $("power");
+  b.querySelector("span").textContent = W_.icon;
+  b.querySelector("small").textContent = "●".repeat(P.powers) + "○".repeat(2 - P.powers);
+  b.classList.toggle("empty", P.powers < 1);
+  b.setAttribute("aria-label", `${W_.name}: ${W_.text}`);
+}
+
 /* ================= UI bits ================= */
 let toastT = 0;
 function toast(t, ms = 1700) { const el = $("toast"); el.textContent = t; el.classList.remove("hidden"); el.style.animation = "none"; void el.offsetWidth; el.style.animation = ""; clearTimeout(toastT); toastT = setTimeout(() => el.classList.add("hidden"), ms); }
@@ -637,9 +730,10 @@ function stepRacer(r, dt) {
   if (r.ai) {
     // rubber-banding keeps the pack close to the player
     const gap = r.z - R.P.z;
-    target *= gap > 4000 ? 0.86 : gap > 1500 ? 0.95 : gap < -4000 ? 1.1 : gap < -1500 ? 1.03 : 0.985;
+    target *= gap > 6000 ? 0.86 : gap > 2500 ? 0.94 : gap > 800 ? 0.985 : gap < -6000 ? 1.07 : 1.01;
     target *= r.skill;
   }
+  if (!r.ai) target *= 1.02;
   if (r.boost > 0) { target *= 1.35; r.boost -= dt; }
   if (r.slow > 0) { target *= 0.55; r.slow -= dt; }
   if (r.stun > 0 || r.trapped > 0 || r.seq > 0) target = r.seq > 0 || r.trapped > 0 ? 0 : MAXSPD * 0.12;
@@ -670,6 +764,11 @@ function hitObjects(r, prevZ) {
 }
 function onHit(r, o, s) {
   const P = R.P, me_ = r === P;
+  if (me_ && (o.t === "voc" || o.t === "drone" || o.t === "myth") && !(o.hitBy && o.hitBy.has(r.id))) {
+    if (P.bust > 0) { o.gone = true; o.burst = R.t; P.impact += 25; impactPop(); sfx.zap(); R.shake = 0.2; return; }
+    if (P.shield > 0) { P.shield = 0; o.gone = true; o.burst = R.t; toast("🛡️ Shield blocked it!", 1200); sfx.zap(); return; }
+    if (o.t === "voc" && P.autoClear > 0) { P.autoClear--; o.gone = true; o.burst = R.t; P.impact += 100; impactPop(); sfx.treat(); flash("rgba(93,255,160,.35)"); toast("✨ Tasha cleared the blockage! +100", 1400); return; }
+  }
   if (o.t === "crystal") {
     const key = o; if (o.takenBy && o.takenBy.has(r.id)) return;
     (o.takenBy || (o.takenBy = new Set())).add(r.id);
@@ -692,7 +791,7 @@ function onHit(r, o, s) {
       r.stun = 0.9; r.speed *= 0.3; return;
     }
     const k = r.kart === "gene" ? 0.3 : r.kart === "hydroxyurea" ? 0.5 : r.kart === "glutamine" ? 0.7 : 1;
-    r.stun = 1.3 * k; r.speed *= 0.25 + (1 - k) * 0.5; r.slow = 1.2 * k;
+    r.stun = 0.8 * k; r.speed *= 0.45 + (1 - k) * 0.4; r.slow = 0.8 * k;
     R.shake = 0.5; sfx.hit(); flash("rgba(255,40,70,.45)");
     toast(r.kart === "gene" ? "Edited cells don't sickle! 🧬" : "Vaso-occlusion! Use a crystal!", 1500);
     warriorSay(r.id, "voc", true);
@@ -700,7 +799,7 @@ function onHit(r, o, s) {
     if (navigator.vibrate) navigator.vibrate(60);
   } else if (o.t === "drone") {
     if (o.hitBy && o.hitBy.has(r.id)) return; (o.hitBy || (o.hitBy = new Set())).add(r.id);
-    const t = r.kart === "macrophage" ? 0.7 : r.kart === "tcell" ? 1.0 : 1.4;
+    const t = (r.kart === "macrophage" ? 0.6 : r.kart === "tcell" ? 0.8 : 1.0) * (r.ai ? 1.3 : 1);
     r.trapped = t; r.trapT = t; r.speed *= 0.2;
     if (me_) {
       R.myths.add(o.myth);
@@ -710,7 +809,7 @@ function onHit(r, o, s) {
   } else if (o.t === "myth") {
     if (o.hitBy && o.hitBy.has(r.id)) return; (o.hitBy || (o.hitBy = new Set())).add(r.id);
     if (r.kart === "bcell") { if (me_) toast("B-Cell antibodies! Myth blocked 🛡️", 1300); return; }
-    r.slow = 0.9; r.speed *= 0.6;
+    r.slow = 0.6; r.speed *= 0.75;
     if (me_) { sfx.bump(); showMyth(o.myth); R.myths.add(o.myth); }
   }
 }
@@ -843,6 +942,9 @@ function update(dt) {
   }
   sharing(dt);
   sequestrationCheck(dt);
+  stepShots(dt);
+  P.bust = Math.max(0, P.bust - dt);
+  R.wave = Math.max(0, R.wave - dt * 1.5); R.blink = Math.max(0, R.blink - dt * 2.5);
 
   // warn about blockages ahead
   const ahead = vocAhead(P, 18);
@@ -897,8 +999,9 @@ function update(dt) {
 }
 
 /* ================= rendering ================= */
+let PITCH = 0;
 function project(p, camX, camY, camZ) {
-  const tx = p.x - camX, ty = p.y - camY, tz = p.z - camZ;
+  const tx = p.x - camX, tz = p.z - camZ, ty = p.y - camY - PITCH * (tz - CAM_BACK); // pivot on the player so the kart stays planted
   const sc = CAM_DEPTH / tz;
   return { x: Math.round(W / 2 + sc * tx * W / 2), y: Math.round(H / 2 - sc * ty * H / 2), w: Math.round(sc * ROAD * W / 2), sc };
 }
@@ -968,6 +1071,10 @@ function render() {
   const camZ = P.z; // camera sits CAM_BACK behind the player
   const playerY = lerp(base.p1.y, base.p2.y, basePct);
   const camY = playerY + CAM_H;
+  // look along the slope ahead (like a real camera following the road)
+  const a = SEGS[base.i], b = SEGS[Math.min(SEGS.length - 1, base.i + 14)];
+  const ahead = (b.p2.y - a.p1.y) / (b.p2.z - a.p1.z);
+  R.pitch = lerp(R.pitch || 0, ahead * 0.8, 0.08); PITCH = R.pitch;
   // backdrop drifts with the curves
   R.bgX = R.bgX * 0.985 + base.curve * (P.speed / MAXSPD) * 6 * DPR;
   // blend into the next zone's backdrop near a boundary
@@ -994,23 +1101,23 @@ function render() {
     const fog = Math.min(1, n / DRAW);
     const bottom = Math.min(p1.y, maxy), top = p2.y;
     const textured = texStrip(s, p1, p2, s.p1.z, s.p2.z, top, bottom, Z);
-    const r1 = p1.w / 7, r2 = p2.w / 7;
+    const r1 = p1.w / 11, r2 = p2.w / 11;
     if (!textured) {
       ctx.fillStyle = Z.side[alt]; ctx.fillRect(0, p2.y, W, p1.y - p2.y);
       poly(p1.x - p1.w, p1.y, p1.x + p1.w, p1.y, p2.x + p2.w, p2.y, p2.x - p2.w, p2.y, Z.road[alt]);
     } else {
       // a light zone tint on the road and alternating shade for a sense of speed
-      ctx.globalAlpha = 0.3; poly(p1.x - p1.w, p1.y, p1.x + p1.w, p1.y, p2.x + p2.w, p2.y, p2.x - p2.w, p2.y, Z.road[alt]);
+      ctx.globalAlpha = 0.8; poly(p1.x - p1.w, p1.y, p1.x + p1.w, p1.y, p2.x + p2.w, p2.y, p2.x - p2.w, p2.y, Z.road[alt]);
       if (alt) { ctx.globalAlpha = 0.07; ctx.fillStyle = "#000"; ctx.fillRect(0, top, W, bottom - top); }
       ctx.globalAlpha = 1;
     }
     // the vessel wall: a raised glossy edge on both sides of the road
-    ctx.globalAlpha = textured ? 0.55 : 1;
+    ctx.globalAlpha = 1;
     poly(p1.x - p1.w - r1, p1.y, p1.x - p1.w, p1.y, p2.x - p2.w, p2.y, p2.x - p2.w - r2, p2.y, Z.rumble[alt]);
     poly(p1.x + p1.w + r1, p1.y, p1.x + p1.w, p1.y, p2.x + p2.w, p2.y, p2.x + p2.w + r2, p2.y, Z.rumble[alt]);
     ctx.globalAlpha = 1;
     if (alt) {
-      ctx.globalAlpha = textured ? 0.4 : 1;
+      ctx.globalAlpha = 0.9;
       for (let l = 1; l < LANES; l++) {
         const f = -1 + (2 * l) / LANES, lw1 = p1.w * lanesW, lw2 = p2.w * lanesW;
         poly(p1.x + f * p1.w - lw1, p1.y, p1.x + f * p1.w + lw1, p1.y, p2.x + f * p2.w + lw2, p2.y, p2.x + f * p2.w - lw2, p2.y, Z.lane);
@@ -1037,7 +1144,9 @@ function render() {
     const rs = racersBySeg.get(s.i);
     if (rs) for (const r of rs) drawRacer(r, s);
   }
+  drawShots();
   drawPlayer();
+  drawPowerFx();
   // speed lines while boosting
   if (P.boost > 0) {
     ctx.strokeStyle = "rgba(255,255,255,.35)"; ctx.lineWidth = 2 * DPR;
@@ -1110,7 +1219,9 @@ function drawObj(o, s) {
     ctx.beginPath(); ctx.ellipse(cx, p.y, rx * 0.5, ry * 0.5, 0, 0, 7); ctx.stroke();
     ctx.restore();
   }
+  if (o.t === "drone" || o.t === "voc") { ctx.save(); ctx.shadowColor = o.t === "drone" ? "rgba(255,70,90,.95)" : "rgba(255,120,140,.8)"; ctx.shadowBlur = 16 * DPR; }
   spriteAt(im, s, o.x, w, bob, true, 1, rot);
+  if (o.t === "drone" || o.t === "voc") ctx.restore();
 }
 // The Society's red laser net: beams fan down from the drone and a glowing mesh closes over the kart
 function laserNet(cx, by, w, k, droneY) {
@@ -1171,8 +1282,54 @@ function drawRacer(r, s) {
   if (r.seq > 0) { ctx.font = `${Math.round(18 * DPR)}px sans-serif`; ctx.fillText("🌀", cx, by - w * 1.05 - 16 * DPR); }
   ctx.restore();
 }
+// glowing bursts of fluid flying up the lane
+function drawShots() {
+  for (const sh of R.shots) {
+    const sg = SEGS[Math.floor(sh.z / SEG)];
+    if (!sg || !sg.p1s || sg.p1s.sc <= 0) continue;
+    const p = sg.p1s, x = p.x + p.w * sh.x, y = p.y - p.w * 0.16, r = Math.max(3 * DPR, p.w * 0.07);
+    if (y > (sg.clip || H) + r) continue;
+    ctx.save(); ctx.globalCompositeOperation = "lighter";
+    const g = ctx.createRadialGradient(x, y, 0, x, y, r * 2.4);
+    g.addColorStop(0, "rgba(255,255,255,1)"); g.addColorStop(0.3, "rgba(94,231,255,.95)"); g.addColorStop(1, "rgba(94,231,255,0)");
+    ctx.fillStyle = g; ctx.beginPath(); ctx.arc(x, y, r * 2.4, 0, 7); ctx.fill();
+    // a short trail back toward the kart
+    ctx.strokeStyle = "rgba(94,231,255,.5)"; ctx.lineWidth = r * 0.9; ctx.lineCap = "round";
+    ctx.beginPath(); ctx.moveTo(x, y); ctx.lineTo(lerp(x, W / 2 + (sh.x - R.P.x) * W * 0.3, 0.25), lerp(y, H * 0.9, 0.25)); ctx.stroke();
+    ctx.restore();
+  }
+}
+function drawPowerFx() {
+  const P = R.P, roadW = (CAM_DEPTH / CAM_BACK) * ROAD * W / 2, w = Math.min(roadW * KART_W, H * (H < 700 * DPR ? 0.37 : 0.42)), cx = W / 2, cy = H * 0.985 - w * 0.45;
+  ctx.save();
+  if (P.shield > 0) {
+    // Dr. Kim's shield bubble
+    const g = ctx.createRadialGradient(cx, cy, w * 0.3, cx, cy, w * 0.7);
+    g.addColorStop(0, "rgba(94,231,255,0)"); g.addColorStop(0.85, "rgba(94,231,255,.22)"); g.addColorStop(1, "rgba(200,250,255,.65)");
+    ctx.fillStyle = g; ctx.beginPath(); ctx.ellipse(cx, cy, w * 0.72, w * 0.62, 0, 0, 7); ctx.fill();
+  }
+  if (P.bust > 0) {
+    ctx.globalCompositeOperation = "lighter";
+    const a = 0.35 + 0.25 * Math.sin(R.t * 20);
+    const g = ctx.createRadialGradient(cx, cy - w * 0.2, 0, cx, cy - w * 0.2, w * 0.9);
+    g.addColorStop(0, `rgba(255,194,61,${a})`); g.addColorStop(1, "rgba(255,120,40,0)");
+    ctx.fillStyle = g; ctx.fillRect(cx - w, cy - w * 1.2, w * 2, w * 1.6);
+  }
+  if (R.wave > 0) {
+    // Luciana's shockwave racing up the road
+    const k = 1 - R.wave; ctx.globalCompositeOperation = "lighter";
+    ctx.strokeStyle = `rgba(255,140,200,${R.wave})`; ctx.lineWidth = 10 * DPR * R.wave;
+    ctx.beginPath(); ctx.ellipse(W / 2, H * 0.6 - k * H * 0.12, W * (0.25 + k * 0.6), H * (0.08 + k * 0.1), 0, 0, 7); ctx.stroke();
+  }
+  if (R.blink > 0) {
+    // Krystal's teleport flash
+    ctx.globalCompositeOperation = "lighter";
+    ctx.fillStyle = `rgba(200,140,255,${R.blink * 0.6})`; ctx.fillRect(0, 0, W, H);
+  }
+  ctx.restore();
+}
 function drawPlayer() {
-  const P = R.P, roadW = (CAM_DEPTH / CAM_BACK) * ROAD * W / 2, w = Math.min(roadW * KART_W, H * 0.42), cx = W / 2, by = H * 0.985;
+  const P = R.P, roadW = (CAM_DEPTH / CAM_BACK) * ROAD * W / 2, w = Math.min(roadW * KART_W, H * (H < 700 * DPR ? 0.37 : 0.42)), cx = W / 2, by = H * 0.985;
   const bounce = Math.sin(R.t * 18) * (P.speed / MAXSPD) * 2 * DPR;
   const tilt = R.steer * 0.06;
   // boost flames
@@ -1242,6 +1399,8 @@ function buildWarriors() {
   $("pwFace").src = `img/faces/${W_.id}.webp`;
   $("pwFace").parentElement.style.setProperty("--wc", W_.color);
   $("pwName").textContent = W_.name;
+  const Pw = POWERS[W_.id];
+  $("pwPowIcon").textContent = Pw.icon; $("pwPowName").textContent = Pw.name; $("pwPowText").textContent = Pw.text;
 }
 $("toKart").addEventListener("click", () => go("pickK"));
 
@@ -1312,7 +1471,7 @@ function countdown() {
     else {
       el.textContent = "GO!"; sfx.go(); state = "race"; last = performance.now();
       warriorSay(R.P.id, "go", true);
-      R.racers.forEach((r) => { r.skill = r.ai ? 0.93 + Math.random() * 0.1 : 1; r.dodge = 0.5 + Math.random() * 0.35; r.lastRel = r.z - R.P.z; });
+      R.racers.forEach((r) => { r.skill = r.ai ? 0.92 + Math.random() * 0.08 : 1; r.dodge = 0.5 + Math.random() * 0.35; r.lastRel = r.z - R.P.z; });
       setTimeout(() => el.classList.add("hidden"), 700);
     }
   };
@@ -1371,9 +1530,10 @@ setTimeout(() => Object.keys(MERCY).forEach((k) => { const a = new Audio(); a.pr
 showBest();
 show("title");
 // dev handle for tests
-window.__race = { get R() { return R; }, get state() { return state; }, set state(v) { state = v; }, MERCY, ZONES, startRace, useCrystal,
+window.__race = { get R() { return R; }, get state() { return state; }, set state(v) { state = v; }, MERCY, ZONES, startRace, useCrystal, fireBlast, usePower,
   // fast simulation for tests: an autopilot steers around trouble and uses crystals
-  sim(seconds, dt = 1 / 30) {
+  // mode.naive: a weak player who never steers or treats; mode.blast: fires the blaster at clumps
+  sim(seconds, dt = 1 / 30, mode = {}) {
     const log = { voc: 0, trap: 0, myth: 0, treat: 0, seq: 0, share: 0 };
     for (let t = 0; t < seconds && state !== "results"; t += dt) {
       if (state === "card") { const b = document.querySelector("#cardP .ans button"); if (b && !b.disabled) b.click(); R.P.seq = 0; state = "race"; $("card").classList.add("hidden"); log.seq++; }
@@ -1382,9 +1542,11 @@ window.__race = { get R() { return R; }, get state() { return state; }, set stat
       const P = R.P, s0 = Math.floor(P.z / SEG); let danger = null;
       for (let i = s0 + 1; i < s0 + 10; i++) for (const o of (SEGS[i] || { objs: [] }).objs) if (!o.gone && o.t !== "crystal" && o.t !== "boost" && Math.abs(o.x - P.x) < 0.45) danger = o;
       keys.left = keys.right = false;
+      if (mode.blast && danger && P.ammo >= 1) fireBlast();
+      if (mode.naive) danger = null;
       if (danger && danger.t !== "voc") { if (danger.x >= P.x) keys.left = P.x > -0.6; else keys.right = P.x < 0.6; if (!keys.left && !keys.right) keys.right = true; }
       else if (Math.abs(P.x) > 0.7) { keys.left = P.x > 0; keys.right = P.x < 0; }
-      if ($("treat").classList.contains("urgent")) { useCrystal(); log.treat++; }
+      if (!mode.naive && $("treat").classList.contains("urgent")) { useCrystal(); log.treat++; }
       R.laneT = keys.left || keys.right ? null : nearestLane(P.x);
       const before = { stun: P.stun, trapped: P.trapped, slow: P.slow };
       update(dt);
